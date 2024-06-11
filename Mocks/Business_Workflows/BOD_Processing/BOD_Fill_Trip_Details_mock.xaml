@@ -1,0 +1,1055 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="Fill_Trip_Detais" this:Fill_Trip_Detais.in_dictAdultCountPerRoom="[New Dictionary(Of String, Integer)()]" this:Fill_Trip_Detais.in_dictChildCountPerRoom="[New Dictionary(Of String, Integer)()]" this:Fill_Trip_Detais.in_dictInfantCountPerRoom="[New Dictionary(Of String, Integer)()]" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:s="clr-namespace:System;assembly=System.Private.CoreLib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data.Common" xmlns:this="clr-namespace:" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:uix="http://schemas.uipath.com/workflow/activities/uix" xmlns:utam="clr-namespace:UiPath.Testing.Activities.Mocks;assembly=UiPath.Testing.Activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="BreakTriggerScopeInArgument" Type="InArgument(x:String)" />
+    <x:Property Name="in_dictConfig" Type="InArgument(scg:Dictionary(x:String, x:Object))" />
+    <x:Property Name="in_uiBODBrowser" Type="InArgument(ui:UiElement)" />
+    <x:Property Name="in_drTransactionItem" Type="InArgument(sd:DataRow)" />
+    <x:Property Name="out_boolHotelFound" Type="OutArgument(x:Boolean)" />
+    <x:Property Name="in_strHotelMaxRetries" Type="InArgument(x:String)" />
+    <x:Property Name="io_BusinessException" Type="InOutArgument(x:String)" />
+    <x:Property Name="in_strBookingID" Type="InArgument(x:String)" />
+    <x:Property Name="in_dtOutputDataTable" Type="InArgument(sd:DataTable)" />
+    <x:Property Name="in_dtmDummyDepartureDate" Type="InArgument(s:DateTime)" />
+    <x:Property Name="in_dtmDummyReturnDate" Type="InArgument(s:DateTime)" />
+    <x:Property Name="in_intRoomsCount" Type="InArgument(x:Int32)" />
+    <x:Property Name="in_dictAdultCountPerRoom" Type="InArgument(scg:Dictionary(x:String, x:Int32))" />
+    <x:Property Name="in_dictChildCountPerRoom" Type="InArgument(scg:Dictionary(x:String, x:Int32))" />
+    <x:Property Name="in_dictInfantCountPerRoom" Type="InArgument(scg:Dictionary(x:String, x:Int32))" />
+    <x:Property Name="in_lstChildrenList" Type="InArgument(scg:List(x:String))" />
+    <x:Property Name="in_strHotelMissingText" Type="InArgument(x:String)" />
+    <x:Property Name="out_strStatus" Type="OutArgument(x:String)" />
+    <x:Property Name="out_strErrorMessage" Type="OutArgument(x:String)" />
+  </x:Members>
+  <VisualBasic.Settings>
+    <x:Null />
+  </VisualBasic.Settings>
+  <sap:VirtualizedContainerService.HintSize>837,6080</sap:VirtualizedContainerService.HintSize>
+  <sap2010:WorkflowViewState.IdRef>Fill_Trip_Detais_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <sco:Collection x:TypeArguments="x:String">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Collections.ObjectModel</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>GlobalVariablesNamespace</x:String>
+      <x:String>GlobalConstantsNamespace</x:String>
+      <x:String>System.Reflection</x:String>
+      <x:String>UiPath.UIAutomationCore.Contracts</x:String>
+      <x:String>UiPath.UIAutomationNext.Enums</x:String>
+      <x:String>System.Runtime.Serialization</x:String>
+      <x:String>UiPath.UIAutomationNext.Activities</x:String>
+      <x:String>UiPath.Shared.Activities</x:String>
+      <x:String>UiPath.Platform.ObjectLibrary</x:String>
+      <x:String>UiPath.Activities.System.Text</x:String>
+      <x:String>System.Security</x:String>
+      <x:String>System.ComponentModel</x:String>
+      <x:String>System.Globalization</x:String>
+      <x:String>System.Xml.Serialization</x:String>
+      <x:String>UiPath.UIAutomationNext.Contracts</x:String>
+      <x:String>UiPath.UIAutomationNext.Models.CV</x:String>
+      <x:String>UiPath.CV</x:String>
+      <x:String>UiPath.Shared.ObjectLibrary</x:String>
+      <x:String>UiPath.CV.Activities</x:String>
+      <x:String>UiPath.CV.Activities.Interfaces</x:String>
+      <x:String>Microsoft.VisualBasic.CompilerServices</x:String>
+      <x:String>System.Activities.Runtime.Collections</x:String>
+      <x:String>UiPath.UIAutomationNext.Activities.Models</x:String>
+      <x:String>UiPath.Excel</x:String>
+      <x:String>UiPath.Excel.Activities</x:String>
+      <x:String>UiPath.Testing.Activities.Mocks</x:String>
+    </sco:Collection>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <sco:Collection x:TypeArguments="AssemblyReference">
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic.Core</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic.Forms</AssemblyReference>
+      <AssemblyReference>Microsoft.Win32.Primitives</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>NPOI</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>System.CodeDom</AssemblyReference>
+      <AssemblyReference>System.Collections</AssemblyReference>
+      <AssemblyReference>System.Collections.Immutable</AssemblyReference>
+      <AssemblyReference>System.Collections.NonGeneric</AssemblyReference>
+      <AssemblyReference>System.ComponentModel</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.EventBasedAsync</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Primitives</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.TypeConverter</AssemblyReference>
+      <AssemblyReference>System.Configuration.ConfigurationManager</AssemblyReference>
+      <AssemblyReference>System.Console</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Data.Common</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>System.Data.SqlClient</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Drawing.Common</AssemblyReference>
+      <AssemblyReference>System.Drawing.Primitives</AssemblyReference>
+      <AssemblyReference>System.Linq</AssemblyReference>
+      <AssemblyReference>System.Linq.Expressions</AssemblyReference>
+      <AssemblyReference>System.Linq.Parallel</AssemblyReference>
+      <AssemblyReference>System.Linq.Queryable</AssemblyReference>
+      <AssemblyReference>System.Memory</AssemblyReference>
+      <AssemblyReference>System.Net.Mail</AssemblyReference>
+      <AssemblyReference>System.ObjectModel</AssemblyReference>
+      <AssemblyReference>System.Private.CoreLib</AssemblyReference>
+      <AssemblyReference>System.Private.DataContractSerialization</AssemblyReference>
+      <AssemblyReference>System.Private.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.Private.Uri</AssemblyReference>
+      <AssemblyReference>System.Private.Xml</AssemblyReference>
+      <AssemblyReference>System.Reflection.DispatchProxy</AssemblyReference>
+      <AssemblyReference>System.Reflection.Metadata</AssemblyReference>
+      <AssemblyReference>System.Reflection.TypeExtensions</AssemblyReference>
+      <AssemblyReference>System.Runtime.InteropServices</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization.Formatters</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization.Primitives</AssemblyReference>
+      <AssemblyReference>System.Security.Permissions</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>UiPath.CV</AssemblyReference>
+      <AssemblyReference>UiPath.CV.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Excel</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.OCR.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Platform</AssemblyReference>
+      <AssemblyReference>UiPath.Studio.Constants</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities.ViewModels</AssemblyReference>
+      <AssemblyReference>UiPath.Testing.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationNext</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationNext.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationNext.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.Workflow</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>System.Memory.Data</AssemblyReference>
+      <AssemblyReference>System.Linq.Async</AssemblyReference>
+    </sco:Collection>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence sap2010:Annotation.AnnotationText="1. Populate destination details.&#xA;2. Populate dummy dates.&#xA;3. Determine the number of rooms and passengers per room.&#xA;4. Assigns children's ages per room.&#xA;5. Try to navigate to Dummy Hotel and handle it as red path if it fails." DisplayName="BOD_Fill_Trip_Detais" sap:VirtualizedContainerService.HintSize="789,6015" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="x:String" Name="strRoomNumber" />
+      <Variable x:TypeArguments="x:String" Name="strAdultsCount" />
+      <Variable x:TypeArguments="x:String" Name="strSelectorTableRow" />
+      <Variable x:TypeArguments="x:Int32" Name="intIndex" />
+      <Variable x:TypeArguments="x:Int32" Name="intHotelRetryCount" />
+      <Variable x:TypeArguments="x:String" Name="strInfantsCount" />
+      <Variable x:TypeArguments="x:String" Name="strChildrenCount" />
+    </Sequence.Variables>
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+        <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <ui:LogMessage DisplayName="Log Message - Fill destination details" sap:VirtualizedContainerService.HintSize="727,141" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="[UiPath.Core.Activities.LogLevel.Trace]" Message="[&quot;Start filling trip details.&quot;]">
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:LogMessage>
+    <uix:NApplicationCard AttachMode="ByInstance" DisplayName="Use Browser Edge: Book Holidays Online - British Airways" sap:VirtualizedContainerService.HintSize="727,4020" sap2010:WorkflowViewState.IdRef="NApplicationCard_1" InUiElement="[in_uiBODBrowser]" InteractionMode="DebuggerApi" IsIncognito="False" ScopeGuid="376b592c-e78f-48ea-99b7-29cb14a5a8bb" Version="V2" WindowResize="Maximize">
+      <uix:NApplicationCard.Body>
+        <ActivityAction x:TypeArguments="x:Object">
+          <ActivityAction.Argument>
+            <DelegateInArgument x:TypeArguments="x:Object" Name="WSSessionData" />
+          </ActivityAction.Argument>
+          <Sequence DisplayName="Fill trip + passenger details in BOD" sap:VirtualizedContainerService.HintSize="693,3883" sap2010:WorkflowViewState.IdRef="Sequence_2">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <ui:LogMessage DisplayName="Log Message - Begin filling destination, flight and price filter" sap:VirtualizedContainerService.HintSize="631,52" sap2010:WorkflowViewState.IdRef="LogMessage_8" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;Filling destination, flight class and price filter.&quot;]">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+            </ui:LogMessage>
+            <uix:NClick ActivateBefore="True" sap2010:Annotation.AnnotationText="ContinueOnError = true, because on each login, this is the default choice." ClickType="Single" ContinueOnError="True" DisplayName="Click 'Flight + hotel'" sap:VirtualizedContainerService.HintSize="631,109" sap2010:WorkflowViewState.IdRef="NClick_1" InteractionMode="Simulate" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="376b592c-e78f-48ea-99b7-29cb14a5a8bb" Version="V3">
+              <uix:NClick.Target>
+                <uix:TargetAnchorable BrowserURL="https://badirect-auth.baplc.com/badirect/british-airways-holidays/public/en_gb" CvElementArea="341, 159, 17, 17" CvType="RadioButton" DesignTimeRectangle="343, 160, 13, 15" DesignTimeScaleFactor="1" ElementType="RadioButton" FriendlyName="'INPUT hotelPackage'" FullSelectorArgument="&lt;webctrl tag='INPUT' aaname='Flight + hotel' /&gt;" FuzzySelectorArgument="&lt;webctrl tag='INPUT' aaname='Flight + hotel' type='radio' class='radio PKGRadio' /&gt;" Guid="38651d7d-7a22-4834-9926-22e8454bf2b3" InformativeScreenshot="42fa32e0976606247d9c816f26eb60ea.png" ScopeSelectorArgument="&lt;html app='msedge.exe' title='Book Holidays Online - British Airways' /&gt;" SearchSteps="FuzzySelector, CV" Version="V2" Visibility="Interactive" WaitForReadyArgument="Complete">
+                  <uix:TargetAnchorable.Anchors>
+                    <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                      <uix:Target CvTextArea="358, 160, 77, 14" CvTextArgument="Flight + hotel" CvType="Text" DesignTimeRectangle="359, 160, 76, 13" ElementType="Text" FriendlyName="'checked'" FullSelectorArgument="&lt;webctrl id='flightsPlusHotelLabel' tag='LABEL' /&gt;" FuzzySelectorArgument="&lt;webctrl id='flightsPlusHotelLabel' tag='LABEL' type='' class='inlineLabel' aaname='Flight + hotel' check:innerText='Flight + hotel' /&gt;" SearchSteps="FuzzySelector, CV" />
+                    </scg:List>
+                  </uix:TargetAnchorable.Anchors>
+                </uix:TargetAnchorable>
+              </uix:NClick.Target>
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                  <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+            </uix:NClick>
+            <uix:NSelectItem sap2010:Annotation.AnnotationText="ContinueOnError = true, because on each login, this is the default choice." ContinueOnError="True" DisplayName="Select Item 'From'" sap:VirtualizedContainerService.HintSize="631,109" sap2010:WorkflowViewState.IdRef="NSelectItem_1" Item="London (All)" ScopeIdentifier="376b592c-e78f-48ea-99b7-29cb14a5a8bb" Timeout="3" Version="V3">
+              <uix:NSelectItem.Items>
+                <scg:List x:TypeArguments="x:String" Capacity="37">
+                  <x:String>London (All)</x:String>
+                  <x:String>London (Heathrow)</x:String>
+                  <x:String>London (Gatwick)</x:String>
+                  <x:String>London (City Airport)</x:String>
+                  <x:String>London (Luton)</x:String>
+                  <x:String>London (Stansted)</x:String>
+                  <x:String>Aberdeen</x:String>
+                  <x:String>Belfast</x:String>
+                  <x:String>Birmingham</x:String>
+                  <x:String>Bristol</x:String>
+                  <x:String>Edinburgh</x:String>
+                  <x:String>Glasgow</x:String>
+                  <x:String>Isle of Man</x:String>
+                  <x:String>Jersey</x:String>
+                  <x:String>Leeds Bradford</x:String>
+                  <x:String>Manchester</x:String>
+                  <x:String>Newcastle upon Tyne</x:String>
+                  <x:String>Norwich</x:String>
+                  <x:String>Barra</x:String>
+                  <x:String>Benbecula</x:String>
+                  <x:String>Campbeltown</x:String>
+                  <x:String>Doncaster</x:String>
+                  <x:String>Dundee</x:String>
+                  <x:String>Exeter</x:String>
+                  <x:String>Humberside</x:String>
+                  <x:String>Inverness</x:String>
+                  <x:String>Islay</x:String>
+                  <x:String>Kirkwall</x:String>
+                  <x:String>Liverpool</x:String>
+                  <x:String>Newquay</x:String>
+                  <x:String>Nottingham (East Midlands)</x:String>
+                  <x:String>Shetland Islands (Sumburgh)</x:String>
+                  <x:String>Southampton Airport</x:String>
+                  <x:String>Stornoway</x:String>
+                  <x:String>Teesside</x:String>
+                  <x:String>Tiree</x:String>
+                  <x:String>Wick (John O'Groats)</x:String>
+                </scg:List>
+              </uix:NSelectItem.Items>
+              <uix:NSelectItem.Target>
+                <uix:TargetAnchorable BrowserURL="https://badirect-auth.baplc.com/badirect/british-airways-holidays/public/en_gb?refevent=home_tab_flightHotel&amp;COD=GB" CvTextArea="198, 400, 70, 14" CvTextArgument="London (All)" CvType="Text" DesignTimeRectangle="195, 398, 189, 17" DesignTimeScaleFactor="1" ElementType="DropDown" FriendlyName="'London (All)'" FullSelectorArgument="&lt;webctrl tag='SELECT' aaname='From' name='fromPkg' /&gt;" FuzzySelectorArgument="&lt;webctrl tag='SELECT' aaname='From' name='fromPkg' type='' class='country' /&gt;" Guid="576171a2-e9f3-45c0-a424-31e843604945" ImageBase64="" InformativeScreenshot="96bce27cd5c34d0edc5ba542db903d71.png" ScopeSelectorArgument="&lt;html app='msedge.exe' title='Book Holidays Online - British Airways' /&gt;" SearchSteps="Selector" Version="V2" Visibility="Interactive" WaitForReadyArgument="Complete">
+                  <uix:TargetAnchorable.Anchors>
+                    <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                      <uix:Target CvTextArea="194, 383, 33, 11" CvTextArgument="From" CvType="Text" DesignTimeRectangle="195, 382, 32, 13" ElementType="Text" FriendlyName="'From'" FullSelectorArgument="&lt;webctrl idx='2' parentid='flightSection' tag='LABEL' /&gt;" FuzzySelectorArgument="&lt;webctrl type='' parentid='flightSection' tag='LABEL' class='' aaname='From' check:innerText='From' /&gt;" SearchSteps="FuzzySelector, CV" />
+                    </scg:List>
+                  </uix:TargetAnchorable.Anchors>
+                </uix:TargetAnchorable>
+              </uix:NSelectItem.Target>
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                  <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+            </uix:NSelectItem>
+            <ui:LogMessage DisplayName="Log Message - filling destination" sap:VirtualizedContainerService.HintSize="631,143" sap2010:WorkflowViewState.IdRef="LogMessage_20" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;Filling destination: &quot; + in_drTransactionItem(&quot;HotelLocation&quot;).ToString]">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+            </ui:LogMessage>
+            <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="Single" DisplayName="Type Into 'To'" EmptyFieldMode="SingleLine" sap:VirtualizedContainerService.HintSize="631,52" sap2010:WorkflowViewState.IdRef="NTypeInto_1" InteractionMode="DebuggerApi" ScopeIdentifier="376b592c-e78f-48ea-99b7-29cb14a5a8bb" Text="[in_drTransactionItem(&quot;HotelLocation&quot;).ToString.Split(&quot;,&quot;c)(0)]" Version="V3">
+              <uix:NTypeInto.Target>
+                <uix:TargetAnchorable BrowserURL="https://badirect-auth.baplc.com/badirect/british-airways-holidays/public/en_gb" CvElementArea="194, 350, 265, 21" CvType="InputBox" DesignTimeRectangle="195, 456, 263, 19" DesignTimeScaleFactor="1" ElementType="InputBox" FriendlyName="'INPUT packageTo'" FullSelectorArgument="&lt;webctrl tag='INPUT' aaname='To' id='packageTo' name='packageTo' /&gt;" FuzzySelectorArgument="&lt;webctrl tag='INPUT' aaname='To' id='packageTo' name='packageTo' type='text' class='autoCompleteSearch' /&gt;" Guid="48255089-6300-43e5-b37a-19c57b164610" InformativeScreenshot="1d315b1666c36a733018ede64f5bd0af.png" IsResponsive="True" ScopeSelectorArgument="&lt;html app='msedge.exe' title='Book Holidays Online - British Airways' /&gt;" SearchSteps="Selector, FuzzySelector, CV" Version="V2" Visibility="Interactive" WaitForReadyArgument="Complete">
+                  <uix:TargetAnchorable.Anchors>
+                    <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                      <uix:Target CvTextArea="193, 336, 17, 11" CvTextArgument="To" CvType="Text" DesignTimeRectangle="195, 440, 15, 13" ElementType="Text" FriendlyName="'To'" FullSelectorArgument="&lt;webctrl aaname='To' parentid='packageDestination' tag='LABEL' /&gt;" FuzzySelectorArgument="&lt;webctrl aaname='To' parentid='packageDestination' tag='LABEL' type='' class='' check:innerText='To' /&gt;" SearchSteps="FuzzySelector, CV" />
+                    </scg:List>
+                  </uix:TargetAnchorable.Anchors>
+                </uix:TargetAnchorable>
+              </uix:NTypeInto.Target>
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+            </uix:NTypeInto>
+            <ui:LogMessage DisplayName="Log Message - choose destination" sap:VirtualizedContainerService.HintSize="631,52" sap2010:WorkflowViewState.IdRef="LogMessage_21" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;Choosing destination...&quot;]">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+            </ui:LogMessage>
+            <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click destination from Transaction item" sap:VirtualizedContainerService.HintSize="631,52" sap2010:WorkflowViewState.IdRef="NClick_2" InteractionMode="Simulate" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="376b592c-e78f-48ea-99b7-29cb14a5a8bb" Version="V3">
+              <uix:NClick.Target>
+                <uix:TargetAnchorable BrowserURL="https://badirect-auth.baplc.com/badirect/british-airways-holidays/public/en_gb?refevent=home_tab_flightHotel&amp;COD=GB" CvTextArea="197, 419, 185, 14" CvTextArgument="USA, Florida, Orlando, (all areas)" CvType="Text" DesignTimeRectangle="196, 417, 289, 18" DesignTimeScaleFactor="1" ElementType="ListItem" FriendlyName="'USA, Florida,'" FullSelectorArgument="[&quot;&lt;webctrl tag='LI' aaname='&quot;+ in_drTransactionItem(&quot;HotelLocation&quot;).ToString + &quot;' /&gt;&quot;]" FuzzySelectorArgument="[&quot;&lt;webctrl tag='LI' aaname='&quot;+ in_drTransactionItem(&quot;HotelLocation&quot;).ToString+&quot;' type='' class='acHighlight' check:text='&quot;+ in_drTransactionItem(&quot;HotelLocation&quot;).ToString+&quot;' /&gt;&quot;]" Guid="f4bf0699-abba-40df-829b-3a714977c071" InformativeScreenshot="d42c2407e5bc87e54d5678076e66d4ec.png" ScopeSelectorArgument="&lt;html app='msedge.exe' title='Book Holidays Online - British Airways' /&gt;" SearchSteps="FuzzySelector, CV" Version="V2" Visibility="Interactive" WaitForReadyArgument="Complete" />
+              </uix:NClick.Target>
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+            </uix:NClick>
+            <uix:NSelectItem sap2010:Annotation.AnnotationText="ContinueOnError = true, because on each login, this is the default choice." ContinueOnError="True" DisplayName="Select Item 'Flight class: Economy'" sap:VirtualizedContainerService.HintSize="631,109" sap2010:WorkflowViewState.IdRef="NSelectItem_2" Item="Economy" ScopeIdentifier="376b592c-e78f-48ea-99b7-29cb14a5a8bb" Version="V3">
+              <uix:NSelectItem.Items>
+                <scg:List x:TypeArguments="x:String" Capacity="1">
+                  <x:String>Economy</x:String>
+                </scg:List>
+              </uix:NSelectItem.Items>
+              <uix:NSelectItem.Target>
+                <uix:TargetAnchorable BrowserURL="https://badirect-auth.baplc.com/badirect/british-airways-holidays/public/en_gb?refevent=home_tab_flightHotel&amp;COD=GB" CvTextArea="198, 511, 53, 13" CvTextArgument="Economy" CvType="Text" DesignTimeRectangle="195, 508, 170, 17" DesignTimeScaleFactor="1" ElementType="DropDown" FriendlyName="'Economy'" FullSelectorArgument="&lt;webctrl tag='SELECT' aaname='Flight class' /&gt;" FuzzySelectorArgument="&lt;webctrl tag='SELECT' aaname='Flight class' type='' class='withLink' /&gt;" Guid="e9b27e5d-8935-4607-aacd-95b09677514f" InformativeScreenshot="f7e8e0a628a2d7cd5a22670a1f2b85ef.png" ScopeSelectorArgument="&lt;html app='msedge.exe' title='Book Holidays Online - British Airways' /&gt;" SearchSteps="FuzzySelector" Version="V2" Visibility="Interactive" WaitForReadyArgument="Complete">
+                  <uix:TargetAnchorable.Anchors>
+                    <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                      <uix:Target CvTextArea="194, 492, 72, 14" CvTextArgument="Flight class" CvType="Text" DesignTimeRectangle="195, 492, 71, 13" ElementType="Text" FriendlyName="'Flight class'" FullSelectorArgument="&lt;webctrl parentid='ticketDetail' tag='LABEL' /&gt;" FuzzySelectorArgument="&lt;webctrl parentid='ticketDetail' tag='LABEL' type='' class='' aaname='Flight class' check:innerText='Flight class' /&gt;" SearchSteps="FuzzySelector, CV" />
+                    </scg:List>
+                  </uix:TargetAnchorable.Anchors>
+                </uix:TargetAnchorable>
+              </uix:NSelectItem.Target>
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                  <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+            </uix:NSelectItem>
+            <uix:NClick ActivateBefore="True" sap2010:Annotation.AnnotationText="ContinueOnError = true, because on each login, this is the default choice." ClickType="Single" ContinueOnError="True" DisplayName="Click 'Lowest price'" sap:VirtualizedContainerService.HintSize="631,109" sap2010:WorkflowViewState.IdRef="NClick_4" InteractionMode="Simulate" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="376b592c-e78f-48ea-99b7-29cb14a5a8bb" Version="V3">
+              <uix:NClick.Target>
+                <uix:TargetAnchorable BrowserURL="https://badirect-auth.baplc.com/badirect/british-airways-holidays/public/en_gb?refevent=home_tab_flightHotel&amp;COD=GB" CvElementArea="193, 546, 17, 16" CvType="RadioButton" DesignTimeRectangle="195, 547, 13, 15" DesignTimeScaleFactor="1" ElementType="RadioButton" FriendlyName="'INPUT lowest'" FullSelectorArgument="&lt;webctrl tag='INPUT' parentid='ticketTypeLowest' type='radio' /&gt;" FuzzySelectorArgument="&lt;webctrl tag='INPUT' parentid='ticketTypeLowest' type='radio' class='radio' aaname=' &amp;#x9;&amp;#x9;&amp;#x9;&amp;#x9;&amp;#x9;&amp;#x9; &amp;#x9;&amp;#x9;&amp;#x9;&amp;#x9;&amp;#x9;&amp;#x9;Lowest price &amp;#x9;&amp;#x9;&amp;#x9;&amp;#x9;&amp;#x9;&amp;#x9; &amp;#x9;&amp;#x9;&amp;#x9;&amp;#x9;&amp;#x9;&amp;#x9;' /&gt;" Guid="8cf244e3-c409-48a1-978a-77f1eaedb5f6" InformativeScreenshot="81cf6528338633aecbcd0eefda6f6b87.png" ScopeSelectorArgument="&lt;html app='msedge.exe' title='Book Holidays Online - British Airways' /&gt;" SearchSteps="FuzzySelector, CV" Version="V2" Visibility="Interactive" WaitForReadyArgument="Complete">
+                  <uix:TargetAnchorable.Anchors>
+                    <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                      <uix:Target CvTextArea="212, 548, 69, 13" CvTextArgument="Lowest price" CvType="Text" DesignTimeRectangle="211, 547, 230, 13" ElementType="Text" FriendlyName="'checked'" FullSelectorArgument="&lt;webctrl parentid='ticketTypeLowest' tag='LABEL' /&gt;" FuzzySelectorArgument="&lt;webctrl parentid='ticketTypeLowest' tag='LABEL' type='' class='' aaname=' &amp;#x9;&amp;#x9;&amp;#x9;&amp;#x9;&amp;#x9;&amp;#x9; &amp;#x9;&amp;#x9;&amp;#x9;&amp;#x9;&amp;#x9;&amp;#x9;Lowest price &amp;#x9;&amp;#x9;&amp;#x9;&amp;#x9;&amp;#x9;&amp;#x9; &amp;#x9;&amp;#x9;&amp;#x9;&amp;#x9;&amp;#x9;&amp;#x9;' check:innerText='Lowest price' /&gt;" SearchSteps="FuzzySelector, CV" />
+                    </scg:List>
+                  </uix:TargetAnchorable.Anchors>
+                </uix:TargetAnchorable>
+              </uix:NClick.Target>
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                  <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+            </uix:NClick>
+            <ui:LogMessage DisplayName="Log Message - trip dates" sap:VirtualizedContainerService.HintSize="631,52" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;Filling dummy dates...&quot;]">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+            </ui:LogMessage>
+            <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="Single" DisplayName="Type dummyDepartureDate into departure field" EmptyFieldMode="SingleLine" sap:VirtualizedContainerService.HintSize="631,52" sap2010:WorkflowViewState.IdRef="NTypeInto_2" InteractionMode="DebuggerApi" ScopeIdentifier="376b592c-e78f-48ea-99b7-29cb14a5a8bb" Text="[in_dtmDummyDepartureDate.ToString(&quot;dd/MM/yy&quot;)]" Version="V3">
+              <uix:NTypeInto.Target>
+                <uix:TargetAnchorable BrowserURL="https://badirect-auth.baplc.com/badirect/british-airways-holidays/public/en_gb?refevent=home_tab_flightHotel&amp;COD=GB" CvElementArea="193, 463, 83, 22" CvType="InputBox" DesignTimeRectangle="195, 465, 80, 19" DesignTimeScaleFactor="1" ElementType="InputBox" FriendlyName="'22/04/24'" FullSelectorArgument="&lt;webctrl id='depDate' tag='INPUT' aaname='Depart' name='depDate' /&gt;" FuzzySelectorArgument="&lt;webctrl id='depDate' tag='INPUT' aaname='Depart' name='depDate' type='text' class='hasDatepicker' /&gt;" Guid="429d9c49-f9fa-4222-a303-a67d1c4eab95" InformativeScreenshot="9a8e5e424d355aae7c58edf05f0a3f55.png" IsResponsive="True" ScopeSelectorArgument="&lt;html app='msedge.exe' title='Book Holidays Online - British Airways' /&gt;" SearchSteps="FuzzySelector, CV" Version="V2" Visibility="Interactive">
+                  <uix:TargetAnchorable.Anchors>
+                    <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                      <uix:Target CvTextArea="194, 450, 44, 13" CvTextArgument="Depart" CvType="Text" DesignTimeRectangle="195, 449, 43, 13" ElementType="Text" FriendlyName="'Depart'" FullSelectorArgument="&lt;webctrl parentid='dates' tag='LABEL' /&gt;" FuzzySelectorArgument="&lt;webctrl parentid='dates' tag='LABEL' type='' class='' aaname='Depart' check:innerText='Depart' /&gt;" SearchSteps="FuzzySelector, CV" />
+                    </scg:List>
+                  </uix:TargetAnchorable.Anchors>
+                </uix:TargetAnchorable>
+              </uix:NTypeInto.Target>
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+            </uix:NTypeInto>
+            <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="Single" DisplayName="Type dummyReturnDate in return field" EmptyFieldMode="SingleLine" sap:VirtualizedContainerService.HintSize="631,52" sap2010:WorkflowViewState.IdRef="NTypeInto_3" InteractionMode="DebuggerApi" ScopeIdentifier="376b592c-e78f-48ea-99b7-29cb14a5a8bb" Text="[in_dtmDummyReturnDate.ToString(&quot;dd/MM/yy&quot;)]" Version="V3">
+              <uix:NTypeInto.Target>
+                <uix:TargetAnchorable BrowserURL="https://badirect-auth.baplc.com/badirect/british-airways-holidays/public/en_gb?refevent=home_tab_flightHotel&amp;COD=GB" CvElementArea="278, 463, 83, 22" CvType="InputBox" DesignTimeRectangle="280, 465, 80, 19" DesignTimeScaleFactor="1" ElementType="InputBox" FriendlyName="'INPUT retDate'" FullSelectorArgument="&lt;webctrl tag='INPUT' aaname='Return' name='retDate' /&gt;" FuzzySelectorArgument="&lt;webctrl tag='INPUT' aaname='Return' name='retDate' type='text' class='hasDatepicker' /&gt;" Guid="e1b684d7-e97b-4214-88d2-3c3d2ee36301" InformativeScreenshot="195d8ae0806f0f8939017fd9401b59f1.png" IsResponsive="True" ScopeSelectorArgument="&lt;html app='msedge.exe' title='Book Holidays Online - British Airways' /&gt;" SearchSteps="FuzzySelector, CV" Version="V2" Visibility="Interactive">
+                  <uix:TargetAnchorable.Anchors>
+                    <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                      <uix:Target CvTextArea="279, 450, 43, 11" CvTextArgument="Return" CvType="Text" DesignTimeRectangle="280, 449, 43, 13" ElementType="Text" FriendlyName="'Return'" FullSelectorArgument="&lt;webctrl aaname='Return' parentid='dates' tag='LABEL' /&gt;" FuzzySelectorArgument="&lt;webctrl aaname='Return' parentid='dates' tag='LABEL' type='' class='' check:innerText='Return' /&gt;" SearchSteps="FuzzySelector, CV" />
+                    </scg:List>
+                  </uix:TargetAnchorable.Anchors>
+                </uix:TargetAnchorable>
+              </uix:NTypeInto.Target>
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+            </uix:NTypeInto>
+            <ui:LogMessage DisplayName="Log Message - passenger details" sap:VirtualizedContainerService.HintSize="631,52" sap2010:WorkflowViewState.IdRef="LogMessage_9" Message="[&quot;Determine the number of rooms and passengers per room + assigns children's ages per room.&quot;]">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+            </ui:LogMessage>
+            <uix:NSelectItem DisplayName="Select Item 'Rooms required'" sap:VirtualizedContainerService.HintSize="631,52" sap2010:WorkflowViewState.IdRef="NSelectItem_3" Item="[in_intRoomsCount.ToString]" ScopeIdentifier="376b592c-e78f-48ea-99b7-29cb14a5a8bb" Version="V3">
+              <uix:NSelectItem.Items>
+                <scg:List x:TypeArguments="x:String" Capacity="5">
+                  <x:String>0</x:String>
+                  <x:String>1</x:String>
+                  <x:String>2</x:String>
+                  <x:String>3</x:String>
+                  <x:String>4</x:String>
+                </scg:List>
+              </uix:NSelectItem.Items>
+              <uix:NSelectItem.Target>
+                <uix:TargetAnchorable BrowserURL="https://badirect-auth.baplc.com/badirect/british-airways-holidays/public/en_gb" CvElementArea="276, 425, 16, 17" CvTextArea="266, 428, 7, 11" CvTextArgument="1" CvType="ArrowButton" DesignTimeRectangle="262, 425, 30, 17" DesignTimeScaleFactor="1" ElementType="DropDown" FriendlyName="'1'" FullSelectorArgument="&lt;webctrl tag='SELECT' aaname='Rooms required' /&gt;" FuzzySelectorArgument="&lt;webctrl tag='SELECT' aaname='Rooms required' type='' class='' /&gt;" Guid="f6c4c9c1-b666-4091-a9e3-69102a7cedc1" InformativeScreenshot="10fbdd6394233852b04da8eac5166aff.png" ScopeSelectorArgument="&lt;html app='msedge.exe' title='Book Holidays Online - British Airways' /&gt;" SearchSteps="FuzzySelector" Version="V2" Visibility="Interactive">
+                  <uix:TargetAnchorable.Anchors>
+                    <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                      <uix:Target DesignTimeRectangle="195, 423, 57, 26" ElementType="Text" FriendlyName="'Rooms required'" FullSelectorArgument="&lt;webctrl parentid='roomsReqLabel' tag='LABEL' /&gt;" FuzzySelectorArgument="&lt;webctrl parentid='roomsReqLabel' tag='LABEL' type='' class='' aaname='Rooms required' check:innerText='Rooms required' /&gt;" SearchSteps="FuzzySelector" />
+                    </scg:List>
+                  </uix:TargetAnchorable.Anchors>
+                </uix:TargetAnchorable>
+              </uix:NSelectItem.Target>
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+            </uix:NSelectItem>
+            <ui:ForEach x:TypeArguments="scg:KeyValuePair(x:String, x:Int32)" CurrentIndex="{x:Null}" DisplayName="For Each adult in adultsCount dict" sap:VirtualizedContainerService.HintSize="631,52" sap2010:WorkflowViewState.IdRef="ForEach`1_3" Values="[in_dictAdultCountPerRoom]">
+              <ui:ForEach.Body>
+                <ActivityAction x:TypeArguments="scg:KeyValuePair(x:String, x:Int32)">
+                  <ActivityAction.Argument>
+                    <DelegateInArgument x:TypeArguments="scg:KeyValuePair(x:String, x:Int32)" Name="currentItem" />
+                  </ActivityAction.Argument>
+                  <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="521,463" sap2010:WorkflowViewState.IdRef="Sequence_17">
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                    <ui:MultipleAssign DisplayName="Multiple Assign - Room number + adults count and table row" sap:VirtualizedContainerService.HintSize="479,178" sap2010:WorkflowViewState.IdRef="MultipleAssign_5">
+                      <ui:MultipleAssign.AssignOperations>
+                        <scg:List x:TypeArguments="ui:AssignOperation" Capacity="4">
+                          <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_12">
+                            <ui:AssignOperation.To>
+                              <OutArgument x:TypeArguments="x:String">[strRoomNumber]</OutArgument>
+                            </ui:AssignOperation.To>
+                            <ui:AssignOperation.Value>
+                              <InArgument x:TypeArguments="x:String">[currentItem.Key]</InArgument>
+                            </ui:AssignOperation.Value>
+                          </ui:AssignOperation>
+                          <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_13">
+                            <ui:AssignOperation.To>
+                              <OutArgument x:TypeArguments="x:String">[strAdultsCount]</OutArgument>
+                            </ui:AssignOperation.To>
+                            <ui:AssignOperation.Value>
+                              <InArgument x:TypeArguments="x:String">[currentItem.Value.ToString()]</InArgument>
+                            </ui:AssignOperation.Value>
+                          </ui:AssignOperation>
+                          <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_14">
+                            <ui:AssignOperation.To>
+                              <OutArgument x:TypeArguments="x:String">[strSelectorTableRow]</OutArgument>
+                            </ui:AssignOperation.To>
+                            <ui:AssignOperation.Value>
+                              <InArgument x:TypeArguments="x:String">[(Convert.ToInt32(strRoomNumber.Substring(4)) + 1).ToString]</InArgument>
+                            </ui:AssignOperation.Value>
+                          </ui:AssignOperation>
+                        </scg:List>
+                      </ui:MultipleAssign.AssignOperations>
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                    </ui:MultipleAssign>
+                    <uix:NSelectItem DisplayName="Select adults number per each room" sap:VirtualizedContainerService.HintSize="479,157" sap2010:WorkflowViewState.IdRef="NSelectItem_6" Item="[strAdultsCount.ToString]" ScopeIdentifier="376b592c-e78f-48ea-99b7-29cb14a5a8bb" Version="V3">
+                      <uix:NSelectItem.Items>
+                        <scg:List x:TypeArguments="x:String" Capacity="8">
+                          <x:String>1</x:String>
+                          <x:String>2</x:String>
+                          <x:String>3</x:String>
+                          <x:String>4</x:String>
+                          <x:String>5</x:String>
+                          <x:String>6</x:String>
+                          <x:String>7</x:String>
+                          <x:String>8</x:String>
+                        </scg:List>
+                      </uix:NSelectItem.Items>
+                      <uix:NSelectItem.Target>
+                        <uix:TargetAnchorable BrowserURL="https://badirect-auth.baplc.com/badirect/british-airways-holidays/public/en_gb?refevent=home_tab_flightHotel&amp;COD=GB" CvTextArea="93, 665, 9, 11" CvTextArgument="2" CvType="Text" DesignTimeRectangle="90, 662, 30, 17" DesignTimeScaleFactor="1" ElementType="DropDown" FriendlyName="'2'" FullSelectorArgument="[&quot;&lt;webctrl id='roomAlloc' tag='TABLE' /&gt;&lt;webctrl id='adults&quot;+strRoomNumber+&quot;' tableRow='&quot;+strSelectorTableRow+&quot;' tag='SELECT' /&gt;&quot;]" FuzzySelectorArgument="&lt;webctrl id='roomAlloc' tag='TABLE' /&gt;&lt;webctrl id='adultsRoom1' type='' tag='SELECT' class='hotelPax' aaname=' 12345678' /&gt;" Guid="8d98a660-780e-4a28-8169-e78d398ad8c9" ImageBase64="" InformativeScreenshot="3acdc0d9ec2ba898a55bc019f8f5fe20.png" ScopeSelectorArgument="&lt;html app='msedge.exe' title='Book Holidays Online - British Airways' /&gt;" SearchSteps="Selector" Version="V2" Visibility="Interactive" WaitForReadyArgument="Complete">
+                          <uix:TargetAnchorable.Anchors>
+                            <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                              <uix:Target CvTextArea="25, 667, 48, 11" CvTextArgument="Room 1" CvType="Text" DesignTimeRectangle="25, 661, 62, 23" ElementType="Text" FriendlyName="'Room  1'" FullSelectorArgument="&lt;webctrl id='roomAlloc' tag='TABLE' /&gt;&lt;webctrl tableRow='2' tag='TD' /&gt;" FuzzySelectorArgument="&lt;webctrl id='roomAlloc' tag='TABLE' /&gt;&lt;webctrl type='' tag='TD' class='' aaname='Room  1' check:innerText='Room  1' /&gt;" SearchSteps="FuzzySelector, CV" />
+                            </scg:List>
+                          </uix:TargetAnchorable.Anchors>
+                        </uix:TargetAnchorable>
+                      </uix:NSelectItem.Target>
+                    </uix:NSelectItem>
+                  </Sequence>
+                </ActivityAction>
+              </ui:ForEach.Body>
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+            </ui:ForEach>
+            <ui:LogMessage DisplayName="Log Message - adults allocated" sap:VirtualizedContainerService.HintSize="631,52" sap2010:WorkflowViewState.IdRef="LogMessage_12" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;Adults have been successfully allocated to rooms.&quot;]">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+            </ui:LogMessage>
+            <ui:ForEach x:TypeArguments="scg:KeyValuePair(x:String, x:Int32)" CurrentIndex="{x:Null}" DisplayName="For Each child in childCount dict" sap:VirtualizedContainerService.HintSize="631,52" sap2010:WorkflowViewState.IdRef="ForEach`1_4" Values="[in_dictChildCountPerRoom]">
+              <ui:ForEach.Body>
+                <ActivityAction x:TypeArguments="scg:KeyValuePair(x:String, x:Int32)">
+                  <ActivityAction.Argument>
+                    <DelegateInArgument x:TypeArguments="scg:KeyValuePair(x:String, x:Int32)" Name="currentItem" />
+                  </ActivityAction.Argument>
+                  <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="628,1810" sap2010:WorkflowViewState.IdRef="Sequence_18">
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                    <ui:MultipleAssign DisplayName="Multiple Assign - Room number + children count + table row and index" sap:VirtualizedContainerService.HintSize="586,209" sap2010:WorkflowViewState.IdRef="MultipleAssign_6">
+                      <ui:MultipleAssign.AssignOperations>
+                        <scg:List x:TypeArguments="ui:AssignOperation" Capacity="4">
+                          <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_16">
+                            <ui:AssignOperation.To>
+                              <OutArgument x:TypeArguments="x:String">[strRoomNumber]</OutArgument>
+                            </ui:AssignOperation.To>
+                            <ui:AssignOperation.Value>
+                              <InArgument x:TypeArguments="x:String">[currentItem.Key]</InArgument>
+                            </ui:AssignOperation.Value>
+                          </ui:AssignOperation>
+                          <ui:AssignOperation sap:VirtualizedContainerService.HintSize="334,25" sap2010:WorkflowViewState.IdRef="AssignOperation_17">
+                            <ui:AssignOperation.To>
+                              <OutArgument x:TypeArguments="x:String">[strChildrenCount]</OutArgument>
+                            </ui:AssignOperation.To>
+                            <ui:AssignOperation.Value>
+                              <InArgument x:TypeArguments="x:String">[currentItem.Value.ToString()]</InArgument>
+                            </ui:AssignOperation.Value>
+                          </ui:AssignOperation>
+                          <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_18">
+                            <ui:AssignOperation.To>
+                              <OutArgument x:TypeArguments="x:String">[strSelectorTableRow]</OutArgument>
+                            </ui:AssignOperation.To>
+                            <ui:AssignOperation.Value>
+                              <InArgument x:TypeArguments="x:String">[(Convert.ToInt32(strRoomNumber.Substring(4)) + 1).ToString]</InArgument>
+                            </ui:AssignOperation.Value>
+                          </ui:AssignOperation>
+                          <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_24">
+                            <ui:AssignOperation.To>
+                              <OutArgument x:TypeArguments="x:Int32">[intIndex]</OutArgument>
+                            </ui:AssignOperation.To>
+                            <ui:AssignOperation.Value>
+                              <InArgument x:TypeArguments="x:Int32">1</InArgument>
+                            </ui:AssignOperation.Value>
+                          </ui:AssignOperation>
+                        </scg:List>
+                      </ui:MultipleAssign.AssignOperations>
+                    </ui:MultipleAssign>
+                    <uix:NSelectItem DisplayName="Select children number per each room" sap:VirtualizedContainerService.HintSize="586,157" sap2010:WorkflowViewState.IdRef="NSelectItem_9" Item="[strChildrenCount.ToString]" ScopeIdentifier="376b592c-e78f-48ea-99b7-29cb14a5a8bb" Version="V3">
+                      <uix:NSelectItem.Items>
+                        <scg:List x:TypeArguments="x:String" Capacity="8">
+                          <x:String>0</x:String>
+                          <x:String>1</x:String>
+                          <x:String>2</x:String>
+                          <x:String>3</x:String>
+                          <x:String>4</x:String>
+                          <x:String>5</x:String>
+                          <x:String>6</x:String>
+                          <x:String>7</x:String>
+                        </scg:List>
+                      </uix:NSelectItem.Items>
+                      <uix:NSelectItem.Target>
+                        <uix:TargetAnchorable BrowserURL="https://badirect-auth.baplc.com/badirect/british-airways-holidays/public/en_gb?refevent=home_tab_flightHotel&amp;COD=GB" CvTextArea="158, 350, 8, 11" CvTextArgument="0" CvType="Text" DesignTimeRectangle="154, 347, 30, 17" DesignTimeScaleFactor="1" ElementType="DropDown" FriendlyName="'0'" FullSelectorArgument="[&quot;&lt;webctrl id='roomAlloc' tag='TABLE' /&gt;&lt;webctrl id='children&quot;+strRoomNumber+&quot;' tableRow='&quot;+strSelectorTableRow+&quot;' tag='SELECT' /&gt;&quot;]" FuzzySelectorArgument="&lt;webctrl id='roomAlloc' tag='TABLE' /&gt;&lt;webctrl id='childrenRoom1' type='' tag='SELECT' class='hotelPax childSelect' aaname=' 01234567' /&gt;" Guid="f436d6c5-624a-41e5-911e-1e5e812a82ea" ImageBase64="" InformativeScreenshot="c79210748a482e3bb0a1edd2bea52340.png" ScopeSelectorArgument="&lt;html app='msedge.exe' title='Book Holidays Online - British Airways' /&gt;" SearchSteps="Selector" Version="V2" Visibility="Interactive" WaitForReadyArgument="Complete">
+                          <uix:TargetAnchorable.Anchors>
+                            <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                              <uix:Target CvTextArea="25, 352, 48, 11" CvTextArgument="Room 1" CvType="Text" DesignTimeRectangle="25, 346, 62, 23" ElementType="Text" FriendlyName="'Room  1'" FullSelectorArgument="&lt;webctrl id='roomAlloc' tag='TABLE' /&gt;&lt;webctrl tableRow='2' tag='TD' /&gt;" FuzzySelectorArgument="&lt;webctrl id='roomAlloc' tag='TABLE' /&gt;&lt;webctrl type='' tag='TD' class='' aaname='Room  1' check:innerText='Room  1' /&gt;" SearchSteps="FuzzySelector, CV" />
+                            </scg:List>
+                          </uix:TargetAnchorable.Anchors>
+                        </uix:TargetAnchorable>
+                      </uix:NSelectItem.Target>
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                    </uix:NSelectItem>
+                    <ui:ForEach x:TypeArguments="x:String" CurrentIndex="{x:Null}" sap2010:Annotation.AnnotationText="Determine the age of each child in the passenger list. Generate dynamic selectors to accurately input the age of each child according to their respective rooms." DisplayName="For Each child in childrenList" sap:VirtualizedContainerService.HintSize="586,1276" sap2010:WorkflowViewState.IdRef="ForEach`1_6" Values="[in_lstChildrenList]">
+                      <ui:ForEach.Body>
+                        <ActivityAction x:TypeArguments="x:String">
+                          <ActivityAction.Argument>
+                            <DelegateInArgument x:TypeArguments="x:String" Name="currentChild" />
+                          </ActivityAction.Argument>
+                          <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="552,1048" sap2010:WorkflowViewState.IdRef="Sequence_20">
+                            <sap:WorkflowViewStateService.ViewState>
+                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                              </scg:Dictionary>
+                            </sap:WorkflowViewStateService.ViewState>
+                            <If Condition="[currentChild.Split(&quot;|&quot;c)(1) = strRoomNumber]" DisplayName="If current child is in current room, add information" sap:VirtualizedContainerService.HintSize="510,960" sap2010:WorkflowViewState.IdRef="If_2">
+                              <If.Then>
+                                <Sequence sap:VirtualizedContainerService.HintSize="476,547" sap2010:WorkflowViewState.IdRef="Sequence_22">
+                                  <sap:WorkflowViewStateService.ViewState>
+                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                    </scg:Dictionary>
+                                  </sap:WorkflowViewStateService.ViewState>
+                                  <ui:LogMessage DisplayName="Log Message - current child is in current room" sap:VirtualizedContainerService.HintSize="434,141" sap2010:WorkflowViewState.IdRef="LogMessage_10" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;Current child is in current room. Filling age.&quot;]" />
+                                  <uix:NSelectItem DisplayName="Select Item 'current child's age'" sap:VirtualizedContainerService.HintSize="434,157" sap2010:WorkflowViewState.IdRef="NSelectItem_12" Item="[math.Floor((Now() - DateTime.ParseExact(currentChild.Split(&quot;|&quot;c)(6).Trim(), &quot;d/M/yyyy&quot;, CultureInfo.InvariantCulture)).TotalDays / 365).ToString]" ScopeIdentifier="376b592c-e78f-48ea-99b7-29cb14a5a8bb" Version="V3">
+                                    <uix:NSelectItem.Items>
+                                      <scg:List x:TypeArguments="x:String" Capacity="17">
+                                        <x:String>--</x:String>
+                                        <x:String>2</x:String>
+                                        <x:String>3</x:String>
+                                        <x:String>4</x:String>
+                                        <x:String>5</x:String>
+                                        <x:String>6</x:String>
+                                        <x:String>7</x:String>
+                                        <x:String>8</x:String>
+                                        <x:String>9</x:String>
+                                        <x:String>10</x:String>
+                                        <x:String>11</x:String>
+                                        <x:String>12</x:String>
+                                        <x:String>13</x:String>
+                                        <x:String>14</x:String>
+                                        <x:String>15</x:String>
+                                        <x:String>16</x:String>
+                                        <x:String>17</x:String>
+                                      </scg:List>
+                                    </uix:NSelectItem.Items>
+                                    <uix:NSelectItem.Target>
+                                      <uix:TargetAnchorable BrowserURL="https://badirect-auth.baplc.com/badirect/british-airways-holidays/public/en_gb?refevent=home_tab_flightHotel&amp;COD=GB" CvTextArea="263, 468, 11, 9" CvTextArgument="--" CvType="Text" DesignTimeRectangle="259, 465, 37, 17" DesignTimeScaleFactor="1" ElementType="DropDown" FriendlyName="'--'" FullSelectorArgument="[&quot;&lt;webctrl id='hotelAgeAlloc' tag='TABLE' /&gt;&lt;webctrl tableRow='&quot; + strRoomNumber.Last.ToString + &quot;' tag='SELECT' id='&quot; + strRoomNumber.ToLower.ToString +&quot;childAge&quot;+intIndex.ToString+&quot;' name='&quot;+ strRoomNumber.ToLower.ToString +&quot;childAge&quot;+intIndex.ToString+&quot;' /&gt;&quot;]" FuzzySelectorArgument="&lt;webctrl id='hotelAgeAlloc' tag='TABLE' /&gt;&lt;webctrl type='' tag='SELECT' id='room1childAge1' class='' aaname='Child 1' /&gt;" Guid="65c36425-b6ae-4a23-b65f-3bb4a9c463e0" ImageBase64="" InformativeScreenshot="0d2fd76f4d74be1d7b5efb31d1b637fb.png" ScopeSelectorArgument="&lt;html app='msedge.exe' title='Book Holidays Online - British Airways' /&gt;" SearchSteps="Selector" Version="V2" Visibility="Interactive" WaitForReadyArgument="Complete">
+                                        <uix:TargetAnchorable.Anchors>
+                                          <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                                            <uix:Target CvTextArea="258, 452, 40, 12" CvTextArgument="Child 1" CvType="Text" DesignTimeRectangle="259, 452, 39, 13" ElementType="Text" FriendlyName="'Child 1'" FullSelectorArgument="&lt;webctrl id='hotelAgeAlloc' tag='TABLE' /&gt;&lt;webctrl tableRow='1' tag='LABEL' /&gt;" FuzzySelectorArgument="&lt;webctrl id='hotelAgeAlloc' tag='TABLE' /&gt;&lt;webctrl type='' tag='LABEL' class='' aaname='Child 1' check:innerText='Child 1' /&gt;" SearchSteps="FuzzySelector, CV" />
+                                          </scg:List>
+                                        </uix:TargetAnchorable.Anchors>
+                                      </uix:TargetAnchorable>
+                                    </uix:NSelectItem.Target>
+                                    <sap:WorkflowViewStateService.ViewState>
+                                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                      </scg:Dictionary>
+                                    </sap:WorkflowViewStateService.ViewState>
+                                  </uix:NSelectItem>
+                                  <Assign DisplayName="Assign - increment Inex with 1" sap:VirtualizedContainerService.HintSize="434,81" sap2010:WorkflowViewState.IdRef="Assign_1">
+                                    <Assign.To>
+                                      <OutArgument x:TypeArguments="x:Int32">[intIndex]</OutArgument>
+                                    </Assign.To>
+                                    <Assign.Value>
+                                      <InArgument x:TypeArguments="x:Int32">[intIndex + 1]</InArgument>
+                                    </Assign.Value>
+                                  </Assign>
+                                </Sequence>
+                              </If.Then>
+                              <If.Else>
+                                <Sequence sap:VirtualizedContainerService.HintSize="376,231" sap2010:WorkflowViewState.IdRef="Sequence_21">
+                                  <sap:WorkflowViewStateService.ViewState>
+                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                    </scg:Dictionary>
+                                  </sap:WorkflowViewStateService.ViewState>
+                                  <ui:LogMessage DisplayName="Log Message - child not in current room" sap:VirtualizedContainerService.HintSize="334,143" sap2010:WorkflowViewState.IdRef="LogMessage_7" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;Current chid is not in current room&quot;]">
+                                    <sap:WorkflowViewStateService.ViewState>
+                                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                      </scg:Dictionary>
+                                    </sap:WorkflowViewStateService.ViewState>
+                                  </ui:LogMessage>
+                                </Sequence>
+                              </If.Else>
+                            </If>
+                          </Sequence>
+                        </ActivityAction>
+                      </ui:ForEach.Body>
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                    </ui:ForEach>
+                  </Sequence>
+                </ActivityAction>
+              </ui:ForEach.Body>
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+            </ui:ForEach>
+            <ui:LogMessage DisplayName="Log Message - children allocated" sap:VirtualizedContainerService.HintSize="631,52" sap2010:WorkflowViewState.IdRef="LogMessage_6" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;Children have been successfully allocated to rooms.&quot;]">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+            </ui:LogMessage>
+            <ui:ForEach x:TypeArguments="scg:KeyValuePair(x:String, x:Int32)" CurrentIndex="{x:Null}" DisplayName="For Each infant in infantsCount dict" sap:VirtualizedContainerService.HintSize="631,52" sap2010:WorkflowViewState.IdRef="ForEach`1_5" Values="[in_dictInfantCountPerRoom]">
+              <ui:ForEach.Body>
+                <ActivityAction x:TypeArguments="scg:KeyValuePair(x:String, x:Int32)">
+                  <ActivityAction.Argument>
+                    <DelegateInArgument x:TypeArguments="scg:KeyValuePair(x:String, x:Int32)" Name="currentItem" />
+                  </ActivityAction.Argument>
+                  <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="521,463" sap2010:WorkflowViewState.IdRef="Sequence_19">
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                    <ui:MultipleAssign DisplayName="Multiple Assign - Room number + infants count and table row" sap:VirtualizedContainerService.HintSize="479,178" sap2010:WorkflowViewState.IdRef="MultipleAssign_7">
+                      <ui:MultipleAssign.AssignOperations>
+                        <scg:List x:TypeArguments="ui:AssignOperation" Capacity="4">
+                          <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_19">
+                            <ui:AssignOperation.To>
+                              <OutArgument x:TypeArguments="x:String">[strRoomNumber]</OutArgument>
+                            </ui:AssignOperation.To>
+                            <ui:AssignOperation.Value>
+                              <InArgument x:TypeArguments="x:String">[currentItem.Key]</InArgument>
+                            </ui:AssignOperation.Value>
+                          </ui:AssignOperation>
+                          <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_20">
+                            <ui:AssignOperation.To>
+                              <OutArgument x:TypeArguments="x:String">[strInfantsCount]</OutArgument>
+                            </ui:AssignOperation.To>
+                            <ui:AssignOperation.Value>
+                              <InArgument x:TypeArguments="x:String">[currentItem.Value.ToString()]</InArgument>
+                            </ui:AssignOperation.Value>
+                          </ui:AssignOperation>
+                          <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_21">
+                            <ui:AssignOperation.To>
+                              <OutArgument x:TypeArguments="x:String">[strSelectorTableRow]</OutArgument>
+                            </ui:AssignOperation.To>
+                            <ui:AssignOperation.Value>
+                              <InArgument x:TypeArguments="x:String">[(Convert.ToInt32(strRoomNumber.Substring(4)) + 1).ToString]</InArgument>
+                            </ui:AssignOperation.Value>
+                          </ui:AssignOperation>
+                        </scg:List>
+                      </ui:MultipleAssign.AssignOperations>
+                    </ui:MultipleAssign>
+                    <uix:NSelectItem DisplayName="Select Item 'Room  1'" sap:VirtualizedContainerService.HintSize="479,157" sap2010:WorkflowViewState.IdRef="NSelectItem_8" Item="[strInfantsCount.ToString]" ScopeIdentifier="376b592c-e78f-48ea-99b7-29cb14a5a8bb" Version="V3">
+                      <uix:NSelectItem.Items>
+                        <scg:List x:TypeArguments="x:String" Capacity="8">
+                          <x:String>1</x:String>
+                          <x:String>2</x:String>
+                          <x:String>3</x:String>
+                          <x:String>4</x:String>
+                          <x:String>5</x:String>
+                          <x:String>6</x:String>
+                          <x:String>7</x:String>
+                          <x:String>8</x:String>
+                        </scg:List>
+                      </uix:NSelectItem.Items>
+                      <uix:NSelectItem.Target>
+                        <uix:TargetAnchorable BrowserURL="https://badirect-auth.baplc.com/badirect/british-airways-holidays/public/en_gb?refevent=home_tab_flightHotel&amp;COD=GB" CvTextArea="93, 665, 9, 11" CvTextArgument="2" CvType="Text" DesignTimeRectangle="90, 662, 30, 17" DesignTimeScaleFactor="1" ElementType="DropDown" FriendlyName="'2'" FullSelectorArgument="[&quot;&lt;webctrl id='roomAlloc' tag='TABLE' /&gt;&lt;webctrl id='infants&quot;+strRoomNumber+&quot;' tableRow='&quot;+strSelectorTableRow+&quot;' tag='SELECT' /&gt;&quot;]" FuzzySelectorArgument="&lt;webctrl id='roomAlloc' tag='TABLE' /&gt;&lt;webctrl id='adultsRoom1' type='' tag='SELECT' class='hotelPax' aaname=' 12345678' /&gt;" Guid="8d98a660-780e-4a28-8169-e78d398ad8c9" ImageBase64="" InformativeScreenshot="3acdc0d9ec2ba898a55bc019f8f5fe20.png" ScopeSelectorArgument="&lt;html app='msedge.exe' title='Book Holidays Online - British Airways' /&gt;" SearchSteps="Selector" Version="V2" Visibility="Interactive" WaitForReadyArgument="Complete">
+                          <uix:TargetAnchorable.Anchors>
+                            <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                              <uix:Target CvTextArea="25, 667, 48, 11" CvTextArgument="Room 1" CvType="Text" DesignTimeRectangle="25, 661, 62, 23" ElementType="Text" FriendlyName="'Room  1'" FullSelectorArgument="&lt;webctrl id='roomAlloc' tag='TABLE' /&gt;&lt;webctrl tableRow='2' tag='TD' /&gt;" FuzzySelectorArgument="&lt;webctrl id='roomAlloc' tag='TABLE' /&gt;&lt;webctrl type='' tag='TD' class='' aaname='Room  1' check:innerText='Room  1' /&gt;" SearchSteps="FuzzySelector, CV" />
+                            </scg:List>
+                          </uix:TargetAnchorable.Anchors>
+                        </uix:TargetAnchorable>
+                      </uix:NSelectItem.Target>
+                    </uix:NSelectItem>
+                  </Sequence>
+                </ActivityAction>
+              </ui:ForEach.Body>
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+            </ui:ForEach>
+            <ui:LogMessage DisplayName="Log Message - infants allocated" sap:VirtualizedContainerService.HintSize="631,52" sap2010:WorkflowViewState.IdRef="LogMessage_13" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;Infants have been successfully allocated to rooms.&quot;]">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+            </ui:LogMessage>
+            <utam:MockActivity DisplayName="Mock Click 'Search flight + hotel'" MockedActivityIdRef="NClick_5">
+              <utam:MockActivity.MockedActivity>
+                <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'Search flight + hotel'" sap:VirtualizedContainerService.HintSize="631,52" sap2010:WorkflowViewState.IdRef="NClick_5" InteractionMode="Simulate" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="376b592c-e78f-48ea-99b7-29cb14a5a8bb" Version="V3">
+                  <uix:NClick.Target>
+                    <uix:TargetAnchorable BrowserURL="https://badirect-auth.baplc.com/badirect/british-airways-holidays/public/en_gb?refevent=home_tab_flightHotel&amp;COD=GB" CvElementArea="452, 572, 16, 17" CvTextArea="334, 574, 118, 12" CvTextArgument="Search flight + hotel" CvType="ArrowButton" DesignTimeRectangle="335, 571, 132, 19" DesignTimeScaleFactor="1" ElementType="Button" FriendlyName="'Search flight + hotel'" FullSelectorArgument="&lt;webctrl tag='INPUT' aaname='Search flight + hotel' /&gt;" FuzzySelectorArgument="&lt;webctrl tag='INPUT' aaname='Search flight + hotel' type='submit' class='arrow' check:text='Search flight + hotel' /&gt;" Guid="73220f38-a282-483e-95c3-11c5974090ae" InformativeScreenshot="693d084f3e412289d63c56b739206e40.png" ScopeSelectorArgument="&lt;html app='msedge.exe' title='Book Holidays Online - British Airways' /&gt;" SearchSteps="FuzzySelector, CV" Version="V2" Visibility="Interactive" />
+                  </uix:NClick.Target>
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                </uix:NClick>
+              </utam:MockActivity.MockedActivity>
+              <Sequence DisplayName="Mock Search" sap:VirtualizedContainerService.HintSize="450,254" sap2010:WorkflowViewState.IdRef="">
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+                <ui:LogMessage DisplayName="Log Message - Search mock" sap:VirtualizedContainerService.HintSize="388,143" sap2010:WorkflowViewState.IdRef="LogMessage_24" Level="Info" Message="[&quot;Mock Clicking on Search button...&quot;]" />
+              </Sequence>
+            </utam:MockActivity>
+            <Assign DisplayName="Assign - hotelFound" sap:VirtualizedContainerService.HintSize="631,82" sap2010:WorkflowViewState.IdRef="Assign_9">
+              <Assign.To>
+                <OutArgument x:TypeArguments="x:Boolean">[out_boolHotelFound]</OutArgument>
+              </Assign.To>
+              <Assign.Value>
+                <InArgument x:TypeArguments="x:Boolean">False</InArgument>
+              </Assign.Value>
+            </Assign>
+            <utam:MockActivity DisplayName="Mock While max retries are not reached" MockedActivityIdRef="InterruptibleWhile_1">
+              <utam:MockActivity.MockedActivity>
+                <ui:InterruptibleWhile CurrentIndex="{x:Null}" Condition="[intHotelRetryCount &lt;= CInt(in_strHotelMaxRetries)]" DisplayName="While max retries are not reached" sap:VirtualizedContainerService.HintSize="631,1395" sap2010:WorkflowViewState.IdRef="InterruptibleWhile_1">
+                  <ui:InterruptibleWhile.Body>
+                    <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="597,1259" sap2010:WorkflowViewState.IdRef="Sequence_30">
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                      <Assign DisplayName="Assign - reset BE" sap:VirtualizedContainerService.HintSize="555,82" sap2010:WorkflowViewState.IdRef="Assign_10">
+                        <Assign.To>
+                          <OutArgument x:TypeArguments="x:String">[io_BusinessException]</OutArgument>
+                        </Assign.To>
+                        <Assign.Value>
+                          <InArgument x:TypeArguments="x:String">[Nothing]</InArgument>
+                        </Assign.Value>
+                      </Assign>
+                      <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke Workflow - DummyHotel_Results.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="555,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="Business_Workflows\BOD_Processing\BOD_DummyHotel_Results.xaml">
+                        <ui:InvokeWorkflowFile.Arguments>
+                          <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_dictConfig">[in_dictConfig]</InArgument>
+                          <InArgument x:TypeArguments="ui:UiElement" x:Key="in_uiBODBrowser">[in_uiBODBrowser]</InArgument>
+                          <InArgument x:TypeArguments="x:String" x:Key="in_strHotelMissingText">[in_strHotelMissingText]</InArgument>
+                          <OutArgument x:TypeArguments="x:Boolean" x:Key="out_boolHotelFound">[out_boolHotelFound]</OutArgument>
+                          <InArgument x:TypeArguments="x:String" x:Key="in_strHotelMaxRetries">[in_strHotelMaxRetries]</InArgument>
+                        </ui:InvokeWorkflowFile.Arguments>
+                      </ui:InvokeWorkflowFile>
+                      <If Condition="[out_boolHotelFound = True]" DisplayName="If - hotelFound is true" sap:VirtualizedContainerService.HintSize="555,896" sap2010:WorkflowViewState.IdRef="If_3">
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                        <If.Then>
+                          <Sequence sap:VirtualizedContainerService.HintSize="376,296" sap2010:WorkflowViewState.IdRef="Sequence_24">
+                            <sap:WorkflowViewStateService.ViewState>
+                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                              </scg:Dictionary>
+                            </sap:WorkflowViewStateService.ViewState>
+                            <ui:LogMessage DisplayName="Log Message - success, dummy hotel is available" sap:VirtualizedContainerService.HintSize="334,143" sap2010:WorkflowViewState.IdRef="LogMessage_14" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;Dummy hotel is available.&quot;]">
+                              <sap:WorkflowViewStateService.ViewState>
+                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                </scg:Dictionary>
+                              </sap:WorkflowViewStateService.ViewState>
+                            </ui:LogMessage>
+                            <ui:Break DisplayName="Break while loop as the dummy hotel is found" sap:VirtualizedContainerService.HintSize="334,25" sap2010:WorkflowViewState.IdRef="Break_1" />
+                          </Sequence>
+                        </If.Then>
+                        <If.Else>
+                          <Sequence sap:VirtualizedContainerService.HintSize="521,418" sap2010:WorkflowViewState.IdRef="Sequence_25">
+                            <sap:WorkflowViewStateService.ViewState>
+                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                              </scg:Dictionary>
+                            </sap:WorkflowViewStateService.ViewState>
+                            <ui:LogMessage DisplayName="Log Message - failiure" sap:VirtualizedContainerService.HintSize="479,143" sap2010:WorkflowViewState.IdRef="LogMessage_16" Level="Error" Message="[in_strHotelMissingText]">
+                              <sap:WorkflowViewStateService.ViewState>
+                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                </scg:Dictionary>
+                              </sap:WorkflowViewStateService.ViewState>
+                            </ui:LogMessage>
+                            <ui:MultipleAssign DisplayName="Multiple Assign - BE and increment retry count" sap:VirtualizedContainerService.HintSize="479,147" sap2010:WorkflowViewState.IdRef="MultipleAssign_8">
+                              <ui:MultipleAssign.AssignOperations>
+                                <scg:List x:TypeArguments="ui:AssignOperation" Capacity="4">
+                                  <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_25">
+                                    <ui:AssignOperation.To>
+                                      <OutArgument x:TypeArguments="x:String">[io_BusinessException]</OutArgument>
+                                    </ui:AssignOperation.To>
+                                    <ui:AssignOperation.Value>
+                                      <InArgument x:TypeArguments="x:String">["Business Exception encountered: " + in_strHotelMissingText]</InArgument>
+                                    </ui:AssignOperation.Value>
+                                  </ui:AssignOperation>
+                                  <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_26">
+                                    <ui:AssignOperation.To>
+                                      <OutArgument x:TypeArguments="x:Int32">[intHotelRetryCount]</OutArgument>
+                                    </ui:AssignOperation.To>
+                                    <ui:AssignOperation.Value>
+                                      <InArgument x:TypeArguments="x:Int32">[intHotelRetryCount + 1]</InArgument>
+                                    </ui:AssignOperation.Value>
+                                  </ui:AssignOperation>
+                                </scg:List>
+                              </ui:MultipleAssign.AssignOperations>
+                            </ui:MultipleAssign>
+                          </Sequence>
+                        </If.Else>
+                      </If>
+                    </Sequence>
+                  </ui:InterruptibleWhile.Body>
+                </ui:InterruptibleWhile>
+              </utam:MockActivity.MockedActivity>
+              <Sequence DisplayName="Mock BE logic" sap:VirtualizedContainerService.HintSize="450,254" sap2010:WorkflowViewState.IdRef="">
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+                <ui:LogMessage DisplayName="Log Message - BE logic mock" sap:VirtualizedContainerService.HintSize="388,143" sap2010:WorkflowViewState.IdRef="LogMessage_22" Level="Info" Message="[&quot;Testing only Trip Details logic, therefore the process should not navigate to Dummy Hotel.&quot;]" />
+              </Sequence>
+            </utam:MockActivity>
+          </Sequence>
+        </ActivityAction>
+      </uix:NApplicationCard.Body>
+      <uix:NApplicationCard.TargetApp>
+        <uix:TargetApp Area="-8, -8, 1382, 744" BrowserType="Edge" IconBase64="iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAh4SURBVFhHpdd7UFNnGgbwWBURCAQVtu0/OzudcXVFVEBATdWKLVvkIuEmWAoUtOttqsICIiqKiEQBoV4xut1O1d11lW4RvFTSQ0ggECABkhAIIF4QpXZTt1Pcdbt59j050QoBq+07804YhuT5fe/58p0D70XLi3kQM69mgJlb02+aU9OHObIeeMqMmCM3YI5Ci3n1Gmr1kE+jsptaskhd/WvrW39Z+TDfSnwY05BXzQNQOPVtsIDZsm7qLnjWdsBTrsWculYCNMOnQQn/phoINdfNS9oudy/TVgitH/Vy5cs8Evoy35t8mIfwrvkGXjWDFH6Hwm/Cs+YGZtewgA54yPSYLW+Dp6IVc+ub4KVUYUEzC7iGpW0VWK67iKCuM+qwXsmLT8SPeZTvywyZLeHMP+HFDGJezT0C3OVWT+EelnAO4FHbRgg1AVTwbqiHb5MMC1qqLYDAjnN413AGK3tPDMX158dYI8YuP+Y/Elo55jPfgQXQ+C2rn0fh7AQsq6fRz2KDLa2jn1lAK02hGfOUjfBVsRO4agWcRVh3GQsAAcyr+/PGRvgzj/MJAFo99fcU/i1N4AEB7lsAnjLu2nvIDJbVs8GzZO34nawVs2pZQAvtBRXtAxmE6itY1n4RgfrPCHAC0TcLQeFIGNhhTh5Mt90X/sx/hRRu9mP+bQHMZ/5F/ZCC2Wt/l177afUsoJNCtU+DR/ZseTMhGmgjfonFmgoEaM8juOsEIm4UIe52LpLuZ2HN16lD1tgfy495bKKm8EdWwHfwkpow84tbmFnRS92DGZe6CGCkcP2o4Wx7yFtoLyixsPkKAf6BgHYWUIaIXjFib+UhaSAVawY3YaMpRWKNtqxewoY/Wf30c31w230NLqnlEGRWwjXrCqZkVVFfwtSMcryaX4U3/t48BoD9KjLwbZRiUUsllmvPIMhQhugbuYi9mY3E/i1IubceGx7Em63xFsAQXX94fP4NBFnXwM+4BudsBi67FBDk1sM1rwFT8pSYmleHabkyTNstxbSdl/FqbhWmV2qGAWbLVZhbJ4e/6hIWt/wNAa2fYEVHCUI7xVjVtw0JdzYh+e5a/OF+PDY9iJRQ+A8xBMD0M/1wSL0Kp+214Oc0wnmvBi772yEQ6+B6UIcp1FMLdXArbIPbgRa47a+HW64UbtkVeOMCNw2P2hY6lBQEUGB+fRUWNV/EMs0pBHcUQ2TMQUxvBuJubMYH/Wvx4b14rB+MHuAtqn6kmXn+a0xOk8IhWwnH3Wrw83RwLjDARdwJQWEXXIuMmHLIiKnU00qoDxngXqyD+4EmuOfJ4LajEr+tUtKpKMdcuRReisvwbziPN5s+xTL1MQTr8hBu2I5o4xa835eCpNuJSOmPxYd3ReB5Vzz8H39nI+yzVXDY3QbHvA445XeCX2CE8wEjXA52Q1DUDdfiHkL0YGpJDyE68XppR/evSg0F7kXqdPd9CuVrBdfhwbCA6wSoxALlZ3hTdQpvNR9BiC4XIkMWAbZide9aJN5MRPKtKA4w4y+DmLS9Gfa72jA5Vw+HvE447qPe3zUcUcghBNl1+M2Wz0us2+dpuefVJk4vr4a3/AJ8FefgX/dnLFaVIaBJjOC2TIRqMxFp2Ij3ehKR0LfaAlhzJxw8t+Iu2GW3YlKOHva5Bkzea7AgHKwIpwKCiDmESzoDxyCx0pppUzM+ufrYW3aWAGexsP4kFisPYplKjCBNBkLb0yDSb0CsIQ7x3VFIuiFCys1Q8FwPGjFxpw52u/SYtNsA+z0cYvJIRKaCwgvgFFaabs2zKZ+/Xm33ln0Kv9ojWKQoxJIGMd5pzECgKg0hmnUIb09GlC4e7xkj8b4xBCl9gWbehGwtJhBg4q4O2OV0EKLDgrB/FrFXD8fQIgovAV90PNWaZ1PejCTfR3aKAIcJcABL6vYgoD6NABsQ0pIIUXsCYvTRNAUR4jt/j0RjQDdv/HYC7NATQm+LYC8Ji9hQBccQAoiOgR95ssCaZ1M+X5UMzK85goW1+6n34S1FKpYrUxHYuA4rGhMQpo6HSBOFWH0IYnXvIt4QIOS9sl2H8dm6URGTrAiHiKNwWnmYDQc/+nS3NW9YeUk/FnpLi+k0FcOfyYWwdieWyrciQLEegfUJHKBJBFFLKCI1QYjTBzKWN76SpTONhbBjJ5HVDIeQQlr9cfCjTrEAMz/qtM3DhXe1uNxbWghf6R4sZHZCyGzF0tqNCJAn4526BAQ1rEKoKhwidQgL4MLZGrdNxxACTxDjR04inQ6n0ENwiihjw6n/RJDTA9a3Dyvf6hy1nzTHvECaToBUAqwjwAd4Wx6HoPpwBDeEm8JUoZutf87VuG3aGELABkE9kb4Z9usq4RhWah0/hXMAdhrl1o+wKaF002Yh85FkCZPMBMhWM2/XrpIEyiPGfjYkxBCLGPcsIptD2KXVw3Hlx6MB4Bx5ctT98PKVqc0nBCw9AjExXUUTKIHT6AA4R5QNOYtODB/rc8p1RWGMa9DBUR5QM7Um3ggEB6EzIPww7YETFP50DzwLAAGojw+5hB8rd1l51OaZTxByKEYQXCwRBBeZCAACjDK5TK2Q2jwaYlLKF3AKP0qhEg4xOgAEAAGoj8Al7DAEoaXUJSAACEBdBAKYCTDGfqBLQY2RiPEZLXCMOEaXgb4J7FfxlwHyrWljVKZWYoOgtlt3jaZwhNuMkSziZwF+fA58bnGTMLOQZxH2SRe4S8GeCZESAlD4iwHMBPiJlY8sbk+YRiIsk6AAuilROBvMhTvTfWIMgIkAP+//Q0tx06BzgoVwiPHpLZicdBF8uj8400ScKZR95YKp6fcEGCLAS676eZXJnphahhCmJ6fmhKw22P2xge6WX8Lxo6/gmsr88Fpa9cPXU86PecseXjze/wGADjhbeB2rcwAAAABJRU5ErkJggg==" InformativeScreenshot="eb7372571d98da52e21a9b9dfc315fcf.jpg" Selector="&lt;html app='msedge.exe' title='Book Holidays Online - British Airways' /&gt;" Title="Book Holidays Online - British Airways" Url="https://badirect-auth.baplc.com/badirect/british-airways-holidays/public/en_gb?refevent=home_tab_flightHotel&amp;COD=GB" />
+      </uix:NApplicationCard.TargetApp>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </uix:NApplicationCard>
+    <utam:MockActivity DisplayName="Mock If max retries are reached and hotel is not found" MockedActivityIdRef="If_5">
+      <utam:MockActivity.MockedActivity>
+        <If Condition="[intHotelRetryCount &gt; CInt(in_strHotelMaxRetries) and out_boolHotelFound = False]" DisplayName="If max retries are reached and hotel is not found" sap:VirtualizedContainerService.HintSize="727,1576" sap2010:WorkflowViewState.IdRef="If_5">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <If.Then>
+            <Sequence sap:VirtualizedContainerService.HintSize="528,1165" sap2010:WorkflowViewState.IdRef="Sequence_31">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <ui:LogMessage DisplayName="Log Message - Max retries and hotel not found" sap:VirtualizedContainerService.HintSize="486,141" sap2010:WorkflowViewState.IdRef="LogMessage_18" Level="Error" Message="[&quot;Maximum retries are reached. Business exception occured: &quot; + in_strHotelMissingText]" />
+              <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke Workflow - Output_Messages - BE " sap:VirtualizedContainerService.HintSize="486,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_3" UnSafe="False" WorkflowFileName="Business_Workflows\Cloud_Processing\Orchestrator_Output_Messages.xaml">
+                <ui:InvokeWorkflowFile.Arguments>
+                  <InArgument x:TypeArguments="x:String" x:Key="in_BusinessException">[io_BusinessException]</InArgument>
+                  <InArgument x:TypeArguments="s:Exception" x:Key="in_SystemException" />
+                  <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_dictConfig">[in_dictConfig]</InArgument>
+                  <OutArgument x:TypeArguments="x:String" x:Key="out_strThankYouMessage" />
+                  <OutArgument x:TypeArguments="x:String" x:Key="out_strConfirmationText" />
+                  <OutArgument x:TypeArguments="x:String" x:Key="out_strNextStepsText" />
+                  <OutArgument x:TypeArguments="x:String" x:Key="out_strDepositText" />
+                  <OutArgument x:TypeArguments="x:String" x:Key="out_strTicketReceiptText" />
+                  <OutArgument x:TypeArguments="x:String" x:Key="out_strFinalThankYouText" />
+                  <OutArgument x:TypeArguments="x:String" x:Key="out_strDepositTimeoutText" />
+                  <OutArgument x:TypeArguments="x:String" x:Key="out_strStatus">[out_strStatus]</OutArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="in_strPNR">[in_dtOutputDataTable.Rows(0).Item("PNR").ToString]</InArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="in_strEmail">[in_dtOutputDataTable.Rows(0).Item("Email").ToString]</InArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="in_strDepositAmount">[in_dtOutputDataTable.Rows(0).Item("MinimumDeposit").ToString]</InArgument>
+                  <OutArgument x:TypeArguments="x:String" x:Key="out_strErrorMessage">[out_strErrorMessage]</OutArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="in_strBookingID">[in_strBookingID]</InArgument>
+                  <OutArgument x:TypeArguments="x:String" x:Key="out_strLoginText" />
+                  <OutArgument x:TypeArguments="x:String" x:Key="out_strConfirmationEmailText" />
+                </ui:InvokeWorkflowFile.Arguments>
+              </ui:InvokeWorkflowFile>
+              <ui:Comment DisplayName="Comment - Send emails activity for missing hotel red path" sap:VirtualizedContainerService.HintSize="486,94" sap2010:WorkflowViewState.IdRef="Comment_1" Text="Below action is disabled due to App ID/Secret permissions issue. Until issue is resolved, Send Emails workflow is not used" />
+              <ui:CommentOut DisplayName="Disabled - workflow is disabled until App ID and App Secret issues are resolved" sap:VirtualizedContainerService.HintSize="486,303" sap2010:WorkflowViewState.IdRef="CommentOut_1">
+                <ui:CommentOut.Body>
+                  <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="450,224" sap2010:WorkflowViewState.IdRef="Sequence_33">
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Business_Workflows\Send_Emails.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="388,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_6" UnSafe="False" WorkflowFileName="Business_Workflows\Send_Emails.xaml">
+                      <ui:InvokeWorkflowFile.Arguments>
+                        <InArgument x:TypeArguments="x:String" x:Key="in_BusinessException">[io_BusinessException]</InArgument>
+                        <InArgument x:TypeArguments="x:Boolean" x:Key="in_boolHotelFound">[out_boolHotelFound]</InArgument>
+                        <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_dictConfig">[in_dictConfig]</InArgument>
+                        <InArgument x:TypeArguments="x:Boolean" x:Key="in_boolIsPNRGenerated" />
+                      </ui:InvokeWorkflowFile.Arguments>
+                    </ui:InvokeWorkflowFile>
+                  </Sequence>
+                </ui:CommentOut.Body>
+              </ui:CommentOut>
+              <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke Workflow - Delete_BookingData_Entity" sap:VirtualizedContainerService.HintSize="486,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_10" UnSafe="False" WorkflowFileName="Business_Workflows\Cloud_Processing\Delete_BookingData_Entity.xaml">
+                <ui:InvokeWorkflowFile.Arguments>
+                  <InArgument x:TypeArguments="x:String" x:Key="in_strBookingDataID">[in_dtOutputDataTable.Rows(0).Item("BookingDataID").ToString]</InArgument>
+                </ui:InvokeWorkflowFile.Arguments>
+              </ui:InvokeWorkflowFile>
+              <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke Workflow - DataService_Update_Booking_Entity" sap:VirtualizedContainerService.HintSize="486,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_5" UnSafe="False" WorkflowFileName="Business_Workflows\Cloud_Processing\DataService_Update_Booking_Entity.xaml">
+                <ui:InvokeWorkflowFile.Arguments>
+                  <InArgument x:TypeArguments="x:String" x:Key="in_BusinessException">[io_BusinessException]</InArgument>
+                  <InArgument x:TypeArguments="sd:DataTable" x:Key="in_dtOutputDataTable">[in_dtOutputDataTable]</InArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="in_strBookingID">[in_strBookingID]</InArgument>
+                </ui:InvokeWorkflowFile.Arguments>
+              </ui:InvokeWorkflowFile>
+            </Sequence>
+          </If.Then>
+          <If.Else>
+            <Sequence sap:VirtualizedContainerService.HintSize="376,229" sap2010:WorkflowViewState.IdRef="Sequence_32">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <ui:LogMessage DisplayName="Log Message - Trip details filled" sap:VirtualizedContainerService.HintSize="334,141" sap2010:WorkflowViewState.IdRef="LogMessage_19" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;Trip details filled.&quot;]">
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+              </ui:LogMessage>
+            </Sequence>
+          </If.Else>
+        </If>
+      </utam:MockActivity.MockedActivity>
+      <Sequence DisplayName="No BE - Mock" sap:VirtualizedContainerService.HintSize="450,252" sap2010:WorkflowViewState.IdRef="">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+        <ui:LogMessage DisplayName="Log Message - no BE logic mock" sap:VirtualizedContainerService.HintSize="388,141" sap2010:WorkflowViewState.IdRef="LogMessage_23" Level="Info" Message="[&quot;Mock throwing BE&quot;]" />
+      </Sequence>
+    </utam:MockActivity>
+  </Sequence>
+</Activity>

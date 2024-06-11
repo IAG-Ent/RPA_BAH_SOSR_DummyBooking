@@ -1,0 +1,309 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="TC_Fill_Trip_Details" VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="960,2569" sap2010:WorkflowViewState.IdRef="TC_Fill_Trip_Details_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:s="clr-namespace:System;assembly=System.Private.CoreLib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data.Common" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:uix="http://schemas.uipath.com/workflow/activities/uix" xmlns:uta="clr-namespace:UiPath.Testing.Activities;assembly=UiPath.Testing.Activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <TextExpression.NamespacesForImplementation>
+    <sco:Collection x:TypeArguments="x:String">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Collections.ObjectModel</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>GlobalVariablesNamespace</x:String>
+      <x:String>GlobalConstantsNamespace</x:String>
+      <x:String>System.Runtime.Serialization</x:String>
+      <x:String>System.Reflection</x:String>
+      <x:String>UiPath.UIAutomationCore.Contracts</x:String>
+      <x:String>UiPath.UIAutomationCore.Contracts</x:String>
+      <x:String>System.ComponentModel</x:String>
+      <x:String>System.Xml.Serialization</x:String>
+      <x:String>System.ComponentModel</x:String>
+      <x:String>System.Xml.Serialization</x:String>
+      <x:String>UiPath.UIAutomationNext.Enums</x:String>
+      <x:String>UiPath.UIAutomationNext.Activities.Models</x:String>
+      <x:String>UiPath.UIAutomationNext.Activities</x:String>
+      <x:String>UiPath.Shared.Activities</x:String>
+      <x:String>UiPath.Platform.ObjectLibrary</x:String>
+      <x:String>UiPath.Testing.Activities</x:String>
+      <x:String>Microsoft.VisualBasic.CompilerServices</x:String>
+    </sco:Collection>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <sco:Collection x:TypeArguments="AssemblyReference">
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.TypeConverter</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Data.Common</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Drawing.Common</AssemblyReference>
+      <AssemblyReference>System.Drawing.Primitives</AssemblyReference>
+      <AssemblyReference>System.Linq</AssemblyReference>
+      <AssemblyReference>System.Net.Mail</AssemblyReference>
+      <AssemblyReference>System.ObjectModel</AssemblyReference>
+      <AssemblyReference>System.Private.CoreLib</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Studio.Constants</AssemblyReference>
+      <AssemblyReference>System.Private.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization.Formatters</AssemblyReference>
+      <AssemblyReference>System.Private.DataContractSerialization</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization.Primitives</AssemblyReference>
+      <AssemblyReference>NPOI</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities.Design</AssemblyReference>
+      <AssemblyReference>System.Memory.Data</AssemblyReference>
+      <AssemblyReference>System.Console</AssemblyReference>
+      <AssemblyReference>System.Configuration.ConfigurationManager</AssemblyReference>
+      <AssemblyReference>System.Security.Permissions</AssemblyReference>
+      <AssemblyReference>System.ComponentModel</AssemblyReference>
+      <AssemblyReference>System.Memory</AssemblyReference>
+      <AssemblyReference>System.Private.Uri</AssemblyReference>
+      <AssemblyReference>System.Linq.Async</AssemblyReference>
+      <AssemblyReference>System.Collections</AssemblyReference>
+      <AssemblyReference>System.Reflection.DispatchProxy</AssemblyReference>
+      <AssemblyReference>System.Reflection.TypeExtensions</AssemblyReference>
+      <AssemblyReference>System.Reflection.Metadata</AssemblyReference>
+      <AssemblyReference>UiPath.Workflow</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities.ViewModels</AssemblyReference>
+      <AssemblyReference>System.Data.SqlClient</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Primitives</AssemblyReference>
+      <AssemblyReference>System.Private.Xml</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.EventBasedAsync</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>Microsoft.Win32.Primitives</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationNext</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationNext.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.DataService.Activities.Core</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.MicrosoftOffice365.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Testing.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.OCR.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Platform</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic.Forms</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic.Core</AssemblyReference>
+    </sco:Collection>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence sap2010:Annotation.AnnotationText="This test aims to check if the information that is input in BOD corresponds to the Input Data in Excel" DisplayName="TC_Fill_Trip_Details" sap:VirtualizedContainerService.HintSize="608,2424" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="scg:List(x:String)" Name="lstInfantsList" />
+      <Variable x:TypeArguments="scg:List(x:String)" Name="lstAdultsList" />
+      <Variable x:TypeArguments="scg:List(x:String)" Name="lstChildrenList" />
+      <Variable x:TypeArguments="scg:Dictionary(x:String, x:Int32)" Name="dictInfantCountPerRoom" />
+      <Variable x:TypeArguments="scg:Dictionary(x:String, x:Int32)" Name="dictChildCountPerRoom" />
+      <Variable x:TypeArguments="scg:Dictionary(x:String, x:Int32)" Name="dictAdultCountPerRoom" />
+      <Variable x:TypeArguments="s:DateTime" Name="dtmActualDepartureDate" />
+      <Variable x:TypeArguments="s:DateTime" Name="dtmDummyDepartureDate" />
+      <Variable x:TypeArguments="s:DateTime" Name="dtmDummyReturnDate" />
+      <Variable x:TypeArguments="s:DateTime" Name="dtmActualReturnDate" />
+      <Variable x:TypeArguments="x:Int32" Name="intRoomsCount" />
+      <Variable x:TypeArguments="sd:DataTable" Name="dtInputDataTable" />
+      <Variable x:TypeArguments="scg:List(x:String)" Name="lstPassengers" />
+      <Variable x:TypeArguments="x:String" Name="strSearchGUID" />
+      <Variable x:TypeArguments="ui:UiElement" Name="uiBODBrowser" />
+      <Variable x:TypeArguments="scg:Dictionary(x:String, x:Object)" Name="dictConfig" />
+      <Variable x:TypeArguments="x:String" Name="strFilledReturnDate" />
+      <Variable x:TypeArguments="x:String" Name="strFilledDepartureDate" />
+    </Sequence.Variables>
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+        <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <Sequence DisplayName="... Given input mock data in excel file" sap:VirtualizedContainerService.HintSize="546,804" sap2010:WorkflowViewState.IdRef="Sequence_2">
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+      <Assign DisplayName="Assign - search GUID for Trip Details process" sap:VirtualizedContainerService.HintSize="434,81" sap2010:WorkflowViewState.IdRef="Assign_1">
+        <Assign.To>
+          <OutArgument x:TypeArguments="x:String">[strSearchGUID]</OutArgument>
+        </Assign.To>
+        <Assign.Value>
+          <InArgument x:TypeArguments="x:String">f974dfa4-6713-47c5-b8f7-18cd9f3e443c20240605104430</InArgument>
+        </Assign.Value>
+      </Assign>
+      <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="InitAllSettings_mock - Invoke Workflow for Trip Details process" sap:VirtualizedContainerService.HintSize="434,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" UnSafe="False" WorkflowFileName="Mocks\Framework\InitAllSettings_mock.xaml">
+        <ui:InvokeWorkflowFile.Arguments>
+          <InArgument x:TypeArguments="x:String" x:Key="in_strConfigFile">Data\Config.xlsx</InArgument>
+          <InArgument x:TypeArguments="s:String[]" x:Key="in_arrConfigSheets">[{"Settings","Constants"}]</InArgument>
+          <OutArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="out_dictConfig">[dictConfig]</OutArgument>
+        </ui:InvokeWorkflowFile.Arguments>
+      </ui:InvokeWorkflowFile>
+      <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Init_Generate_Datatables_mock - Invoke Workflow for Trip Details process " sap:VirtualizedContainerService.HintSize="434,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_3" UnSafe="False" WorkflowFileName="Mocks\Business_Workflows\Init_Processing\Init_Generate_Datatables_mock.xaml">
+        <ui:InvokeWorkflowFile.Arguments>
+          <InArgument x:TypeArguments="x:String" x:Key="in_strSearchGUID">[strSearchGUID]</InArgument>
+          <OutArgument x:TypeArguments="scg:List(x:String)" x:Key="out_lstPassengers">[lstPassengers]</OutArgument>
+          <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_dtInputDataTable">[dtInputDataTable]</OutArgument>
+          <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_dtFlightsDataTable" />
+          <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_dtOutputDataTable" />
+          <OutArgument x:TypeArguments="x:String" x:Key="out_BusinessException" />
+        </ui:InvokeWorkflowFile.Arguments>
+      </ui:InvokeWorkflowFile>
+      <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Calculate_Trip_Dates_And_Passengers_mock - Invoke Workflow File for Trip processing TC" sap:VirtualizedContainerService.HintSize="434,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_4" UnSafe="False" WorkflowFileName="Mocks\Business_Workflows\Calculate_Trip_Dates_And_Passengers_mock.xaml">
+        <ui:InvokeWorkflowFile.Arguments>
+          <InArgument x:TypeArguments="x:String" x:Key="BreakTriggerScopeInArgument" />
+          <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_dictConfig">[dictConfig]</InArgument>
+          <InArgument x:TypeArguments="sd:DataRow" x:Key="in_drTransactionItem">[dtInputDataTable.Rows(0)]</InArgument>
+          <InArgument x:TypeArguments="scg:List(x:String)" x:Key="in_lstPassengers">[lstPassengers]</InArgument>
+          <OutArgument x:TypeArguments="x:Int32" x:Key="out_intRoomsCount">[intRoomsCount]</OutArgument>
+          <OutArgument x:TypeArguments="s:DateTime" x:Key="out_dtmActualReturnDate">[dtmActualReturnDate]</OutArgument>
+          <OutArgument x:TypeArguments="s:DateTime" x:Key="out_dtmDummyReturnDate">[dtmDummyReturnDate]</OutArgument>
+          <OutArgument x:TypeArguments="s:DateTime" x:Key="out_dtmDummyDepartureDate">[dtmDummyDepartureDate]</OutArgument>
+          <OutArgument x:TypeArguments="s:DateTime" x:Key="out_dtmActualDepartureDate">[dtmActualDepartureDate]</OutArgument>
+          <OutArgument x:TypeArguments="scg:Dictionary(x:String, x:Int32)" x:Key="out_dictAdultCountPerRoom">[dictAdultCountPerRoom]</OutArgument>
+          <OutArgument x:TypeArguments="scg:Dictionary(x:String, x:Int32)" x:Key="out_dictChildCountPerRoom">[dictChildCountPerRoom]</OutArgument>
+          <OutArgument x:TypeArguments="scg:Dictionary(x:String, x:Int32)" x:Key="out_dictInfantCountPerRoom">[dictInfantCountPerRoom]</OutArgument>
+          <OutArgument x:TypeArguments="scg:List(x:String)" x:Key="out_lstChildrenList">[lstChildrenList]</OutArgument>
+          <OutArgument x:TypeArguments="scg:List(x:String)" x:Key="out_lstAdultsList">[lstAdultsList]</OutArgument>
+          <OutArgument x:TypeArguments="scg:List(x:String)" x:Key="out_lstInfantsList">[lstInfantsList]</OutArgument>
+        </ui:InvokeWorkflowFile.Arguments>
+      </ui:InvokeWorkflowFile>
+      <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="InitAllApplications_mock - Invoke Workflow " sap:VirtualizedContainerService.HintSize="434,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_5" UnSafe="False" WorkflowFileName="Mocks\Framework\InitAllApplications_mock.xaml">
+        <ui:InvokeWorkflowFile.Arguments>
+          <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_dictConfig">[dictConfig]</InArgument>
+          <OutArgument x:TypeArguments="ui:UiElement" x:Key="out_uiBODBrowser">[uiBODBrowser]</OutArgument>
+        </ui:InvokeWorkflowFile.Arguments>
+      </ui:InvokeWorkflowFile>
+    </Sequence>
+    <Sequence DisplayName="... When filling up trip details" sap:VirtualizedContainerService.HintSize="546,224" sap2010:WorkflowViewState.IdRef="Sequence_3">
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+      <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="BOD_Fill_Trip_Details_mock - Invoke Workflow" sap:VirtualizedContainerService.HintSize="388,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_6" UnSafe="False" WorkflowFileName="Mocks\Business_Workflows\BOD_Processing\BOD_Fill_Trip_Details_mock.xaml">
+        <ui:InvokeWorkflowFile.Arguments>
+          <InArgument x:TypeArguments="x:String" x:Key="BreakTriggerScopeInArgument" />
+          <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_dictConfig">
+            <VisualBasicValue x:TypeArguments="scg:Dictionary(x:String, x:Object)" ExpressionText="dictConfig" />
+          </InArgument>
+          <InArgument x:TypeArguments="ui:UiElement" x:Key="in_uiBODBrowser">
+            <VisualBasicValue x:TypeArguments="ui:UiElement" ExpressionText="uiBODBrowser" />
+          </InArgument>
+          <InArgument x:TypeArguments="sd:DataRow" x:Key="in_drTransactionItem">
+            <VisualBasicValue x:TypeArguments="sd:DataRow" ExpressionText="dtInputDataTable.Rows(0)" />
+          </InArgument>
+          <OutArgument x:TypeArguments="x:Boolean" x:Key="out_boolHotelFound" />
+          <InArgument x:TypeArguments="x:String" x:Key="in_strHotelMaxRetries" />
+          <InOutArgument x:TypeArguments="x:String" x:Key="io_BusinessException" />
+          <InArgument x:TypeArguments="x:String" x:Key="in_strBookingID" />
+          <InArgument x:TypeArguments="sd:DataTable" x:Key="in_dtOutputDataTable" />
+          <InArgument x:TypeArguments="s:DateTime" x:Key="in_dtmDummyDepartureDate">
+            <VisualBasicValue x:TypeArguments="s:DateTime" ExpressionText="dtmDummyDepartureDate" />
+          </InArgument>
+          <InArgument x:TypeArguments="s:DateTime" x:Key="in_dtmDummyReturnDate">
+            <VisualBasicValue x:TypeArguments="s:DateTime" ExpressionText="dtmDummyReturnDate" />
+          </InArgument>
+          <InArgument x:TypeArguments="x:Int32" x:Key="in_intRoomsCount">
+            <VisualBasicValue x:TypeArguments="x:Int32" ExpressionText="intRoomsCount" />
+          </InArgument>
+          <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Int32)" x:Key="in_dictAdultCountPerRoom">
+            <VisualBasicValue x:TypeArguments="scg:Dictionary(x:String, x:Int32)" ExpressionText="dictAdultCountPerRoom" />
+          </InArgument>
+          <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Int32)" x:Key="in_dictChildCountPerRoom">
+            <VisualBasicValue x:TypeArguments="scg:Dictionary(x:String, x:Int32)" ExpressionText="dictChildCountPerRoom" />
+          </InArgument>
+          <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Int32)" x:Key="in_dictInfantCountPerRoom">
+            <VisualBasicValue x:TypeArguments="scg:Dictionary(x:String, x:Int32)" ExpressionText="dictInfantCountPerRoom" />
+          </InArgument>
+          <InArgument x:TypeArguments="scg:List(x:String)" x:Key="in_lstChildrenList">
+            <VisualBasicValue x:TypeArguments="scg:List(x:String)" ExpressionText="lstChildrenList" />
+          </InArgument>
+          <InArgument x:TypeArguments="x:String" x:Key="in_strHotelMissingText" />
+          <OutArgument x:TypeArguments="x:String" x:Key="out_strStatus" />
+          <OutArgument x:TypeArguments="x:String" x:Key="out_strErrorMessage" />
+        </ui:InvokeWorkflowFile.Arguments>
+      </ui:InvokeWorkflowFile>
+    </Sequence>
+    <Sequence DisplayName="... Then verify if what is filled in BOD eq Input data" sap:VirtualizedContainerService.HintSize="546,1174" sap2010:WorkflowViewState.IdRef="Sequence_4">
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+      <uix:NApplicationCard AttachMode="ByInstance" DisplayName="Use Application/Browser BOD Browser" sap:VirtualizedContainerService.HintSize="484,1063" sap2010:WorkflowViewState.IdRef="NApplicationCard_1" InUiElement="[uiBODBrowser]" ScopeGuid="1e4cbfcf-ac0c-41bd-9445-954ed43d40eb" Version="V2">
+        <uix:NApplicationCard.Body>
+          <ActivityAction x:TypeArguments="x:Object">
+            <ActivityAction.Argument>
+              <DelegateInArgument x:TypeArguments="x:Object" Name="WSSessionData" />
+            </ActivityAction.Argument>
+            <Sequence DisplayName="Extract information from BOD" sap:VirtualizedContainerService.HintSize="450,926" sap2010:WorkflowViewState.IdRef="Sequence_5">
+              <Sequence.Variables>
+                <Variable x:TypeArguments="x:String" Name="strNumberOfRooms" />
+              </Sequence.Variables>
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <uix:NGetText DisplayName="Get Text 'Departure Date'" sap:VirtualizedContainerService.HintSize="388,157" sap2010:WorkflowViewState.IdRef="NGetText_1" ScopeIdentifier="1e4cbfcf-ac0c-41bd-9445-954ed43d40eb" TextString="[strFilledDepartureDate]" Version="V3">
+                <uix:NGetText.Target>
+                  <uix:TargetAnchorable BrowserURL="https://badirect-auth.baplc.com/badirect/british-airways-holidays/public/en_gb" CVScreenId="a4dd72f6-8e2c-4671-9187-c6c598c138c2" CvElementArea="194, 296, 83, 22" CvType="InputBox" DesignTimeRectangle="195, 298, 80, 19" DesignTimeScaleFactor="1" ElementType="InputBox" FriendlyName="'15/05/25'" FullSelectorArgument="&lt;webctrl id='depDate' tag='INPUT' /&gt;" FuzzySelectorArgument="&lt;webctrl id='depDate' tag='INPUT' type='text' class='hasDatepicker' aaname='Depart' /&gt;" Guid="936a8188-3111-4cd4-aef3-82d3e774e813" InformativeScreenshot="70f980678dfd3373d22c52d77626b11f.png" IsResponsive="True" ScopeSelectorArgument="&lt;html app='msedge.exe' title='Book Holidays Online - British Airways' /&gt;" SearchSteps="Selector, FuzzySelector, CV" Version="V2" Visibility="Interactive" WaitForReadyArgument="Complete">
+                    <uix:TargetAnchorable.Anchors>
+                      <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                        <uix:Target CVScreenId="a4dd72f6-8e2c-4671-9187-c6c598c138c2" CvTextArea="194, 283, 44, 13" CvTextArgument="Depart" CvType="Text" DesignTimeRectangle="195, 282, 43, 13" ElementType="Text" FriendlyName="'Depart'" FullSelectorArgument="&lt;webctrl parentid='dates' tag='LABEL' /&gt;" FuzzySelectorArgument="&lt;webctrl parentid='dates' tag='LABEL' type='' class='' aaname='Depart' check:innerText='Depart' /&gt;" SearchSteps="FuzzySelector, CV" />
+                      </scg:List>
+                    </uix:TargetAnchorable.Anchors>
+                  </uix:TargetAnchorable>
+                </uix:NGetText.Target>
+              </uix:NGetText>
+              <uix:NGetText DisplayName="Get Text 'Return Date'" sap:VirtualizedContainerService.HintSize="388,157" sap2010:WorkflowViewState.IdRef="NGetText_2" ScopeIdentifier="1e4cbfcf-ac0c-41bd-9445-954ed43d40eb" TextString="[strFilledReturnDate]" Version="V3">
+                <uix:NGetText.Target>
+                  <uix:TargetAnchorable BrowserURL="https://badirect-auth.baplc.com/badirect/british-airways-holidays/public/en_gb" CVScreenId="a4dd72f6-8e2c-4671-9187-c6c598c138c2" CvElementArea="278, 296, 83, 22" CvType="InputBox" DesignTimeRectangle="280, 298, 80, 19" DesignTimeScaleFactor="1" ElementType="InputBox" FriendlyName="'23/05/25'" FullSelectorArgument="&lt;webctrl id='retDate' tag='INPUT' /&gt;" FuzzySelectorArgument="&lt;webctrl id='retDate' tag='INPUT' type='text' class='hasDatepicker' aaname='Return' /&gt;" Guid="45b18e38-2526-4579-98ba-47803025c07b" InformativeScreenshot="2b6ac86023571471fb070c443e1bee0a.png" IsResponsive="True" ScopeSelectorArgument="&lt;html app='msedge.exe' title='Book Holidays Online - British Airways' /&gt;" SearchSteps="Selector, FuzzySelector, CV" Version="V2" Visibility="Interactive" WaitForReadyArgument="Complete">
+                    <uix:TargetAnchorable.Anchors>
+                      <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                        <uix:Target CVScreenId="a4dd72f6-8e2c-4671-9187-c6c598c138c2" CvTextArea="279, 283, 43, 11" CvTextArgument="Return" CvType="Text" DesignTimeRectangle="280, 282, 43, 13" ElementType="Text" FriendlyName="'Return'" FullSelectorArgument="&lt;webctrl aaname='Return' parentid='dates' tag='LABEL' /&gt;" FuzzySelectorArgument="&lt;webctrl aaname='Return' parentid='dates' tag='LABEL' type='' class='' check:innerText='Return' /&gt;" SearchSteps="FuzzySelector, CV" />
+                      </scg:List>
+                    </uix:TargetAnchorable.Anchors>
+                  </uix:TargetAnchorable>
+                </uix:NGetText.Target>
+              </uix:NGetText>
+              <uta:VerifyExpression AlternativeVerificationTitle="{x:Null}" KeepScreenshots="{x:Null}" OutputMessageFormat="{x:Null}" Result="{x:Null}" ScreenshotsPath="{x:Null}" ContinueOnFailure="True" DisplayName="Verify Expression Filled Date eq Dummy Date" Expression="[strFilledDepartureDate.Equals(dtmDummyDepartureDate.ToString(&quot;dd/MM/yy&quot;))]" sap:VirtualizedContainerService.HintSize="388,90" sap2010:WorkflowViewState.IdRef="VerifyExpression_1" TakeScreenshotInCaseOfFailingAssertion="False" TakeScreenshotInCaseOfSucceedingAssertion="False" />
+              <uix:NGetText DisplayName="Get Text 'Rooms required'" sap:VirtualizedContainerService.HintSize="388,157" sap2010:WorkflowViewState.IdRef="NGetText_3" ScopeIdentifier="1e4cbfcf-ac0c-41bd-9445-954ed43d40eb" TextString="[strNumberOfRooms]" Version="V3">
+                <uix:NGetText.Target>
+                  <uix:TargetAnchorable BrowserURL="https://badirect-auth.baplc.com/badirect/british-airways-holidays/public/en_gb?refevent=home_tab_flightHotel&amp;COD=GB" CVScreenId="e9e61faa-8942-480a-a1da-3038776d7429" CvTextArea="265, 402, 9, 11" CvType="AnyWordGroup" DesignTimeRectangle="262, 399, 30, 17" DesignTimeScaleFactor="1" ElementType="DropDown" FriendlyName="'2'" FullSelectorArgument="&lt;webctrl id='numRooms' tag='SELECT' /&gt;" FuzzySelectorArgument="&lt;webctrl id='numRooms' tag='SELECT' type='' class='' aaname='Rooms required' /&gt;" Guid="e4eb3a09-623b-46bd-823d-b2ef65f13064" InformativeScreenshot="b527a3d6a8c44052d16f87d9f6c5be2c.png" ScopeSelectorArgument="&lt;html app='msedge.exe' title='Book Holidays Online - British Airways' /&gt;" SearchSteps="FuzzySelector, CV" Version="V2" Visibility="Interactive">
+                    <uix:TargetAnchorable.Anchors>
+                      <scg:List x:TypeArguments="uix:ITarget" Capacity="4">
+                        <uix:Target DesignTimeRectangle="195, 397, 57, 26" ElementType="Text" FriendlyName="'Rooms required'" FullSelectorArgument="&lt;webctrl parentid='roomsReqLabel' tag='LABEL' /&gt;" FuzzySelectorArgument="&lt;webctrl parentid='roomsReqLabel' tag='LABEL' type='' class='' aaname='Rooms required' check:innerText='Rooms required' /&gt;" SearchSteps="FuzzySelector" />
+                      </scg:List>
+                    </uix:TargetAnchorable.Anchors>
+                  </uix:TargetAnchorable>
+                </uix:NGetText.Target>
+              </uix:NGetText>
+              <uta:VerifyExpression AlternativeVerificationTitle="{x:Null}" KeepScreenshots="{x:Null}" OutputMessageFormat="{x:Null}" Result="{x:Null}" ScreenshotsPath="{x:Null}" ContinueOnFailure="True" DisplayName="Verify Expression Number of rooms filled eq Number of rooms from input" Expression="[strNumberOfRooms.Equals(intRoomsCount.ToString)]" sap:VirtualizedContainerService.HintSize="388,90" sap2010:WorkflowViewState.IdRef="VerifyExpression_2" TakeScreenshotInCaseOfFailingAssertion="False" TakeScreenshotInCaseOfSucceedingAssertion="False" />
+            </Sequence>
+          </ActivityAction>
+        </uix:NApplicationCard.Body>
+        <uix:NApplicationCard.TargetApp>
+          <uix:TargetApp Area="0, 0, 0, 0" />
+        </uix:NApplicationCard.TargetApp>
+      </uix:NApplicationCard>
+    </Sequence>
+  </Sequence>
+</Activity>

@@ -1,0 +1,373 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="Process" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:s="clr-namespace:System;assembly=System.Private.CoreLib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data.Common" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="in_SystemException" Type="InArgument(s:Exception)" />
+    <x:Property Name="io_BusinessException" Type="InOutArgument(x:String)" />
+    <x:Property sap2010:Annotation.AnnotationText="Dictionary structure to store configuration data of the process (settings, constants and assets)." Name="in_dictConfig" Type="InArgument(scg:Dictionary(x:String, x:Object))" />
+    <x:Property sap2010:Annotation.AnnotationText="Transaction item to be processed." Name="in_drTransactionItem" Type="InArgument(sd:DataRow)" />
+    <x:Property Name="in_uiBODBrowser" Type="InArgument(ui:UiElement)" />
+    <x:Property Name="in_lstPassengers" Type="InArgument(scg:List(x:String))" />
+    <x:Property Name="io_dtOutputDataTable" Type="InOutArgument(sd:DataTable)" />
+    <x:Property Name="in_strSearchGUID" Type="InArgument(x:String)" />
+    <x:Property Name="in_dtFlightsDataTable" Type="InArgument(sd:DataTable)" />
+    <x:Property Name="in_strPNRMissingText" Type="InArgument(x:String)" />
+    <x:Property Name="in_strHotelMissingText" Type="InArgument(x:String)" />
+    <x:Property Name="in_strPNRMaxRetries" Type="InArgument(x:String)" />
+    <x:Property Name="in_strHotelMaxRetries" Type="InArgument(x:String)" />
+    <x:Property Name="out_strBookingDataID" Type="OutArgument(x:String)" />
+    <x:Property Name="io_strBookingID" Type="InOutArgument(x:String)" />
+    <x:Property Name="out_strStatus" Type="OutArgument(x:String)" />
+    <x:Property Name="out_strErrorMessage" Type="OutArgument(x:String)" />
+  </x:Members>
+  <VisualBasic.Settings>
+    <x:Null />
+  </VisualBasic.Settings>
+  <sap:VirtualizedContainerService.HintSize>837,3708</sap:VirtualizedContainerService.HintSize>
+  <sap2010:WorkflowViewState.IdRef>ProcessTransaction_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <scg:List x:TypeArguments="x:String" Capacity="50">
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Collections.ObjectModel</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Runtime.InteropServices</x:String>
+      <x:String>System.Runtime.Serialization</x:String>
+      <x:String>System.Windows.Forms</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>GlobalVariablesNamespace</x:String>
+      <x:String>GlobalConstantsNamespace</x:String>
+      <x:String>System.Reflection</x:String>
+      <x:String>UiPath.UIAutomationCore.Contracts</x:String>
+      <x:String>System.ComponentModel</x:String>
+      <x:String>System.Xml.Serialization</x:String>
+      <x:String>System.Windows</x:String>
+      <x:String>BAH_SOSR_DummyBooking</x:String>
+      <x:String>UiPath.DataService.Definition</x:String>
+    </scg:List>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="80">
+      <AssemblyReference>DataService.BAH_SOSR_DummyBooking</AssemblyReference>
+      <AssemblyReference>Microsoft.Bcl.AsyncInterfaces</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>Microsoft.Win32.Primitives</AssemblyReference>
+      <AssemblyReference>netstandard</AssemblyReference>
+      <AssemblyReference>NPOI</AssemblyReference>
+      <AssemblyReference>PresentationCore</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>System.Collections</AssemblyReference>
+      <AssemblyReference>System.ComponentModel</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.EventBasedAsync</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Primitives</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.TypeConverter</AssemblyReference>
+      <AssemblyReference>System.Configuration.ConfigurationManager</AssemblyReference>
+      <AssemblyReference>System.Console</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Data.Common</AssemblyReference>
+      <AssemblyReference>System.Data.SqlClient</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Linq</AssemblyReference>
+      <AssemblyReference>System.Memory</AssemblyReference>
+      <AssemblyReference>System.ObjectModel</AssemblyReference>
+      <AssemblyReference>System.Private.CoreLib</AssemblyReference>
+      <AssemblyReference>System.Private.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.Private.Uri</AssemblyReference>
+      <AssemblyReference>System.Private.Xml</AssemblyReference>
+      <AssemblyReference>System.Reflection.DispatchProxy</AssemblyReference>
+      <AssemblyReference>System.Reflection.Metadata</AssemblyReference>
+      <AssemblyReference>System.Reflection.TypeExtensions</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization</AssemblyReference>
+      <AssemblyReference>System.Security.Permissions</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.ValueTuple</AssemblyReference>
+      <AssemblyReference>System.Windows.Forms</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>UiPath.DataService.Definition</AssemblyReference>
+      <AssemblyReference>UiPath.Excel</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.OCR.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.Studio.Constants</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities.ViewModels</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
+      <AssemblyReference>UiPath.Workflow</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>System.Memory.Data</AssemblyReference>
+      <AssemblyReference>System.Linq.Async</AssemblyReference>
+    </scg:List>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence sap2010:Annotation.AnnotationText="Process state includes the following actions:&#xA;- Navigate to BOD portal and make dummy reservation using calculated dummy dates and a specified in asset dummy hotel. Fill in passenger details and allocate them to rooms if needed.&#xA;- Create the corresponding entities in DataService and add the required information.&#xA;- Create a queue item for the main booking process.&#xA;- Manage two possible red paths that must be handled and logged as Business Exceptions. The process should not throw a BE, as it is displayed in the app." DisplayName="Process" sap:VirtualizedContainerService.HintSize="548,3643" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="s:DateTime" Name="dtmActualDepartureDate" />
+      <Variable x:TypeArguments="s:DateTime" Name="dtmDummyDepartureDate" />
+      <Variable x:TypeArguments="s:DateTime" Name="dtmActualReturnDate" />
+      <Variable x:TypeArguments="s:DateTime" Name="dtmDummyReturnDate" />
+      <Variable x:TypeArguments="x:Int32" Name="intRoomsCount" />
+      <Variable x:TypeArguments="scg:Dictionary(x:String, x:Int32)" Default="[New Dictionary(Of String, Integer)()]" Name="dictAdultCountPerRoom" />
+      <Variable x:TypeArguments="scg:Dictionary(x:String, x:Int32)" Default="[New Dictionary(Of String, Integer)()]" Name="dictChildCountPerRoom" />
+      <Variable x:TypeArguments="scg:Dictionary(x:String, x:Int32)" Default="[New Dictionary(Of String, Integer)()]" Name="dictInfantCountPerRoom" />
+      <Variable x:TypeArguments="scg:List(x:String)" Name="lstChildrenList" />
+      <Variable x:TypeArguments="x:Boolean" Name="boolIsPNRGenerated" />
+      <Variable x:TypeArguments="scg:List(x:String)" Name="lstAdultsList" />
+      <Variable x:TypeArguments="scg:List(x:String)" Name="lstInfantsList" />
+      <Variable x:TypeArguments="x:Boolean" Name="boolHotelFound" />
+    </Sequence.Variables>
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+        <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <ui:LogMessage DisplayName="Log Message Process Start" sap:VirtualizedContainerService.HintSize="486,141" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="[UiPath.Core.Activities.LogLevel.Trace]" Message="[&quot;Begin Process stage.&quot;]">
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:LogMessage>
+    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Business_Workflows\Send_Emails.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="486,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_16" UnSafe="False" WorkflowFileName="Business_Workflows\Send_Emails.xaml">
+      <ui:InvokeWorkflowFile.Arguments>
+        <InArgument x:TypeArguments="x:String" x:Key="in_BusinessException" />
+        <InArgument x:TypeArguments="x:Boolean" x:Key="in_boolHotelFound">
+          <VisualBasicValue x:TypeArguments="x:Boolean" ExpressionText="boolHotelFound" />
+        </InArgument>
+        <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_dictConfig">
+          <VisualBasicValue x:TypeArguments="scg:Dictionary(x:String, x:Object)" ExpressionText="in_dictConfig" />
+        </InArgument>
+        <InArgument x:TypeArguments="x:Boolean" x:Key="in_boolIsPNRGenerated">
+          <VisualBasicValue x:TypeArguments="x:Boolean" ExpressionText="boolIsPNRGenerated" />
+        </InArgument>
+      </ui:InvokeWorkflowFile.Arguments>
+    </ui:InvokeWorkflowFile>
+    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke workflow - Add_Information_in_Booking_and_BookedFlights" sap:VirtualizedContainerService.HintSize="486,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_15" UnSafe="False" WorkflowFileName="Business_Workflows\Cloud_Processing\DataService_Add_Information_in_Booking_and_BookedFlights.xaml">
+      <ui:InvokeWorkflowFile.Arguments>
+        <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_dictConfig">[in_dictConfig]</InArgument>
+        <InOutArgument x:TypeArguments="sd:DataTable" x:Key="io_dtOutputDataTable">[io_dtOutputDataTable]</InOutArgument>
+        <InArgument x:TypeArguments="sd:DataTable" x:Key="in_dtFlightsDataTable">[in_dtFlightsDataTable]</InArgument>
+        <OutArgument x:TypeArguments="x:String" x:Key="out_strBookingID">[io_strBookingID]</OutArgument>
+      </ui:InvokeWorkflowFile.Arguments>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:InvokeWorkflowFile>
+    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke workflow - Calculate_Trip_Dates_And_Passengers" sap:VirtualizedContainerService.HintSize="486,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_3" UnSafe="False" WorkflowFileName="Business_Workflows\Calculate_Trip_Dates_And_Passengers.xaml">
+      <ui:InvokeWorkflowFile.Arguments>
+        <InArgument x:TypeArguments="x:String" x:Key="BreakTriggerScopeInArgument" />
+        <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_dictConfig">[in_dictConfig]</InArgument>
+        <InArgument x:TypeArguments="sd:DataRow" x:Key="in_drTransactionItem">[in_drTransactionItem]</InArgument>
+        <InArgument x:TypeArguments="scg:List(x:String)" x:Key="in_lstPassengers">[in_lstPassengers]</InArgument>
+        <OutArgument x:TypeArguments="x:Int32" x:Key="out_intRoomsCount">[intRoomsCount]</OutArgument>
+        <OutArgument x:TypeArguments="s:DateTime" x:Key="out_dtmActualReturnDate">[dtmActualReturnDate]</OutArgument>
+        <OutArgument x:TypeArguments="s:DateTime" x:Key="out_dtmDummyReturnDate">[dtmDummyReturnDate]</OutArgument>
+        <OutArgument x:TypeArguments="s:DateTime" x:Key="out_dtmDummyDepartureDate">[dtmDummyDepartureDate]</OutArgument>
+        <OutArgument x:TypeArguments="s:DateTime" x:Key="out_dtmActualDepartureDate">[dtmActualDepartureDate]</OutArgument>
+        <OutArgument x:TypeArguments="scg:Dictionary(x:String, x:Int32)" x:Key="out_dictAdultCountPerRoom">[dictAdultCountPerRoom]</OutArgument>
+        <OutArgument x:TypeArguments="scg:Dictionary(x:String, x:Int32)" x:Key="out_dictChildCountPerRoom">[dictChildCountPerRoom]</OutArgument>
+        <OutArgument x:TypeArguments="scg:Dictionary(x:String, x:Int32)" x:Key="out_dictInfantCountPerRoom">[dictInfantCountPerRoom]</OutArgument>
+        <OutArgument x:TypeArguments="scg:List(x:String)" x:Key="out_lstChildrenList">[lstChildrenList]</OutArgument>
+        <OutArgument x:TypeArguments="scg:List(x:String)" x:Key="out_lstAdultsList">[lstAdultsList]</OutArgument>
+        <OutArgument x:TypeArguments="scg:List(x:String)" x:Key="out_lstInfantsList">[lstInfantsList]</OutArgument>
+      </ui:InvokeWorkflowFile.Arguments>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:InvokeWorkflowFile>
+    <ui:LogMessage DisplayName="Log Message - Initiating BOD Processing" sap:VirtualizedContainerService.HintSize="486,141" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;Initiating BOD Processing&quot;]">
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:LogMessage>
+    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="- fills destination details&#xA;- fills dummy date details&#xA;- assigns number of rooms + number of passengers per room&#xA;- assigns children's age per room&#xA;- navigates to and within SOSR hotel details&#xA;- process stops at Passenger details page " DisplayName="Invoke Workflow - Fill_Trip_Detais" sap:VirtualizedContainerService.HintSize="486,230" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_4" UnSafe="False" WorkflowFileName="Business_Workflows\BOD_Processing\BOD_Fill_Trip_Details.xaml">
+      <ui:InvokeWorkflowFile.Arguments>
+        <InArgument x:TypeArguments="x:String" x:Key="BreakTriggerScopeInArgument" />
+        <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_dictConfig">[in_dictConfig]</InArgument>
+        <InArgument x:TypeArguments="ui:UiElement" x:Key="in_uiBODBrowser">[in_uiBODBrowser]</InArgument>
+        <InArgument x:TypeArguments="sd:DataRow" x:Key="in_drTransactionItem">[in_drTransactionItem]</InArgument>
+        <OutArgument x:TypeArguments="x:Boolean" x:Key="out_boolHotelFound">[boolHotelFound]</OutArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_strHotelMaxRetries">[in_strHotelMaxRetries]</InArgument>
+        <InOutArgument x:TypeArguments="x:String" x:Key="io_BusinessException">[io_BusinessException]</InOutArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_strBookingID">[io_strBookingID]</InArgument>
+        <InArgument x:TypeArguments="sd:DataTable" x:Key="in_dtOutputDataTable">[io_dtOutputDataTable]</InArgument>
+        <InArgument x:TypeArguments="s:DateTime" x:Key="in_dtmDummyDepartureDate">[dtmDummyDepartureDate]</InArgument>
+        <InArgument x:TypeArguments="s:DateTime" x:Key="in_dtmDummyReturnDate">[dtmDummyReturnDate]</InArgument>
+        <InArgument x:TypeArguments="x:Int32" x:Key="in_intRoomsCount">[intRoomsCount]</InArgument>
+        <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Int32)" x:Key="in_dictAdultCountPerRoom">[dictAdultCountPerRoom]</InArgument>
+        <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Int32)" x:Key="in_dictChildCountPerRoom">[dictChildCountPerRoom]</InArgument>
+        <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Int32)" x:Key="in_dictInfantCountPerRoom">[dictInfantCountPerRoom]</InArgument>
+        <InArgument x:TypeArguments="scg:List(x:String)" x:Key="in_lstChildrenList">[lstChildrenList]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_strHotelMissingText">[in_strHotelMissingText]</InArgument>
+        <OutArgument x:TypeArguments="x:String" x:Key="out_strStatus">[out_strStatus]</OutArgument>
+        <OutArgument x:TypeArguments="x:String" x:Key="out_strErrorMessage">[out_strErrorMessage]</OutArgument>
+      </ui:InvokeWorkflowFile.Arguments>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:InvokeWorkflowFile>
+    <ui:LogMessage DisplayName="Log Message: hotel is found" sap:VirtualizedContainerService.HintSize="486,141" sap2010:WorkflowViewState.IdRef="LogMessage_9" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;Dummy hotel is found: &quot; + boolHotelFound.ToString]" />
+    <If sap2010:Annotation.AnnotationText="In case the &quot;red path&quot; in the previous process was encountered, the process cannot continue, therefore check if the Dummy hotel was available or not." Condition="[boolHotelFound = True and io_BusinessException is Nothing]" DisplayName="If - Hotel was found, continue with the rest of the process" sap:VirtualizedContainerService.HintSize="486,2143" sap2010:WorkflowViewState.IdRef="If_1">
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+      <If.Then>
+        <Sequence sap:VirtualizedContainerService.HintSize="452,1690" sap2010:WorkflowViewState.IdRef="Sequence_4">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="- fills personal details for each passenger&#xA;- invokes workflow which allocates the passengers to their respective rooms" DisplayName="Invoke Workflow - Process_Passengers" sap:VirtualizedContainerService.HintSize="410,170" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_5" UnSafe="False" WorkflowFileName="Business_Workflows\BOD_Processing\BOD_Process_Passengers.xaml">
+            <ui:InvokeWorkflowFile.Arguments>
+              <InArgument x:TypeArguments="x:String" x:Key="BreakTriggerScopeInArgument" />
+              <InOutArgument x:TypeArguments="x:String" x:Key="io_BusinessException">[io_BusinessException]</InOutArgument>
+              <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_dictConfig">[in_dictConfig]</InArgument>
+              <InArgument x:TypeArguments="ui:UiElement" x:Key="in_uiBODBrowser">[in_uiBODBrowser]</InArgument>
+              <InArgument x:TypeArguments="scg:List(x:String)" x:Key="in_lstPassengers">[in_lstPassengers]</InArgument>
+              <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Int32)" x:Key="in_dictAdultCountPerRoom">[dictAdultCountPerRoom]</InArgument>
+              <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Int32)" x:Key="in_dictChildCountPerRoom">[dictChildCountPerRoom]</InArgument>
+              <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Int32)" x:Key="in_dictInfantCountPerRoom">[dictInfantCountPerRoom]</InArgument>
+              <InArgument x:TypeArguments="x:Int32" x:Key="in_intRoomsCount">[intRoomsCount]</InArgument>
+              <InOutArgument x:TypeArguments="sd:DataTable" x:Key="io_dtOutputDatatable">[io_dtOutputDataTable]</InOutArgument>
+              <InArgument x:TypeArguments="scg:List(x:String)" x:Key="in_lstChildrenList">[lstChildrenList]</InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="in_strPNRMissingText">[in_strPNRMissingText]</InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="in_strPNRMaxRetries">[in_strPNRMaxRetries]</InArgument>
+              <OutArgument x:TypeArguments="x:Boolean" x:Key="out_boolIsPNRGenerated">[boolIsPNRGenerated]</OutArgument>
+              <InArgument x:TypeArguments="sd:DataTable" x:Key="in_dtOutputDataTable">[io_dtOutputDataTable]</InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="in_strBookingID">[io_strBookingID]</InArgument>
+              <OutArgument x:TypeArguments="x:String" x:Key="out_strStatus">[out_strStatus]</OutArgument>
+              <OutArgument x:TypeArguments="x:String" x:Key="out_strErrorMessage">[out_strErrorMessage]</OutArgument>
+            </ui:InvokeWorkflowFile.Arguments>
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+          </ui:InvokeWorkflowFile>
+          <If sap2010:Annotation.AnnotationText="Without PNR, next steps are not possible. Therefore, the process will first check if PNR was extracted properly." Condition="[boolIsPNRGenerated = true and io_BusinessException is Nothing]" DisplayName="If PNR was generated, continue with the process" sap:VirtualizedContainerService.HintSize="410,1392" sap2010:WorkflowViewState.IdRef="If_2">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <If.Then>
+              <Sequence sap:VirtualizedContainerService.HintSize="376,939" sap2010:WorkflowViewState.IdRef="Sequence_6">
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+                <ui:LogMessage DisplayName="Log Message - BOD finished" sap:VirtualizedContainerService.HintSize="334,141" sap2010:WorkflowViewState.IdRef="LogMessage_4" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;BOD actions completed.&quot;]">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                </ui:LogMessage>
+                <ui:LogMessage DisplayName="Log Message - Initiating Orchestrator Processing" sap:VirtualizedContainerService.HintSize="334,141" sap2010:WorkflowViewState.IdRef="LogMessage_5" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;Initiating Data Service actions&quot;]">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                </ui:LogMessage>
+                <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="- Query BAH_SOSR_Hotels&#xA;- Query BAH_SOSR_HotelsRoomsOptions" DisplayName="Invoke Workflow - Query_and_Update_Entities" sap:VirtualizedContainerService.HintSize="334,155" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_8" UnSafe="False" WorkflowFileName="Business_Workflows\Cloud_Processing\DataService_Query_and_Update_Entities.xaml">
+                  <ui:InvokeWorkflowFile.Arguments>
+                    <InArgument x:TypeArguments="x:String" x:Key="BreakTriggerScopeInArgument" />
+                    <InOutArgument x:TypeArguments="sd:DataTable" x:Key="io_dtOutputDataTable">[io_dtOutputDataTable]</InOutArgument>
+                    <InArgument x:TypeArguments="x:Int32" x:Key="in_intRoomsCount">[intRoomsCount]</InArgument>
+                    <InArgument x:TypeArguments="x:String" x:Key="in_strSearchGUID">[in_strSearchGUID]</InArgument>
+                  </ui:InvokeWorkflowFile.Arguments>
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                </ui:InvokeWorkflowFile>
+                <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke workflow - Update_Booking_Entity" sap:VirtualizedContainerService.HintSize="334,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_14" UnSafe="False" WorkflowFileName="Business_Workflows\Cloud_Processing\DataService_Update_Booking_Entity.xaml">
+                  <ui:InvokeWorkflowFile.Arguments>
+                    <InArgument x:TypeArguments="x:String" x:Key="in_BusinessException">[io_BusinessException]</InArgument>
+                    <InArgument x:TypeArguments="sd:DataTable" x:Key="in_dtOutputDataTable">[io_dtOutputDataTable]</InArgument>
+                    <InArgument x:TypeArguments="x:String" x:Key="in_strBookingID">[io_strBookingID]</InArgument>
+                  </ui:InvokeWorkflowFile.Arguments>
+                </ui:InvokeWorkflowFile>
+                <ui:LogMessage DisplayName="Log Message - Orchestrator finished" sap:VirtualizedContainerService.HintSize="334,141" sap2010:WorkflowViewState.IdRef="LogMessage_6" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;Data Service actions completed.&quot;]" />
+              </Sequence>
+            </If.Then>
+            <If.Else>
+              <Sequence sap:VirtualizedContainerService.HintSize="376,229" sap2010:WorkflowViewState.IdRef="Sequence_7">
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+                <ui:LogMessage DisplayName="Log Message -  PNR is not generated" sap:VirtualizedContainerService.HintSize="334,141" sap2010:WorkflowViewState.IdRef="LogMessage_7" Level="[UiPath.Core.Activities.LogLevel.Warn]" Message="[&quot;PNR was not generated. Process will retry once and then output error message to the app.&quot;]">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                </ui:LogMessage>
+              </Sequence>
+            </If.Else>
+          </If>
+        </Sequence>
+      </If.Then>
+      <If.Else>
+        <Sequence sap:VirtualizedContainerService.HintSize="376,229" sap2010:WorkflowViewState.IdRef="Sequence_5">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <ui:LogMessage DisplayName="Log Message -  hotel is not found" sap:VirtualizedContainerService.HintSize="334,141" sap2010:WorkflowViewState.IdRef="LogMessage_8" Level="Error" Message="[in_strHotelMissingText]" />
+        </Sequence>
+      </If.Else>
+    </If>
+  </Sequence>
+</Activity>
