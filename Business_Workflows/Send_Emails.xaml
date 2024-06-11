@@ -8,7 +8,7 @@
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>837,2637</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>970,2925</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>Send_Emails_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -130,7 +130,7 @@
       <AssemblyReference>UiPath.Mail.Activities.Design</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="In this workflow, process will determine which red path has been encountered and send the respective email." DisplayName="Send_Emails" sap:VirtualizedContainerService.HintSize="576,2572" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="In this workflow, process will determine which red path has been encountered and send the respective email." DisplayName="Send_Emails" sap:VirtualizedContainerService.HintSize="648,2860" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="strAppID" />
       <Variable x:TypeArguments="ss:SecureString" Name="strAppSecret" />
@@ -143,7 +143,7 @@
         <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <Assign sap:VirtualizedContainerService.HintSize="514,82" sap2010:WorkflowViewState.IdRef="Assign_1">
+    <Assign sap:VirtualizedContainerService.HintSize="586,82" sap2010:WorkflowViewState.IdRef="Assign_1">
       <Assign.To>
         <OutArgument x:TypeArguments="x:Boolean">[in_boolHotelFound]</OutArgument>
       </Assign.To>
@@ -151,10 +151,10 @@
         <InArgument x:TypeArguments="x:Boolean">False</InArgument>
       </Assign.Value>
     </Assign>
-    <ui:LogMessage DisplayName="Log Message - Sending emails" sap:VirtualizedContainerService.HintSize="514,141" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="[UiPath.Core.Activities.LogLevel.Trace]" Message="[&quot;Sending email with outcome informaiton...&quot;]" />
-    <ui:GetRobotCredential TimeoutMS="{x:Null}" AssetName="BAH_SOSR_AppID_AppSecret" CacheStrategy="None" DisplayName="Get Credential App ID and Secret" FolderPath="UatRPA/BAW/BA Holidays/BA Holidays" sap:VirtualizedContainerService.HintSize="514,143" sap2010:WorkflowViewState.IdRef="GetRobotCredential_1" Password="[strAppSecret]" Username="[strAppID]" />
-    <ui:GetRobotCredential TimeoutMS="{x:Null}" AssetName="BAH_SOSR_C_British_Airways_Home_Page_Credential" CacheStrategy="None" DisplayName="Get Credential for BOD Login" FolderPath="UatRPA/BAW/BA Holidays/BA Holidays" sap:VirtualizedContainerService.HintSize="514,143" sap2010:WorkflowViewState.IdRef="GetRobotCredential_2" Password="[strPassword]" Username="[strUsername]" />
-    <ui:IfElseIfV2 Condition="[in_boolHotelFound = False]" DisplayName="Check which red path is encountered" sap:VirtualizedContainerService.HintSize="514,1569" sap2010:WorkflowViewState.IdRef="IfElseIfV2_1">
+    <ui:LogMessage DisplayName="Log Message - Sending emails" sap:VirtualizedContainerService.HintSize="586,141" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="[UiPath.Core.Activities.LogLevel.Trace]" Message="[&quot;Sending email with outcome informaiton...&quot;]" />
+    <ui:GetRobotCredential TimeoutMS="{x:Null}" AssetName="BAH_SOSR_AppID_AppSecret" CacheStrategy="None" DisplayName="Get Credential App ID and Secret" FolderPath="UatRPA/BAW/BA Holidays/BA Holidays" sap:VirtualizedContainerService.HintSize="586,143" sap2010:WorkflowViewState.IdRef="GetRobotCredential_1" Password="[strAppSecret]" Username="[strAppID]" />
+    <ui:GetRobotCredential TimeoutMS="{x:Null}" AssetName="BAH_SOSR_C_British_Airways_Home_Page_Credential" CacheStrategy="None" DisplayName="Get Credential for BOD Login" FolderPath="UatRPA/BAW/BA Holidays/BA Holidays" sap:VirtualizedContainerService.HintSize="586,143" sap2010:WorkflowViewState.IdRef="GetRobotCredential_2" Password="[strPassword]" Username="[strUsername]" />
+    <ui:IfElseIfV2 Condition="[in_boolHotelFound = False]" DisplayName="Check which red path is encountered" sap:VirtualizedContainerService.HintSize="586,1868" sap2010:WorkflowViewState.IdRef="IfElseIfV2_1">
       <ui:IfElseIfV2.Else>
         <Sequence DisplayName="" sap2010:WorkflowViewState.IdRef="Sequence_11" />
       </ui:IfElseIfV2.Else>
@@ -210,14 +210,14 @@
         </sc:BindingList>
       </ui:IfElseIfV2.ElseIfs>
       <ui:IfElseIfV2.Then>
-        <Sequence DisplayName="" sap:VirtualizedContainerService.HintSize="480,651" sap2010:WorkflowViewState.IdRef="Sequence_10">
+        <Sequence DisplayName="" sap:VirtualizedContainerService.HintSize="552,950" sap2010:WorkflowViewState.IdRef="Sequence_10">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <ui:LogMessage DisplayName="Log Message - Hotel missing red path" sap:VirtualizedContainerService.HintSize="438,141" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Info" Message="[&quot;Sending emails because the Dummy hotel is missing...&quot;]" />
-          <uma:Office365ApplicationScope BrowserItemFriendlyName="{x:Null}" BrowserItemFullPath="{x:Null}" BrowserItemId="{x:Null}" BrowserParentItemId="{x:Null}" BrowserRuntimeItemFriendlyName="{x:Null}" BrowserRuntimeItemFullPath="{x:Null}" BrowserRuntimeItemId="{x:Null}" BrowserRuntimeParentItemId="{x:Null}" CertificateAsBase64="{x:Null}" CertificatePassword="{x:Null}" ConnectionAccountName="{x:Null}" ConnectionId="{x:Null}" Connector="{x:Null}" ContinueOnError="{x:Null}" ImpersonatedUserEmailAddress="{x:Null}" ManualRuntimeItemFullPath="{x:Null}" Password="{x:Null}" SecureApplicationSecret="{x:Null}" SecurePassword="{x:Null}" Timeout="{x:Null}" Username="{x:Null}" Account="Please select an account." ApplicationId="69dd113c-2f90-45db-99ca-e0bcc58a98ea" ApplicationSecret="q338Q~7YNqSvM2obIgvFobHnF_M6EOl3ba~uZbHj" AuthenticationType="InteractiveToken" ConfigLocation="PropertiesPanel" DisplayName="Microsoft 365 Scope - Send email for SOSR hotel missing" Environment="Global" sap:VirtualizedContainerService.HintSize="438,382" sap2010:WorkflowViewState.IdRef="Office365ApplicationScope_1" OAuthApplication="Custom" RuntimeItemInputMode="Browse" TenantId="ddd66cce-ffe1-4029-967c-5e15ef73127f" UseConnectionService="False">
+          <ui:LogMessage DisplayName="Log Message - Hotel missing red path" sap:VirtualizedContainerService.HintSize="510,141" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Info" Message="[&quot;Sending emails because the Dummy hotel is missing...&quot;]" />
+          <uma:Office365ApplicationScope BrowserItemFriendlyName="{x:Null}" BrowserItemFullPath="{x:Null}" BrowserItemId="{x:Null}" BrowserParentItemId="{x:Null}" BrowserRuntimeItemFriendlyName="{x:Null}" BrowserRuntimeItemFullPath="{x:Null}" BrowserRuntimeItemId="{x:Null}" BrowserRuntimeParentItemId="{x:Null}" CertificateAsBase64="{x:Null}" CertificatePassword="{x:Null}" ConnectionAccountName="{x:Null}" ConnectionId="{x:Null}" Connector="{x:Null}" ContinueOnError="{x:Null}" ImpersonatedUserEmailAddress="{x:Null}" ManualRuntimeItemFullPath="{x:Null}" Password="{x:Null}" SecureApplicationSecret="{x:Null}" SecurePassword="{x:Null}" Timeout="{x:Null}" Username="{x:Null}" Account="Please select an account." ApplicationId="69dd113c-2f90-45db-99ca-e0bcc58a98ea" ApplicationSecret="q338Q~7YNqSvM2obIgvFobHnF_M6EOl3ba~uZbHj" AuthenticationType="InteractiveToken" ConfigLocation="PropertiesPanel" DisplayName="Microsoft 365 Scope - Send email for SOSR hotel missing" Environment="Global" sap:VirtualizedContainerService.HintSize="510,681" sap2010:WorkflowViewState.IdRef="Office365ApplicationScope_1" OAuthApplication="Custom" RuntimeItemInputMode="Browse" TenantId="ddd66cce-ffe1-4029-967c-5e15ef73127f" UseConnectionService="False">
             <uma:Office365ApplicationScope.AuthenticationScopes>
               <scg:List x:TypeArguments="InArgument(x:String)" Capacity="0" />
             </uma:Office365ApplicationScope.AuthenticationScopes>
@@ -226,40 +226,23 @@
                 <ActivityAction.Argument>
                   <DelegateInArgument x:TypeArguments="x:Object" Name="ParentScope" />
                 </ActivityAction.Argument>
-                <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="404,140" sap2010:WorkflowViewState.IdRef="Sequence_2">
+                <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="476,439" sap2010:WorkflowViewState.IdRef="Sequence_2">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
-                  <ui:CommentOut DisplayName="Disabled until APP ID and Secret issues are resolved " sap:VirtualizedContainerService.HintSize="362,52" sap2010:WorkflowViewState.IdRef="CommentOut_1">
-                    <ui:CommentOut.Body>
-                      <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="496,462" sap2010:WorkflowViewState.IdRef="Sequence_14">
-                        <sap:WorkflowViewStateService.ViewState>
-                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                          </scg:Dictionary>
-                        </sap:WorkflowViewStateService.ViewState>
-                        <umam:SendMail Account="{x:Null}" AttachmentsCollection="{x:Null}" Bcc="{x:Null}" Cc="{x:Null}" ContinueOnError="{x:Null}" From="{x:Null}" ReplyTo="{x:Null}" AuthScopesInvalid="False" Body="[in_dictConfig(&quot;BAH_SOSR_MissingHotel_EmailTemplate&quot;).ToString]" DisplayName="Send Mail - Failed dummy booking because Dummy hotel is not found" sap:VirtualizedContainerService.HintSize="434,351" sap2010:WorkflowViewState.IdRef="SendMail_3" Importance="Normal" IsBodyHTML="False" IsDraft="False" Subject="[&quot;TEST&quot; + in_dictConfig(&quot;BAH_SOSR_MissingHotel_EmailSubject&quot;).ToString]" To="[{in_dictConfig(&quot;BAH_SOSR_MissingPNR_EmailRecipient&quot;).ToString}]">
-                          <umam:SendMail.Attachments>
-                            <scg:List x:TypeArguments="InArgument(x:String)" Capacity="0" />
-                          </umam:SendMail.Attachments>
-                          <sap:WorkflowViewStateService.ViewState>
-                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                              <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                            </scg:Dictionary>
-                          </sap:WorkflowViewStateService.ViewState>
-                        </umam:SendMail>
-                      </Sequence>
-                    </ui:CommentOut.Body>
+                  <umam:SendMail AttachmentsCollection="{x:Null}" Bcc="{x:Null}" Cc="{x:Null}" ContinueOnError="{x:Null}" From="{x:Null}" ReplyTo="{x:Null}" Account="no-reply@holidays.ba.com" AuthScopesInvalid="False" Body="[in_dictConfig(&quot;BAH_SOSR_MissingHotel_EmailTemplate&quot;).ToString]" DisplayName="Send Mail - Failed dummy booking because Dummy hotel is not found" sap:VirtualizedContainerService.HintSize="434,351" sap2010:WorkflowViewState.IdRef="SendMail_4" Importance="Normal" IsBodyHTML="False" IsDraft="False" Subject="[&quot;TEST&quot; + in_dictConfig(&quot;BAH_SOSR_MissingHotel_EmailSubject&quot;).ToString]" To="[{in_dictConfig(&quot;BAH_SOSR_MissingPNR_EmailRecipient&quot;).ToString}]">
+                    <umam:SendMail.Attachments>
+                      <scg:List x:TypeArguments="InArgument(x:String)" Capacity="0" />
+                    </umam:SendMail.Attachments>
                     <sap:WorkflowViewStateService.ViewState>
                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                        <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                         <x:Boolean x:Key="IsPinned">False</x:Boolean>
                       </scg:Dictionary>
                     </sap:WorkflowViewStateService.ViewState>
-                  </ui:CommentOut>
+                  </umam:SendMail>
                 </Sequence>
               </ActivityAction>
             </uma:Office365ApplicationScope.Body>
