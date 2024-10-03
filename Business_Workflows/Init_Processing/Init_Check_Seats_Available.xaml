@@ -1,0 +1,436 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="Init_Check_Seats_Available" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:b="clr-namespace:BAH_SOSR_DummyBooking;assembly=DataService.BAH_SOSR_DummyBooking" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:s="clr-namespace:System;assembly=System.Private.CoreLib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data.Common" xmlns:uda="clr-namespace:UiPath.DataService.Activities;assembly=UiPath.DataService.Activities.Core" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="out_BusinessException" Type="OutArgument(x:String)" />
+    <x:Property Name="BreakTriggerScopeInArgument" Type="InArgument(x:String)" />
+    <x:Property Name="in_dictConfig" Type="InArgument(scg:Dictionary(x:String, x:Object))" />
+    <x:Property Name="in_dtFlightsDataTable" Type="InArgument(sd:DataTable)" />
+  </x:Members>
+  <VisualBasic.Settings>
+    <x:Null />
+  </VisualBasic.Settings>
+  <sap:VirtualizedContainerService.HintSize>960,4363</sap:VirtualizedContainerService.HintSize>
+  <sap2010:WorkflowViewState.IdRef>Init_Check_Seats_Available_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <sco:Collection x:TypeArguments="x:String">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Collections.ObjectModel</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>GlobalVariablesNamespace</x:String>
+      <x:String>GlobalConstantsNamespace</x:String>
+      <x:String>System.Reflection</x:String>
+      <x:String>System.ComponentModel</x:String>
+      <x:String>System.Runtime.Serialization</x:String>
+      <x:String>System.Xml.Serialization</x:String>
+      <x:String>UiPath.DataTableUtilities</x:String>
+      <x:String>UiPath.DataService.Activities</x:String>
+      <x:String>UiPath.DataService.Definition</x:String>
+      <x:String>UiPath.Shared.Activities</x:String>
+      <x:String>BAH_SOSR_DummyBooking</x:String>
+      <x:String>System.Globalization</x:String>
+      <x:String>UiPath.Activities.System.Collections.Filters</x:String>
+      <x:String>UiPath.Activities.System.Collections</x:String>
+      <x:String>Microsoft.VisualBasic.CompilerServices</x:String>
+    </sco:Collection>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <sco:Collection x:TypeArguments="AssemblyReference">
+      <AssemblyReference>DataService.BAH_SOSR_DummyBooking</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>Microsoft.Win32.Primitives</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>netstandard</AssemblyReference>
+      <AssemblyReference>NPOI</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>System.Collections</AssemblyReference>
+      <AssemblyReference>System.Collections.Immutable</AssemblyReference>
+      <AssemblyReference>System.Collections.NonGeneric</AssemblyReference>
+      <AssemblyReference>System.ComponentModel</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.EventBasedAsync</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Primitives</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.TypeConverter</AssemblyReference>
+      <AssemblyReference>System.Configuration.ConfigurationManager</AssemblyReference>
+      <AssemblyReference>System.Console</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Data.Common</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>System.Data.SqlClient</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Drawing.Common</AssemblyReference>
+      <AssemblyReference>System.Drawing.Primitives</AssemblyReference>
+      <AssemblyReference>System.Linq</AssemblyReference>
+      <AssemblyReference>System.Linq.Expressions</AssemblyReference>
+      <AssemblyReference>System.Linq.Parallel</AssemblyReference>
+      <AssemblyReference>System.Linq.Queryable</AssemblyReference>
+      <AssemblyReference>System.Memory</AssemblyReference>
+      <AssemblyReference>System.Net.Mail</AssemblyReference>
+      <AssemblyReference>System.ObjectModel</AssemblyReference>
+      <AssemblyReference>System.Private.CoreLib</AssemblyReference>
+      <AssemblyReference>System.Private.DataContractSerialization</AssemblyReference>
+      <AssemblyReference>System.Private.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.Private.Uri</AssemblyReference>
+      <AssemblyReference>System.Private.Xml</AssemblyReference>
+      <AssemblyReference>System.Reflection.DispatchProxy</AssemblyReference>
+      <AssemblyReference>System.Reflection.Metadata</AssemblyReference>
+      <AssemblyReference>System.Reflection.TypeExtensions</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization.Formatters</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization.Primitives</AssemblyReference>
+      <AssemblyReference>System.Security.Permissions</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>UiPath.DataService.Activities.Core</AssemblyReference>
+      <AssemblyReference>UiPath.DataService.Definition</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.OCR.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Studio.Constants</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Testing.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
+      <AssemblyReference>UiPath.Workflow</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>System.Memory.Data</AssemblyReference>
+      <AssemblyReference>System.Linq.Async</AssemblyReference>
+      <AssemblyReference>System.Linq.Async.Queryable</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic.Forms</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic.Core</AssemblyReference>
+    </sco:Collection>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence sap2010:Annotation.AnnotationText="In this workflow, the process will check if there are available seats in the flights.&#xA;- If there are - the process will continue as expected.&#xA;- If there are no available seats, the process will delete the Booking Data and finish" DisplayName="Init_Check_Seats_Available" sap:VirtualizedContainerService.HintSize="724,4298" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="x:Int32" Name="intPreviouslyBookedSeats" />
+      <Variable x:TypeArguments="scg:IList(b:BAHSOSRBookings)" Name="lstBookings" />
+      <Variable x:TypeArguments="scg:IList(b:BAHSOSRBookedFlights)" Name="lstBookedFlights" />
+      <Variable x:TypeArguments="x:Int32" Name="intSeatsAvailable" />
+      <Variable x:TypeArguments="x:Int32" Name="intAllocationTotal" />
+      <Variable x:TypeArguments="x:Int32" Name="intNumberOfSeats" />
+      <Variable x:TypeArguments="x:String" Name="strBookingStatuses" />
+    </Sequence.Variables>
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+        <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <ui:LogMessage DisplayName="Log Message - Retrieve Seat Allocation" sap:VirtualizedContainerService.HintSize="662,141" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="[UiPath.Core.Activities.LogLevel.Trace]" Message="[&quot;Retrieve seat allocation&quot;]" />
+    <Assign DisplayName="Assign - strBookingStatuses from Orch Assets" sap:VirtualizedContainerService.HintSize="662,82" sap2010:WorkflowViewState.IdRef="Assign_8">
+      <Assign.To>
+        <OutArgument x:TypeArguments="x:String">[strBookingStatuses]</OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="x:String">[in_dictConfig("BAH_SOSR_BookingStatuses").ToString]</InArgument>
+      </Assign.Value>
+    </Assign>
+    <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" sap2010:Annotation.AnnotationText="For each reserved flight in Flights datatable, Query Booked Flights entity.&#xA;For each booked flight, check if there is a booking made in order to calculate seats that have been already booked." DataTable="[in_dtFlightsDataTable]" DisplayName="For each flight in flights db, check if booked flights contains it" sap:VirtualizedContainerService.HintSize="662,3646" sap2010:WorkflowViewState.IdRef="ForEachRow_2">
+      <ui:ForEachRow.Body>
+        <ActivityAction x:TypeArguments="sd:DataRow">
+          <ActivityAction.Argument>
+            <DelegateInArgument x:TypeArguments="sd:DataRow" Name="currentFlight" />
+          </ActivityAction.Argument>
+          <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="628,3418" sap2010:WorkflowViewState.IdRef="Sequence_3">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <ui:RetryScope DisplayName="Retry Scope for Booked Flights entity" sap:VirtualizedContainerService.HintSize="586,724" sap2010:WorkflowViewState.IdRef="RetryScope_2">
+              <ui:RetryScope.ActivityBody>
+                <ActivityAction>
+                  <Sequence DisplayName="Querying Booked Flights" sap:VirtualizedContainerService.HintSize="450,549" sap2010:WorkflowViewState.IdRef="Sequence_18">
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                    <ui:LogMessage DisplayName="Log Message - query booked flights" sap:VirtualizedContainerService.HintSize="388,141" sap2010:WorkflowViewState.IdRef="LogMessage_14" Level="Info" Message="[&quot;Querying Booked Flights entity...&quot;]" />
+                    <uda:QueryEntityRecords x:TypeArguments="b:BAHSOSRBookedFlights" TotalRecords="{x:Null}" sap2010:Annotation.AnnotationText="Query Booked flights for current flight based on:&#xA;&#xA;Departure Date - currentFlight.Item(&quot;DepartureDate&quot;).ToString&#xA;&#xA;and Flight Number - currentFlight.Item(&quot;FlightNumber&quot;).ToString" ContinueOnError="False" DisplayName="Query Entity Records Booked Flights" EntityId="cd9656b9-79f2-ee11-aaf2-000d3ab844da" ExpansionDepth="2" sap:VirtualizedContainerService.HintSize="388,257" sap2010:WorkflowViewState.IdRef="QueryEntityRecords`1_1" OutputRecords="[lstBookedFlights]" QueriedEntityId="cd9656b9-79f2-ee11-aaf2-000d3ab844da" Skip="0" SortAscending="True" SortByField="Id" TimeoutInMs="30000" Top="100">
+                      <uda:QueryEntityRecords.FilterArguments>
+                        <uda:FilterArgument FilterActivityType="{x:Null}">
+                          <uda:FilterArgument.Filter>
+                            <uda:GroupFilter Index="0" Operator="AND">
+                              <uda:GroupFilter.Filters>
+                                <scg:List x:TypeArguments="uda:SimpleFilter" Capacity="4">
+                                  <uda:SimpleFilter ExpressionValue="{x:Null}" FieldName="FlightNumber" FieldType="UiPath.DataService.Core.Models.EntityField" Operator="contains" ValueIndex="0" />
+                                  <uda:SimpleFilter ExpressionValue="{x:Null}" FieldName="DepartureDate" FieldType="UiPath.DataService.Core.Models.EntityField" Operator="=" ValueIndex="1" />
+                                </scg:List>
+                              </uda:GroupFilter.Filters>
+                              <uda:GroupFilter.Groups>
+                                <scg:List x:TypeArguments="uda:GroupFilter" Capacity="0" />
+                              </uda:GroupFilter.Groups>
+                            </uda:GroupFilter>
+                          </uda:FilterArgument.Filter>
+                        </uda:FilterArgument>
+                      </uda:QueryEntityRecords.FilterArguments>
+                      <uda:QueryEntityRecords.FilterValues>
+                        <scg:List x:TypeArguments="InArgument" Capacity="4">
+                          <InArgument x:TypeArguments="x:String">[currentFlight.Item("FlightNumber").ToString]</InArgument>
+                          <InArgument x:TypeArguments="s:DateTime">[DateTime.ParseExact(currentFlight.Item("DepartureDate").ToString, "MM/dd/yyyy", System.Globalization.CultureInfo.InvariantCulture)]</InArgument>
+                        </scg:List>
+                      </uda:QueryEntityRecords.FilterValues>
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                    </uda:QueryEntityRecords>
+                  </Sequence>
+                </ActivityAction>
+              </ui:RetryScope.ActivityBody>
+              <ui:RetryScope.Condition>
+                <ActivityFunc x:TypeArguments="x:Boolean" />
+              </ui:RetryScope.Condition>
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+            </ui:RetryScope>
+            <ui:LogMessage DisplayName="Log Message - Clearing the list" sap:VirtualizedContainerService.HintSize="586,141" sap2010:WorkflowViewState.IdRef="LogMessage_15" Level="Info" Message="[&quot;Booked flights extracted. Clearing the list...&quot;]" />
+            <Assign sap2010:Annotation.AnnotationText="In case there are more than 1 record with the same Search GUID, use LinQ to clear, as it is most probably due to a previous issue with the process and is not relevant for current run." DisplayName="Assign - remove the repeated Search GUID records" sap:VirtualizedContainerService.HintSize="586,139" sap2010:WorkflowViewState.IdRef="Assign_7">
+              <Assign.To>
+                <OutArgument x:TypeArguments="scg:IList(b:BAHSOSRBookedFlights)">[lstBookedFlights]</OutArgument>
+              </Assign.To>
+              <Assign.Value>
+                <InArgument x:TypeArguments="scg:List(b:BAHSOSRBookedFlights)">[lstBookedFlights.GroupBy(Function(item) item.SearchGUID).Select(Function(group) group.First()).ToList()]</InArgument>
+              </Assign.Value>
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+            </Assign>
+            <ui:LogMessage DisplayName="Log Message -number of booked flights retrieved" sap:VirtualizedContainerService.HintSize="586,141" sap2010:WorkflowViewState.IdRef="LogMessage_13" Level="Info" Message="[&quot;Booked flights cleared: &quot; + lstBookedFlights.Count.ToString + &quot;. For each booked flight, querying Booking entity...&quot;]" />
+            <ui:ForEach x:TypeArguments="b:BAHSOSRBookedFlights" CurrentIndex="{x:Null}" sap2010:Annotation.AnnotationText="For each booked flight, check if there is a Booking. " DisplayName="For Each booked flight found" sap:VirtualizedContainerService.HintSize="586,1593" sap2010:WorkflowViewState.IdRef="ForEach`1_2" Values="[lstBookedFlights]">
+              <ui:ForEach.Body>
+                <ActivityAction x:TypeArguments="b:BAHSOSRBookedFlights">
+                  <ActivityAction.Argument>
+                    <DelegateInArgument x:TypeArguments="b:BAHSOSRBookedFlights" Name="currentBookedFlight" />
+                  </ActivityAction.Argument>
+                  <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="552,1376" sap2010:WorkflowViewState.IdRef="Sequence_5">
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                    <uda:QueryEntityRecords x:TypeArguments="b:BAHSOSRBookings" TotalRecords="{x:Null}" sap2010:Annotation.AnnotationText="Query based on:&#xA;- Search GUID" ContinueOnError="False" DisplayName="Query Booking Entity Records by Search ID and Status" EntityId="1d715d9d-7af2-ee11-aaf2-000d3ab844da" ExpansionDepth="2" sap:VirtualizedContainerService.HintSize="510,182" sap2010:WorkflowViewState.IdRef="QueryEntityRecords`1_4" OutputRecords="[lstBookings]" QueriedEntityId="1d715d9d-7af2-ee11-aaf2-000d3ab844da" Skip="0" SortAscending="True" SortByField="Id" TimeoutInMs="30000" Top="100">
+                      <uda:QueryEntityRecords.FilterArguments>
+                        <uda:FilterArgument FilterActivityType="{x:Null}">
+                          <uda:FilterArgument.Filter>
+                            <uda:GroupFilter Index="0" Operator="OR">
+                              <uda:GroupFilter.Filters>
+                                <scg:List x:TypeArguments="uda:SimpleFilter" Capacity="4">
+                                  <uda:SimpleFilter ExpressionValue="{x:Null}" FieldName="SearchGUID" FieldType="UiPath.DataService.Core.Models.EntityField" Operator="=" ValueIndex="0" />
+                                </scg:List>
+                              </uda:GroupFilter.Filters>
+                              <uda:GroupFilter.Groups>
+                                <scg:List x:TypeArguments="uda:GroupFilter" Capacity="0" />
+                              </uda:GroupFilter.Groups>
+                            </uda:GroupFilter>
+                          </uda:FilterArgument.Filter>
+                        </uda:FilterArgument>
+                      </uda:QueryEntityRecords.FilterArguments>
+                      <uda:QueryEntityRecords.FilterValues>
+                        <scg:List x:TypeArguments="InArgument" Capacity="4">
+                          <InArgument x:TypeArguments="x:String">[currentBookedFlight.SearchGUID]</InArgument>
+                        </scg:List>
+                      </uda:QueryEntityRecords.FilterValues>
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                          <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                    </uda:QueryEntityRecords>
+                    <Assign DisplayName="Assign - filter lstBookings" sap:VirtualizedContainerService.HintSize="510,83" sap2010:WorkflowViewState.IdRef="Assign_5">
+                      <Assign.To>
+                        <OutArgument x:TypeArguments="scg:IList(b:BAHSOSRBookings)">[lstBookings]</OutArgument>
+                      </Assign.To>
+                      <Assign.Value>
+                        <InArgument x:TypeArguments="scg:List(b:BAHSOSRBookings)" xml:space="preserve">[lstBookings.Where(Function(item) item.Status = strBookingStatuses.Split("|")(0) Or
+item.Status =strBookingStatuses.Split("|")(1) Or 
+item.Status =strBookingStatuses.Split("|")(2) Or
+item.Status =strBookingStatuses.Split("|")(3)).ToList]</InArgument>
+                      </Assign.Value>
+                    </Assign>
+                    <If Condition="[lstBookings.Count &gt; 0]" DisplayName="If  there are bookings, add current booked flight's number of seats to previously booked seats" sap:VirtualizedContainerService.HintSize="510,943" sap2010:WorkflowViewState.IdRef="If_5">
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                      <If.Then>
+                        <Sequence sap:VirtualizedContainerService.HintSize="476,532" sap2010:WorkflowViewState.IdRef="Sequence_20">
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                          <ui:LogMessage DisplayName="Log Message - Bookings available" sap:VirtualizedContainerService.HintSize="434,141" sap2010:WorkflowViewState.IdRef="LogMessage_10" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;Booking entity contains records for Search GUID &quot; + currentBookedFlight.SearchGUID.ToString + &quot;. Calculating previously booked seats...&quot;]">
+                            <sap:WorkflowViewStateService.ViewState>
+                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                              </scg:Dictionary>
+                            </sap:WorkflowViewStateService.ViewState>
+                          </ui:LogMessage>
+                          <Assign DisplayName="Assign - previouslyBookedSeats" sap:VirtualizedContainerService.HintSize="434,82" sap2010:WorkflowViewState.IdRef="Assign_6">
+                            <Assign.To>
+                              <OutArgument x:TypeArguments="x:Int32">[intPreviouslyBookedSeats]</OutArgument>
+                            </Assign.To>
+                            <Assign.Value>
+                              <InArgument x:TypeArguments="x:Int32">[intPreviouslyBookedSeats +CInt(currentBookedFlight.NumberOfSeats)]</InArgument>
+                            </Assign.Value>
+                          </Assign>
+                          <ui:LogMessage DisplayName="Log Message - Previously booked seats" sap:VirtualizedContainerService.HintSize="434,141" sap2010:WorkflowViewState.IdRef="LogMessage_11" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;Previously booked seats: &quot; + intPreviouslyBookedSeats.ToString]" />
+                        </Sequence>
+                      </If.Then>
+                      <If.Else>
+                        <Sequence sap:VirtualizedContainerService.HintSize="376,229" sap2010:WorkflowViewState.IdRef="Sequence_21">
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                          <ui:LogMessage DisplayName="Log Message - No bookings" sap:VirtualizedContainerService.HintSize="334,141" sap2010:WorkflowViewState.IdRef="LogMessage_12" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;Bookings entity does not contain bookings that correspond to Search ID: &quot; + currentBookedFlight.SearchGUID.ToString + &quot; and relevant statuses.&quot;]">
+                            <sap:WorkflowViewStateService.ViewState>
+                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                              </scg:Dictionary>
+                            </sap:WorkflowViewStateService.ViewState>
+                          </ui:LogMessage>
+                        </Sequence>
+                      </If.Else>
+                    </If>
+                  </Sequence>
+                </ActivityAction>
+              </ui:ForEach.Body>
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                  <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+            </ui:ForEach>
+            <ui:MultipleAssign DisplayName="Multiple Assign - Seats available " sap:VirtualizedContainerService.HintSize="586,178" sap2010:WorkflowViewState.IdRef="MultipleAssign_4">
+              <ui:MultipleAssign.AssignOperations>
+                <scg:List x:TypeArguments="ui:AssignOperation" Capacity="4">
+                  <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_8">
+                    <ui:AssignOperation.To>
+                      <OutArgument x:TypeArguments="x:Int32">[intAllocationTotal]</OutArgument>
+                    </ui:AssignOperation.To>
+                    <ui:AssignOperation.Value>
+                      <InArgument x:TypeArguments="x:Int32">[CInt(currentFlight.Item("AllocationTotal"))]</InArgument>
+                    </ui:AssignOperation.Value>
+                  </ui:AssignOperation>
+                  <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_9">
+                    <ui:AssignOperation.To>
+                      <OutArgument x:TypeArguments="x:Int32">[intNumberOfSeats]</OutArgument>
+                    </ui:AssignOperation.To>
+                    <ui:AssignOperation.Value>
+                      <InArgument x:TypeArguments="x:Int32">[CInt(currentFlight.Item("NumberOfSeats"))]</InArgument>
+                    </ui:AssignOperation.Value>
+                  </ui:AssignOperation>
+                  <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_10">
+                    <ui:AssignOperation.To>
+                      <OutArgument x:TypeArguments="x:Int32">[intSeatsAvailable]</OutArgument>
+                    </ui:AssignOperation.To>
+                    <ui:AssignOperation.Value>
+                      <InArgument x:TypeArguments="x:Int32">[intAllocationTotal - (intNumberOfSeats + intPreviouslyBookedSeats)]</InArgument>
+                    </ui:AssignOperation.Value>
+                  </ui:AssignOperation>
+                </scg:List>
+              </ui:MultipleAssign.AssignOperations>
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+            </ui:MultipleAssign>
+            <If Condition="[intSeatsAvailable &gt;= 0]" DisplayName="If there are seats available - continue, otherwise throw SE" sap:VirtualizedContainerService.HintSize="586,52" sap2010:WorkflowViewState.IdRef="If_3">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <If.Then>
+                <Sequence sap:VirtualizedContainerService.HintSize="376,229" sap2010:WorkflowViewState.IdRef="Sequence_9">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <ui:LogMessage DisplayName="Log Message - Seats available" sap:VirtualizedContainerService.HintSize="334,141" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;There are &quot; + intSeatsAvailable.ToString + &quot; seats available.&quot;]" />
+                </Sequence>
+              </If.Then>
+              <If.Else>
+                <Sequence sap:VirtualizedContainerService.HintSize="476,416" sap2010:WorkflowViewState.IdRef="Sequence_10">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <ui:LogMessage DisplayName="Log Message - No seats available" sap:VirtualizedContainerService.HintSize="434,141" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Error" Message="[&quot;There are no seats available.&quot;]" />
+                  <Assign DisplayName="Assign BE - no seats " sap:VirtualizedContainerService.HintSize="434,82" sap2010:WorkflowViewState.IdRef="Assign_2">
+                    <Assign.To>
+                      <OutArgument x:TypeArguments="x:String">[out_BusinessException]</OutArgument>
+                    </Assign.To>
+                    <Assign.Value>
+                      <InArgument x:TypeArguments="x:String">["BE02 - Business Exception encountered: There are no seats available."]</InArgument>
+                    </Assign.Value>
+                  </Assign>
+                  <ui:Break DisplayName="Break the process as there are no seats available" sap:VirtualizedContainerService.HintSize="434,25" sap2010:WorkflowViewState.IdRef="Break_1" />
+                </Sequence>
+              </If.Else>
+            </If>
+            <Assign DisplayName="Assign - Reset Previously booked seats counter" sap:VirtualizedContainerService.HintSize="586,82" sap2010:WorkflowViewState.IdRef="Assign_9">
+              <Assign.To>
+                <OutArgument x:TypeArguments="x:Int32">[intPreviouslyBookedSeats]</OutArgument>
+              </Assign.To>
+              <Assign.Value>
+                <InArgument x:TypeArguments="x:Int32">0</InArgument>
+              </Assign.Value>
+            </Assign>
+          </Sequence>
+        </ActivityAction>
+      </ui:ForEachRow.Body>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:ForEachRow>
+    <ui:LogMessage DisplayName="Log Message - Done Seat Allocation" sap:VirtualizedContainerService.HintSize="662,141" sap2010:WorkflowViewState.IdRef="LogMessage_9" Level="[UiPath.Core.Activities.LogLevel.Trace]" Message="[&quot;Seat allocation done.&quot;]" />
+  </Sequence>
+</Activity>

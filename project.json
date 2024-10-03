@@ -1,0 +1,121 @@
+{
+  "name": "BAH_SOSR_DummyBooking",
+  "projectId": "1763bff9-2568-482a-8c5b-b4e39f00da49",
+  "description": "Robotic Enterprise Framework",
+  "main": "Main.xaml",
+  "dependencies": {
+    "UiPath.DataService.Activities": "[23.10.0]",
+    "UiPath.Excel.Activities": "[2.22.3]",
+    "UiPath.MicrosoftOffice365.Activities": "[2.6.21]",
+    "UiPath.System.Activities": "[24.3.1]",
+    "UiPath.Testing.Activities": "[23.10.1]",
+    "UiPath.UIAutomation.Activities": "[23.10.11]",
+    "UiPath.Word.Activities": "[1.20.1]"
+  },
+  "webServices": [],
+  "entitiesStores": [
+    {
+      "serviceDocument": ".entities/EntitiesStore.json",
+      "tenantName": "IAG_Production",
+      "namespace": "BAH_SOSR_DummyBooking",
+      "uniqueReference": "KKNF2SQf/pcJw6cCni1cYUDBYaOBhYqgzWPMqTDPmiQ="
+    }
+  ],
+  "schemaVersion": "4.0",
+  "studioVersion": "23.10.2.0",
+  "projectVersion": "1.0.54",
+  "runtimeOptions": {
+    "autoDispose": false,
+    "netFrameworkLazyLoading": false,
+    "isPausable": true,
+    "isAttended": false,
+    "requiresUserInteraction": true,
+    "supportsPersistence": false,
+    "workflowSerialization": "DataContract",
+    "excludedLoggedData": [
+      "Private:*",
+      "*password*"
+    ],
+    "executionType": "Workflow",
+    "readyForPiP": false,
+    "startsInPiP": false,
+    "mustRestoreAllDependencies": true,
+    "pipType": "ChildSession"
+  },
+  "designOptions": {
+    "projectProfile": "Developement",
+    "outputType": "Process",
+    "libraryOptions": {
+      "includeOriginalXaml": false,
+      "privateWorkflows": []
+    },
+    "processOptions": {
+      "ignoredFiles": []
+    },
+    "fileInfoCollection": [
+      {
+        "editingStatus": "InProgress",
+        "testCaseId": "587b92d7-1bfc-4861-abff-b28c6e56c6b4",
+        "testCaseType": "TestCase",
+        "executionTemplateInvokeIsolated": false,
+        "fileName": "Tests\\TC_Business_Workflows\\TC_Add_Information_in_Bookings.xaml"
+      },
+      {
+        "editingStatus": "InProgress",
+        "testCaseId": "9c3bccc8-9658-4f18-bfd4-f03ea78a183e",
+        "testCaseType": "TestCase",
+        "executionTemplateInvokeIsolated": false,
+        "fileName": "Tests\\TC_Business_Workflows\\TC_Package_Price.xaml"
+      },
+      {
+        "editingStatus": "InProgress",
+        "testCaseId": "797ff8f5-ed74-4bb4-aae8-64014604ec9a",
+        "testCaseType": "TestCase",
+        "executionTemplateInvokeIsolated": false,
+        "fileName": "Tests\\TC_Business_Workflows\\TC_Fill_Trip_Details.xaml"
+      },
+      {
+        "editingStatus": "InProgress",
+        "testCaseId": "dac795a0-afc7-475c-b1fb-74b9279f8820",
+        "testCaseType": "TestCase",
+        "executionTemplateInvokeIsolated": false,
+        "fileName": "Tests\\TC_Business_Workflows\\TC_Init_Generate_Datatables.xaml"
+      },
+      {
+        "editingStatus": "InProgress",
+        "testCaseId": "d03b884d-3607-45fa-99e5-ae144693348b",
+        "testCaseType": "TestCase",
+        "executionTemplateInvokeIsolated": false,
+        "fileName": "Tests\\TC_Business_Workflows\\TC_OpenBOD.xaml"
+      },
+      {
+        "editingStatus": "InProgress",
+        "testCaseId": "6f1f162d-8883-4720-af0b-2278ec95f397",
+        "testCaseType": "TestCase",
+        "executionTemplateInvokeIsolated": false,
+        "fileName": "Tests\\TC_Business_Workflows\\TC_Query_BookingData_Entity.xaml"
+      },
+      {
+        "editingStatus": "InProgress",
+        "testCaseId": "29b9bead-ee4a-4e02-8275-fc5664a44ac7",
+        "testCaseType": "TestCase",
+        "executionTemplateInvokeIsolated": false,
+        "fileName": "Tests\\TC_Business_Workflows\\TC_Process_Passengers.xaml"
+      }
+    ],
+    "saveToCloud": false
+  },
+  "expressionLanguage": "VisualBasic",
+  "entryPoints": [
+    {
+      "filePath": "Main.xaml",
+      "uniqueId": "b757f1e3-19b1-4272-ad6a-76d6bdeeca80",
+      "input": [],
+      "output": []
+    }
+  ],
+  "isTemplate": false,
+  "templateProjectData": {},
+  "publishData": {},
+  "targetFramework": "Windows"
+}

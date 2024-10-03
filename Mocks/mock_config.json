@@ -1,0 +1,40 @@
+{
+  "mockedWorkflows": [
+    {
+      "mockFilePath": "Mocks\\Framework\\InitAllSettings_mock.xaml",
+      "sourceWorkflowPath": "Framework\\InitAllSettings.xaml"
+    },
+    {
+      "mockFilePath": "Mocks\\Framework\\InitAllApplications_mock.xaml",
+      "sourceWorkflowPath": "Framework\\InitAllApplications.xaml"
+    },
+    {
+      "mockFilePath": "Mocks\\Business_Workflows\\BOD_Processing\\BOD_Login_mock.xaml",
+      "sourceWorkflowPath": "Business_Workflows\\BOD_Processing\\BOD_Login.xaml"
+    },
+    {
+      "mockFilePath": "Mocks\\Business_Workflows\\Cloud_Processing\\DataService_Add_Information_in_Booking_and_BookedFlights_mock.xaml",
+      "sourceWorkflowPath": "Business_Workflows\\Cloud_Processing\\DataService_Add_Information_in_Booking_and_BookedFlights.xaml"
+    },
+    {
+      "mockFilePath": "Mocks\\Business_Workflows\\Calculate_Trip_Dates_And_Passengers_mock.xaml",
+      "sourceWorkflowPath": "Business_Workflows\\Calculate_Trip_Dates_And_Passengers.xaml"
+    },
+    {
+      "mockFilePath": "Mocks\\Business_Workflows\\Init_Processing\\Init_Generate_Datatables_mock.xaml",
+      "sourceWorkflowPath": "Business_Workflows\\Init_Processing\\Init_Generate_Datatables.xaml"
+    },
+    {
+      "mockFilePath": "Mocks\\Business_Workflows\\Cloud_Processing\\DataService_Query_and_Update_Entities_mock.xaml",
+      "sourceWorkflowPath": "Business_Workflows\\Cloud_Processing\\DataService_Query_and_Update_Entities.xaml"
+    },
+    {
+      "mockFilePath": "Mocks\\Business_Workflows\\BOD_Processing\\BOD_Process_Passengers_mock.xaml",
+      "sourceWorkflowPath": "Business_Workflows\\BOD_Processing\\BOD_Process_Passengers.xaml"
+    },
+    {
+      "mockFilePath": "Mocks\\Business_Workflows\\BOD_Processing\\BOD_Fill_Trip_Details_mock.xaml",
+      "sourceWorkflowPath": "Business_Workflows\\BOD_Processing\\BOD_Fill_Trip_Details.xaml"
+    }
+  ]
+}
