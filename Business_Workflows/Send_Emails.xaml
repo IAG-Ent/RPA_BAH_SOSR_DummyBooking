@@ -8,7 +8,7 @@
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>933,4163</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>933,4107</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>Send_Emails_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -140,7 +140,7 @@
       <AssemblyReference>System.Linq.Expressions</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="In this workflow, process will determine which red path has been encountered and send the respective email." DisplayName="Send_Emails" sap:VirtualizedContainerService.HintSize="688,4098" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="In this workflow, process will determine which red path has been encountered and send the respective email." DisplayName="Send_Emails" sap:VirtualizedContainerService.HintSize="688,4042" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="strAppID" />
       <Variable x:TypeArguments="ss:SecureString" Name="strAppSecret" />
@@ -162,7 +162,7 @@
       </ui:InvokeWorkflowFile.Arguments>
     </ui:InvokeWorkflowFile>
     <ui:GetRobotCredential TimeoutMS="{x:Null}" AssetName="BAH_SOSR_AppID_AppSecret" CacheStrategy="None" DisplayName="Get Credential App ID and Secret" FolderPath="UatRPA/BAW/BA Holidays/BA Holidays" sap:VirtualizedContainerService.HintSize="626,175" sap2010:WorkflowViewState.IdRef="GetRobotCredential_1" Password="[strAppSecret]" Username="[strAppID]" />
-    <ui:IfElseIfV2 Condition="[in_boolHotelFound = False]" DisplayName="Check which red path is encountered" sap:VirtualizedContainerService.HintSize="626,3120" sap2010:WorkflowViewState.IdRef="IfElseIfV2_2">
+    <ui:IfElseIfV2 Condition="[in_boolHotelFound = False]" DisplayName="Check which red path is encountered" sap:VirtualizedContainerService.HintSize="626,3064" sap2010:WorkflowViewState.IdRef="IfElseIfV2_2">
       <ui:IfElseIfV2.Else>
         <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="592,1441" sap2010:WorkflowViewState.IdRef="Sequence_37">
           <sap:WorkflowViewStateService.ViewState>
@@ -411,7 +411,7 @@
         </sc:BindingList>
       </ui:IfElseIfV2.ElseIfs>
       <ui:IfElseIfV2.Then>
-        <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="416,81" sap2010:WorkflowViewState.IdRef="Sequence_31">
+        <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="416,25" sap2010:WorkflowViewState.IdRef="Sequence_31">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">False</x:Boolean>

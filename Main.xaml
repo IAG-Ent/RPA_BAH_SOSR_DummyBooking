@@ -22,7 +22,7 @@
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1012,899</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1239,899</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>Main2_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -266,9 +266,9 @@
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
           <Transition.To>
-            <State x:Name="__ReferenceID3" sap2010:Annotation.AnnotationText="Process a single transaction. &#xA;The result of the processing can be: 1) Success, 2) Business Exception, 3) System Exception. &#xA;In the case of a system exception, the transaction can be automatically retried." DisplayName="Process Transaction" sap:VirtualizedContainerService.HintSize="586,1235" sap2010:WorkflowViewState.IdRef="State_3">
+            <State x:Name="__ReferenceID3" sap2010:Annotation.AnnotationText="Process a single transaction. &#xA;The result of the processing can be: 1) Success, 2) Business Exception, 3) System Exception. &#xA;In the case of a system exception, the transaction can be automatically retried." DisplayName="Process Transaction" sap:VirtualizedContainerService.HintSize="600,1624" sap2010:WorkflowViewState.IdRef="State_3">
               <State.Entry>
-                <TryCatch DisplayName="Try to process transaction" sap:VirtualizedContainerService.HintSize="540,763" sap2010:WorkflowViewState.IdRef="TryCatch_9">
+                <TryCatch DisplayName="Try to process transaction" sap:VirtualizedContainerService.HintSize="554,1112" sap2010:WorkflowViewState.IdRef="TryCatch_9">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -293,54 +293,22 @@
                       </Assign>
                       <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke workflow - Process" sap:VirtualizedContainerService.HintSize="454,145" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_33" UnSafe="False" WorkflowFileName="Framework\Process.xaml">
                         <ui:InvokeWorkflowFile.Arguments>
-                          <InArgument x:TypeArguments="s:Exception" x:Key="in_SystemException">
-                            <VisualBasicValue x:TypeArguments="s:Exception" ExpressionText="SystemException" />
-                          </InArgument>
-                          <InOutArgument x:TypeArguments="x:String" x:Key="io_BusinessException">
-                            <VisualBasicReference x:TypeArguments="x:String" ExpressionText="BusinessException" />
-                          </InOutArgument>
-                          <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_dictConfig">
-                            <VisualBasicValue x:TypeArguments="scg:Dictionary(x:String, x:Object)" ExpressionText="dictConfig" />
-                          </InArgument>
-                          <InArgument x:TypeArguments="sd:DataRow" x:Key="in_drTransactionItem">
-                            <VisualBasicValue x:TypeArguments="sd:DataRow" ExpressionText="drTransactionItem" />
-                          </InArgument>
-                          <InArgument x:TypeArguments="ui:UiElement" x:Key="in_uiBODBrowser">
-                            <VisualBasicValue x:TypeArguments="ui:UiElement" ExpressionText="uiBODBrowser" />
-                          </InArgument>
-                          <InArgument x:TypeArguments="scg:List(x:String)" x:Key="in_lstPassengers">
-                            <VisualBasicValue x:TypeArguments="scg:List(x:String)" ExpressionText="lstPassengers" />
-                          </InArgument>
-                          <InOutArgument x:TypeArguments="sd:DataTable" x:Key="io_dtOutputDataTable">
-                            <VisualBasicReference x:TypeArguments="sd:DataTable" ExpressionText="dtOutputDataTable" />
-                          </InOutArgument>
-                          <InArgument x:TypeArguments="x:String" x:Key="in_strSearchGUID">
-                            <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_strSearchGUID" />
-                          </InArgument>
-                          <InArgument x:TypeArguments="sd:DataTable" x:Key="in_dtFlightsDataTable">
-                            <VisualBasicValue x:TypeArguments="sd:DataTable" ExpressionText="dtFlightsDataTable" />
-                          </InArgument>
-                          <OutArgument x:TypeArguments="x:String" x:Key="out_strBookingDataID">
-                            <VisualBasicReference x:TypeArguments="x:String" ExpressionText="strBookingDataID" />
-                          </OutArgument>
-                          <InOutArgument x:TypeArguments="x:String" x:Key="io_strBookingID">
-                            <VisualBasicReference x:TypeArguments="x:String" ExpressionText="strBookingID" />
-                          </InOutArgument>
-                          <OutArgument x:TypeArguments="x:String" x:Key="out_strStatus">
-                            <VisualBasicReference x:TypeArguments="x:String" ExpressionText="out_strStatus" />
-                          </OutArgument>
-                          <OutArgument x:TypeArguments="x:String" x:Key="out_strErrorMessage">
-                            <VisualBasicReference x:TypeArguments="x:String" ExpressionText="out_strErrorMessage" />
-                          </OutArgument>
-                          <InArgument x:TypeArguments="x:Int32" x:Key="in_intRetryNumber">
-                            <VisualBasicValue x:TypeArguments="x:Int32" ExpressionText="intRetryNumber" />
-                          </InArgument>
-                          <OutArgument x:TypeArguments="x:Boolean" x:Key="out_boolHotelFound">
-                            <VisualBasicReference x:TypeArguments="x:Boolean" ExpressionText="boolHotelFound" />
-                          </OutArgument>
-                          <OutArgument x:TypeArguments="x:Boolean" x:Key="out_boolIsPNRGenerated">
-                            <VisualBasicReference x:TypeArguments="x:Boolean" ExpressionText="boolIsPNRGenerated" />
-                          </OutArgument>
+                          <InArgument x:TypeArguments="s:Exception" x:Key="in_SystemException">[SystemException]</InArgument>
+                          <InOutArgument x:TypeArguments="x:String" x:Key="io_BusinessException">[BusinessException]</InOutArgument>
+                          <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_dictConfig">[dictConfig]</InArgument>
+                          <InArgument x:TypeArguments="sd:DataRow" x:Key="in_drTransactionItem">[drTransactionItem]</InArgument>
+                          <InArgument x:TypeArguments="ui:UiElement" x:Key="in_uiBODBrowser">[uiBODBrowser]</InArgument>
+                          <InArgument x:TypeArguments="scg:List(x:String)" x:Key="in_lstPassengers">[lstPassengers]</InArgument>
+                          <InOutArgument x:TypeArguments="sd:DataTable" x:Key="io_dtOutputDataTable">[dtOutputDataTable]</InOutArgument>
+                          <InArgument x:TypeArguments="x:String" x:Key="in_strSearchGUID">[in_strSearchGUID]</InArgument>
+                          <InArgument x:TypeArguments="sd:DataTable" x:Key="in_dtFlightsDataTable">[dtFlightsDataTable]</InArgument>
+                          <OutArgument x:TypeArguments="x:String" x:Key="out_strBookingDataID">[strBookingDataID]</OutArgument>
+                          <InOutArgument x:TypeArguments="x:String" x:Key="io_strBookingID">[strBookingID]</InOutArgument>
+                          <OutArgument x:TypeArguments="x:String" x:Key="out_strStatus">[out_strStatus]</OutArgument>
+                          <OutArgument x:TypeArguments="x:String" x:Key="out_strErrorMessage">[out_strErrorMessage]</OutArgument>
+                          <InArgument x:TypeArguments="x:Int32" x:Key="in_intRetryNumber">[intRetryNumber]</InArgument>
+                          <OutArgument x:TypeArguments="x:Boolean" x:Key="out_boolHotelFound">[boolHotelFound]</OutArgument>
+                          <OutArgument x:TypeArguments="x:Boolean" x:Key="out_boolIsPNRGenerated">[boolIsPNRGenerated]</OutArgument>
                         </ui:InvokeWorkflowFile.Arguments>
                       </ui:InvokeWorkflowFile>
                       <TryCatch DisplayName="Try Catch Set Transaction Status (Success)" sap:VirtualizedContainerService.HintSize="454,475" sap2010:WorkflowViewState.IdRef="TryCatch_10">
@@ -360,81 +328,31 @@
                             </sap:WorkflowViewStateService.ViewState>
                             <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke workflow - SetTransactionStatus (Success)" sap:VirtualizedContainerService.HintSize="354,136" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_26" UnSafe="False" WorkflowFileName="Framework\SetTransactionStatus.xaml">
                               <ui:InvokeWorkflowFile.Arguments>
-                                <InArgument x:TypeArguments="x:String" x:Key="in_BusinessException">
-                                  <VisualBasicValue x:TypeArguments="x:String" ExpressionText="BusinessException" />
-                                </InArgument>
-                                <InArgument x:TypeArguments="s:Exception" x:Key="in_SystemException">
-                                  <VisualBasicValue x:TypeArguments="s:Exception" ExpressionText="SystemException" />
-                                </InArgument>
-                                <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_dictConfig">
-                                  <VisualBasicValue x:TypeArguments="scg:Dictionary(x:String, x:Object)" ExpressionText="dictConfig" />
-                                </InArgument>
-                                <InArgument x:TypeArguments="sd:DataRow" x:Key="in_drTransactionItem">
-                                  <VisualBasicValue x:TypeArguments="sd:DataRow" ExpressionText="drTransactionItem" />
-                                </InArgument>
-                                <InOutArgument x:TypeArguments="x:Int32" x:Key="io_intRetryNumber">
-                                  <VisualBasicReference x:TypeArguments="x:Int32" ExpressionText="intRetryNumber" />
-                                </InOutArgument>
-                                <InOutArgument x:TypeArguments="x:Int32" x:Key="io_intTransactionNumber">
-                                  <VisualBasicReference x:TypeArguments="x:Int32" ExpressionText="intTransactionNumber" />
-                                </InOutArgument>
-                                <InArgument x:TypeArguments="x:String" x:Key="in_strBookingID">
-                                  <VisualBasicValue x:TypeArguments="x:String" ExpressionText="dtOutputDataTable(0).Item(&quot;BookingID&quot;).ToString()" />
-                                </InArgument>
-                                <InArgument x:TypeArguments="x:String" x:Key="in_strPNR">
-                                  <VisualBasicValue x:TypeArguments="x:String" ExpressionText="dtOutputDataTable.Rows(0).Item(&quot;PNR&quot;).ToString" />
-                                </InArgument>
-                                <InArgument x:TypeArguments="sd:DataTable" x:Key="in_dtOutputDatatable">
-                                  <VisualBasicValue x:TypeArguments="sd:DataTable" ExpressionText="dtOutputDataTable" />
-                                </InArgument>
-                                <InArgument x:TypeArguments="ui:UiElement" x:Key="in_uiBODBrowser">
-                                  <VisualBasicValue x:TypeArguments="ui:UiElement" ExpressionText="uiBODBrowser" />
-                                </InArgument>
-                                <OutArgument x:TypeArguments="x:Int32" x:Key="out_intMaxRetryNumber">
-                                  <VisualBasicReference x:TypeArguments="x:Int32" ExpressionText="in_intMaxRetryNumber" />
-                                </OutArgument>
-                                <OutArgument x:TypeArguments="x:String" x:Key="out_strStatus">
-                                  <VisualBasicReference x:TypeArguments="x:String" ExpressionText="out_strStatus" />
-                                </OutArgument>
-                                <OutArgument x:TypeArguments="x:String" x:Key="out_strDepositTimeoutText">
-                                  <VisualBasicReference x:TypeArguments="x:String" ExpressionText="out_strDepositTimeoutText" />
-                                </OutArgument>
-                                <OutArgument x:TypeArguments="x:String" x:Key="out_strFinalThankYouText">
-                                  <VisualBasicReference x:TypeArguments="x:String" ExpressionText="out_strFinalThankYouText" />
-                                </OutArgument>
-                                <OutArgument x:TypeArguments="x:String" x:Key="out_strTicketReceiptText">
-                                  <VisualBasicReference x:TypeArguments="x:String" ExpressionText="out_strTicketReceiptText" />
-                                </OutArgument>
-                                <OutArgument x:TypeArguments="x:String" x:Key="out_strDepositText">
-                                  <VisualBasicReference x:TypeArguments="x:String" ExpressionText="out_strDepositText" />
-                                </OutArgument>
-                                <OutArgument x:TypeArguments="x:String" x:Key="out_strNextStepsText">
-                                  <VisualBasicReference x:TypeArguments="x:String" ExpressionText="out_strNextStepsText" />
-                                </OutArgument>
-                                <OutArgument x:TypeArguments="x:String" x:Key="out_strConfirmationText">
-                                  <VisualBasicReference x:TypeArguments="x:String" ExpressionText="out_strConfirmationText" />
-                                </OutArgument>
-                                <OutArgument x:TypeArguments="x:String" x:Key="out_strThankYouMessage">
-                                  <VisualBasicReference x:TypeArguments="x:String" ExpressionText="out_strThankYouMessage" />
-                                </OutArgument>
-                                <OutArgument x:TypeArguments="x:String" x:Key="out_strLoginText">
-                                  <VisualBasicReference x:TypeArguments="x:String" ExpressionText="out_strLoginText" />
-                                </OutArgument>
-                                <OutArgument x:TypeArguments="x:String" x:Key="out_strConfirmationEmailText">
-                                  <VisualBasicReference x:TypeArguments="x:String" ExpressionText="out_strConfirmationEmailText" />
-                                </OutArgument>
-                                <OutArgument x:TypeArguments="x:String" x:Key="out_strErrorMessage">
-                                  <VisualBasicReference x:TypeArguments="x:String" ExpressionText="out_strErrorMessage" />
-                                </OutArgument>
-                                <InOutArgument x:TypeArguments="x:Int32" x:Key="io_intConsecutiveSE">
-                                  <VisualBasicReference x:TypeArguments="x:Int32" ExpressionText="intConsecutiveSE" />
-                                </InOutArgument>
-                                <InArgument x:TypeArguments="x:Boolean" x:Key="in_boolHotelFound">
-                                  <VisualBasicValue x:TypeArguments="x:Boolean" ExpressionText="boolHotelFound" />
-                                </InArgument>
-                                <InArgument x:TypeArguments="x:Boolean" x:Key="in_boolIsPNRGenerated">
-                                  <VisualBasicValue x:TypeArguments="x:Boolean" ExpressionText="boolIsPNRGenerated" />
-                                </InArgument>
+                                <InArgument x:TypeArguments="x:String" x:Key="in_BusinessException">[BusinessException]</InArgument>
+                                <InArgument x:TypeArguments="s:Exception" x:Key="in_SystemException">[SystemException]</InArgument>
+                                <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_dictConfig">[dictConfig]</InArgument>
+                                <InArgument x:TypeArguments="sd:DataRow" x:Key="in_drTransactionItem">[drTransactionItem]</InArgument>
+                                <InOutArgument x:TypeArguments="x:Int32" x:Key="io_intRetryNumber">[intRetryNumber]</InOutArgument>
+                                <InOutArgument x:TypeArguments="x:Int32" x:Key="io_intTransactionNumber">[intTransactionNumber]</InOutArgument>
+                                <InArgument x:TypeArguments="x:String" x:Key="in_strBookingID">[dtOutputDataTable(0).Item("BookingID").ToString()]</InArgument>
+                                <InArgument x:TypeArguments="x:String" x:Key="in_strPNR">[dtOutputDataTable.Rows(0).Item("PNR").ToString]</InArgument>
+                                <InArgument x:TypeArguments="sd:DataTable" x:Key="in_dtOutputDatatable">[dtOutputDataTable]</InArgument>
+                                <InArgument x:TypeArguments="ui:UiElement" x:Key="in_uiBODBrowser">[uiBODBrowser]</InArgument>
+                                <OutArgument x:TypeArguments="x:Int32" x:Key="out_intMaxRetryNumber">[in_intMaxRetryNumber]</OutArgument>
+                                <OutArgument x:TypeArguments="x:String" x:Key="out_strStatus">[out_strStatus]</OutArgument>
+                                <OutArgument x:TypeArguments="x:String" x:Key="out_strDepositTimeoutText">[out_strDepositTimeoutText]</OutArgument>
+                                <OutArgument x:TypeArguments="x:String" x:Key="out_strFinalThankYouText">[out_strFinalThankYouText]</OutArgument>
+                                <OutArgument x:TypeArguments="x:String" x:Key="out_strTicketReceiptText">[out_strTicketReceiptText]</OutArgument>
+                                <OutArgument x:TypeArguments="x:String" x:Key="out_strDepositText">[out_strDepositText]</OutArgument>
+                                <OutArgument x:TypeArguments="x:String" x:Key="out_strNextStepsText">[out_strNextStepsText]</OutArgument>
+                                <OutArgument x:TypeArguments="x:String" x:Key="out_strConfirmationText">[out_strConfirmationText]</OutArgument>
+                                <OutArgument x:TypeArguments="x:String" x:Key="out_strThankYouMessage">[out_strThankYouMessage]</OutArgument>
+                                <OutArgument x:TypeArguments="x:String" x:Key="out_strLoginText">[out_strLoginText]</OutArgument>
+                                <OutArgument x:TypeArguments="x:String" x:Key="out_strConfirmationEmailText">[out_strConfirmationEmailText]</OutArgument>
+                                <OutArgument x:TypeArguments="x:String" x:Key="out_strErrorMessage">[out_strErrorMessage]</OutArgument>
+                                <InOutArgument x:TypeArguments="x:Int32" x:Key="io_intConsecutiveSE">[intConsecutiveSE]</InOutArgument>
+                                <InArgument x:TypeArguments="x:Boolean" x:Key="in_boolHotelFound">[boolHotelFound]</InArgument>
+                                <InArgument x:TypeArguments="x:Boolean" x:Key="in_boolIsPNRGenerated">[boolIsPNRGenerated]</InArgument>
                               </ui:InvokeWorkflowFile.Arguments>
                             </ui:InvokeWorkflowFile>
                           </Sequence>
@@ -459,10 +377,10 @@
                     </Sequence>
                   </TryCatch.Try>
                   <TryCatch.Catches>
-                    <Catch x:TypeArguments="ui:BusinessRuleException" sap:VirtualizedContainerService.HintSize="506,579" sap2010:WorkflowViewState.IdRef="Catch`1_9">
+                    <Catch x:TypeArguments="ui:BusinessRuleException" sap:VirtualizedContainerService.HintSize="520,22" sap2010:WorkflowViewState.IdRef="Catch`1_9">
                       <sap:WorkflowViewStateService.ViewState>
                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
                           <x:Boolean x:Key="IsPinned">False</x:Boolean>
                         </scg:Dictionary>
                       </sap:WorkflowViewStateService.ViewState>
@@ -470,7 +388,7 @@
                         <ActivityAction.Argument>
                           <DelegateInArgument x:TypeArguments="ui:BusinessRuleException" Name="Exception" />
                         </ActivityAction.Argument>
-                        <Sequence DisplayName="Handle Business Exception" sap:VirtualizedContainerService.HintSize="500,509" sap2010:WorkflowViewState.IdRef="Sequence_29">
+                        <Sequence DisplayName="Handle Business Exception" sap:VirtualizedContainerService.HintSize="500,484" sap2010:WorkflowViewState.IdRef="Sequence_29">
                           <sap:WorkflowViewStateService.ViewState>
                             <scg:Dictionary x:TypeArguments="x:String, x:Object">
                               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -513,42 +431,18 @@
                             <TryCatch.Try>
                               <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke workflow - SetTransactionStatus (BRE)" sap:VirtualizedContainerService.HintSize="334,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_28" UnSafe="False" WorkflowFileName="Framework\SetTransactionStatus.xaml">
                                 <ui:InvokeWorkflowFile.Arguments>
-                                  <InArgument x:TypeArguments="x:String" x:Key="in_BusinessException">
-                                    <VisualBasicValue x:TypeArguments="x:String" ExpressionText="BusinessException" />
-                                  </InArgument>
-                                  <InArgument x:TypeArguments="s:Exception" x:Key="in_SystemException">
-                                    <VisualBasicValue x:TypeArguments="s:Exception" ExpressionText="Nothing" />
-                                  </InArgument>
-                                  <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_dictConfig">
-                                    <VisualBasicValue x:TypeArguments="scg:Dictionary(x:String, x:Object)" ExpressionText="dictConfig" />
-                                  </InArgument>
-                                  <InArgument x:TypeArguments="sd:DataRow" x:Key="in_drTransactionItem">
-                                    <VisualBasicValue x:TypeArguments="sd:DataRow" ExpressionText="drTransactionItem" />
-                                  </InArgument>
-                                  <InOutArgument x:TypeArguments="x:Int32" x:Key="io_intRetryNumber">
-                                    <VisualBasicReference x:TypeArguments="x:Int32" ExpressionText="intRetryNumber" />
-                                  </InOutArgument>
-                                  <InOutArgument x:TypeArguments="x:Int32" x:Key="io_intTransactionNumber">
-                                    <VisualBasicReference x:TypeArguments="x:Int32" ExpressionText="intTransactionNumber" />
-                                  </InOutArgument>
-                                  <InArgument x:TypeArguments="x:String" x:Key="in_strBookingID">
-                                    <VisualBasicValue x:TypeArguments="x:String" ExpressionText="dtOutputDataTable(0).Item(&quot;BookingID&quot;).ToString()" />
-                                  </InArgument>
-                                  <InArgument x:TypeArguments="x:String" x:Key="in_strPNR">
-                                    <VisualBasicValue x:TypeArguments="x:String" ExpressionText="dtOutputDataTable.Rows(0).Item(&quot;PNR&quot;).ToString" />
-                                  </InArgument>
-                                  <InArgument x:TypeArguments="sd:DataTable" x:Key="in_dtOutputDatatable">
-                                    <VisualBasicValue x:TypeArguments="sd:DataTable" ExpressionText="dtOutputDataTable" />
-                                  </InArgument>
-                                  <InArgument x:TypeArguments="ui:UiElement" x:Key="in_uiBODBrowser">
-                                    <VisualBasicValue x:TypeArguments="ui:UiElement" ExpressionText="uiBODBrowser" />
-                                  </InArgument>
-                                  <OutArgument x:TypeArguments="x:Int32" x:Key="out_intMaxRetryNumber">
-                                    <VisualBasicReference x:TypeArguments="x:Int32" ExpressionText="in_intMaxRetryNumber" />
-                                  </OutArgument>
-                                  <OutArgument x:TypeArguments="x:String" x:Key="out_strStatus">
-                                    <VisualBasicReference x:TypeArguments="x:String" ExpressionText="out_strStatus" />
-                                  </OutArgument>
+                                  <InArgument x:TypeArguments="x:String" x:Key="in_BusinessException">[BusinessException]</InArgument>
+                                  <InArgument x:TypeArguments="s:Exception" x:Key="in_SystemException">[Nothing]</InArgument>
+                                  <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_dictConfig">[dictConfig]</InArgument>
+                                  <InArgument x:TypeArguments="sd:DataRow" x:Key="in_drTransactionItem">[drTransactionItem]</InArgument>
+                                  <InOutArgument x:TypeArguments="x:Int32" x:Key="io_intRetryNumber">[intRetryNumber]</InOutArgument>
+                                  <InOutArgument x:TypeArguments="x:Int32" x:Key="io_intTransactionNumber">[intTransactionNumber]</InOutArgument>
+                                  <InArgument x:TypeArguments="x:String" x:Key="in_strBookingID">[dtOutputDataTable(0).Item("BookingID").ToString()]</InArgument>
+                                  <InArgument x:TypeArguments="x:String" x:Key="in_strPNR">[dtOutputDataTable.Rows(0).Item("PNR").ToString]</InArgument>
+                                  <InArgument x:TypeArguments="sd:DataTable" x:Key="in_dtOutputDatatable">[dtOutputDataTable]</InArgument>
+                                  <InArgument x:TypeArguments="ui:UiElement" x:Key="in_uiBODBrowser">[uiBODBrowser]</InArgument>
+                                  <OutArgument x:TypeArguments="x:Int32" x:Key="out_intMaxRetryNumber">[in_intMaxRetryNumber]</OutArgument>
+                                  <OutArgument x:TypeArguments="x:String" x:Key="out_strStatus">[out_strStatus]</OutArgument>
                                   <OutArgument x:TypeArguments="x:String" x:Key="out_strDepositTimeoutText" />
                                   <OutArgument x:TypeArguments="x:String" x:Key="out_strFinalThankYouText" />
                                   <OutArgument x:TypeArguments="x:String" x:Key="out_strTicketReceiptText" />
@@ -558,18 +452,10 @@
                                   <OutArgument x:TypeArguments="x:String" x:Key="out_strThankYouMessage" />
                                   <OutArgument x:TypeArguments="x:String" x:Key="out_strLoginText" />
                                   <OutArgument x:TypeArguments="x:String" x:Key="out_strConfirmationEmailText" />
-                                  <OutArgument x:TypeArguments="x:String" x:Key="out_strErrorMessage">
-                                    <VisualBasicReference x:TypeArguments="x:String" ExpressionText="out_strErrorMessage" />
-                                  </OutArgument>
-                                  <InOutArgument x:TypeArguments="x:Int32" x:Key="io_intConsecutiveSE">
-                                    <VisualBasicReference x:TypeArguments="x:Int32" ExpressionText="intConsecutiveSE" />
-                                  </InOutArgument>
-                                  <InArgument x:TypeArguments="x:Boolean" x:Key="in_boolHotelFound">
-                                    <VisualBasicValue x:TypeArguments="x:Boolean" ExpressionText="boolHotelFound" />
-                                  </InArgument>
-                                  <InArgument x:TypeArguments="x:Boolean" x:Key="in_boolIsPNRGenerated">
-                                    <VisualBasicValue x:TypeArguments="x:Boolean" ExpressionText="boolIsPNRGenerated" />
-                                  </InArgument>
+                                  <OutArgument x:TypeArguments="x:String" x:Key="out_strErrorMessage">[out_strErrorMessage]</OutArgument>
+                                  <InOutArgument x:TypeArguments="x:Int32" x:Key="io_intConsecutiveSE">[intConsecutiveSE]</InOutArgument>
+                                  <InArgument x:TypeArguments="x:Boolean" x:Key="in_boolHotelFound">[boolHotelFound]</InArgument>
+                                  <InArgument x:TypeArguments="x:Boolean" x:Key="in_boolIsPNRGenerated">[boolIsPNRGenerated]</InArgument>
                                 </ui:InvokeWorkflowFile.Arguments>
                               </ui:InvokeWorkflowFile>
                             </TryCatch.Try>
@@ -593,7 +479,7 @@
                         </Sequence>
                       </ActivityAction>
                     </Catch>
-                    <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="506,22" sap2010:WorkflowViewState.IdRef="Catch`1_10">
+                    <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="520,22" sap2010:WorkflowViewState.IdRef="Catch`1_10">
                       <sap:WorkflowViewStateService.ViewState>
                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
                           <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -622,42 +508,18 @@
                             <TryCatch.Try>
                               <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke workflow - SetTransactionStatus (SE)" sap:VirtualizedContainerService.HintSize="334,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_29" UnSafe="False" WorkflowFileName="Framework\SetTransactionStatus.xaml">
                                 <ui:InvokeWorkflowFile.Arguments>
-                                  <InArgument x:TypeArguments="x:String" x:Key="in_BusinessException">
-                                    <VisualBasicValue x:TypeArguments="x:String" ExpressionText="BusinessException" />
-                                  </InArgument>
-                                  <InArgument x:TypeArguments="s:Exception" x:Key="in_SystemException">
-                                    <VisualBasicValue x:TypeArguments="s:Exception" ExpressionText="SystemException" />
-                                  </InArgument>
-                                  <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_dictConfig">
-                                    <VisualBasicValue x:TypeArguments="scg:Dictionary(x:String, x:Object)" ExpressionText="dictConfig" />
-                                  </InArgument>
-                                  <InArgument x:TypeArguments="sd:DataRow" x:Key="in_drTransactionItem">
-                                    <VisualBasicValue x:TypeArguments="sd:DataRow" ExpressionText="drTransactionItem" />
-                                  </InArgument>
-                                  <InOutArgument x:TypeArguments="x:Int32" x:Key="io_intRetryNumber">
-                                    <VisualBasicReference x:TypeArguments="x:Int32" ExpressionText="intRetryNumber" />
-                                  </InOutArgument>
-                                  <InOutArgument x:TypeArguments="x:Int32" x:Key="io_intTransactionNumber">
-                                    <VisualBasicReference x:TypeArguments="x:Int32" ExpressionText="intTransactionNumber" />
-                                  </InOutArgument>
-                                  <InArgument x:TypeArguments="x:String" x:Key="in_strBookingID">
-                                    <VisualBasicValue x:TypeArguments="x:String" ExpressionText="dtOutputDataTable(0).Item(&quot;BookingID&quot;).ToString()" />
-                                  </InArgument>
-                                  <InArgument x:TypeArguments="x:String" x:Key="in_strPNR">
-                                    <VisualBasicValue x:TypeArguments="x:String" ExpressionText="dtOutputDataTable.Rows(0).Item(&quot;PNR&quot;).ToString" />
-                                  </InArgument>
-                                  <InArgument x:TypeArguments="sd:DataTable" x:Key="in_dtOutputDatatable">
-                                    <VisualBasicValue x:TypeArguments="sd:DataTable" ExpressionText="dtOutputDataTable" />
-                                  </InArgument>
-                                  <InArgument x:TypeArguments="ui:UiElement" x:Key="in_uiBODBrowser">
-                                    <VisualBasicValue x:TypeArguments="ui:UiElement" ExpressionText="uiBODBrowser" />
-                                  </InArgument>
-                                  <OutArgument x:TypeArguments="x:Int32" x:Key="out_intMaxRetryNumber">
-                                    <VisualBasicReference x:TypeArguments="x:Int32" ExpressionText="in_intMaxRetryNumber" />
-                                  </OutArgument>
-                                  <OutArgument x:TypeArguments="x:String" x:Key="out_strStatus">
-                                    <VisualBasicReference x:TypeArguments="x:String" ExpressionText="out_strStatus" />
-                                  </OutArgument>
+                                  <InArgument x:TypeArguments="x:String" x:Key="in_BusinessException">[BusinessException]</InArgument>
+                                  <InArgument x:TypeArguments="s:Exception" x:Key="in_SystemException">[SystemException]</InArgument>
+                                  <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_dictConfig">[dictConfig]</InArgument>
+                                  <InArgument x:TypeArguments="sd:DataRow" x:Key="in_drTransactionItem">[drTransactionItem]</InArgument>
+                                  <InOutArgument x:TypeArguments="x:Int32" x:Key="io_intRetryNumber">[intRetryNumber]</InOutArgument>
+                                  <InOutArgument x:TypeArguments="x:Int32" x:Key="io_intTransactionNumber">[intTransactionNumber]</InOutArgument>
+                                  <InArgument x:TypeArguments="x:String" x:Key="in_strBookingID">[dtOutputDataTable(0).Item("BookingID").ToString()]</InArgument>
+                                  <InArgument x:TypeArguments="x:String" x:Key="in_strPNR">[dtOutputDataTable.Rows(0).Item("PNR").ToString]</InArgument>
+                                  <InArgument x:TypeArguments="sd:DataTable" x:Key="in_dtOutputDatatable">[dtOutputDataTable]</InArgument>
+                                  <InArgument x:TypeArguments="ui:UiElement" x:Key="in_uiBODBrowser">[uiBODBrowser]</InArgument>
+                                  <OutArgument x:TypeArguments="x:Int32" x:Key="out_intMaxRetryNumber">[in_intMaxRetryNumber]</OutArgument>
+                                  <OutArgument x:TypeArguments="x:String" x:Key="out_strStatus">[out_strStatus]</OutArgument>
                                   <OutArgument x:TypeArguments="x:String" x:Key="out_strDepositTimeoutText" />
                                   <OutArgument x:TypeArguments="x:String" x:Key="out_strFinalThankYouText" />
                                   <OutArgument x:TypeArguments="x:String" x:Key="out_strTicketReceiptText" />
@@ -667,18 +529,10 @@
                                   <OutArgument x:TypeArguments="x:String" x:Key="out_strThankYouMessage" />
                                   <OutArgument x:TypeArguments="x:String" x:Key="out_strLoginText" />
                                   <OutArgument x:TypeArguments="x:String" x:Key="out_strConfirmationEmailText" />
-                                  <OutArgument x:TypeArguments="x:String" x:Key="out_strErrorMessage">
-                                    <VisualBasicReference x:TypeArguments="x:String" ExpressionText="out_strErrorMessage" />
-                                  </OutArgument>
-                                  <InOutArgument x:TypeArguments="x:Int32" x:Key="io_intConsecutiveSE">
-                                    <VisualBasicReference x:TypeArguments="x:Int32" ExpressionText="intConsecutiveSE" />
-                                  </InOutArgument>
-                                  <InArgument x:TypeArguments="x:Boolean" x:Key="in_boolHotelFound">
-                                    <VisualBasicValue x:TypeArguments="x:Boolean" ExpressionText="boolHotelFound" />
-                                  </InArgument>
-                                  <InArgument x:TypeArguments="x:Boolean" x:Key="in_boolIsPNRGenerated">
-                                    <VisualBasicValue x:TypeArguments="x:Boolean" ExpressionText="boolIsPNRGenerated" />
-                                  </InArgument>
+                                  <OutArgument x:TypeArguments="x:String" x:Key="out_strErrorMessage">[out_strErrorMessage]</OutArgument>
+                                  <InOutArgument x:TypeArguments="x:Int32" x:Key="io_intConsecutiveSE">[intConsecutiveSE]</InOutArgument>
+                                  <InArgument x:TypeArguments="x:Boolean" x:Key="in_boolHotelFound">[boolHotelFound]</InArgument>
+                                  <InArgument x:TypeArguments="x:Boolean" x:Key="in_boolIsPNRGenerated">[boolIsPNRGenerated]</InArgument>
                                 </ui:InvokeWorkflowFile.Arguments>
                               </ui:InvokeWorkflowFile>
                             </TryCatch.Try>
@@ -719,7 +573,7 @@
                 <Transition DisplayName="System Exception" sap:VirtualizedContainerService.HintSize="450,488" sap2010:WorkflowViewState.IdRef="Transition_4">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                      <av:PointCollection x:Key="ConnectorLocation">303.633333333333,626.666666666667 303.633333333333,656.666666666667 507,656.666666666667 507,63.86666666666666 477,63.86666666666666</av:PointCollection>
+                      <av:PointCollection x:Key="ConnectorLocation">303.633333333333,626.666666666667 303.633333333333,720.04 796.5,720.04 796.5,63.86666666666666 477,63.86666666666666</av:PointCollection>
                       <x:Int32 x:Key="SrcConnectionPointIndex">23</x:Int32>
                       <x:Int32 x:Key="DestConnectionPointIndex">40</x:Int32>
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -1233,7 +1087,7 @@
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                      <av:PointCollection x:Key="ConnectorLocation">361.383333333333,626.666666666667 361.383333333333,649.4666666666667 507,649.4666666666667 507,79.46666666666667 477,79.46666666666667</av:PointCollection>
+                      <av:PointCollection x:Key="ConnectorLocation">361.383333333333,626.666666666667 361.383333333333,694.04 615.5,694.04 615.5,79.46666666666667 477,79.46666666666667</av:PointCollection>
                       <x:Int32 x:Key="SrcConnectionPointIndex">43</x:Int32>
                       <x:Int32 x:Key="DestConnectionPointIndex">52</x:Int32>
                     </scg:Dictionary>
