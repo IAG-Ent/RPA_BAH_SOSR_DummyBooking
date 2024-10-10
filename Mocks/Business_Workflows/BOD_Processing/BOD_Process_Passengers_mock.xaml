@@ -23,7 +23,7 @@
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1239,7746</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1239,8298</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>Process_Passengers_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -155,7 +155,7 @@
       <AssemblyReference>System.Linq.Async.Queryable</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="- Insert each passenger's details + allocate to respective room if needed.&#xA;- Submit details and extraxt PNR.&#xA;- Handle red path for PNR and output bool PNR as false if process was not able to extract it." DisplayName="BOD_Process_Passengers" sap:VirtualizedContainerService.HintSize="891,7561" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="- Insert each passenger's details + allocate to respective room if needed.&#xA;- Submit details and extraxt PNR.&#xA;- Handle red path for PNR and output bool PNR as false if process was not able to extract it." DisplayName="BOD_Process_Passengers" sap:VirtualizedContainerService.HintSize="891,8113" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="strGender" />
       <Variable x:TypeArguments="x:String" Name="strPassengerIndex" />
@@ -169,6 +169,7 @@
       <Variable x:TypeArguments="x:Int32" Name="intStringIndexFF" />
       <Variable x:TypeArguments="x:Int32" Name="intStringIndexFFNum" />
       <Variable x:TypeArguments="x:Boolean" Name="boolPNRExists" />
+      <Variable x:TypeArguments="x:Int32" Name="intFFProgramme" />
     </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -223,26 +224,26 @@ Select item).Count()]</InArgument>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:MultipleAssign>
-    <uix:NApplicationCard AttachMode="ByInstance" DisplayName="Use Browser Edge: British Airways - Passenger details" sap:VirtualizedContainerService.HintSize="829,7002" sap2010:WorkflowViewState.IdRef="NApplicationCard_4" InUiElement="[in_uiBODBrowser]" InteractionMode="DebuggerApi" IsIncognito="False" OpenMode="Never" ScopeGuid="376b592c-e78f-48ea-99b7-29cb14a5a8bb" Version="V2" WindowResize="Maximize">
+    <uix:NApplicationCard AttachMode="ByInstance" DisplayName="Use Browser Edge: British Airways - Passenger details" sap:VirtualizedContainerService.HintSize="829,7554" sap2010:WorkflowViewState.IdRef="NApplicationCard_4" InUiElement="[in_uiBODBrowser]" InteractionMode="DebuggerApi" IsIncognito="False" OpenMode="Never" ScopeGuid="376b592c-e78f-48ea-99b7-29cb14a5a8bb" Version="V2" WindowResize="Maximize">
       <uix:NApplicationCard.Body>
         <ActivityAction x:TypeArguments="x:Object">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="x:Object" Name="WSSessionData" />
           </ActivityAction.Argument>
-          <Sequence DisplayName="Fill passenger details, allocate to rooms when required and extract PNR" sap:VirtualizedContainerService.HintSize="795,6842" sap2010:WorkflowViewState.IdRef="Sequence_5">
+          <Sequence DisplayName="Fill passenger details, allocate to rooms when required and extract PNR" sap:VirtualizedContainerService.HintSize="795,7394" sap2010:WorkflowViewState.IdRef="Sequence_5">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                 <x:Boolean x:Key="IsPinned">False</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <ui:ForEach x:TypeArguments="x:String" CurrentIndex="{x:Null}" DisplayName="For Each passenger in passengers list " sap:VirtualizedContainerService.HintSize="733,4550" sap2010:WorkflowViewState.IdRef="ForEach`1_3" Values="[in_lstPassengers]">
+            <ui:ForEach x:TypeArguments="x:String" CurrentIndex="{x:Null}" DisplayName="For Each passenger in passengers list " sap:VirtualizedContainerService.HintSize="733,5102" sap2010:WorkflowViewState.IdRef="ForEach`1_3" Values="[in_lstPassengers]">
               <ui:ForEach.Body>
                 <ActivityAction x:TypeArguments="x:String">
                   <ActivityAction.Argument>
                     <DelegateInArgument x:TypeArguments="x:String" Name="currentPassenger" />
                   </ActivityAction.Argument>
-                  <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="699,4354" sap2010:WorkflowViewState.IdRef="Sequence_6">
+                  <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="699,4906" sap2010:WorkflowViewState.IdRef="Sequence_6">
                     <sap:WorkflowViewStateService.ViewState>
                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
                         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -472,7 +473,7 @@ Select item).Count()]</InArgument>
                         </scg:Dictionary>
                       </sap:WorkflowViewStateService.ViewState>
                     </ui:IfElseIf>
-                    <Sequence DisplayName="Fill information for each passenger" sap:VirtualizedContainerService.HintSize="637,3105" sap2010:WorkflowViewState.IdRef="Sequence_22">
+                    <Sequence DisplayName="Fill information for each passenger" sap:VirtualizedContainerService.HintSize="637,3657" sap2010:WorkflowViewState.IdRef="Sequence_22">
                       <Sequence.Variables>
                         <Variable x:TypeArguments="x:String" Name="strDay" />
                       </Sequence.Variables>
@@ -482,7 +483,7 @@ Select item).Count()]</InArgument>
                           <x:Boolean x:Key="IsPinned">False</x:Boolean>
                         </scg:Dictionary>
                       </sap:WorkflowViewStateService.ViewState>
-                      <If sap2010:Annotation.AnnotationText="BOD contains fields that are only applicable for the First Passenger, and if the passenger is an Adult. The process will check if:&#xA;- the currentPassenger is the first one, and fil the respective fields + assign it as card holder&#xA;- the currentPassenger is an Adult and check for Frequent Flyer mark" Condition="[strPassengerType = &quot;Adult&quot;]" DisplayName="If currentPassenger is first adult and FF" sap:VirtualizedContainerService.HintSize="575,1765" sap2010:WorkflowViewState.IdRef="If_3">
+                      <If sap2010:Annotation.AnnotationText="BOD contains fields that are only applicable for the First Passenger, and if the passenger is an Adult. The process will check if:&#xA;- the currentPassenger is the first one, and fil the respective fields + assign it as card holder&#xA;- the currentPassenger is an Adult and check for Frequent Flyer mark" Condition="[strPassengerType = &quot;Adult&quot;]" DisplayName="If currentPassenger is first adult and FF" sap:VirtualizedContainerService.HintSize="575,2209" sap2010:WorkflowViewState.IdRef="If_3">
                         <sap:WorkflowViewStateService.ViewState>
                           <scg:Dictionary x:TypeArguments="x:String, x:Object">
                             <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
@@ -491,14 +492,14 @@ Select item).Count()]</InArgument>
                           </scg:Dictionary>
                         </sap:WorkflowViewStateService.ViewState>
                         <If.Then>
-                          <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="541,1498" sap2010:WorkflowViewState.IdRef="Sequence_12">
+                          <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="541,1886" sap2010:WorkflowViewState.IdRef="Sequence_12">
                             <sap:WorkflowViewStateService.ViewState>
                               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                 <x:Boolean x:Key="IsPinned">False</x:Boolean>
                               </scg:Dictionary>
                             </sap:WorkflowViewStateService.ViewState>
-                            <If Condition="[strPassengerIndex = &quot;1&quot;]" DisplayName="check if current adult is the card holder" sap:VirtualizedContainerService.HintSize="479,220" sap2010:WorkflowViewState.IdRef="If_5">
+                            <If Condition="[strPassengerIndex = &quot;1&quot;]" DisplayName="check if current adult is the card holder" sap:VirtualizedContainerService.HintSize="479,332" sap2010:WorkflowViewState.IdRef="If_5">
                               <sap:WorkflowViewStateService.ViewState>
                                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                   <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -506,7 +507,7 @@ Select item).Count()]</InArgument>
                                 </scg:Dictionary>
                               </sap:WorkflowViewStateService.ViewState>
                               <If.Then>
-                                <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="416,25" sap2010:WorkflowViewState.IdRef="Sequence_31">
+                                <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="416,81" sap2010:WorkflowViewState.IdRef="Sequence_31">
                                   <sap:WorkflowViewStateService.ViewState>
                                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                       <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -637,7 +638,7 @@ Select item).Count()]</InArgument>
                                 </Sequence>
                               </If.Then>
                               <If.Else>
-                                <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="416,25" sap2010:WorkflowViewState.IdRef="Sequence_32">
+                                <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="416,81" sap2010:WorkflowViewState.IdRef="Sequence_32">
                                   <sap:WorkflowViewStateService.ViewState>
                                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                       <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -647,7 +648,7 @@ Select item).Count()]</InArgument>
                                 </Sequence>
                               </If.Else>
                             </If>
-                            <ui:MultipleAssign sap2010:Annotation.AnnotationText="If current passenger is the first one, the string contains more information such as Email, Country and Phone, therefore the Frequent Flyer (FF) and the Frequent Flyer Number (FFNum) indexes in the string are changing. &#xA;Check whether current passenger is the first one, and if it is, assign ass follows: &#xA;- if current passenger is first - Frequent Flyer (FF) index = 11 and Frequent Flyer Number (FFNum) index = 13&#xA;- if current passenger is Not first - Frequent Flyerr (FF) index = 8 and Frequent Flyer Number (FFNum) index = 10" DisplayName="Assign string indexes for Frequent Flyer and Frequent Flyer number" sap:VirtualizedContainerService.HintSize="479,311" sap2010:WorkflowViewState.IdRef="MultipleAssign_10">
+                            <ui:MultipleAssign sap2010:Annotation.AnnotationText="If current passenger is the first one, the string contains more information such as Email, Country and Phone, therefore the Frequent Flyer (FF) and the Frequent Flyer Number (FFNum) indexes in the string are changing. &#xA;Check whether current passenger is the first one, and if it is, assign ass follows: &#xA;- if current passenger is first - Frequent Flyer (FF) index = 11 and Frequent Flyer Number (FFNum) index = 13&#xA;- if current passenger is Not first - Frequent Flyerr (FF) index = 8 and Frequent Flyer Number (FFNum) index = 10" DisplayName="Assign string indexes for Frequent Flyer and Frequent Flyer number" sap:VirtualizedContainerService.HintSize="479,342" sap2010:WorkflowViewState.IdRef="MultipleAssign_10">
                               <ui:MultipleAssign.AssignOperations>
                                 <scg:List x:TypeArguments="ui:AssignOperation" Capacity="4">
                                   <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_33">
@@ -666,6 +667,14 @@ Select item).Count()]</InArgument>
                                       <InArgument x:TypeArguments="x:Int32">[If(strPassengerIndex = "1", 13, 10)]</InArgument>
                                     </ui:AssignOperation.Value>
                                   </ui:AssignOperation>
+                                  <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_53">
+                                    <ui:AssignOperation.To>
+                                      <OutArgument x:TypeArguments="x:Int32">[intFFProgramme]</OutArgument>
+                                    </ui:AssignOperation.To>
+                                    <ui:AssignOperation.Value>
+                                      <InArgument x:TypeArguments="x:Int32">[If(strPassengerIndex = "1", 12, 9)]</InArgument>
+                                    </ui:AssignOperation.Value>
+                                  </ui:AssignOperation>
                                 </scg:List>
                               </ui:MultipleAssign.AssignOperations>
                               <sap:WorkflowViewStateService.ViewState>
@@ -676,7 +685,7 @@ Select item).Count()]</InArgument>
                                 </scg:Dictionary>
                               </sap:WorkflowViewStateService.ViewState>
                             </ui:MultipleAssign>
-                            <If Condition="[currentPassenger.Split(&quot;|&quot;c)(intStringIndexFF).ToString = &quot;Yes&quot;]" DisplayName="Check if currentPassenger is frequent flyer" sap:VirtualizedContainerService.HintSize="479,879" sap2010:WorkflowViewState.IdRef="If_4">
+                            <If Condition="[currentPassenger.Split(&quot;|&quot;c)(intStringIndexFF).ToString = &quot;Yes&quot;]" DisplayName="Check if currentPassenger is frequent flyer" sap:VirtualizedContainerService.HintSize="479,1124" sap2010:WorkflowViewState.IdRef="If_4">
                               <sap:WorkflowViewStateService.ViewState>
                                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                   <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -684,7 +693,7 @@ Select item).Count()]</InArgument>
                                 </scg:Dictionary>
                               </sap:WorkflowViewStateService.ViewState>
                               <If.Then>
-                                <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="416,693" sap2010:WorkflowViewState.IdRef="Sequence_14">
+                                <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="416,882" sap2010:WorkflowViewState.IdRef="Sequence_14">
                                   <sap:WorkflowViewStateService.ViewState>
                                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -716,6 +725,41 @@ Select item).Count()]</InArgument>
                                       </scg:Dictionary>
                                     </sap:WorkflowViewStateService.ViewState>
                                   </uix:NClick>
+                                  <uix:NSelectItem DisplayName="Select Item 'Frequent flyer programme'" sap:VirtualizedContainerService.HintSize="354,189" sap2010:WorkflowViewState.IdRef="NSelectItem_11" Item="[currentPassenger.Split(&quot;|&quot;c)(intFFProgramme).ToString]" ScopeIdentifier="376b592c-e78f-48ea-99b7-29cb14a5a8bb" Version="V3">
+                                    <uix:NSelectItem.Items>
+                                      <scg:List x:TypeArguments="x:String" Capacity="20">
+                                        <x:String>British Airways - Executive Club</x:String>
+                                        <x:String>Iberia - Iberia Plus</x:String>
+                                        <x:String>Aer Lingus - AerClub</x:String>
+                                        <x:String>Alaska Airlines - Mileage Plan</x:String>
+                                        <x:String>American Airlines - AAdvantage</x:String>
+                                        <x:String>Cathay Pacific - Cathay</x:String>
+                                        <x:String>China Southern Airlines - Sky Pearl Club</x:String>
+                                        <x:String>Fiji Airways - Tabau Club</x:String>
+                                        <x:String>Finnair - Finnair Plus</x:String>
+                                        <x:String>Japan Airlines - JAL Mileage Bank</x:String>
+                                        <x:String>LATAM Pass</x:String>
+                                        <x:String>Malaysia Airlines - Enrich</x:String>
+                                        <x:String>Air Italy - Meridiana Club</x:String>
+                                        <x:String>Qantas - Qantas Frequent Flyer</x:String>
+                                        <x:String>Qatar Airways - Qatar Privilege Club</x:String>
+                                        <x:String>Royal Air Maroc - SAFAR Flyer</x:String>
+                                        <x:String>Royal Jordanian - Royal Plus</x:String>
+                                        <x:String>S7 Airlines - S7 Priority</x:String>
+                                        <x:String>SriLankan Airlines - Fly Smiles</x:String>
+                                        <x:String>Taca - LifeMiles</x:String>
+                                      </scg:List>
+                                    </uix:NSelectItem.Items>
+                                    <uix:NSelectItem.Target>
+                                      <uix:TargetAnchorable BrowserURL="https://badirect-auth.baplc.com/badp/xrod/checkout/passengerDetails.do?ConversationID=OJ1728561408875" CVScreenId="11a1cc34-46b2-4045-89c3-8544a2c4e6c8" CvTextArea="523, 395, 152, 12" CvTextArgument="British Airways - Executive" CvType="Text" DesignTimeRectangle="519, 393, 175, 17" DesignTimeScaleFactor="1" ElementType="DropDown" FriendlyName="'British Airways'" FullSelectorArgument="[&quot;&lt;webctrl aaname='Frequent flyer programme' name='frequentFlyerProg_&quot; + strPassengerType.ToLower() + &quot;_&quot; + strPassengerIndex + &quot;' parentid='FFProgramme_&quot; + strPassengerType.ToLower() + &quot;_&quot; + strPassengerIndex + &quot;' /&gt;&quot;]" FuzzySelectorArgument="&lt;webctrl aaname='Frequent flyer programme' name='frequentFlyerProg_adult_3' parentid='FFProgramme_adult_3' tag='SELECT' type='' class='details_medInput valid' /&gt;" Guid="76c21d3a-e95f-427a-9dc9-636f59d1dbdf" ImageBase64="" InformativeScreenshot="6523a876832a21424467107b20e8e0e2.png" ScopeSelectorArgument="&lt;html app='msedge.exe' title='British Airways - Passenger details' /&gt;" SearchSteps="Selector, FuzzySelector" Version="V2" Visibility="Interactive">
+                                        <uix:TargetAnchorable.Anchors>
+                                          <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                                            <uix:Target CVScreenId="11a1cc34-46b2-4045-89c3-8544a2c4e6c8" CvTextArea="314, 394, 167, 13" CvTextArgument="Frequent flyer programme" CvType="Text" DesignTimeRectangle="315, 393, 176, 13" ElementType="Text" FriendlyName="'Frequent flyer programme'" FullSelectorArgument="&lt;webctrl parentid='FFProgramme_adult_3' tag='SPAN' /&gt;" FuzzySelectorArgument="&lt;webctrl parentid='FFProgramme_adult_3' tag='SPAN' type='' class='' aaname='Frequent flyer programme' check:innerText='Frequent flyer programme' /&gt;" SearchSteps="FuzzySelector, CV" />
+                                          </scg:List>
+                                        </uix:TargetAnchorable.Anchors>
+                                      </uix:TargetAnchorable>
+                                    </uix:NSelectItem.Target>
+                                  </uix:NSelectItem>
                                   <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="Single" ContinueOnError="True" DisplayName="Type Into 'Frequent flyer number'" EmptyFieldMode="SingleLine" sap:VirtualizedContainerService.HintSize="354,241" sap2010:WorkflowViewState.IdRef="NTypeInto_10" ScopeIdentifier="376b592c-e78f-48ea-99b7-29cb14a5a8bb" Text="[currentPassenger.Split(&quot;|&quot;c)(intStringIndexFFNum).ToString]" Timeout="3000" Version="V3">
                                     <uix:NTypeInto.Target>
                                       <uix:TargetAnchorable BrowserURL="https://badirect-auth.baplc.com/badp/xrod/checkout/passengerDetails.do?ConversationID=OJ1713884239385#" CvElementArea="331, 498, 163, 22" CvType="InputBox" DesignTimeRectangle="332, 499, 160, 19" DesignTimeScaleFactor="1" ElementType="InputBox" FriendlyName="'INPUT frequentFlyerNum_…'" FullSelectorArgument="[&quot;&lt;webctrl id='frequentFlyerNum_&quot;+strPassengerType.ToLower+&quot;_&quot;+strPassengerIndex+&quot;' tag='INPUT' /&gt;&quot;]" Guid="509688f4-64fa-4465-be5f-f619f52c53e0" InformativeScreenshot="22a914a43087951eac762134358bb773.png" ScopeSelectorArgument="&lt;html app='msedge.exe' title='British Airways - Passenger details' /&gt;" SearchSteps="Selector, FuzzySelector, CV" Version="V2" Visibility="Interactive" />
@@ -730,7 +774,7 @@ Select item).Count()]</InArgument>
                                 </Sequence>
                               </If.Then>
                               <If.Else>
-                                <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="416,25" sap2010:WorkflowViewState.IdRef="Sequence_15">
+                                <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="416,81" sap2010:WorkflowViewState.IdRef="Sequence_15">
                                   <sap:WorkflowViewStateService.ViewState>
                                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                       <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -754,7 +798,7 @@ Select item).Count()]</InArgument>
                           </Sequence>
                         </If.Then>
                         <If.Else>
-                          <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="416,25" sap2010:WorkflowViewState.IdRef="Sequence_13">
+                          <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="416,81" sap2010:WorkflowViewState.IdRef="Sequence_13">
                             <sap:WorkflowViewStateService.ViewState>
                               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                 <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -764,7 +808,7 @@ Select item).Count()]</InArgument>
                           </Sequence>
                         </If.Else>
                       </If>
-                      <ui:LogMessage DisplayName="Log Message - filing title" sap:VirtualizedContainerService.HintSize="575,57" sap2010:WorkflowViewState.IdRef="LogMessage_16" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;Filling current passenger's title: &quot; + currentPassenger.Split(&quot;|&quot;c)(2).ToString]">
+                      <ui:LogMessage DisplayName="Log Message - filing title" sap:VirtualizedContainerService.HintSize="575,84" sap2010:WorkflowViewState.IdRef="LogMessage_16" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;Filling current passenger's title: &quot; + currentPassenger.Split(&quot;|&quot;c)(2).ToString]">
                         <sap:WorkflowViewStateService.ViewState>
                           <scg:Dictionary x:TypeArguments="x:String, x:Object">
                             <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -772,7 +816,7 @@ Select item).Count()]</InArgument>
                           </scg:Dictionary>
                         </sap:WorkflowViewStateService.ViewState>
                       </ui:LogMessage>
-                      <uix:NSelectItem DisplayName="Select Item 'Title'" sap:VirtualizedContainerService.HintSize="575,57" sap2010:WorkflowViewState.IdRef="NSelectItem_4" Item="[currentPassenger.Split(&quot;|&quot;c)(2).ToString]" ScopeIdentifier="376b592c-e78f-48ea-99b7-29cb14a5a8bb" Version="V3">
+                      <uix:NSelectItem DisplayName="Select Item 'Title'" sap:VirtualizedContainerService.HintSize="575,84" sap2010:WorkflowViewState.IdRef="NSelectItem_4" Item="[currentPassenger.Split(&quot;|&quot;c)(2).ToString]" ScopeIdentifier="376b592c-e78f-48ea-99b7-29cb14a5a8bb" Version="V3">
                         <uix:NSelectItem.Items>
                           <scg:List x:TypeArguments="x:String" Capacity="15">
                             <x:String></x:String>
@@ -802,7 +846,7 @@ Select item).Count()]</InArgument>
                           </scg:Dictionary>
                         </sap:WorkflowViewStateService.ViewState>
                       </uix:NSelectItem>
-                      <ui:LogMessage DisplayName="Log Message - Name" sap:VirtualizedContainerService.HintSize="575,57" sap2010:WorkflowViewState.IdRef="LogMessage_17" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;Filling current passenger's name: &quot; + currentPassenger.Split(&quot;|&quot;c)(3).ToString + &quot; &quot; +currentPassenger.Split(&quot;|&quot;c)(4).ToString]">
+                      <ui:LogMessage DisplayName="Log Message - Name" sap:VirtualizedContainerService.HintSize="575,84" sap2010:WorkflowViewState.IdRef="LogMessage_17" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;Filling current passenger's name: &quot; + currentPassenger.Split(&quot;|&quot;c)(3).ToString + &quot; &quot; +currentPassenger.Split(&quot;|&quot;c)(4).ToString]">
                         <sap:WorkflowViewStateService.ViewState>
                           <scg:Dictionary x:TypeArguments="x:String, x:Object">
                             <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -810,7 +854,7 @@ Select item).Count()]</InArgument>
                           </scg:Dictionary>
                         </sap:WorkflowViewStateService.ViewState>
                       </ui:LogMessage>
-                      <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="Single" DisplayName="Type Into 'First Name'" EmptyFieldMode="SingleLine" sap:VirtualizedContainerService.HintSize="575,57" sap2010:WorkflowViewState.IdRef="NTypeInto_3" ScopeIdentifier="376b592c-e78f-48ea-99b7-29cb14a5a8bb" Text="[currentPassenger.Split(&quot;|&quot;c)(3).ToString]" Version="V3">
+                      <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="Single" DisplayName="Type Into 'First Name'" EmptyFieldMode="SingleLine" sap:VirtualizedContainerService.HintSize="575,84" sap2010:WorkflowViewState.IdRef="NTypeInto_3" ScopeIdentifier="376b592c-e78f-48ea-99b7-29cb14a5a8bb" Text="[currentPassenger.Split(&quot;|&quot;c)(3).ToString]" Version="V3">
                         <uix:NTypeInto.Target>
                           <uix:TargetAnchorable BrowserURL="https://badirect-auth.baplc.com/badp/xrod/checkout/passengerDetails.do?ConversationID=OJ1713884239385#" CvElementArea="330, 189, 187, 24" CvType="InputBox" DesignTimeRectangle="332, 192, 183, 19" DesignTimeScaleFactor="1" ElementType="InputBox" FriendlyName="'INPUT firstName_adult_1'" FullSelectorArgument="[&quot;&lt;webctrl id='firstName_&quot;+strPassengerType.ToLower+&quot;_&quot;+strPassengerIndex+&quot;' tag='INPUT' /&gt;&quot;]" Guid="4ebda5e4-5e07-4966-b861-e2f6efc69e29" InformativeScreenshot="ee9b847041aee5a34759e46ec0907c14.png" ScopeSelectorArgument="&lt;html app='msedge.exe' title='British Airways - Passenger details' /&gt;" SearchSteps="Selector" Version="V2" Visibility="Interactive" WaitForReadyArgument="Complete" />
                         </uix:NTypeInto.Target>
