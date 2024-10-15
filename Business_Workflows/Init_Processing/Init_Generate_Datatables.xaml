@@ -11,7 +11,7 @@
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1239,6884</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1239,4384</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>Init_Generate_Datatable_From_Booking_Details_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -124,7 +124,7 @@
       <AssemblyReference>System.Linq.Expressions</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="Initialization:&#xA;- Input DataTable: Stores transaction item for processing.&#xA;- Output DataTable: Contains data to be transferred to the Booking entity in the Data Service.&#xA;- Flights DataTable: Stores data to be transferred to the Booked Flights entity in the Data Service." DisplayName="Init_Generate_Datatables" sap:VirtualizedContainerService.HintSize="750,6779" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="Initialization:&#xA;- Input DataTable: Stores transaction item for processing.&#xA;- Output DataTable: Contains data to be transferred to the Booking entity in the Data Service.&#xA;- Flights DataTable: Stores data to be transferred to the Booked Flights entity in the Data Service." DisplayName="Init_Generate_Datatables" sap:VirtualizedContainerService.HintSize="734,4279" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="scg:IList(b:BAHSOSRBookingData)" Name="lstBookingDataRecords" />
       <Variable x:TypeArguments="x:String" Name="strHotelID" />
@@ -139,15 +139,7 @@
         <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <Assign sap:VirtualizedContainerService.HintSize="688,114" sap2010:WorkflowViewState.IdRef="Assign_5">
-      <Assign.To>
-        <OutArgument x:TypeArguments="x:String">[in_strSearchGUID]</OutArgument>
-      </Assign.To>
-      <Assign.Value>
-        <InArgument x:TypeArguments="x:String">e529c906-ffe0-4841-a537-6f1b41aaa20b20241014071609</InArgument>
-      </Assign.Value>
-    </Assign>
-    <ui:LogMessage DisplayName="Log Message Data initialization starting" sap:VirtualizedContainerService.HintSize="688,173" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="[UiPath.Core.Activities.LogLevel.Trace]" Message="[&quot;Initiating data initialization process by creating datatables and retrieving records from the Booking Data entity.&quot;]">
+    <ui:LogMessage DisplayName="Log Message Data initialization starting" sap:VirtualizedContainerService.HintSize="672,173" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="[UiPath.Core.Activities.LogLevel.Trace]" Message="[&quot;Initiating data initialization process by creating datatables and retrieving records from the Booking Data entity.&quot;]">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -155,7 +147,7 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:LogMessage>
-    <Parallel DisplayName="Build all datatables in parallel" sap:VirtualizedContainerService.HintSize="688,57" sap2010:WorkflowViewState.IdRef="Parallel_3">
+    <Parallel DisplayName="Build all datatables in parallel" sap:VirtualizedContainerService.HintSize="672,57" sap2010:WorkflowViewState.IdRef="Parallel_3">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -190,7 +182,7 @@
         </sap:WorkflowViewStateService.ViewState>
       </ui:BuildDataTable>
     </Parallel>
-    <ui:LogMessage DisplayName="Log Message - datatables created" sap:VirtualizedContainerService.HintSize="688,173" sap2010:WorkflowViewState.IdRef="LogMessage_13" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;Input datatable, Output datatable and Flights datatable datatable have been created successfully.&quot;]">
+    <ui:LogMessage DisplayName="Log Message - datatables created" sap:VirtualizedContainerService.HintSize="672,173" sap2010:WorkflowViewState.IdRef="LogMessage_13" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;Input datatable, Output datatable and Flights datatable datatable have been created successfully.&quot;]">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -198,7 +190,7 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:LogMessage>
-    <ui:RetryScope DisplayName="Retry querrying Booking Data entity" sap:VirtualizedContainerService.HintSize="688,458" sap2010:WorkflowViewState.IdRef="RetryScope_1">
+    <ui:RetryScope DisplayName="Retry querrying Booking Data entity" sap:VirtualizedContainerService.HintSize="672,57" sap2010:WorkflowViewState.IdRef="RetryScope_1">
       <ui:RetryScope.ActivityBody>
         <ActivityAction>
           <Sequence DisplayName="Querying Booking Data" sap:VirtualizedContainerService.HintSize="416,251" sap2010:WorkflowViewState.IdRef="Sequence_14">
@@ -244,12 +236,12 @@
       </ui:RetryScope.Condition>
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
-          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
           <x:Boolean x:Key="IsPinned">False</x:Boolean>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:RetryScope>
-    <If sap2010:Annotation.AnnotationText="Checking if there is a record retrieved and if it is only 1 as expected." Condition="[lstBookingDataRecords.Count &lt; 2 and lstBookingDataRecords.Count &gt;= 1]" DisplayName="Check if only one record has been retrieved" sap:VirtualizedContainerService.HintSize="688,5193" sap2010:WorkflowViewState.IdRef="If_1">
+    <If sap2010:Annotation.AnnotationText="Checking if there is a record retrieved and if it is only 1 as expected." Condition="[lstBookingDataRecords.Count &lt; 2 and lstBookingDataRecords.Count &gt;= 1]" DisplayName="Check if only one record has been retrieved" sap:VirtualizedContainerService.HintSize="672,3208" sap2010:WorkflowViewState.IdRef="If_1">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -258,13 +250,13 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
       <If.Then>
-        <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="654,4626" sap2010:WorkflowViewState.IdRef="Sequence_2">
+        <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="638,2641" sap2010:WorkflowViewState.IdRef="Sequence_2">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <ui:LogMessage DisplayName="Log Message - 1 record retrieved" sap:VirtualizedContainerService.HintSize="592,173" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;Retrieved 1 record from Booking data. Filling input and output datatables.&quot;]">
+          <ui:LogMessage DisplayName="Log Message - 1 record retrieved" sap:VirtualizedContainerService.HintSize="576,173" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;Retrieved 1 record from Booking data. Filling input and output datatables.&quot;]">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -272,7 +264,7 @@
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
           </ui:LogMessage>
-          <ui:MultipleAssign DisplayName="Multiple Assign - IDs" sap:VirtualizedContainerService.HintSize="592,210" sap2010:WorkflowViewState.IdRef="MultipleAssign_1">
+          <ui:MultipleAssign DisplayName="Multiple Assign - IDs" sap:VirtualizedContainerService.HintSize="576,57" sap2010:WorkflowViewState.IdRef="MultipleAssign_1">
             <ui:MultipleAssign.AssignOperations>
               <scg:List x:TypeArguments="ui:AssignOperation" Capacity="4">
                 <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_1">
@@ -303,12 +295,12 @@
             </ui:MultipleAssign.AssignOperations>
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
                 <x:Boolean x:Key="IsPinned">False</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
           </ui:MultipleAssign>
-          <ui:LogMessage DisplayName="Log Message: Hotel ID, Inbound Flights and Outbound flights" sap:VirtualizedContainerService.HintSize="592,173" sap2010:WorkflowViewState.IdRef="LogMessage_14" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;Retrieved IDs for Hotel + Inbound Flights + Outbound Flights.&quot;]">
+          <ui:LogMessage DisplayName="Log Message: Hotel ID, Inbound Flights and Outbound flights" sap:VirtualizedContainerService.HintSize="576,173" sap2010:WorkflowViewState.IdRef="LogMessage_14" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;Retrieved IDs for Hotel + Inbound Flights + Outbound Flights.&quot;]">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -316,7 +308,7 @@
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
           </ui:LogMessage>
-          <ui:RetryScope DisplayName="Retrying Query Entity Records for Hotels" sap:VirtualizedContainerService.HintSize="592,458" sap2010:WorkflowViewState.IdRef="RetryScope_2">
+          <ui:RetryScope DisplayName="Retrying Query Entity Records for Hotels" sap:VirtualizedContainerService.HintSize="576,57" sap2010:WorkflowViewState.IdRef="RetryScope_2">
             <ui:RetryScope.ActivityBody>
               <ActivityAction>
                 <Sequence DisplayName="Querying Hotels Entity" sap:VirtualizedContainerService.HintSize="416,251" sap2010:WorkflowViewState.IdRef="Sequence_15">
@@ -363,12 +355,12 @@
             </ui:RetryScope.Condition>
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
                 <x:Boolean x:Key="IsPinned">False</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
           </ui:RetryScope>
-          <ui:LogMessage DisplayName="Log Message - Hotels has records or not " sap:VirtualizedContainerService.HintSize="592,173" sap2010:WorkflowViewState.IdRef="LogMessage_15" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[If(lstHotelRecords.Count &gt; 0, &quot;Hotel has been retrieved successfully.&quot;, &quot;Couldn't retrieve a hotel.&quot;)]">
+          <ui:LogMessage DisplayName="Log Message - Hotels has records or not " sap:VirtualizedContainerService.HintSize="576,173" sap2010:WorkflowViewState.IdRef="LogMessage_15" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[If(lstHotelRecords.Count &gt; 0, &quot;Hotel has been retrieved successfully.&quot;, &quot;Couldn't retrieve a hotel.&quot;)]">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -376,7 +368,7 @@
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
           </ui:LogMessage>
-          <Parallel DisplayName="Parallel - populating Input dt, Reports dt and Output dt" sap:VirtualizedContainerService.HintSize="592,84" sap2010:WorkflowViewState.IdRef="Parallel_4">
+          <Parallel DisplayName="Parallel - populating Input dt, Reports dt and Output dt" sap:VirtualizedContainerService.HintSize="576,57" sap2010:WorkflowViewState.IdRef="Parallel_4">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -400,7 +392,7 @@
               </sap:WorkflowViewStateService.ViewState>
             </ui:AddDataRow>
           </Parallel>
-          <ui:LogMessage DisplayName="Log Message: generating input datatable" sap:VirtualizedContainerService.HintSize="592,173" sap2010:WorkflowViewState.IdRef="LogMessage_4" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;Input datatable, Reports datatable and Output datatable have been populated with Data Service BookingData information&quot;]">
+          <ui:LogMessage DisplayName="Log Message: generating input datatable" sap:VirtualizedContainerService.HintSize="576,173" sap2010:WorkflowViewState.IdRef="LogMessage_4" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;Input datatable, Reports datatable and Output datatable have been populated with Data Service BookingData information&quot;]">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -408,7 +400,7 @@
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
           </ui:LogMessage>
-          <ui:LogMessage DisplayName="Log Message - flights datatable with inbound flights" sap:VirtualizedContainerService.HintSize="592,173" sap2010:WorkflowViewState.IdRef="LogMessage_9" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;Populating flights datatable with Inbound flights.&quot;]">
+          <ui:LogMessage DisplayName="Log Message - flights datatable with inbound flights" sap:VirtualizedContainerService.HintSize="576,173" sap2010:WorkflowViewState.IdRef="LogMessage_9" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;Populating flights datatable with Inbound flights.&quot;]">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -416,24 +408,24 @@
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
           </ui:LogMessage>
-          <TryCatch DisplayName="Try to query Flights Entity based on Inbound ID and add to datatable" sap:VirtualizedContainerService.HintSize="592,932" sap2010:WorkflowViewState.IdRef="TryCatch_1">
+          <TryCatch DisplayName="Try to query Flights Entity based on Inbound ID and add to datatable" sap:VirtualizedContainerService.HintSize="576,674" sap2010:WorkflowViewState.IdRef="TryCatch_1">
             <TryCatch.Try>
-              <ui:ForEach x:TypeArguments="x:String" CurrentIndex="{x:Null}" sap2010:Annotation.AnnotationText="For each inbound flight id:&#xA;- query Flights entity based on ID and SearchGUID&#xA;- for each flight retrieved, add its information to the Flights datatable" DisplayName="For Each inbound flight in Booking Data, Query Flights entity and add in Flights DB " sap:VirtualizedContainerService.HintSize="554,672" sap2010:WorkflowViewState.IdRef="ForEach`1_6" Values="[strInboundFlightID.Split(&quot;|&quot;c)]">
+              <ui:ForEach x:TypeArguments="x:String" CurrentIndex="{x:Null}" sap2010:Annotation.AnnotationText="For each inbound flight id:&#xA;- query Flights entity based on ID and SearchGUID&#xA;- for each flight retrieved, add its information to the Flights datatable" DisplayName="For Each inbound flight in Booking Data, Query Flights entity and add in Flights DB " sap:VirtualizedContainerService.HintSize="530,414" sap2010:WorkflowViewState.IdRef="ForEach`1_6" Values="[strInboundFlightID.Split(&quot;|&quot;c)]">
                 <ui:ForEach.Body>
                   <ActivityAction x:TypeArguments="x:String">
                     <ActivityAction.Argument>
                       <DelegateInArgument x:TypeArguments="x:String" Name="currentInboundFlightID" />
                     </ActivityAction.Argument>
-                    <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="520,451" sap2010:WorkflowViewState.IdRef="Sequence_20">
+                    <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="416,193" sap2010:WorkflowViewState.IdRef="Sequence_20">
                       <sap:WorkflowViewStateService.ViewState>
                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
                           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                         </scg:Dictionary>
                       </sap:WorkflowViewStateService.ViewState>
-                      <ui:RetryScope DisplayName="Retrying Querying records from Flights Inbound" sap:VirtualizedContainerService.HintSize="458,288" sap2010:WorkflowViewState.IdRef="RetryScope_5">
+                      <ui:RetryScope DisplayName="Retrying Querying records from Flights Inbound" sap:VirtualizedContainerService.HintSize="354,57" sap2010:WorkflowViewState.IdRef="RetryScope_5">
                         <ui:RetryScope.ActivityBody>
                           <ActivityAction>
-                            <Sequence DisplayName="Action" sap:VirtualizedContainerService.HintSize="416,81" sap2010:WorkflowViewState.IdRef="Sequence_18">
+                            <Sequence DisplayName="Action" sap:VirtualizedContainerService.HintSize="416,25" sap2010:WorkflowViewState.IdRef="Sequence_18">
                               <sap:WorkflowViewStateService.ViewState>
                                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                   <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -480,12 +472,12 @@
                         </ui:RetryScope.Condition>
                         <sap:WorkflowViewStateService.ViewState>
                           <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
                             <x:Boolean x:Key="IsPinned">False</x:Boolean>
                           </scg:Dictionary>
                         </sap:WorkflowViewStateService.ViewState>
                       </ui:RetryScope>
-                      <ui:ForEach x:TypeArguments="b:BAHSOSRFlights" CurrentIndex="{x:Null}" DisplayName="For Each item in flightRecords - add inbound flight" sap:VirtualizedContainerService.HintSize="458,75" sap2010:WorkflowViewState.IdRef="ForEach`1_7" Values="[lstFlightsRecords]">
+                      <ui:ForEach x:TypeArguments="b:BAHSOSRFlights" CurrentIndex="{x:Null}" DisplayName="For Each item in flightRecords - add inbound flight" sap:VirtualizedContainerService.HintSize="354,48" sap2010:WorkflowViewState.IdRef="ForEach`1_7" Values="[lstFlightsRecords]">
                         <ui:ForEach.Body>
                           <ActivityAction x:TypeArguments="b:BAHSOSRFlights">
                             <ActivityAction.Argument>
@@ -521,7 +513,7 @@
               </ui:ForEach>
             </TryCatch.Try>
             <TryCatch.Catches>
-              <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="558,22" sap2010:WorkflowViewState.IdRef="Catch`1_1">
+              <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="534,22" sap2010:WorkflowViewState.IdRef="Catch`1_1">
                 <sap:WorkflowViewStateService.ViewState>
                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                     <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -545,7 +537,7 @@
               </Catch>
             </TryCatch.Catches>
           </TryCatch>
-          <ui:LogMessage DisplayName="Log Message - flights db with outbound flights" sap:VirtualizedContainerService.HintSize="592,173" sap2010:WorkflowViewState.IdRef="LogMessage_11" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;Populating flights datatable with Outbound flights.&quot;]">
+          <ui:LogMessage DisplayName="Log Message - flights db with outbound flights" sap:VirtualizedContainerService.HintSize="576,173" sap2010:WorkflowViewState.IdRef="LogMessage_11" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;Populating flights datatable with Outbound flights.&quot;]">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -553,18 +545,19 @@
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
           </ui:LogMessage>
-          <TryCatch DisplayName="Try to query Flights Entity based on Outbound ID and add to datatable" sap:VirtualizedContainerService.HintSize="592,1568" sap2010:WorkflowViewState.IdRef="TryCatch_2">
+          <TryCatch DisplayName="Try to query Flights Entity based on Outbound ID and add to datatable" sap:VirtualizedContainerService.HintSize="576,506" sap2010:WorkflowViewState.IdRef="TryCatch_2">
             <TryCatch.Try>
-              <ui:ForEach x:TypeArguments="x:String" CurrentIndex="{x:Null}" sap2010:Annotation.AnnotationText="For each outbound flight id:&#xA;- query Flights entity based on ID and SearchGUID&#xA;- for each flight retrieved, add its information to the Flights datatable" DisplayName="For Each outbound flight in Booking Data, Query Flights entity and add in Flights DB " sap:VirtualizedContainerService.HintSize="554,1308" sap2010:WorkflowViewState.IdRef="ForEach`1_8" Values="[strOutboundFlightID.Split(&quot;|&quot;c)]">
+              <ui:ForEach x:TypeArguments="x:String" CurrentIndex="{x:Null}" sap2010:Annotation.AnnotationText="For each outbound flight id:&#xA;- query Flights entity based on ID and SearchGUID&#xA;- for each flight retrieved, add its information to the Flights datatable" DisplayName="For Each outbound flight in Booking Data, Query Flights entity and add in Flights DB " sap:VirtualizedContainerService.HintSize="538,246" sap2010:WorkflowViewState.IdRef="ForEach`1_8" Values="[strOutboundFlightID.Split(&quot;|&quot;c)]">
                 <ui:ForEach.Body>
                   <ActivityAction x:TypeArguments="x:String">
                     <ActivityAction.Argument>
                       <DelegateInArgument x:TypeArguments="x:String" Name="currentOutboundFlightID" />
                     </ActivityAction.Argument>
-                    <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="520,1087" sap2010:WorkflowViewState.IdRef="Sequence_25">
+                    <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="416,25" sap2010:WorkflowViewState.IdRef="Sequence_25">
                       <sap:WorkflowViewStateService.ViewState>
                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                          <x:Boolean x:Key="IsPinned">False</x:Boolean>
                         </scg:Dictionary>
                       </sap:WorkflowViewStateService.ViewState>
                       <ui:RetryScope DisplayName="Retrying Querying records from Flights Outbound" sap:VirtualizedContainerService.HintSize="458,515" sap2010:WorkflowViewState.IdRef="RetryScope_6">
@@ -658,7 +651,7 @@
               </ui:ForEach>
             </TryCatch.Try>
             <TryCatch.Catches>
-              <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="558,22" sap2010:WorkflowViewState.IdRef="Catch`1_2">
+              <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="542,22" sap2010:WorkflowViewState.IdRef="Catch`1_2">
                 <sap:WorkflowViewStateService.ViewState>
                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                     <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -682,125 +675,7 @@
               </Catch>
             </TryCatch.Catches>
           </TryCatch>
-          <ui:CommentOut DisplayName="Disable - old logic, to be deleted" sap:VirtualizedContainerService.HintSize="592,84" sap2010:WorkflowViewState.IdRef="CommentOut_2">
-            <ui:CommentOut.Body>
-              <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="450,265" sap2010:WorkflowViewState.IdRef="Sequence_27">
-                <sap:WorkflowViewStateService.ViewState>
-                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                  </scg:Dictionary>
-                </sap:WorkflowViewStateService.ViewState>
-                <ui:ForEach x:TypeArguments="x:String" CurrentIndex="{x:Null}" sap2010:Annotation.AnnotationText="For each outbound flight id:&#xA;- query Flights entity based on ID and SearchGUID&#xA;- for each flight retrieved, add its information to the Flights datatable" DisplayName="For Each outbound flight in Booking Data, Query Flights entity and add in Flights DB " sap:VirtualizedContainerService.HintSize="388,154" sap2010:WorkflowViewState.IdRef="ForEach`1_4" Values="[strOutboundFlightID.Split(&quot;|&quot;c)]">
-                  <ui:ForEach.Body>
-                    <ActivityAction x:TypeArguments="x:String">
-                      <ActivityAction.Argument>
-                        <DelegateInArgument x:TypeArguments="x:String" Name="currentOutboundFlightID" />
-                      </ActivityAction.Argument>
-                      <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="534,1071" sap2010:WorkflowViewState.IdRef="Sequence_12">
-                        <sap:WorkflowViewStateService.ViewState>
-                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                          </scg:Dictionary>
-                        </sap:WorkflowViewStateService.ViewState>
-                        <ui:RetryScope DisplayName="Retrying Querying records from Flights Outbound" sap:VirtualizedContainerService.HintSize="492,483" sap2010:WorkflowViewState.IdRef="RetryScope_4">
-                          <ui:RetryScope.ActivityBody>
-                            <ActivityAction>
-                              <Sequence DisplayName="Querying Flights for Outbound flights" sap:VirtualizedContainerService.HintSize="450,308" sap2010:WorkflowViewState.IdRef="Sequence_17">
-                                <sap:WorkflowViewStateService.ViewState>
-                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                                  </scg:Dictionary>
-                                </sap:WorkflowViewStateService.ViewState>
-                                <uda:QueryEntityRecords x:TypeArguments="b:BAHSOSRFlights" TotalRecords="{x:Null}" sap2010:Annotation.AnnotationText="Query flights by:&#xA;- outboundID&#xA;- Search GUID" ContinueOnError="False" DisplayName="Query Entity Records from Flights - Outbound" EntityId="7d1c739f-6cf6-ee11-aaf2-000d3ab844da" ExpansionDepth="2" sap:VirtualizedContainerService.HintSize="388,197" sap2010:WorkflowViewState.IdRef="QueryEntityRecords`1_9" OutputRecords="[lstFlightsRecords]" QueriedEntityId="7d1c739f-6cf6-ee11-aaf2-000d3ab844da" Skip="0" SortAscending="True" SortByField="Id" TimeoutInMs="30000" Top="100">
-                                  <uda:QueryEntityRecords.FilterArguments>
-                                    <uda:FilterArgument FilterActivityType="{x:Null}">
-                                      <uda:FilterArgument.Filter>
-                                        <uda:GroupFilter Index="0" Operator="AND">
-                                          <uda:GroupFilter.Filters>
-                                            <scg:List x:TypeArguments="uda:SimpleFilter" Capacity="4">
-                                              <uda:SimpleFilter ExpressionValue="{x:Null}" FieldName="SearchGUID" FieldType="UiPath.DataService.Core.Models.EntityField" Operator="contains" ValueIndex="0" />
-                                              <uda:SimpleFilter ExpressionValue="{x:Null}" FieldName="Id" FieldType="UiPath.DataService.Core.Models.EntityField" Operator="contains" ValueIndex="1" />
-                                            </scg:List>
-                                          </uda:GroupFilter.Filters>
-                                          <uda:GroupFilter.Groups>
-                                            <scg:List x:TypeArguments="uda:GroupFilter" Capacity="0" />
-                                          </uda:GroupFilter.Groups>
-                                        </uda:GroupFilter>
-                                      </uda:FilterArgument.Filter>
-                                    </uda:FilterArgument>
-                                  </uda:QueryEntityRecords.FilterArguments>
-                                  <uda:QueryEntityRecords.FilterValues>
-                                    <scg:List x:TypeArguments="InArgument" Capacity="4">
-                                      <InArgument x:TypeArguments="x:String">[in_strSearchGUID]</InArgument>
-                                      <InArgument x:TypeArguments="s:Guid">[Guid.Parse(currentOutboundFlightID)]</InArgument>
-                                    </scg:List>
-                                  </uda:QueryEntityRecords.FilterValues>
-                                  <sap:WorkflowViewStateService.ViewState>
-                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                      <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
-                                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                                    </scg:Dictionary>
-                                  </sap:WorkflowViewStateService.ViewState>
-                                </uda:QueryEntityRecords>
-                              </Sequence>
-                            </ActivityAction>
-                          </ui:RetryScope.ActivityBody>
-                          <ui:RetryScope.Condition>
-                            <ActivityFunc x:TypeArguments="x:Boolean" />
-                          </ui:RetryScope.Condition>
-                          <sap:WorkflowViewStateService.ViewState>
-                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                              <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                            </scg:Dictionary>
-                          </sap:WorkflowViewStateService.ViewState>
-                        </ui:RetryScope>
-                        <ui:ForEach x:TypeArguments="b:BAHSOSRFlights" CurrentIndex="{x:Null}" DisplayName="For Each item in flightRecords" sap:VirtualizedContainerService.HintSize="492,460" sap2010:WorkflowViewState.IdRef="ForEach`1_5" Values="[lstFlightsRecords]">
-                          <ui:ForEach.Body>
-                            <ActivityAction x:TypeArguments="b:BAHSOSRFlights">
-                              <ActivityAction.Argument>
-                                <DelegateInArgument x:TypeArguments="b:BAHSOSRFlights" Name="currentFlight" />
-                              </ActivityAction.Argument>
-                              <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="376,274" sap2010:WorkflowViewState.IdRef="Sequence_11">
-                                <sap:WorkflowViewStateService.ViewState>
-                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                                  </scg:Dictionary>
-                                </sap:WorkflowViewStateService.ViewState>
-                                <ui:AddDataRow DataRow="{x:Null}" ArrayRow="[{currentFlight.SearchGUID.ToString,&#xA;currentFlight.Id.ToString,&#xA;currentFlight.NumberOfSeats.ToString,&#xA;currentFlight.From.ToString,&#xA;currentFlight.ToDestination.ToString,&#xA;currentFlight.Type.ToString,&#xA;currentFlight.OutboundInbound.ToString,&#xA;currentFlight.FlightSequence.ToString,&#xA;currentFlight.FlightNumber.ToString,&#xA;currentFlight.FlightClass.ToString,&#xA;DateTime.Parse(currentFlight.DepartureDate.ToString, System.Globalization.CultureInfo.CreateSpecificCulture(&quot;en-EU&quot;)).ToString(&quot;MM/dd/yyyy&quot;),&#xA;currentFlight.DepartureTime.ToString,&#xA;DateTime.Parse(currentFlight.ArrivalDate.ToString, System.Globalization.CultureInfo.CreateSpecificCulture(&quot;en-EU&quot;)).ToString(&quot;MM/dd/yyyy&quot;),&#xA;currentFlight.ArrivalTime.ToString,&#xA;currentFlight.ArrivesNextDay.ToString,&#xA;&quot;Booking ID to be added here.&quot;,&#xA;currentFlight.Position.ToString,&#xA;currentFlight.AllocationTotal.ToString}]" DataTable="[out_dtFlightsDataTable]" DisplayName="Add Data Row in flights db" sap:VirtualizedContainerService.HintSize="334,186" sap2010:WorkflowViewState.IdRef="AddDataRow_6" />
-                              </Sequence>
-                            </ActivityAction>
-                          </ui:ForEach.Body>
-                          <sap:WorkflowViewStateService.ViewState>
-                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                              <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                            </scg:Dictionary>
-                          </sap:WorkflowViewStateService.ViewState>
-                        </ui:ForEach>
-                      </Sequence>
-                    </ActivityAction>
-                  </ui:ForEach.Body>
-                  <sap:WorkflowViewStateService.ViewState>
-                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                      <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                      <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
-                    </scg:Dictionary>
-                  </sap:WorkflowViewStateService.ViewState>
-                </ui:ForEach>
-              </Sequence>
-            </ui:CommentOut.Body>
-            <sap:WorkflowViewStateService.ViewState>
-              <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                <x:Boolean x:Key="IsPinned">False</x:Boolean>
-              </scg:Dictionary>
-            </sap:WorkflowViewStateService.ViewState>
-          </ui:CommentOut>
-          <ui:LogMessage DisplayName="Log Message - Flights" sap:VirtualizedContainerService.HintSize="592,164" sap2010:WorkflowViewState.IdRef="LogMessage_8" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;All flights have been successfully retrieved.&quot;]">
+          <ui:LogMessage DisplayName="Log Message - Flights" sap:VirtualizedContainerService.HintSize="576,164" sap2010:WorkflowViewState.IdRef="LogMessage_8" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;All flights have been successfully retrieved.&quot;]">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -829,8 +704,8 @@
         </Sequence>
       </If.Else>
     </If>
-    <ui:LogMessage DisplayName="Log Message - Passenger list" sap:VirtualizedContainerService.HintSize="688,173" sap2010:WorkflowViewState.IdRef="LogMessage_5" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;Getting passenger details for later processing&quot;]" />
-    <Assign DisplayName="Assign all passengers" sap:VirtualizedContainerService.HintSize="688,114" sap2010:WorkflowViewState.IdRef="Assign_1">
+    <ui:LogMessage DisplayName="Log Message - Passenger list" sap:VirtualizedContainerService.HintSize="672,173" sap2010:WorkflowViewState.IdRef="LogMessage_5" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;Getting passenger details for later processing&quot;]" />
+    <Assign DisplayName="Assign all passengers" sap:VirtualizedContainerService.HintSize="672,114" sap2010:WorkflowViewState.IdRef="Assign_1">
       <Assign.To>
         <OutArgument x:TypeArguments="scg:List(x:String)">[out_lstPassengers]</OutArgument>
       </Assign.To>
@@ -838,6 +713,6 @@
         <InArgument x:TypeArguments="scg:List(x:String)">[New List(Of String) From {lstBookingDataRecords(0).Passenger1, lstBookingDataRecords(0).Passenger2, lstBookingDataRecords(0).Passenger3, lstBookingDataRecords(0).Passenger4, lstBookingDataRecords(0).Passenger5, lstBookingDataRecords(0).Passenger6, lstBookingDataRecords(0).Passenger7, lstBookingDataRecords(0).Passenger8, lstBookingDataRecords(0).Passenger9}]</InArgument>
       </Assign.Value>
     </Assign>
-    <ui:LogMessage DisplayName="Log Message Data initialization ending" sap:VirtualizedContainerService.HintSize="688,164" sap2010:WorkflowViewState.IdRef="LogMessage_16" Level="[UiPath.Core.Activities.LogLevel.Trace]" Message="[&quot;Data initialization process done.&quot;]" />
+    <ui:LogMessage DisplayName="Log Message Data initialization ending" sap:VirtualizedContainerService.HintSize="672,164" sap2010:WorkflowViewState.IdRef="LogMessage_16" Level="[UiPath.Core.Activities.LogLevel.Trace]" Message="[&quot;Data initialization process done.&quot;]" />
   </Sequence>
 </Activity>
