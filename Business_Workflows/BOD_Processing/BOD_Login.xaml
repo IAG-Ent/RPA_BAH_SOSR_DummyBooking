@@ -6,7 +6,7 @@
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1102,2936</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1239,2253</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>BOD_Login_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -46,6 +46,7 @@
       <x:String>UiPath.UIAutomationNext.Contracts</x:String>
       <x:String>UiPath.UIAutomationNext.Models.CV</x:String>
       <x:String>System.Net</x:String>
+      <x:String>System.Linq.Expressions</x:String>
     </sco:Collection>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
@@ -114,41 +115,88 @@
       <AssemblyReference>WindowsBase</AssemblyReference>
       <AssemblyReference>System.Memory.Data</AssemblyReference>
       <AssemblyReference>UiPath.Word.Activities.Design</AssemblyReference>
+      <AssemblyReference>System.Linq.Expressions</AssemblyReference>
+      <AssemblyReference>System.Linq.Async</AssemblyReference>
+      <AssemblyReference>System.Collections.NonGeneric</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="Login to BOD, check if Login is needed and use asset for credentials if needed" DisplayName="BOD_Login" sap:VirtualizedContainerService.HintSize="1112,2871" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="Login to BOD, check if Login is needed and use asset for credentials if needed" DisplayName="BOD_Login" sap:VirtualizedContainerService.HintSize="512,2068" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="x:String" Name="strUsername" />
+      <Variable x:TypeArguments="ss:SecureString" Name="strPassword" />
+    </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
         <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:LogMessage DisplayName="Log Message - BOD Login" sap:VirtualizedContainerService.HintSize="1050,141" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="[UiPath.Core.Activities.LogLevel.Trace]" Message="[&quot;Login to BOD...&quot;]" />
-    <uix:NApplicationCard AttachMode="ByInstance" CloseMode="Never" DisplayName="Use Browser Edge: Book Holidays Online - British Airways" sap:VirtualizedContainerService.HintSize="1050,2548" sap2010:WorkflowViewState.IdRef="NApplicationCard_1" InteractionMode="DebuggerApi" OutUiElement="[out_uiBODBrowser]" ScopeGuid="f555d74f-bf0b-445d-b565-7c99d5bda358" Version="V2" WindowResize="Maximize">
+    <ui:LogMessage DisplayName="Log Message - BOD Login" sap:VirtualizedContainerService.HintSize="450,173" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="[UiPath.Core.Activities.LogLevel.Trace]" Message="[&quot;Login to BOD...&quot;]" />
+    <uix:NApplicationCard AttachMode="ByInstance" CloseMode="Never" DisplayName="Use Browser Edge: Book Holidays Online - British Airways" sap:VirtualizedContainerService.HintSize="450,1776" sap2010:WorkflowViewState.IdRef="NApplicationCard_1" InteractionMode="DebuggerApi" OutUiElement="[out_uiBODBrowser]" ScopeGuid="f555d74f-bf0b-445d-b565-7c99d5bda358" Version="V2" WindowResize="Maximize">
       <uix:NApplicationCard.Body>
         <ActivityAction x:TypeArguments="x:Object">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="x:Object" Name="WSSessionData" />
           </ActivityAction.Argument>
-          <Sequence DisplayName="Check if there is a need of logging in " sap:VirtualizedContainerService.HintSize="1016,2381" sap2010:WorkflowViewState.IdRef="Sequence_2">
+          <Sequence DisplayName="Check if there is a need of logging in " sap:VirtualizedContainerService.HintSize="416,1586" sap2010:WorkflowViewState.IdRef="Sequence_2">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <uix:NCheckState DisplayName="Check App State 'Select login'" sap:VirtualizedContainerService.HintSize="954,489" sap2010:WorkflowViewState.IdRef="NCheckState_2" ScopeIdentifier="f555d74f-bf0b-445d-b565-7c99d5bda358" Timeout="3" Version="V3">
+            <uix:NCheckState DisplayName="Check if login is needed and if not, logout of BOD" sap:VirtualizedContainerService.HintSize="354,57" sap2010:WorkflowViewState.IdRef="NCheckState_3" ScopeIdentifier="f555d74f-bf0b-445d-b565-7c99d5bda358" Version="V3">
               <uix:NCheckState.IfExists>
-                <Sequence DisplayName="Target appears" sap:VirtualizedContainerService.HintSize="450,272" sap2010:WorkflowViewState.IdRef="Sequence_5">
+                <Sequence DisplayName="Target appears - login needed" sap:VirtualizedContainerService.HintSize="450,25" sap2010:WorkflowViewState.IdRef="Sequence_7">
+                  <Sequence.Variables>
+                    <Variable x:TypeArguments="x:String" Name="strUsername" />
+                    <Variable x:TypeArguments="ss:SecureString" Name="strPassword" />
+                  </Sequence.Variables>
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                      <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
-                  <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Check BSAFE method" sap:VirtualizedContainerService.HintSize="388,157" sap2010:WorkflowViewState.IdRef="NClick_2" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="f555d74f-bf0b-445d-b565-7c99d5bda358" Version="V3">
+                </Sequence>
+              </uix:NCheckState.IfExists>
+              <uix:NCheckState.IfNotExists>
+                <Sequence DisplayName="Target does not appear - Logout from BOD" sap:VirtualizedContainerService.HintSize="450,25" sap2010:WorkflowViewState.IdRef="Sequence_8">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <ui:LogMessage DisplayName="Log Message - need to logout" sap:VirtualizedContainerService.HintSize="388,175" sap2010:WorkflowViewState.IdRef="LogMessage_9" Level="Info" Message="[&quot;Need to logout from BOD.&quot;]" />
+                  <uix:NGoToUrl DisplayName="Go To URL - logout URL" sap:VirtualizedContainerService.HintSize="388,114" sap2010:WorkflowViewState.IdRef="NGoToUrl_1" Url="[in_dictConfig(&quot;BAH_SOSR_BOD_LogoutUrl&quot;).ToString]" Version="V3" />
+                  <ui:LogMessage DisplayName="Log Message - logout done" sap:VirtualizedContainerService.HintSize="388,175" sap2010:WorkflowViewState.IdRef="LogMessage_13" Level="Info" Message="[&quot;Logout successful. Re-load BOD...&quot;]" />
+                  <uix:NGoToUrl DisplayName="Go To URL - reload BOD" sap:VirtualizedContainerService.HintSize="388,107" sap2010:WorkflowViewState.IdRef="NGoToUrl_3" Url="[in_dictConfig(&quot;BAH_SOSR_BOD_Url&quot;).ToString]" Version="V3" />
+                </Sequence>
+              </uix:NCheckState.IfNotExists>
+              <uix:NCheckState.Target>
+                <uix:TargetAnchorable BrowserURL="https://auth.baplc.com/baAuthnApp/Login.jsp?level=10" DesignTimeRectangle="22, 188, 1308, 360" DesignTimeScaleFactor="1" FriendlyName="'Select login'" FullSelectorArgument="&lt;webctrl class='page_content' parentid='logincontent' tag='DIV' innertext='    Select login type*' /&gt;" FuzzySelectorArgument="&lt;webctrl class='page_content' parentid='logincontent' tag='DIV' innertext='    Select login type*' type='' aaname='  ' check:text='Select login type&amp;#xA;&amp;#xA;&amp;#xA;&amp;#xA;&amp;#xA;&amp;#xA;&amp;#xA;&amp;#xA;&amp;#xA;BSAFE&amp;#xA;&amp;#xA;&amp;#xA;&amp;#xA;&amp;#xA;&amp;#xA;&amp;#xA;User IDBSAFE Password&amp;#xA;&amp;#xA;&amp;#xA;Don&amp;apos;t know your password?&amp;#xA;&amp;#xA;&amp;#xA;&amp;#xA;&amp;#xA;&amp;#xA;&amp;#xA;&amp;#xA;&amp;#xA;&amp;#xA;&amp;#xA;&amp;#xA;' /&gt;" Guid="9760d08e-7fcc-426f-9be4-d6f2fdd5adc2" InformativeScreenshot="28238b3c95fc8311c19e0be628993327.png" ScopeSelectorArgument="&lt;html app='msedge.exe' title='Employee Self Service Login' /&gt;" SearchSteps="Selector, FuzzySelector" Version="V2" Visibility="Interactive" />
+              </uix:NCheckState.Target>
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+            </uix:NCheckState>
+            <uix:NCheckState DisplayName="Check App State 'Select login'" sap:VirtualizedContainerService.HintSize="354,57" sap2010:WorkflowViewState.IdRef="NCheckState_2" ScopeIdentifier="f555d74f-bf0b-445d-b565-7c99d5bda358" Timeout="3" Version="V3">
+              <uix:NCheckState.IfExists>
+                <Sequence DisplayName="Target appears - choose BSAFE" sap:VirtualizedContainerService.HintSize="450,25" sap2010:WorkflowViewState.IdRef="Sequence_5">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Check BSAFE method" sap:VirtualizedContainerService.HintSize="388,182" sap2010:WorkflowViewState.IdRef="NClick_2" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="f555d74f-bf0b-445d-b565-7c99d5bda358" Version="V3">
                     <uix:NClick.Target>
                       <uix:TargetAnchorable BrowserURL="https://auth.baplc.com/baAuthnApp/Login.jsp?level=10" CVScreenId="c93da27b-5482-4ee1-87dd-c8b7b526f05c" CvElementArea="71, 280, 18, 18" CvType="RadioButton" DesignTimeRectangle="73, 282, 13, 13" DesignTimeScaleFactor="1" ElementType="RadioButton" FriendlyName="'INPUT button_password'" FullSelectorArgument="&lt;webctrl tableRow='5' tag='TABLE' /&gt;&lt;webctrl id='button_password' tag='INPUT' aaname='BSAFE' rowName='BSAFE' /&gt;" FuzzySelectorArgument="&lt;webctrl tag='TABLE' /&gt;&lt;webctrl id='button_password' tag='INPUT' aaname='BSAFE' rowName='BSAFE' type='radio' class='' /&gt;" Guid="b3dbf58d-2798-4ca1-9e52-57a2a511918f" InformativeScreenshot="b05bdf2f226099b123456b38912ef1d9.png" ScopeSelectorArgument="&lt;html app='msedge.exe' title='Employee Self Service Login' /&gt;" SearchSteps="Selector, FuzzySelector, CV" Version="V2" Visibility="Interactive">
                         <uix:TargetAnchorable.Anchors>
-                          <scg:List x:TypeArguments="uix:ITarget" Capacity="4">
+                          <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
                             <uix:Target CVScreenId="c93da27b-5482-4ee1-87dd-c8b7b526f05c" CvElementArea="71, 280, 18, 18" CvTextArea="91, 283, 48, 13" CvTextArgument="BSAFE" CvType="RadioButton" DesignTimeRectangle="68, 281, 71, 22" ElementType="Text" FriendlyName="'unchecked'" FullSelectorArgument="&lt;webctrl tableRow='5' tag='TABLE' /&gt;&lt;webctrl tableRow='1' tag='LABEL' /&gt;" FuzzySelectorArgument="&lt;webctrl tag='TABLE' /&gt;&lt;webctrl type='' tag='LABEL' class='login_method' aaname='BSAFE' check:innerText='BSAFE' /&gt;" SearchSteps="FuzzySelector, CV" />
                           </scg:List>
                         </uix:TargetAnchorable.Anchors>
@@ -158,10 +206,11 @@
                 </Sequence>
               </uix:NCheckState.IfExists>
               <uix:NCheckState.IfNotExists>
-                <Sequence DisplayName="Target does not appear" sap:VirtualizedContainerService.HintSize="450,105" sap2010:WorkflowViewState.IdRef="Sequence_6">
+                <Sequence DisplayName="Target does not appear - no need to choose login method" sap:VirtualizedContainerService.HintSize="450,25" sap2010:WorkflowViewState.IdRef="Sequence_6">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                      <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
                 </Sequence>
@@ -169,66 +218,44 @@
               <uix:NCheckState.Target>
                 <uix:TargetAnchorable BrowserURL="https://auth.baplc.com/baAuthnApp/Login.jsp?level=10" DesignTimeRectangle="22, 192, 1348, 358" DesignTimeScaleFactor="1" FriendlyName="'Select login'" FullSelectorArgument="&lt;webctrl class='page_content' parentid='logincontent' innertext='    Select login type         Automatic What&amp;apos;s this?                BSAFE       User IDBSAFE Password   Don&amp;apos;t know your password?               SecurID       User IDPIN+SecurID                  ' /&gt;" FuzzySelectorArgument="&lt;webctrl class='page_content' parentid='logincontent' innertext='    Select login type         Automatic What&amp;apos;s this?                BSAFE       User IDBSAFE Password   Don&amp;apos;t know your password?               SecurID       User IDPIN+SecurID                  ' tag='DIV' type='' aaname='  ' check:text='Select login type&amp;#xA;&amp;#xA;&amp;#xA;&amp;#xA;&amp;#xA;&amp;#xA;&amp;#xA;&amp;#xA;&amp;#xA;Automatic What&amp;apos;s this?&amp;#xA;&amp;#xA;&amp;#xA;&amp;#xA;&amp;#xA;&amp;#xA;&amp;#xA;&amp;#xA;&amp;#xA;&amp;#xA;&amp;#xA;&amp;#xA;&amp;#xA;&amp;#xA;&amp;#xA;&amp;#xA;BSAFE&amp;#xA;&amp;#xA;&amp;#xA;&amp;#xA;&amp;#xA;&amp;#xA;&amp;#xA;User IDBSAFE Password&amp;#xA;&amp;#xA;' /&gt;" Guid="5781b5b0-4bc3-4285-ac6d-f5850c27a934" InformativeScreenshot="f34fa1ac139270bda5d9983a380279ee.png" ScopeSelectorArgument="&lt;html app='msedge.exe' title='Employee Self Service Login' /&gt;" SearchSteps="Selector, FuzzySelector" Version="V2" Visibility="Interactive" />
               </uix:NCheckState.Target>
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
             </uix:NCheckState>
-            <uix:NCheckState DisplayName="Check if login is needed" sap:VirtualizedContainerService.HintSize="954,1737" sap2010:WorkflowViewState.IdRef="NCheckState_1" ScopeIdentifier="f555d74f-bf0b-445d-b565-7c99d5bda358" Version="V3">
-              <uix:NCheckState.IfExists>
-                <Sequence DisplayName="Target appears - Login needed" sap:VirtualizedContainerService.HintSize="450,1520" sap2010:WorkflowViewState.IdRef="Sequence_3">
-                  <Sequence.Variables>
-                    <Variable x:TypeArguments="x:String" Name="strUsername" />
-                    <Variable x:TypeArguments="ss:SecureString" Name="strPassword" />
-                  </Sequence.Variables>
-                  <sap:WorkflowViewStateService.ViewState>
-                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                    </scg:Dictionary>
-                  </sap:WorkflowViewStateService.ViewState>
-                  <ui:LogMessage DisplayName="Log Message - Authentication needed" sap:VirtualizedContainerService.HintSize="388,143" sap2010:WorkflowViewState.IdRef="LogMessage_4" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;Authentication needed. Getting credential asset...&quot;]" />
-                  <ui:GetRobotCredential TimeoutMS="{x:Null}" AssetName="BAH_SOSR_xRezBoD1_LoginCred" CacheStrategy="None" DisplayName="Get Credential for BOD Login" FolderPath="UatRPA/BAW/BA Holidays/BA Holidays" sap:VirtualizedContainerService.HintSize="388,143" sap2010:WorkflowViewState.IdRef="GetRobotCredential_2" Password="[strPassword]" Username="[strUsername]" />
-                  <ui:LogMessage DisplayName="Log Message - Asset retrieved" sap:VirtualizedContainerService.HintSize="388,143" sap2010:WorkflowViewState.IdRef="LogMessage_5" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;Credentials retrieved. Trying to login...&quot;]" />
-                  <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="Single" DisplayName="Type Into 'User ID'" EmptyFieldMode="SingleLine" sap:VirtualizedContainerService.HintSize="388,218" sap2010:WorkflowViewState.IdRef="NTypeInto_1" ScopeIdentifier="f555d74f-bf0b-445d-b565-7c99d5bda358" Text="[strUsername.ToString]" Version="V3">
-                    <uix:NTypeInto.Target>
-                      <uix:TargetAnchorable BrowserURL="https://auth.baplc.com/baAuthnApp/Login.jsp?level=10" CvElementArea="222, 263, 144, 24" CvType="InputBox" DesignTimeRectangle="224, 265, 142, 21" DesignTimeScaleFactor="1" ElementType="InputBox" FriendlyName="'INPUT password_username'" FullSelectorArgument="&lt;webctrl parentid='method_password' tableRow='2' tag='TABLE' /&gt;&lt;webctrl tableRow='1' tag='INPUT' rowName='User ID' type='text' /&gt;" FuzzySelectorArgument="&lt;webctrl parentid='method_password' tag='TABLE' /&gt;&lt;webctrl class='' tag='INPUT' rowName='User ID' type='text' aaname='' /&gt;" Guid="6533af81-57aa-48ba-8e5e-95f71bc73660" InformativeScreenshot="69e1cda6bbbc80d543214ec8f2e29920.png" IsResponsive="True" ScopeSelectorArgument="&lt;html app='msedge.exe' title='Employee Self Service Login' /&gt;" SearchSteps="Selector, FuzzySelector, CV" Version="V2" Visibility="Interactive" WaitForReadyArgument="Complete">
-                        <uix:TargetAnchorable.Anchors>
-                          <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
-                            <uix:Target CvTextArea="157, 269, 54, 12" CvTextArgument="User ID" CvType="Text" DesignTimeRectangle="70, 264, 142, 23" ElementType="Text" FriendlyName="'User ID'" FullSelectorArgument="&lt;webctrl parentid='method_password' tableRow='2' tag='TABLE' /&gt;&lt;webctrl tableRow='1' tag='TD' /&gt;" FuzzySelectorArgument="&lt;webctrl parentid='method_password' tag='TABLE' /&gt;&lt;webctrl type='' tag='TD' class='method_field_title' aaname='User ID' check:innerText='User ID' /&gt;" SearchSteps="FuzzySelector, CV" />
-                          </scg:List>
-                        </uix:TargetAnchorable.Anchors>
-                      </uix:TargetAnchorable>
-                    </uix:NTypeInto.Target>
-                  </uix:NTypeInto>
-                  <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="Single" DisplayName="Type Into 'BSAFE Password'" EmptyFieldMode="SingleLine" sap:VirtualizedContainerService.HintSize="388,218" sap2010:WorkflowViewState.IdRef="NTypeInto_4" ScopeIdentifier="f555d74f-bf0b-445d-b565-7c99d5bda358" SecureText="[strPassword]" Version="V3">
-                    <uix:NTypeInto.Target>
-                      <uix:TargetAnchorable BrowserURL="https://auth.baplc.com/baAuthnApp/Login.jsp?level=10" CvElementArea="530, 263, 145, 24" CvType="InputBox" DesignTimeRectangle="532, 265, 142, 21" DesignTimeScaleFactor="1" ElementType="InputBoxPassword" FriendlyName="'INPUT password_password'" FullSelectorArgument="&lt;webctrl parentid='method_password' tableRow='2' tag='TABLE' /&gt;&lt;webctrl tableRow='1' tag='INPUT' type='password' /&gt;" FuzzySelectorArgument="&lt;webctrl parentid='method_password' tag='TABLE' /&gt;&lt;webctrl class='' tag='INPUT' type='password' aaname='' /&gt;" Guid="0139065b-3c3e-4d94-9ac4-26ff54bf5adf" InformativeScreenshot="1ec5353c7214782d2701ab10430e8f84.png" ScopeSelectorArgument="&lt;html app='msedge.exe' title='Employee Self Service Login' /&gt;" SearchSteps="Selector, FuzzySelector, CV" Version="V2" Visibility="Interactive" WaitForReadyArgument="Complete">
-                        <uix:TargetAnchorable.Anchors>
-                          <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
-                            <uix:Target CvTextArea="404, 268, 114, 13" CvTextArgument="BSAFE Password" CvType="Text" DesignTimeRectangle="378, 264, 142, 23" ElementType="Text" FriendlyName="'BSAFE Password'" FullSelectorArgument="&lt;webctrl parentid='method_password' tableRow='2' tag='TABLE' /&gt;&lt;webctrl class='method_field_title' tableCol='3' tableRow='1' tag='TD' /&gt;" FuzzySelectorArgument="&lt;webctrl parentid='method_password' tag='TABLE' /&gt;&lt;webctrl class='method_field_title' type='' aaname='BSAFE Password' tag='TD' check:innerText='BSAFE Password' /&gt;" SearchSteps="FuzzySelector, CV" />
-                          </scg:List>
-                        </uix:TargetAnchorable.Anchors>
-                      </uix:TargetAnchorable>
-                    </uix:NTypeInto.Target>
-                  </uix:NTypeInto>
-                  <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'Log in'" sap:VirtualizedContainerService.HintSize="388,157" sap2010:WorkflowViewState.IdRef="NClick_1" InteractionMode="Simulate" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="f555d74f-bf0b-445d-b565-7c99d5bda358" Version="V3">
-                    <uix:NClick.Target>
-                      <uix:TargetAnchorable BrowserURL="https://auth.baplc.com/baAuthnApp/Login.jsp?level=10" CvElementArea="624, 420, 67, 24" CvTextArea="636, 426, 42, 14" CvTextArgument="Log in" CvType="Button" DesignTimeRectangle="632, 423, 57, 19" DesignTimeScaleFactor="1" ElementType="Button" FriendlyName="'Log in'" FullSelectorArgument="&lt;webctrl class='login_table' tag='TABLE' /&gt;&lt;webctrl id='login_button' tableRow='12' aaname='Log in' name='login_button' /&gt;" FuzzySelectorArgument="&lt;webctrl class='login_table' tag='TABLE' /&gt;&lt;webctrl id='login_button' tag='INPUT' aaname='Log in' name='login_button' type='submit' class='plain' check:text='Log in' /&gt;" Guid="856c893e-48cf-4684-8b35-929cecc939e3" InformativeScreenshot="fe66d03bf3bdf9f05a631cab0e644d27.png" ScopeSelectorArgument="&lt;html app='msedge.exe' title='Employee Self Service Login' /&gt;" SearchSteps="Selector, FuzzySelector, CV" Version="V2" Visibility="Interactive" WaitForReadyArgument="Complete" />
-                    </uix:NClick.Target>
-                  </uix:NClick>
-                  <ui:LogMessage DisplayName="Log Message - Success BOD login when needed" sap:VirtualizedContainerService.HintSize="388,143" sap2010:WorkflowViewState.IdRef="LogMessage_6" Level="[UiPath.Core.Activities.LogLevel.Trace]" Message="[&quot;Successfull login.&quot;]" />
-                </Sequence>
-              </uix:NCheckState.IfExists>
-              <uix:NCheckState.IfNotExists>
-                <Sequence DisplayName="Target does not appear - Login not needed" sap:VirtualizedContainerService.HintSize="450,258" sap2010:WorkflowViewState.IdRef="Sequence_4">
-                  <sap:WorkflowViewStateService.ViewState>
-                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                    </scg:Dictionary>
-                  </sap:WorkflowViewStateService.ViewState>
-                  <ui:LogMessage DisplayName="Log Message - Success BOD login" sap:VirtualizedContainerService.HintSize="388,143" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="[UiPath.Core.Activities.LogLevel.Trace]" Message="[&quot;Successfull login.&quot;]" />
-                </Sequence>
-              </uix:NCheckState.IfNotExists>
-              <uix:NCheckState.Target>
-                <uix:TargetAnchorable BrowserURL="https://auth.baplc.com/baAuthnApp/Login.jsp?level=10" DesignTimeRectangle="22, 188, 1308, 360" DesignTimeScaleFactor="1" FriendlyName="'Select login'" FullSelectorArgument="&lt;webctrl class='page_content' parentid='logincontent' tag='DIV' innertext='    Select login type*' /&gt;" FuzzySelectorArgument="&lt;webctrl class='page_content' parentid='logincontent' tag='DIV' innertext='    Select login type*' type='' aaname='  ' check:text='Select login type&amp;#xA;&amp;#xA;&amp;#xA;&amp;#xA;&amp;#xA;&amp;#xA;&amp;#xA;&amp;#xA;&amp;#xA;BSAFE&amp;#xA;&amp;#xA;&amp;#xA;&amp;#xA;&amp;#xA;&amp;#xA;&amp;#xA;User IDBSAFE Password&amp;#xA;&amp;#xA;&amp;#xA;Don&amp;apos;t know your password?&amp;#xA;&amp;#xA;&amp;#xA;&amp;#xA;&amp;#xA;&amp;#xA;&amp;#xA;&amp;#xA;&amp;#xA;&amp;#xA;&amp;#xA;&amp;#xA;' /&gt;" Guid="9760d08e-7fcc-426f-9be4-d6f2fdd5adc2" InformativeScreenshot="28238b3c95fc8311c19e0be628993327.png" ScopeSelectorArgument="&lt;html app='msedge.exe' title='Employee Self Service Login' /&gt;" SearchSteps="Selector, FuzzySelector" Version="V2" Visibility="Interactive" />
-              </uix:NCheckState.Target>
-            </uix:NCheckState>
+            <ui:LogMessage DisplayName="Log Message - Authentication needed" sap:VirtualizedContainerService.HintSize="354,175" sap2010:WorkflowViewState.IdRef="LogMessage_4" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;Getting credential asset...&quot;]" />
+            <ui:GetRobotCredential TimeoutMS="{x:Null}" AssetName="BAH_SOSR_xRezBoD1_LoginCred" CacheStrategy="None" DisplayName="Get Credential for BOD Login" FolderPath="UatRPA/BAW/BA Holidays/BA Holidays" sap:VirtualizedContainerService.HintSize="354,175" sap2010:WorkflowViewState.IdRef="GetRobotCredential_2" Password="[strPassword]" Username="[strUsername]" />
+            <ui:LogMessage DisplayName="Log Message - Asset retrieved" sap:VirtualizedContainerService.HintSize="354,175" sap2010:WorkflowViewState.IdRef="LogMessage_5" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;Credentials retrieved. Trying to login...&quot;]" />
+            <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="Single" DisplayName="Type Into 'User ID'" EmptyFieldMode="SingleLine" sap:VirtualizedContainerService.HintSize="354,250" sap2010:WorkflowViewState.IdRef="NTypeInto_1" ScopeIdentifier="f555d74f-bf0b-445d-b565-7c99d5bda358" Text="[strUsername.ToString]" Version="V3">
+              <uix:NTypeInto.Target>
+                <uix:TargetAnchorable BrowserURL="https://auth.baplc.com/baAuthnApp/Login.jsp?level=10" CvElementArea="222, 263, 144, 24" CvType="InputBox" DesignTimeRectangle="224, 265, 142, 21" DesignTimeScaleFactor="1" ElementType="InputBox" FriendlyName="'INPUT password_username'" FullSelectorArgument="&lt;webctrl parentid='method_password' tableRow='2' tag='TABLE' /&gt;&lt;webctrl tableRow='1' tag='INPUT' rowName='User ID' type='text' /&gt;" FuzzySelectorArgument="&lt;webctrl parentid='method_password' tag='TABLE' /&gt;&lt;webctrl class='' tag='INPUT' rowName='User ID' type='text' aaname='' /&gt;" Guid="6533af81-57aa-48ba-8e5e-95f71bc73660" InformativeScreenshot="69e1cda6bbbc80d543214ec8f2e29920.png" IsResponsive="True" ScopeSelectorArgument="&lt;html app='msedge.exe' title='Employee Self Service Login' /&gt;" SearchSteps="Selector, FuzzySelector, CV" Version="V2" Visibility="Interactive" WaitForReadyArgument="Complete">
+                  <uix:TargetAnchorable.Anchors>
+                    <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                      <uix:Target CvTextArea="157, 269, 54, 12" CvTextArgument="User ID" CvType="Text" DesignTimeRectangle="70, 264, 142, 23" ElementType="Text" FriendlyName="'User ID'" FullSelectorArgument="&lt;webctrl parentid='method_password' tableRow='2' tag='TABLE' /&gt;&lt;webctrl tableRow='1' tag='TD' /&gt;" FuzzySelectorArgument="&lt;webctrl parentid='method_password' tag='TABLE' /&gt;&lt;webctrl type='' tag='TD' class='method_field_title' aaname='User ID' check:innerText='User ID' /&gt;" SearchSteps="FuzzySelector, CV" />
+                    </scg:List>
+                  </uix:TargetAnchorable.Anchors>
+                </uix:TargetAnchorable>
+              </uix:NTypeInto.Target>
+            </uix:NTypeInto>
+            <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="Single" DisplayName="Type Into 'BSAFE Password'" EmptyFieldMode="SingleLine" sap:VirtualizedContainerService.HintSize="354,250" sap2010:WorkflowViewState.IdRef="NTypeInto_4" ScopeIdentifier="f555d74f-bf0b-445d-b565-7c99d5bda358" SecureText="[strPassword]" Version="V3">
+              <uix:NTypeInto.Target>
+                <uix:TargetAnchorable BrowserURL="https://auth.baplc.com/baAuthnApp/Login.jsp?level=10" CvElementArea="530, 263, 145, 24" CvType="InputBox" DesignTimeRectangle="532, 265, 142, 21" DesignTimeScaleFactor="1" ElementType="InputBoxPassword" FriendlyName="'INPUT password_password'" FullSelectorArgument="&lt;webctrl parentid='method_password' tableRow='2' tag='TABLE' /&gt;&lt;webctrl tableRow='1' tag='INPUT' type='password' /&gt;" FuzzySelectorArgument="&lt;webctrl parentid='method_password' tag='TABLE' /&gt;&lt;webctrl class='' tag='INPUT' type='password' aaname='' /&gt;" Guid="0139065b-3c3e-4d94-9ac4-26ff54bf5adf" InformativeScreenshot="1ec5353c7214782d2701ab10430e8f84.png" ScopeSelectorArgument="&lt;html app='msedge.exe' title='Employee Self Service Login' /&gt;" SearchSteps="Selector, FuzzySelector, CV" Version="V2" Visibility="Interactive" WaitForReadyArgument="Complete">
+                  <uix:TargetAnchorable.Anchors>
+                    <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                      <uix:Target CvTextArea="404, 268, 114, 13" CvTextArgument="BSAFE Password" CvType="Text" DesignTimeRectangle="378, 264, 142, 23" ElementType="Text" FriendlyName="'BSAFE Password'" FullSelectorArgument="&lt;webctrl parentid='method_password' tableRow='2' tag='TABLE' /&gt;&lt;webctrl class='method_field_title' tableCol='3' tableRow='1' tag='TD' /&gt;" FuzzySelectorArgument="&lt;webctrl parentid='method_password' tag='TABLE' /&gt;&lt;webctrl class='method_field_title' type='' aaname='BSAFE Password' tag='TD' check:innerText='BSAFE Password' /&gt;" SearchSteps="FuzzySelector, CV" />
+                    </scg:List>
+                  </uix:TargetAnchorable.Anchors>
+                </uix:TargetAnchorable>
+              </uix:NTypeInto.Target>
+            </uix:NTypeInto>
+            <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'Log in'" sap:VirtualizedContainerService.HintSize="354,189" sap2010:WorkflowViewState.IdRef="NClick_1" InteractionMode="Simulate" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="f555d74f-bf0b-445d-b565-7c99d5bda358" Version="V3">
+              <uix:NClick.Target>
+                <uix:TargetAnchorable BrowserURL="https://auth.baplc.com/baAuthnApp/Login.jsp?level=10" CvElementArea="624, 420, 67, 24" CvTextArea="636, 426, 42, 14" CvTextArgument="Log in" CvType="Button" DesignTimeRectangle="632, 423, 57, 19" DesignTimeScaleFactor="1" ElementType="Button" FriendlyName="'Log in'" FullSelectorArgument="&lt;webctrl class='login_table' tag='TABLE' /&gt;&lt;webctrl id='login_button' tableRow='12' aaname='Log in' name='login_button' /&gt;" FuzzySelectorArgument="&lt;webctrl class='login_table' tag='TABLE' /&gt;&lt;webctrl id='login_button' tag='INPUT' aaname='Log in' name='login_button' type='submit' class='plain' check:text='Log in' /&gt;" Guid="856c893e-48cf-4684-8b35-929cecc939e3" InformativeScreenshot="fe66d03bf3bdf9f05a631cab0e644d27.png" ScopeSelectorArgument="&lt;html app='msedge.exe' title='Employee Self Service Login' /&gt;" SearchSteps="Selector, FuzzySelector, CV" Version="V2" Visibility="Interactive" WaitForReadyArgument="Complete" />
+              </uix:NClick.Target>
+            </uix:NClick>
+            <ui:LogMessage DisplayName="Log Message - Success BOD login when needed" sap:VirtualizedContainerService.HintSize="354,168" sap2010:WorkflowViewState.IdRef="LogMessage_6" Level="[UiPath.Core.Activities.LogLevel.Trace]" Message="[&quot;Successfull login.&quot;]" />
           </Sequence>
         </ActivityAction>
       </uix:NApplicationCard.Body>
