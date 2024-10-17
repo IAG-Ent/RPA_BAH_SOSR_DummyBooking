@@ -22,7 +22,7 @@
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1239,1376</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>959,2061</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>Orchestrator_Output_Messages_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -99,9 +99,11 @@
       <AssemblyReference>System.Memory.Data</AssemblyReference>
       <AssemblyReference>UiPath.Word.Activities.Design</AssemblyReference>
       <AssemblyReference>System.Linq.Expressions</AssemblyReference>
+      <AssemblyReference>System.Linq.Async</AssemblyReference>
+      <AssemblyReference>System.Collections.NonGeneric</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="- Depending on the process outcome, output messages differe.&#xA;- For failed runs - status is Error and the process will receive Error message text from an orchestrator asset.&#xA;- For successful runs - status is Success and the process extracts the following assets from orchestrator: Thank you text, Confirmation Text, Next Steps, Deposit Timeout, Confirmation Email, Login text, Deposit timeout text, Final message, Deposit text, Ticket receipt" DisplayName="Orchestrator_Output_Messages" sap:VirtualizedContainerService.HintSize="637,1311" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="- Depending on the process outcome, output messages differe.&#xA;- For failed runs - status is Error and the process will receive Error message text from an orchestrator asset.&#xA;- For successful runs - status is Success and the process extracts the following assets from orchestrator: Thank you text, Confirmation Text, Next Steps, Deposit Timeout, Confirmation Email, Login text, Deposit timeout text, Final message, Deposit text, Ticket receipt" DisplayName="Orchestrator_Output_Messages" sap:VirtualizedContainerService.HintSize="637,1996" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:Int32" Name="intDepositTimeout" />
     </Sequence.Variables>
@@ -112,12 +114,12 @@
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
     <ui:LogMessage DisplayName="Log Message - output data" sap:VirtualizedContainerService.HintSize="575,173" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="[UiPath.Core.Activities.LogLevel.Trace]" Message="[&quot;Invoke process to create output data...&quot;]" />
-    <If Condition="[in_BusinessException is Nothing and in_SystemException is Nothing]" DisplayName="If successful" sap:VirtualizedContainerService.HintSize="575,799" sap2010:WorkflowViewState.IdRef="If_1">
+    <If Condition="[in_BusinessException is Nothing and in_SystemException is Nothing]" DisplayName="If successful" sap:VirtualizedContainerService.HintSize="575,1484" sap2010:WorkflowViewState.IdRef="If_1">
       <If.Then>
-        <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="416,25" sap2010:WorkflowViewState.IdRef="Sequence_2">
+        <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="541,710" sap2010:WorkflowViewState.IdRef="Sequence_2">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
-              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               <x:Boolean x:Key="IsPinned">False</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
@@ -145,7 +147,7 @@
                     <OutArgument x:TypeArguments="x:String">[out_strConfirmationText]</OutArgument>
                   </ui:AssignOperation.To>
                   <ui:AssignOperation.Value>
-                    <InArgument x:TypeArguments="x:String">[in_dictConfig("BAH_SOSR_Confirmation_Text").ToString + " " + in_strEmail]</InArgument>
+                    <InArgument x:TypeArguments="x:String">[in_dictConfig("BAH_SOSR_Confirmation_Text").ToString().Replace("{{email}}", in_strEmail)]</InArgument>
                   </ui:AssignOperation.Value>
                 </ui:AssignOperation>
                 <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_7">
