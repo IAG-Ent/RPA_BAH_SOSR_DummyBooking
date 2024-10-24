@@ -8,7 +8,7 @@
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1239,4273</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1028,4086</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>BOD_Passenger_Allocation_and_PNR_Extraction_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -139,7 +139,7 @@
       <AssemblyReference>System.Runtime.Numerics</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="- Allocate each passenger to corresponding room" DisplayName="BOD_Passenger_Allocation_and_PNR_Extraction" sap:VirtualizedContainerService.HintSize="1038,4208" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="- Allocate each passenger to corresponding room" DisplayName="BOD_Passenger_Allocation_and_PNR_Extraction" sap:VirtualizedContainerService.HintSize="1038,4021" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="scg:Dictionary(x:String, x:Int32)" Name="dictRoomCounters" />
       <Variable x:TypeArguments="x:String" Name="strCurrentPassengerType" />
@@ -161,8 +161,8 @@
         <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:LogMessage DisplayName="Log Message - starting allocating passengers" sap:VirtualizedContainerService.HintSize="976,175" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="[UiPath.Core.Activities.LogLevel.Trace]" Message="[&quot;Start room allocation.&quot;]" />
-    <Assign sap:VirtualizedContainerService.HintSize="976,115" sap2010:WorkflowViewState.IdRef="Assign_17">
+    <ui:LogMessage DisplayName="Log Message - starting allocating passengers" sap:VirtualizedContainerService.HintSize="976,173" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="[UiPath.Core.Activities.LogLevel.Trace]" Message="[&quot;Start room allocation.&quot;]" />
+    <Assign sap:VirtualizedContainerService.HintSize="976,113" sap2010:WorkflowViewState.IdRef="Assign_17">
       <Assign.To>
         <OutArgument x:TypeArguments="scg:List(x:String)">[in_lstChildren]</OutArgument>
       </Assign.To>
@@ -170,20 +170,20 @@
         <InArgument x:TypeArguments="scg:List(x:String)">[in_lstChildren.OrderByDescending(Function(x) Convert.ToInt32(x.Split("|"c)(0).ToString().Split("-"c)(1).TrimStart().Split(" "c)(1))).ToList()]</InArgument>
       </Assign.Value>
     </Assign>
-    <uix:NApplicationCard AttachMode="ByInstance" DisplayName="Use Browser Edge: British Airways - Passenger allocation" sap:VirtualizedContainerService.HintSize="976,3799" sap2010:WorkflowViewState.IdRef="NApplicationCard_1" InUiElement="[in_uiBODBrowser]" InteractionMode="DebuggerApi" ScopeGuid="ef609acd-0462-48aa-b2e2-762735ea6285" Version="V2">
+    <uix:NApplicationCard AttachMode="ByInstance" DisplayName="Use Browser Edge: British Airways - Passenger allocation" sap:VirtualizedContainerService.HintSize="976,3616" sap2010:WorkflowViewState.IdRef="NApplicationCard_1" InUiElement="[in_uiBODBrowser]" InteractionMode="DebuggerApi" ScopeGuid="ef609acd-0462-48aa-b2e2-762735ea6285" Version="V2">
       <uix:NApplicationCard.Body>
         <ActivityAction x:TypeArguments="x:Object">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="x:Object" Name="WSSessionData" />
           </ActivityAction.Argument>
-          <Sequence DisplayName="Allocate passengers to corresponding rooms" sap:VirtualizedContainerService.HintSize="942,3638" sap2010:WorkflowViewState.IdRef="Sequence_2">
+          <Sequence DisplayName="Allocate passengers to corresponding rooms" sap:VirtualizedContainerService.HintSize="942,3456" sap2010:WorkflowViewState.IdRef="Sequence_2">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                 <x:Boolean x:Key="IsPinned">False</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <ui:MultipleAssign DisplayName="Multiple Assign - dictionaries for each passenger type" sap:VirtualizedContainerService.HintSize="880,85" sap2010:WorkflowViewState.IdRef="MultipleAssign_3">
+            <ui:MultipleAssign DisplayName="Multiple Assign - dictionaries for each passenger type" sap:VirtualizedContainerService.HintSize="880,57" sap2010:WorkflowViewState.IdRef="MultipleAssign_3">
               <ui:MultipleAssign.AssignOperations>
                 <scg:List x:TypeArguments="ui:AssignOperation" Capacity="8">
                   <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_14">
@@ -251,19 +251,19 @@
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
             </ui:MultipleAssign>
-            <ui:ForEach x:TypeArguments="x:String" CurrentIndex="{x:Null}" DisplayName="For Each passenger in passenger's list, assign to specific room" sap:VirtualizedContainerService.HintSize="880,3293" sap2010:WorkflowViewState.IdRef="ForEach`1_2" Values="[in_lstPassengers]">
+            <ui:ForEach x:TypeArguments="x:String" CurrentIndex="{x:Null}" DisplayName="For Each passenger in passenger's list, assign to specific room" sap:VirtualizedContainerService.HintSize="880,3141" sap2010:WorkflowViewState.IdRef="ForEach`1_2" Values="[in_lstPassengers]">
               <ui:ForEach.Body>
                 <ActivityAction x:TypeArguments="x:String">
                   <ActivityAction.Argument>
                     <DelegateInArgument x:TypeArguments="x:String" Name="currentPassenger" />
                   </ActivityAction.Argument>
-                  <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="846,3095" sap2010:WorkflowViewState.IdRef="Sequence_3">
+                  <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="846,2945" sap2010:WorkflowViewState.IdRef="Sequence_3">
                     <sap:WorkflowViewStateService.ViewState>
                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
                         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                       </scg:Dictionary>
                     </sap:WorkflowViewStateService.ViewState>
-                    <If Condition="[currentPassenger is Nothing]" DisplayName="Stop if next passenger is Null" sap:VirtualizedContainerService.HintSize="784,85" sap2010:WorkflowViewState.IdRef="If_5">
+                    <If Condition="[currentPassenger is Nothing]" DisplayName="Stop if next passenger is Null" sap:VirtualizedContainerService.HintSize="450,434" sap2010:WorkflowViewState.IdRef="If_5">
                       <sap:WorkflowViewStateService.ViewState>
                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
                           <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -289,7 +289,7 @@
                         </Sequence>
                       </If.Then>
                       <If.Else>
-                        <Sequence DisplayName="Sequence" sap:VirtualizedContainerService.HintSize="416,104" sap2010:WorkflowViewState.IdRef="Sequence_16">
+                        <Sequence DisplayName="Sequence" sap:VirtualizedContainerService.HintSize="416,103" sap2010:WorkflowViewState.IdRef="Sequence_16">
                           <sap:WorkflowViewStateService.ViewState>
                             <scg:Dictionary x:TypeArguments="x:String, x:Object">
                               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -298,7 +298,7 @@
                         </Sequence>
                       </If.Else>
                     </If>
-                    <ui:MultipleAssign sap2010:Annotation.AnnotationText="Getting current passenger's details such as Room Number, Passenger Type and Passenger Name. Those details will be used for the selector." DisplayName="Multiple Assign - current passenger details" sap:VirtualizedContainerService.HintSize="784,255" sap2010:WorkflowViewState.IdRef="MultipleAssign_2">
+                    <ui:MultipleAssign sap2010:Annotation.AnnotationText="Getting current passenger's details such as Room Number, Passenger Type and Passenger Name. Those details will be used for the selector." DisplayName="Multiple Assign - current passenger details" sap:VirtualizedContainerService.HintSize="784,252" sap2010:WorkflowViewState.IdRef="MultipleAssign_2">
                       <ui:MultipleAssign.AssignOperations>
                         <scg:List x:TypeArguments="ui:AssignOperation" Capacity="4">
                           <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_9">
@@ -343,7 +343,7 @@
                         </scg:Dictionary>
                       </sap:WorkflowViewStateService.ViewState>
                     </ui:LogMessage>
-                    <If Condition="[Not dictRoomCounters.ContainsKey(strRoomNumber)]" DisplayName="Check if the dictionary contains room" sap:VirtualizedContainerService.HintSize="784,85" sap2010:WorkflowViewState.IdRef="If_2">
+                    <If Condition="[Not dictRoomCounters.ContainsKey(strRoomNumber)]" DisplayName="Check if the dictionary contains room" sap:VirtualizedContainerService.HintSize="784,57" sap2010:WorkflowViewState.IdRef="If_2">
                       <sap:WorkflowViewStateService.ViewState>
                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
                           <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -385,7 +385,7 @@
                         </Sequence>
                       </If.Else>
                     </If>
-                    <ui:IfElseIf DisplayName="Check passengerType to determine room index  and type counter" sap:VirtualizedContainerService.HintSize="784,2259" sap2010:WorkflowViewState.IdRef="IfElseIf_2">
+                    <ui:IfElseIf DisplayName="Check passengerType to determine room index  and type counter" sap:VirtualizedContainerService.HintSize="784,2197" sap2010:WorkflowViewState.IdRef="IfElseIf_2">
                       <ui:IfElseIf.ConditionBlocks>
                         <sc:BindingList x:TypeArguments="ui:IfElseIfBlock" AllowEdit="True" AllowNew="True" AllowRemove="True" RaiseListChangedEvents="True">
                           <ui:IfElseIfBlock BlockType="If" Condition="[strCurrentPassengerType = &quot;Adult&quot;]" sap2010:WorkflowViewState.IdRef="IfElseIfBlock_1">
@@ -689,7 +689,7 @@
                           </ui:IfElseIfBlock>
                           <ui:IfElseIfBlock BlockType="ElseIf" Condition="[strCurrentPassengerType = &quot;Infant&quot;]" sap2010:WorkflowViewState.IdRef="IfElseIfBlock_3">
                             <ui:IfElseIfBlock.Then>
-                              <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="416,83" sap2010:WorkflowViewState.IdRef="Sequence_13">
+                              <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="416,25" sap2010:WorkflowViewState.IdRef="Sequence_13">
                                 <sap:WorkflowViewStateService.ViewState>
                                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                     <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -812,7 +812,7 @@
                         </scg:Dictionary>
                       </sap:WorkflowViewStateService.ViewState>
                     </ui:IfElseIf>
-                    <uix:NSelectItem DisplayName="Select passenger in respective room" sap:VirtualizedContainerService.HintSize="784,190" sap2010:WorkflowViewState.IdRef="NSelectItem_13" Item="[strAllocationIndex + &quot;.  &quot;+strCurrentPassengerName.ToString]" ScopeIdentifier="ef609acd-0462-48aa-b2e2-762735ea6285" Version="V3">
+                    <uix:NSelectItem DisplayName="Select passenger in respective room" sap:VirtualizedContainerService.HintSize="784,189" sap2010:WorkflowViewState.IdRef="NSelectItem_13" Item="[strAllocationIndex + &quot;.  &quot;+strCurrentPassengerName.ToString]" ScopeIdentifier="ef609acd-0462-48aa-b2e2-762735ea6285" Version="V3">
                       <uix:NSelectItem.Items>
                         <scg:List x:TypeArguments="x:String" Capacity="3">
                           <x:String>Please select passenger</x:String>
@@ -836,7 +836,7 @@
                         </scg:Dictionary>
                       </sap:WorkflowViewStateService.ViewState>
                     </uix:NSelectItem>
-                    <ui:CommentOut DisplayName="Disable - old logic, to be deleted" sap:VirtualizedContainerService.HintSize="784,76" sap2010:WorkflowViewState.IdRef="CommentOut_4">
+                    <ui:CommentOut DisplayName="Disable - old logic, to be deleted" sap:VirtualizedContainerService.HintSize="784,48" sap2010:WorkflowViewState.IdRef="CommentOut_4">
                       <ui:CommentOut.Body>
                         <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="450,268" sap2010:WorkflowViewState.IdRef="Sequence_20">
                           <sap:WorkflowViewStateService.ViewState>
@@ -887,7 +887,7 @@
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
             </ui:ForEach>
-            <ui:LogMessage DisplayName="Log Message - Passengers allocated" sap:VirtualizedContainerService.HintSize="880,170" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="[UiPath.Core.Activities.LogLevel.Trace]" Message="[&quot;All passengers have been allocated.&quot;]" />
+            <ui:LogMessage DisplayName="Log Message - Passengers allocated" sap:VirtualizedContainerService.HintSize="880,168" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="[UiPath.Core.Activities.LogLevel.Trace]" Message="[&quot;All passengers have been allocated.&quot;]" />
           </Sequence>
         </ActivityAction>
       </uix:NApplicationCard.Body>

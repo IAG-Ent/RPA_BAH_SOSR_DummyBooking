@@ -7,7 +7,7 @@
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>959,3915</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>933,1207</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>BOD_DummyHotel_Results_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -48,6 +48,7 @@
       <x:String>System.Reflection</x:String>
       <x:String>UiPath.UIAutomationNext.Activities.Models</x:String>
       <x:String>System.Activities.Runtime.Collections</x:String>
+      <x:String>System.Linq.Expressions</x:String>
     </sco:Collection>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
@@ -109,9 +110,10 @@
       <AssemblyReference>WindowsBase</AssemblyReference>
       <AssemblyReference>System.Memory.Data</AssemblyReference>
       <AssemblyReference>UiPath.Word.Activities.Design</AssemblyReference>
+      <AssemblyReference>System.Linq.Expressions</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="Attempt to navigate to the Dummy Hotel specified in Orchestrator asset.&#xA;If the process fails, output a boolean indicating that the hotel was not found." DisplayName="BOD_DummyHotel_Results" sap:VirtualizedContainerService.HintSize="784,3850" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="Attempt to navigate to the Dummy Hotel specified in Orchestrator asset.&#xA;If the process fails, output a boolean indicating that the hotel was not found." DisplayName="BOD_DummyHotel_Results" sap:VirtualizedContainerService.HintSize="567,1142" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="strDummyHotel" />
       <Variable x:TypeArguments="x:Boolean" Name="boolSystemNotResponding" />
@@ -123,7 +125,7 @@
         <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:LogMessage DisplayName="Log Message - dummy hotel" sap:VirtualizedContainerService.HintSize="722,173" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="[UiPath.Core.Activities.LogLevel.Trace]" Message="[&quot;Trying to navigate to dummy hotel...&quot;]">
+    <ui:LogMessage DisplayName="Log Message - dummy hotel" sap:VirtualizedContainerService.HintSize="505,173" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="[UiPath.Core.Activities.LogLevel.Trace]" Message="[&quot;Invoke workflow for navigating to Dummy Hotel.&quot;]">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -131,7 +133,7 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:LogMessage>
-    <Assign DisplayName="Assign Dummy Hotel name from asset" sap:VirtualizedContainerService.HintSize="722,114" sap2010:WorkflowViewState.IdRef="Assign_9">
+    <Assign DisplayName="Assign Dummy Hotel name from asset" sap:VirtualizedContainerService.HintSize="505,113" sap2010:WorkflowViewState.IdRef="Assign_9">
       <Assign.To>
         <OutArgument x:TypeArguments="x:String">[strDummyHotel]</OutArgument>
       </Assign.To>
@@ -139,20 +141,20 @@
         <InArgument x:TypeArguments="x:String">[in_dictConfig("BAH_SOSR_DummyHotel").ToString]</InArgument>
       </Assign.Value>
     </Assign>
-    <uix:NApplicationCard AttachMode="ByInstance" DisplayName="Use Browser Edge: Flight + accommodation search results | British Airways" sap:VirtualizedContainerService.HintSize="722,3292" sap2010:WorkflowViewState.IdRef="NApplicationCard_1" InUiElement="[in_uiBODBrowser]" InteractionMode="DebuggerApi" ScopeGuid="03080b46-6675-4468-b3fc-e0bd384403d9" Version="V2">
+    <uix:NApplicationCard AttachMode="ByInstance" DisplayName="Use Browser Edge: Flight + accommodation search results | British Airways" sap:VirtualizedContainerService.HintSize="505,562" sap2010:WorkflowViewState.IdRef="NApplicationCard_1" InUiElement="[in_uiBODBrowser]" InteractionMode="DebuggerApi" ScopeGuid="03080b46-6675-4468-b3fc-e0bd384403d9" Version="V2">
       <uix:NApplicationCard.Body>
         <ActivityAction x:TypeArguments="x:Object">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="x:Object" Name="WSSessionData" />
           </ActivityAction.Argument>
-          <Sequence DisplayName="Try to navigate to dummy hotel" sap:VirtualizedContainerService.HintSize="688,3123" sap2010:WorkflowViewState.IdRef="Sequence_2">
+          <Sequence DisplayName="Try to navigate to dummy hotel" sap:VirtualizedContainerService.HintSize="416,393" sap2010:WorkflowViewState.IdRef="Sequence_2">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                 <x:Boolean x:Key="IsPinned">False</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <ui:UiElementExists DisplayName="Element Exists 'System Not responding'" Exists="[boolSystemNotResponding]" sap:VirtualizedContainerService.HintSize="626,139" sap2010:WorkflowViewState.IdRef="UiElementExists_3">
+            <ui:UiElementExists DisplayName="Element Exists 'System Not responding'" Exists="[boolSystemNotResponding]" sap:VirtualizedContainerService.HintSize="354,139" sap2010:WorkflowViewState.IdRef="UiElementExists_3">
               <ui:UiElementExists.Target>
                 <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="c0f8e7f3-c1a6-4d26-91eb-91165c5dd7e3" InformativeScreenshot="fedb8f9b69df5dfd2145be259013d73f" Selector="&lt;html app='msedge.exe' title='badirect-auth.baplc.com/badp/xrod/common/sortingFilteringPaging.do' /&gt;&lt;webctrl class='alert' parentid='t-main-fragment' tag='DIV' aaname='*' /&gt;" WaitForReady="COMPLETE">
                   <ui:Target.TimeoutMS>
@@ -161,17 +163,20 @@
                 </ui:Target>
               </ui:UiElementExists.Target>
             </ui:UiElementExists>
-            <If sap2010:Annotation.AnnotationText="If the system is not responding, assign HotelFound = False.&#xA;Else, try to find the dummy hotel" Condition="[boolSystemNotResponding]" DisplayName="If system is not responding - hotelFound = False" sap:VirtualizedContainerService.HintSize="626,2894" sap2010:WorkflowViewState.IdRef="If_8">
+            <If sap2010:Annotation.AnnotationText="If the system is not responding, assign HotelFound = False.&#xA;Else, try to find the dummy hotel" Condition="[boolSystemNotResponding]" DisplayName="If system is not responding - hotelFound = False" sap:VirtualizedContainerService.HintSize="450,342" sap2010:WorkflowViewState.IdRef="If_8">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                   <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
               <If.Then>
-                <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="496,193" sap2010:WorkflowViewState.IdRef="Sequence_25">
+                <Sequence DisplayName="Then SOSR hotel is not found" sap:VirtualizedContainerService.HintSize="416,81" sap2010:WorkflowViewState.IdRef="Sequence_25">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                      <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
                   <Assign DisplayName="Assign - hotel is not found" sap:VirtualizedContainerService.HintSize="434,105" sap2010:WorkflowViewState.IdRef="Assign_8">
@@ -185,35 +190,36 @@
                 </Sequence>
               </If.Then>
               <If.Else>
-                <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="592,2496" sap2010:WorkflowViewState.IdRef="Sequence_26">
+                <Sequence DisplayName="Else SOSR hotel is found" sap:VirtualizedContainerService.HintSize="512,613" sap2010:WorkflowViewState.IdRef="Sequence_26">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                      <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
-                  <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="Single" DisplayName="Type Into Dummy hotel from Orch Asset" EmptyFieldMode="SingleLine" sap:VirtualizedContainerService.HintSize="530,250" sap2010:WorkflowViewState.IdRef="NTypeInto_2" InteractionMode="HardwareEvents" ScopeIdentifier="03080b46-6675-4468-b3fc-e0bd384403d9" Text="[strDummyHotel]" Version="V3">
+                  <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="Single" DisplayName="Type Into Dummy hotel from Orch Asset" EmptyFieldMode="SingleLine" sap:VirtualizedContainerService.HintSize="450,57" sap2010:WorkflowViewState.IdRef="NTypeInto_2" InteractionMode="HardwareEvents" ScopeIdentifier="03080b46-6675-4468-b3fc-e0bd384403d9" Text="[strDummyHotel]" Version="V3">
                     <uix:NTypeInto.Target>
                       <uix:TargetAnchorable BrowserURL="https://badirect-auth.baplc.com/badp/xrod/common/sortingFilteringPaging.do" CvElementArea="77, 546, 209, 41" CvType="InputBox" DesignTimeRectangle="79, 547, 205, 38" DesignTimeScaleFactor="1" ElementType="InputBox" FriendlyName="'INPUT search-box-style'" FullSelectorArgument="&lt;webctrl tag='INPUT' name='hotelName_input' id='search-box-style' /&gt;" FuzzySelectorArgument="&lt;webctrl tag='INPUT' name='hotelName_input' id='search-box-style' type='text' class='cell auto filter-accommodation-name-input-value' aaname='Search by accommodation name or location. Type your accommodation name and select from the list' /&gt;" Guid="70545bc4-f432-4f85-9913-5fd849310b9b" InformativeScreenshot="888b85970c1d6397043fe23132af39f7.png" ScopeSelectorArgument="&lt;html app='msedge.exe' title='Flight + accommodation search results | British Airways' /&gt;" SearchSteps="Selector" Version="V2" Visibility="Interactive" WaitForReadyArgument="Complete" />
                     </uix:NTypeInto.Target>
                     <sap:WorkflowViewStateService.ViewState>
                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                        <x:Boolean x:Key="IsExpanded">False</x:Boolean>
                         <x:Boolean x:Key="IsPinned">False</x:Boolean>
                       </scg:Dictionary>
                     </sap:WorkflowViewStateService.ViewState>
                   </uix:NTypeInto>
-                  <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'Search'" sap:VirtualizedContainerService.HintSize="530,189" sap2010:WorkflowViewState.IdRef="NClick_7" InteractionMode="HardwareEvents" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="03080b46-6675-4468-b3fc-e0bd384403d9" Version="V3">
+                  <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'Search'" sap:VirtualizedContainerService.HintSize="450,57" sap2010:WorkflowViewState.IdRef="NClick_7" InteractionMode="HardwareEvents" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="03080b46-6675-4468-b3fc-e0bd384403d9" Version="V3">
                     <uix:NClick.Target>
                       <uix:TargetAnchorable BrowserURL="https://badirect-auth.baplc.com/badp/xrod/package/searchResults.do?ConversationID=OJ1713865895346" CvElementArea="288, 435, 43, 41" CvType="Button" DesignTimeRectangle="296, 450, 28, 17" DesignTimeScaleFactor="1" FriendlyName="'SPAN'" FullSelectorArgument="&lt;webctrl class='search-zoom-icon' parentid='filterForm' tag='SPAN' /&gt;" FuzzySelectorArgument="&lt;webctrl class='search-zoom-icon' parentid='filterForm' tag='SPAN' type='' aaname=' ' /&gt;" Guid="40c4f964-ed4c-414a-b470-7e70e8fe25f6" InformativeScreenshot="93e0798f970101ed3e549fa98b170d1c.png" ScopeSelectorArgument="&lt;html app='msedge.exe' title='Flight + accommodation search results | British Airways' /&gt;" SearchSteps="FuzzySelector, CV" Version="V2" Visibility="Interactive" WaitForReadyArgument="Complete" />
                     </uix:NClick.Target>
                     <sap:WorkflowViewStateService.ViewState>
                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                        <x:Boolean x:Key="IsExpanded">False</x:Boolean>
                         <x:Boolean x:Key="IsPinned">False</x:Boolean>
                       </scg:Dictionary>
                     </sap:WorkflowViewStateService.ViewState>
                   </uix:NClick>
-                  <ui:UiElementExists DisplayName="Element Exists Unable to find Dummy Hotel" Exists="[strNoResults]" sap:VirtualizedContainerService.HintSize="530,57" sap2010:WorkflowViewState.IdRef="UiElementExists_4">
+                  <ui:UiElementExists DisplayName="Element Exists Unable to find Dummy Hotel" Exists="[strNoResults]" sap:VirtualizedContainerService.HintSize="450,57" sap2010:WorkflowViewState.IdRef="UiElementExists_4">
                     <ui:UiElementExists.Target>
                       <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="bd3c0c6a-1cc3-4c68-8c5f-91d764850afe" InformativeScreenshot="b7e2a39c3a270332ef6deea3a561340d" Selector="&lt;webctrl aria-role='alert' class='information-message' tag='DIV' innertext='   Sorry*' /&gt;" TimeoutMS="[CINT(in_dictConfig(&quot;Timeout_Miliseconds&quot;))]" WaitForReady="COMPLETE" />
                     </ui:UiElementExists.Target>
@@ -224,7 +230,7 @@
                       </scg:Dictionary>
                     </sap:WorkflowViewStateService.ViewState>
                   </ui:UiElementExists>
-                  <If sap2010:Annotation.AnnotationText="Process to check if there are results." Condition="[strNoResults = true]" DisplayName="If no results = throw BE" sap:VirtualizedContainerService.HintSize="530,1912" sap2010:WorkflowViewState.IdRef="If_9">
+                  <If sap2010:Annotation.AnnotationText="Process to check if there are results." Condition="[strNoResults = true]" DisplayName="If no results = throw BE" sap:VirtualizedContainerService.HintSize="450,354" sap2010:WorkflowViewState.IdRef="If_9">
                     <sap:WorkflowViewStateService.ViewState>
                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
                         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -233,10 +239,11 @@
                       </scg:Dictionary>
                     </sap:WorkflowViewStateService.ViewState>
                     <If.Then>
-                      <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="496,193" sap2010:WorkflowViewState.IdRef="Sequence_20">
+                      <Sequence DisplayName="Then Hotel is not found" sap:VirtualizedContainerService.HintSize="416,81" sap2010:WorkflowViewState.IdRef="Sequence_20">
                         <sap:WorkflowViewStateService.ViewState>
                           <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                            <x:Boolean x:Key="IsPinned">False</x:Boolean>
                           </scg:Dictionary>
                         </sap:WorkflowViewStateService.ViewState>
                         <Assign DisplayName="Assign - No results - hotel is not found" sap:VirtualizedContainerService.HintSize="434,105" sap2010:WorkflowViewState.IdRef="Assign_5">
@@ -250,13 +257,14 @@
                       </Sequence>
                     </If.Then>
                     <If.Else>
-                      <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="496,1527" sap2010:WorkflowViewState.IdRef="Sequence_24">
+                      <Sequence DisplayName="Else - hotel is found, navigate to passenger details" sap:VirtualizedContainerService.HintSize="496,2647" sap2010:WorkflowViewState.IdRef="Sequence_24">
                         <sap:WorkflowViewStateService.ViewState>
                           <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                            <x:Boolean x:Key="IsPinned">False</x:Boolean>
                           </scg:Dictionary>
                         </sap:WorkflowViewStateService.ViewState>
-                        <Assign DisplayName="Assign - hotel is found" sap:VirtualizedContainerService.HintSize="434,82" sap2010:WorkflowViewState.IdRef="Assign_6">
+                        <Assign DisplayName="Assign - hotel is found" sap:VirtualizedContainerService.HintSize="434,114" sap2010:WorkflowViewState.IdRef="Assign_6">
                           <Assign.To>
                             <OutArgument x:TypeArguments="x:Boolean">[out_boolHotelFound]</OutArgument>
                           </Assign.To>
@@ -264,8 +272,8 @@
                             <InArgument x:TypeArguments="x:Boolean">True</InArgument>
                           </Assign.Value>
                         </Assign>
-                        <ui:LogMessage DisplayName="Log Message - Hotel found - choose and continue" sap:VirtualizedContainerService.HintSize="434,143" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;Dummy hotel found. Click 'Choose and continue' on the Flight and Accomodation page&quot;]" />
-                        <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Flight &amp; Accomodation - Click 'Choose &amp; continue'" sap:VirtualizedContainerService.HintSize="434,157" sap2010:WorkflowViewState.IdRef="NClick_13" InteractionMode="Simulate" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="03080b46-6675-4468-b3fc-e0bd384403d9" Version="V3">
+                        <ui:LogMessage DisplayName="Log Message - Hotel found - choose and continue" sap:VirtualizedContainerService.HintSize="434,173" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;Dummy hotel found. Click 'Choose and continue' on the Flight and Accomodation page&quot;]" />
+                        <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Flight &amp; Accomodation - Click 'Choose &amp; continue'" sap:VirtualizedContainerService.HintSize="434,189" sap2010:WorkflowViewState.IdRef="NClick_13" InteractionMode="Simulate" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="03080b46-6675-4468-b3fc-e0bd384403d9" Version="V3">
                           <uix:NClick.Target>
                             <uix:TargetAnchorable BrowserURL="https://badirect-auth.baplc.com/badp/xrod/common/sortingFilteringPaging.do" CvElementArea="1045, 533, 189, 51" CvTextArea="1070, 549, 137, 17" CvTextArgument="Choose &amp; continue" CvType="Button" DesignTimeRectangle="1071, 550, 135, 17" DesignTimeScaleFactor="1" ElementType="Text" FriendlyName="'Choose &amp; continue'" FullSelectorArgument="&lt;webctrl class='choose-and-continue-text' tag='SPAN' /&gt;" FuzzySelectorArgument="&lt;webctrl class='choose-and-continue-text' tag='SPAN' type='' aaname='Choose &amp;amp; continue' check:innerText='Choose &amp;amp; continue' /&gt;" Guid="0e76d949-6eaa-4446-b6ee-0bfba2885004" InformativeScreenshot="0b600194152a5720e3c2c0c2887780b7.png" ScopeSelectorArgument="&lt;html app='msedge.exe' title='Flight + accommodation search results | British Airways' /&gt;" SearchSteps="Selector, FuzzySelector, CV" Version="V2" Visibility="Interactive" WaitForReadyArgument="Complete">
                               <uix:TargetAnchorable.Anchors>
@@ -276,8 +284,9 @@
                             </uix:TargetAnchorable>
                           </uix:NClick.Target>
                         </uix:NClick>
-                        <ui:LogMessage DisplayName="Log Message - Hotel details page " sap:VirtualizedContainerService.HintSize="434,143" sap2010:WorkflowViewState.IdRef="LogMessage_4" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;Hotel details page - choose and continue&quot;]" />
-                        <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Hotel Details - Click 'Choose and continue' + Anchor" sap:VirtualizedContainerService.HintSize="434,157" sap2010:WorkflowViewState.IdRef="NClick_14" InteractionMode="Simulate" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="03080b46-6675-4468-b3fc-e0bd384403d9" Version="V3">
+                        <ui:LogMessage DisplayName="Log Message - Hotel details page loading" sap:VirtualizedContainerService.HintSize="434,173" sap2010:WorkflowViewState.IdRef="LogMessage_7" Level="Info" Message="[&quot;Clicked. Hotel details page is loading...&quot;]" />
+                        <ui:LogMessage DisplayName="Log Message - Hotel details page " sap:VirtualizedContainerService.HintSize="434,173" sap2010:WorkflowViewState.IdRef="LogMessage_4" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;Hotel details page displayed - clicking choose and continue&quot;]" />
+                        <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Hotel Details - Click 'Choose and continue' + Anchor" sap:VirtualizedContainerService.HintSize="434,189" sap2010:WorkflowViewState.IdRef="NClick_14" InteractionMode="Simulate" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="03080b46-6675-4468-b3fc-e0bd384403d9" Version="V3">
                           <uix:NClick.Target>
                             <uix:TargetAnchorable BrowserURL="https://badirect-auth.baplc.com/badp/xrod/hotel/hotelDetails.do" CvTextArea="904, 294, 120, 12" CvTextArgument="Choose and continue" CvType="Text" DesignTimeRectangle="901, 291, 143, 19" DesignTimeScaleFactor="1" ElementType="Text" FriendlyName="'Choose and continue'" FullSelectorArgument="&lt;webctrl aaname='Choose and continue' innertext='Choose and continue' /&gt;" FuzzySelectorArgument="&lt;webctrl aaname='Choose and continue' innertext='Choose and continue' tag='A' type='' class='arrow' check:text='Choose and continue' /&gt;" Guid="d47b0ae6-db51-4c6e-946f-95f077144631" InformativeScreenshot="06991ebe3f26aa14315648e2bfbacfe1.png" ScopeSelectorArgument="&lt;html app='msedge.exe' title='British Airways - Hotel details' /&gt;" SearchSteps="Selector, FuzzySelector, CV" Version="V2" Visibility="Interactive" WaitForReadyArgument="Complete">
                               <uix:TargetAnchorable.Anchors>
@@ -288,8 +297,9 @@
                             </uix:TargetAnchorable>
                           </uix:NClick.Target>
                         </uix:NClick>
-                        <ui:LogMessage DisplayName="Log Message - Select rooms page " sap:VirtualizedContainerService.HintSize="434,143" sap2010:WorkflowViewState.IdRef="LogMessage_5" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;Select Rooms page - choose and continue&quot;]" />
-                        <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Select Rooms - Click 'Choose and continue'" sap:VirtualizedContainerService.HintSize="434,157" sap2010:WorkflowViewState.IdRef="NClick_10" InteractionMode="Simulate" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="03080b46-6675-4468-b3fc-e0bd384403d9" Version="V3">
+                        <ui:LogMessage DisplayName="Log Message - Select rooms page loading" sap:VirtualizedContainerService.HintSize="434,173" sap2010:WorkflowViewState.IdRef="LogMessage_8" Level="Info" Message="[&quot;Clicked. Select rooms page is loading...&quot;]" />
+                        <ui:LogMessage DisplayName="Log Message - Select rooms page " sap:VirtualizedContainerService.HintSize="434,173" sap2010:WorkflowViewState.IdRef="LogMessage_5" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;Select Rooms page displayed - clicking choose and continue&quot;]" />
+                        <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Select Rooms - Click 'Choose and continue'" sap:VirtualizedContainerService.HintSize="434,84" sap2010:WorkflowViewState.IdRef="NClick_10" InteractionMode="Simulate" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="03080b46-6675-4468-b3fc-e0bd384403d9" Version="V3">
                           <uix:NClick.Target>
                             <uix:TargetAnchorable BrowserURL="https://badirect-auth.baplc.com/badp/xrod/hotel/roomSelection.do?ConversationID=OJ1713867850030" CvTextArea="904, 596, 120, 12" CvTextArgument="Choose and continue" CvType="Text" DesignTimeRectangle="901, 593, 143, 19" DesignTimeScaleFactor="1" ElementType="Text" FriendlyName="'Choose and continue'" FullSelectorArgument="&lt;webctrl tag='A' aaname='Choose and continue' /&gt;" FuzzySelectorArgument="&lt;webctrl tag='A' aaname='Choose and continue' type='' class='arrow' check:text='Choose and continue' /&gt;" Guid="77faf08a-6b0c-4c1a-9cc5-0e9349341507" InformativeScreenshot="cbb5624d80e9175f7912d2414c4928a0.png" ScopeSelectorArgument="&lt;html app='msedge.exe' title='British Airways - Room selection' /&gt;" SearchSteps="FuzzySelector, CV" Version="V2" Visibility="Interactive" WaitForReadyArgument="Complete">
                               <uix:TargetAnchorable.Anchors>
@@ -301,13 +311,21 @@
                           </uix:NClick.Target>
                           <sap:WorkflowViewStateService.ViewState>
                             <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
                               <x:Boolean x:Key="IsPinned">False</x:Boolean>
                             </scg:Dictionary>
                           </sap:WorkflowViewStateService.ViewState>
                         </uix:NClick>
-                        <ui:LogMessage DisplayName="Log Message - Add extras page " sap:VirtualizedContainerService.HintSize="434,143" sap2010:WorkflowViewState.IdRef="LogMessage_6" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;Add Extras page - checkbox and choose and continue&quot;]" />
-                        <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Add Extras - Click 'Checkbox'" sap:VirtualizedContainerService.HintSize="434,157" sap2010:WorkflowViewState.IdRef="NClick_11" InteractionMode="Simulate" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="03080b46-6675-4468-b3fc-e0bd384403d9" Version="V3">
+                        <ui:LogMessage DisplayName="Log Message -Add extras page loading" sap:VirtualizedContainerService.HintSize="434,173" sap2010:WorkflowViewState.IdRef="LogMessage_9" Level="Info" Message="[&quot;Clicked. Add extras page is loading...&quot;]">
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                        </ui:LogMessage>
+                        <ui:LogMessage DisplayName="Log Message - Add extras page " sap:VirtualizedContainerService.HintSize="434,173" sap2010:WorkflowViewState.IdRef="LogMessage_6" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;Add Extras page displayed - checkbox and choose and continue&quot;]" />
+                        <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Add Extras - Click 'Checkbox'" sap:VirtualizedContainerService.HintSize="434,189" sap2010:WorkflowViewState.IdRef="NClick_11" InteractionMode="Simulate" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="03080b46-6675-4468-b3fc-e0bd384403d9" Version="V3">
                           <uix:NClick.Target>
                             <uix:TargetAnchorable BrowserURL="https://badirect-auth.baplc.com/badp/xrod/common/replay.do?ConversationID=OJ1713868018497" CvElementArea="978, 428, 27, 28" CvType="CheckBox" DesignTimeRectangle="980, 642, 24, 24" DesignTimeScaleFactor="1" ElementType="CheckBox" FriendlyName="'Checkbox'" FullSelectorArgument="&lt;webctrl css-selector='body&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;form&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;table' parentid='replayForm' tag='TABLE' /&gt;&lt;webctrl tableRow='3' tag='INPUT' aaname='Booking terms and conditions agreement' name='extras_terms' /&gt;" FuzzySelectorArgument="&lt;webctrl parentid='replayForm' tag='TABLE' /&gt;&lt;webctrl type='checkbox' tag='INPUT' aaname='Booking terms and conditions agreement' name='extras_terms' class='' /&gt;" Guid="e07ae04c-bb85-428c-acc0-881e1a2f9c96" InformativeScreenshot="14da0d39cd46f6943e7ab72664c4e4dc.png" ScopeSelectorArgument="&lt;html app='msedge.exe' title='British Airways - Add extras' /&gt;" SearchSteps="FuzzySelector, CV" Version="V2" Visibility="Interactive" WaitForReadyArgument="Complete">
                               <uix:TargetAnchorable.Anchors>
@@ -324,12 +342,13 @@
                             </scg:Dictionary>
                           </sap:WorkflowViewStateService.ViewState>
                         </uix:NClick>
-                        <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'Continue'" sap:VirtualizedContainerService.HintSize="434,157" sap2010:WorkflowViewState.IdRef="NClick_12" InteractionMode="Simulate" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="03080b46-6675-4468-b3fc-e0bd384403d9" Version="V3">
+                        <ui:LogMessage DisplayName="Log Message - Add extras page  checkbox" sap:VirtualizedContainerService.HintSize="434,173" sap2010:WorkflowViewState.IdRef="LogMessage_10" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;Checkbox ticked.&quot;]" />
+                        <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'Continue'" sap:VirtualizedContainerService.HintSize="434,189" sap2010:WorkflowViewState.IdRef="NClick_12" InteractionMode="Simulate" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="03080b46-6675-4468-b3fc-e0bd384403d9" Version="V3">
                           <uix:NClick.Target>
-                            <uix:TargetAnchorable BrowserURL="https://badirect-auth.baplc.com/badp/xrod/common/replay.do?ConversationID=OJ1713868018497" CvElementArea="956, 589, 89, 25" CvTextArea="969, 596, 53, 11" CvTextArgument="Continue" CvType="Button" DesignTimeRectangle="965, 592, 55, 19" DesignTimeScaleFactor="1" ElementType="Button" FriendlyName="'Continue'" FullSelectorArgument="&lt;webctrl id='continueButton' tag='INPUT' /&gt;" FuzzySelectorArgument="&lt;webctrl id='continueButton' tag='INPUT' type='button' class='arrow buttonContinueTitle' aaname='Please ensure that you have ticked the relevant box before continuing' check:text='Continue' /&gt;" Guid="020f3ed1-a81f-4070-9450-50757ddc6cc7" InformativeScreenshot="8fd92f43c90c50c093aef3298ab848b8.png" ScopeSelectorArgument="&lt;html app='msedge.exe' title='British Airways - Add extras' /&gt;" SearchSteps="FuzzySelector, CV" Version="V2" Visibility="Interactive" WaitForReadyArgument="Complete">
+                            <uix:TargetAnchorable BrowserURL="https://badirect-auth.baplc.com/badp/xrod/common/replay.do" CVScreenId="786f4e28-51e1-4d36-8e94-2a9ef468eee1" CvElementArea="715, 552, 184, 50" CvTextArea="773, 568, 66, 15" CvTextArgument="Continue" CvType="Button" DesignTimeRectangle="862, 4145, 164, 43" DesignTimeScaleFactor="0.8999999761581421" ElementType="Text" FriendlyName="'Continue'" FullSelectorArgument="&lt;webctrl id='continueReplayPageButton' aaname='Continue' innertext='Continue' /&gt;" FuzzySelectorArgument="&lt;webctrl id='continueReplayPageButton' aaname='Continue' innertext='Continue' tag='SPAN' type='' class='plain' check:text='Continue' /&gt;" Guid="a007ff3b-61d8-494e-ad95-82c9def4d4b3" ImageBase64="" ScopeSelectorArgument="&lt;html app='msedge.exe' title='British Airways - Add extras' /&gt;" SearchSteps="Selector, FuzzySelector, CV" Version="V2" Visibility="Interactive">
                               <uix:TargetAnchorable.Anchors>
-                                <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
-                                  <uix:Target CvTextArea="282, 97, 208, 19" CvTextArgument="Important Information" CvType="Text" DesignTimeRectangle="284, 96, 760, 37" ElementType="Text" FriendlyName="'Important Information'" FullSelectorArgument="&lt;webctrl aaname='Important Information ' innertext='Important Information ' /&gt;" FuzzySelectorArgument="&lt;webctrl aaname='Important Information ' innertext='Important Information ' tag='H2' type='' class='' check:text='Important Information' /&gt;" SearchSteps="Selector, FuzzySelector, CV" />
+                                <scg:List x:TypeArguments="uix:ITarget" Capacity="4">
+                                  <uix:Target DesignTimeRectangle="341, -189, 684, 58" ElementType="Text" FriendlyName="'Add extras'" FullSelectorArgument="&lt;webctrl id='mainContentHeader' aaname='Add extras' innertext='Add extras' /&gt;" FuzzySelectorArgument="&lt;webctrl id='mainContentHeader' aaname='Add extras' innertext='Add extras' tag='H1' type='' class='' check:text='Add extras' /&gt;" SearchSteps="Selector, FuzzySelector" />
                                 </scg:List>
                               </uix:TargetAnchorable.Anchors>
                             </uix:TargetAnchorable>
@@ -341,6 +360,48 @@
                             </scg:Dictionary>
                           </sap:WorkflowViewStateService.ViewState>
                         </uix:NClick>
+                        <ui:CommentOut DisplayName="Comment Out - old selector" sap:VirtualizedContainerService.HintSize="434,57" sap2010:WorkflowViewState.IdRef="CommentOut_1">
+                          <ui:CommentOut.Body>
+                            <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="496,277" sap2010:WorkflowViewState.IdRef="Sequence_27">
+                              <sap:WorkflowViewStateService.ViewState>
+                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                </scg:Dictionary>
+                              </sap:WorkflowViewStateService.ViewState>
+                              <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'Continue'" sap:VirtualizedContainerService.HintSize="434,189" sap2010:WorkflowViewState.IdRef="NClick_15" InteractionMode="Simulate" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="03080b46-6675-4468-b3fc-e0bd384403d9" Version="V3">
+                                <uix:NClick.Target>
+                                  <uix:TargetAnchorable BrowserURL="https://badirect-auth.baplc.com/badp/xrod/common/replay.do?ConversationID=OJ1713868018497" CvElementArea="956, 589, 89, 25" CvTextArea="969, 596, 53, 11" CvTextArgument="Continue" CvType="Button" DesignTimeRectangle="965, 592, 55, 19" DesignTimeScaleFactor="1" ElementType="Button" FriendlyName="'Continue'" FullSelectorArgument="&lt;webctrl id='continueButton' tag='INPUT' /&gt;" FuzzySelectorArgument="&lt;webctrl id='continueButton' tag='INPUT' type='button' class='arrow buttonContinueTitle' aaname='Please ensure that you have ticked the relevant box before continuing' check:text='Continue' /&gt;" Guid="020f3ed1-a81f-4070-9450-50757ddc6cc7" InformativeScreenshot="8fd92f43c90c50c093aef3298ab848b8.png" ScopeSelectorArgument="&lt;html app='msedge.exe' title='British Airways - Add extras' /&gt;" SearchSteps="FuzzySelector, CV" Version="V2" Visibility="Interactive" WaitForReadyArgument="Complete">
+                                    <uix:TargetAnchorable.Anchors>
+                                      <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                                        <uix:Target CvTextArea="282, 97, 208, 19" CvTextArgument="Important Information" CvType="Text" DesignTimeRectangle="284, 96, 760, 37" ElementType="Text" FriendlyName="'Important Information'" FullSelectorArgument="&lt;webctrl aaname='Important Information ' innertext='Important Information ' /&gt;" FuzzySelectorArgument="&lt;webctrl aaname='Important Information ' innertext='Important Information ' tag='H2' type='' class='' check:text='Important Information' /&gt;" SearchSteps="Selector, FuzzySelector, CV" />
+                                      </scg:List>
+                                    </uix:TargetAnchorable.Anchors>
+                                  </uix:TargetAnchorable>
+                                </uix:NClick.Target>
+                                <sap:WorkflowViewStateService.ViewState>
+                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                  </scg:Dictionary>
+                                </sap:WorkflowViewStateService.ViewState>
+                              </uix:NClick>
+                            </Sequence>
+                          </ui:CommentOut.Body>
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                        </ui:CommentOut>
+                        <ui:LogMessage DisplayName="Log Message -passenger details page loading" sap:VirtualizedContainerService.HintSize="434,164" sap2010:WorkflowViewState.IdRef="LogMessage_11" Level="Info" Message="[&quot;Continue button clicked. Passenger details page is loading...&quot;]">
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                        </ui:LogMessage>
                       </Sequence>
                     </If.Else>
                   </If>
@@ -354,7 +415,7 @@
         <uix:TargetApp Area="-8, -8, 1382, 744" BrowserType="Edge" IconBase64="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" InformativeScreenshot="751146d80a23f8e8c1cbca096caf30f5.jpg" Selector="&lt;html app='msedge.exe' title='Flight + accommodation search results | British Airways' /&gt;" Title="Program Manager" Url="https://badirect-auth.baplc.com/badp/xrod/common/sortingFilteringPaging.do" />
       </uix:NApplicationCard.TargetApp>
     </uix:NApplicationCard>
-    <ui:LogMessage DisplayName="Log Message - dummy hotel filtering done" sap:VirtualizedContainerService.HintSize="682,141" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="[UiPath.Core.Activities.LogLevel.Trace]" Message="[&quot;Navigating to Dummy hotel complete.&quot;]">
+    <ui:LogMessage DisplayName="Log Message - dummy hotel filtering done" sap:VirtualizedContainerService.HintSize="505,164" sap2010:WorkflowViewState.IdRef="LogMessage_12" Level="[UiPath.Core.Activities.LogLevel.Trace]" Message="[&quot;Ending workflow for navigating to Dummy Hotel.&quot;]">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
