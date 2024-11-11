@@ -11,7 +11,7 @@
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>990,6511</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>990,6585</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>Init_Generate_Datatable_From_Booking_Details_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -124,7 +124,7 @@
       <AssemblyReference>System.Linq.Expressions</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="Initialization:&#xA;- Input DataTable: Stores transaction item for processing.&#xA;- Output DataTable: Contains data to be transferred to the Booking entity in the Data Service.&#xA;- Flights DataTable: Stores data to be transferred to the Booked Flights entity in the Data Service." DisplayName="Init_Generate_Datatables" sap:VirtualizedContainerService.HintSize="1000,6406" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="Initialization:&#xA;- Input DataTable: Stores transaction item for processing.&#xA;- Output DataTable: Contains data to be transferred to the Booking entity in the Data Service.&#xA;- Flights DataTable: Stores data to be transferred to the Booked Flights entity in the Data Service." DisplayName="Init_Generate_Datatables" sap:VirtualizedContainerService.HintSize="1000,6520" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="scg:IList(b:BAHSOSRBookingData)" Name="lstBookingDataRecords" />
       <Variable x:TypeArguments="x:String" Name="strHotelID" />
@@ -139,6 +139,14 @@
         <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
+    <Assign DisplayName="TESTING - Assign" sap:VirtualizedContainerService.HintSize="938,114" sap2010:WorkflowViewState.IdRef="Assign_4">
+      <Assign.To>
+        <OutArgument x:TypeArguments="x:String">[in_strSearchGUID]</OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="x:String">36de18a9-c27f-4976-bc87-61010f50960320241111144425</InArgument>
+      </Assign.Value>
+    </Assign>
     <ui:LogMessage DisplayName="Log Message - Invoke Generate Datatable workflow" sap:VirtualizedContainerService.HintSize="938,173" sap2010:WorkflowViewState.IdRef="LogMessage_19" Level="Trace" Message="[&quot;Invoke Init_Generate_Datatables workflow.&quot;]" />
     <ui:LogMessage DisplayName="Log Message Data initialization starting" sap:VirtualizedContainerService.HintSize="938,173" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Initiating data initialization process by creating datatables and retrieving records from the Booking Data entity.&quot;]">
       <sap:WorkflowViewStateService.ViewState>
@@ -382,7 +390,7 @@
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
             </ui:AddDataRow>
-            <ui:AddDataRow DataRow="{x:Null}" ArrayRow="[{lstBookingDataRecords(0).GUID.ToString,&#xD;&#xA;&quot;&quot;,&#xD;&#xA;&quot;Dummy Booking InProgress&quot;,&#xD;&#xA; strHotelID.ToString,&#xD;&#xA;lstBookingDataRecords(0).DepartureDate.ToString,&#xD;&#xA;lstBookingDataRecords(0).ReturnDate.ToString,&#xD;&#xA;lstHotelRecords.Item(0).Name.ToString,&#xD;&#xA;&quot;&quot;,&#xD;&#xA;&quot;&quot;,&#xD;&#xA;&quot;&quot;,&#xD;&#xA;&quot;&quot;,&#xD;&#xA;&quot;&quot;,&#xD;&#xA;&quot;&quot;,&#xD;&#xA;If(lstBookingDataRecords(0).SpecialRequests Is Nothing, &quot;None&quot;, lstBookingDataRecords(0).SpecialRequests.ToString),&#xD;&#xA;If(lstBookingDataRecords(0).SpecialRequests2 Is Nothing, &quot;None&quot;, lstBookingDataRecords(0).SpecialRequests2.ToString),&#xD;&#xA;If(lstBookingDataRecords(0).SpecialRequests3 Is Nothing, &quot;None&quot;, lstBookingDataRecords(0).SpecialRequests3.ToString),&#xD;&#xA;If(lstBookingDataRecords(0).SpecialRequests4 Is Nothing, &quot;None&quot;, lstBookingDataRecords(0).SpecialRequests4.ToString),&#xD;&#xA;If(lstBookingDataRecords(0).AgentID Is Nothing, &quot;None&quot;, lstBookingDataRecords(0).AgentID.ToString),&#xD;&#xA;lstBookingDataRecords(0).Passenger1.Split(&quot;|&quot;c)(8).ToString,&#xD;&#xA;lstHotelRecords.Item(0).HotelLocation.ToString,&#xD;&#xA;lstBookingDataRecords(0).Id.ToString}]" DataTable="[out_dtOutputDataTable]" DisplayName="Add Data Row in outputDataTable" sap:VirtualizedContainerService.HintSize="374,186" sap2010:WorkflowViewState.IdRef="AddDataRow_10">
+            <ui:AddDataRow DataRow="{x:Null}" ArrayRow="[{lstBookingDataRecords(0).GUID.ToString,&#xA;&quot;&quot;,&#xA;&quot;Dummy Booking InProgress&quot;,&#xA; strHotelID.ToString,&#xA;lstBookingDataRecords(0).DepartureDate.ToString,&#xA;lstBookingDataRecords(0).ReturnDate.ToString,&#xA;lstHotelRecords.Item(0).Name.ToString,&#xA;&quot;&quot;,&#xA;&quot;&quot;,&#xA;&quot;&quot;,&#xA;&quot;&quot;,&#xA;&quot;&quot;,&#xA;&quot;&quot;,&#xA;If(lstBookingDataRecords(0).SpecialRequests Is Nothing, &quot;None&quot;, lstBookingDataRecords(0).SpecialRequests.ToString),&#xA;If(lstBookingDataRecords(0).SpecialRequests2 Is Nothing, &quot;None&quot;, lstBookingDataRecords(0).SpecialRequests2.ToString),&#xA;If(lstBookingDataRecords(0).SpecialRequests3 Is Nothing, &quot;None&quot;, lstBookingDataRecords(0).SpecialRequests3.ToString),&#xA;If(lstBookingDataRecords(0).SpecialRequests4 Is Nothing, &quot;None&quot;, lstBookingDataRecords(0).SpecialRequests4.ToString),&#xA;If(lstBookingDataRecords(0).AgentID Is Nothing, &quot;None&quot;, lstBookingDataRecords(0).AgentID.ToString),&#xA;lstBookingDataRecords(0).Passenger1.Split(&quot;|&quot;c)(8).ToString,&#xA;lstHotelRecords.Item(0).HotelLocation.ToString,&#xA;lstBookingDataRecords(0).Id.ToString}]" DataTable="[out_dtOutputDataTable]" DisplayName="Add Data Row in outputDataTable" sap:VirtualizedContainerService.HintSize="374,186" sap2010:WorkflowViewState.IdRef="AddDataRow_10">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                   <x:Boolean x:Key="IsExpanded">True</x:Boolean>
