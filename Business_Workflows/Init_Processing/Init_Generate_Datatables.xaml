@@ -144,7 +144,7 @@
         <OutArgument x:TypeArguments="x:String">[in_strSearchGUID]</OutArgument>
       </Assign.To>
       <Assign.Value>
-        <InArgument x:TypeArguments="x:String">36de18a9-c27f-4976-bc87-61010f50960320241111144425</InArgument>
+        <InArgument x:TypeArguments="x:String">0991857e-4c31-426e-bafe-76522113bd6720241111153901</InArgument>
       </Assign.Value>
     </Assign>
     <ui:LogMessage DisplayName="Log Message - Invoke Generate Datatable workflow" sap:VirtualizedContainerService.HintSize="938,173" sap2010:WorkflowViewState.IdRef="LogMessage_19" Level="Trace" Message="[&quot;Invoke Init_Generate_Datatables workflow.&quot;]" />
