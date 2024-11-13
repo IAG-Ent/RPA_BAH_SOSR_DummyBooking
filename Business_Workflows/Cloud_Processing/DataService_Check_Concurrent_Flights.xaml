@@ -159,7 +159,7 @@
               </uda:QueryEntityRecords.FilterArguments>
               <uda:QueryEntityRecords.FilterValues>
                 <scg:List x:TypeArguments="InArgument" Capacity="4">
-                  <InArgument x:TypeArguments="s:DateTimeOffset">[Now.AddMinutes(-60)]</InArgument>
+                  <InArgument x:TypeArguments="s:DateTimeOffset">[Now.AddMinutes(-2)]</InArgument>
                 </scg:List>
               </uda:QueryEntityRecords.FilterValues>
             </uda:QueryEntityRecords>
@@ -229,7 +229,7 @@
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <ui:LogMessage DisplayName="Log Message - concurrent flights" sap:VirtualizedContainerService.HintSize="440,173" sap2010:WorkflowViewState.IdRef="LogMessage_9" Level="Info" Message="[&quot;There are no concurrent flights. Continuing with the seat allocation logic.&quot;]" />
+          <ui:LogMessage DisplayName="Log Message - no concurrent flights" sap:VirtualizedContainerService.HintSize="440,173" sap2010:WorkflowViewState.IdRef="LogMessage_9" Level="Info" Message="[&quot;There are no concurrent flights. Continuing with the seat allocation logic.&quot;]" />
           <Assign DisplayName="Assign - there are NO matches in Booked Flights temp, therefore continue" sap:VirtualizedContainerService.HintSize="440,105" sap2010:WorkflowViewState.IdRef="Assign_8">
             <Assign.To>
               <OutArgument x:TypeArguments="x:Boolean">[out_boolAreMatches]</OutArgument>
