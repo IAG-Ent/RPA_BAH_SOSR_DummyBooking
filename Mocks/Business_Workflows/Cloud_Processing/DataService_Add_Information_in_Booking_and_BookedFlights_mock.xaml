@@ -1,15 +1,16 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="DataService_Add_Information_in_Booking_and_BookedFlights" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:b="clr-namespace:BAH_SOSR_DummyBooking;assembly=DataService.BAH_SOSR_DummyBooking" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:s="clr-namespace:System;assembly=System.Private.CoreLib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:sc="clr-namespace:System.ComponentModel;assembly=System.ComponentModel.TypeConverter" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data.Common" xmlns:uda="clr-namespace:UiPath.DataService.Activities;assembly=UiPath.DataService.Activities.Core" xmlns:udam="clr-namespace:UiPath.DataService.Activities.Models;assembly=UiPath.DataService.Activities.Core" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:utam="clr-namespace:UiPath.Testing.Activities.Mocks;assembly=UiPath.Testing.Activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="DataService_Add_Information_in_Booking_and_BookedFlights" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:b="clr-namespace:BAH_SOSR_DummyBooking;assembly=DataService.BAH_SOSR_DummyBooking" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:s="clr-namespace:System;assembly=System.Private.CoreLib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:sc="clr-namespace:System.ComponentModel;assembly=System.ComponentModel.TypeConverter" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data.Common" xmlns:uasa="clr-namespace:UiPath.Activities.System.Arrays;assembly=UiPath.System.Activities" xmlns:uda="clr-namespace:UiPath.DataService.Activities;assembly=UiPath.DataService.Activities.Core" xmlns:udam="clr-namespace:UiPath.DataService.Activities.Models;assembly=UiPath.DataService.Activities.Core" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:utam="clr-namespace:UiPath.Testing.Activities.Mocks;assembly=UiPath.Testing.Activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <x:Members>
     <x:Property Name="in_dictConfig" Type="InArgument(scg:Dictionary(x:String, x:Object))" />
     <x:Property Name="io_dtOutputDataTable" Type="InOutArgument(sd:DataTable)" />
     <x:Property Name="in_dtFlightsDataTable" Type="InArgument(sd:DataTable)" />
     <x:Property Name="out_intBookingAutoNumber" Type="OutArgument(x:Int32)" />
+    <x:Property Name="out_lstBookedFlightsIDs" Type="OutArgument(scg:List(x:String))" />
     <x:Property Name="out_strBookingID" Type="OutArgument(x:String)" />
   </x:Members>
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>959,4419</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>959,4246</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>DataService_Add_Information_in_Booking_and_BookedFlights_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -129,7 +130,7 @@
       <AssemblyReference>UiPath.Platform</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="- Add current booking in Bookings entity&#xA;- Retrieve Booking ID&#xA;- Create record in BookedFlightsTemp Entity" DisplayName="DataService_Add_Information_in_Booking_and_BookedFlightsTemp" sap:VirtualizedContainerService.HintSize="729,4274" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="- Add current booking in Bookings entity&#xA;- Retrieve Booking ID&#xA;- Create record in BookedFlightsTemp Entity" DisplayName="DataService_Add_Information_in_Booking_and_BookedFlightsTemp" sap:VirtualizedContainerService.HintSize="827,4181" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="b:BAHSOSRBookings" Name="strBookingRecord" />
       <Variable x:TypeArguments="b:BAHSOSRBookedFlights" Name="strFlightID" />
@@ -141,11 +142,11 @@
         <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:LogMessage DisplayName="Log Message - Bookings and Booked flights entities " sap:VirtualizedContainerService.HintSize="479,173" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="[UiPath.Core.Activities.LogLevel.Trace]" Message="[&quot;Creating Booking with initial status Dummy Booking InProgress and creating Temp Booked Flights.&quot;]" />
-    <ui:RetryScope DisplayName="Retry Scope for Create entity record in Bookings" sap:VirtualizedContainerService.HintSize="667,370" sap2010:WorkflowViewState.IdRef="RetryScope_1">
+    <ui:LogMessage DisplayName="Log Message - Bookings and Booked flights entities " sap:VirtualizedContainerService.HintSize="765,173" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="[UiPath.Core.Activities.LogLevel.Trace]" Message="[&quot;Creating Booking with initial status Dummy Booking InProgress and creating Temp Booked Flights.&quot;]" />
+    <ui:RetryScope DisplayName="Retry Scope for Create entity record in Bookings" sap:VirtualizedContainerService.HintSize="765,343" sap2010:WorkflowViewState.IdRef="RetryScope_1">
       <ui:RetryScope.ActivityBody>
         <ActivityAction>
-          <Sequence DisplayName="Action" sap:VirtualizedContainerService.HintSize="416,163" sap2010:WorkflowViewState.IdRef="Sequence_11">
+          <Sequence DisplayName="Action" sap:VirtualizedContainerService.HintSize="416,136" sap2010:WorkflowViewState.IdRef="Sequence_11">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -154,7 +155,7 @@
             </sap:WorkflowViewStateService.ViewState>
             <utam:MockActivity DisplayName="Mock Create Entity Record in Bookings" MockedActivityIdRef="CreateEntityRecord`1_1">
               <utam:MockActivity.MockedActivity>
-                <uda:CreateEntityRecord x:TypeArguments="b:BAHSOSRBookings" InputEntity="{x:Null}" IsInRecordView="{x:Null}" VisibleDynamicPropertiesInfo="{x:Null}" ContinueOnError="False" DisplayName="Create Entity Record in Bookings" EntityId="1d715d9d-7af2-ee11-aaf2-000d3ab844da" ExpansionDepth="2" sap:VirtualizedContainerService.HintSize="354,75" sap2010:WorkflowViewState.IdRef="CreateEntityRecord`1_1" InputEntityInFieldView="[new BAH_SOSR_DummyBooking.BAHSOSRBookings() With {  .AgentId = io_dtOutputDataTable.Rows(0).Item(&quot;AgentID&quot;).ToString,  .DepartureDate = DateTime.Parse(io_dtOutputDataTable.Rows(0).Item(&quot;DepartureDate&quot;).ToString),  .HotelID = io_dtOutputDataTable.Rows(0).Item(&quot;HotelID&quot;).ToString,  .HotelLocation = io_dtOutputDataTable.Rows(0).Item(&quot;HotelLocation&quot;).ToString,  .HotelName = io_dtOutputDataTable.Rows(0).Item(&quot;Name&quot;).ToString,  .MinimumDeposit = io_dtOutputDataTable.Rows(0).Item(&quot;MinimumDeposit&quot;).ToString,  .PNR = io_dtOutputDataTable.Rows(0).Item(&quot;PNR&quot;).ToString,  .ReturnDate = DateTime.Parse(io_dtOutputDataTable.Rows(0).Item(&quot;ReturnDate&quot;).ToString),  .Room1Option = io_dtOutputDataTable.Rows(0).Item(&quot;Room1Option&quot;).ToString,  .Room2Option = io_dtOutputDataTable.Rows(0).Item(&quot;Room2Option&quot;).ToString,  .Room3Option = io_dtOutputDataTable.Rows(0).Item(&quot;Room3Option&quot;).ToString,  .Room4Option = io_dtOutputDataTable.Rows(0).Item(&quot;Room4Option&quot;).ToString,  .SearchGUID = io_dtOutputDataTable.Rows(0).Item(&quot;SearchGUID&quot;).ToString,  .SpecialRequests = io_dtOutputDataTable.Rows(0).Item(&quot;SpecialRequests1&quot;).ToString,  .SpecialRequests2 = io_dtOutputDataTable.Rows(0).Item(&quot;SpecialRequests2&quot;).ToString,  .SpecialRequests3 = io_dtOutputDataTable.Rows(0).Item(&quot;SpecialRequests3&quot;).ToString,  .SpecialRequests4 = io_dtOutputDataTable.Rows(0).Item(&quot;SpecialRequests4&quot;).ToString,  .Status = io_dtOutputDataTable.Rows(0).Item(&quot;Status&quot;).ToString,  .TotalPackagePrice = io_dtOutputDataTable.Rows(0).Item(&quot;TotalPackagePrice&quot;).ToString }]" OutputEntity="[strBookingRecord]" TimeoutInMs="30000">
+                <uda:CreateEntityRecord x:TypeArguments="b:BAHSOSRBookings" InputEntity="{x:Null}" IsInRecordView="{x:Null}" VisibleDynamicPropertiesInfo="{x:Null}" ContinueOnError="False" DisplayName="Create Entity Record in Bookings" EntityId="1d715d9d-7af2-ee11-aaf2-000d3ab844da" ExpansionDepth="2" sap:VirtualizedContainerService.HintSize="354,48" sap2010:WorkflowViewState.IdRef="CreateEntityRecord`1_1" InputEntityInFieldView="[new BAH_SOSR_DummyBooking.BAHSOSRBookings() With {  .AgentId = io_dtOutputDataTable.Rows(0).Item(&quot;AgentID&quot;).ToString,  .DepartureDate = DateTime.Parse(io_dtOutputDataTable.Rows(0).Item(&quot;DepartureDate&quot;).ToString),  .HotelID = io_dtOutputDataTable.Rows(0).Item(&quot;HotelID&quot;).ToString,  .HotelLocation = io_dtOutputDataTable.Rows(0).Item(&quot;HotelLocation&quot;).ToString,  .HotelName = io_dtOutputDataTable.Rows(0).Item(&quot;Name&quot;).ToString,  .MinimumDeposit = io_dtOutputDataTable.Rows(0).Item(&quot;MinimumDeposit&quot;).ToString,  .PNR = io_dtOutputDataTable.Rows(0).Item(&quot;PNR&quot;).ToString,  .ReturnDate = DateTime.Parse(io_dtOutputDataTable.Rows(0).Item(&quot;ReturnDate&quot;).ToString),  .Room1Option = io_dtOutputDataTable.Rows(0).Item(&quot;Room1Option&quot;).ToString,  .Room2Option = io_dtOutputDataTable.Rows(0).Item(&quot;Room2Option&quot;).ToString,  .Room3Option = io_dtOutputDataTable.Rows(0).Item(&quot;Room3Option&quot;).ToString,  .Room4Option = io_dtOutputDataTable.Rows(0).Item(&quot;Room4Option&quot;).ToString,  .SearchGUID = io_dtOutputDataTable.Rows(0).Item(&quot;SearchGUID&quot;).ToString,  .SpecialRequests = io_dtOutputDataTable.Rows(0).Item(&quot;SpecialRequests1&quot;).ToString,  .SpecialRequests2 = io_dtOutputDataTable.Rows(0).Item(&quot;SpecialRequests2&quot;).ToString,  .SpecialRequests3 = io_dtOutputDataTable.Rows(0).Item(&quot;SpecialRequests3&quot;).ToString,  .SpecialRequests4 = io_dtOutputDataTable.Rows(0).Item(&quot;SpecialRequests4&quot;).ToString,  .Status = io_dtOutputDataTable.Rows(0).Item(&quot;Status&quot;).ToString,  .TotalPackagePrice = io_dtOutputDataTable.Rows(0).Item(&quot;TotalPackagePrice&quot;).ToString }]" OutputEntity="[strBookingRecord]" TimeoutInMs="30000">
                   <uda:CreateEntityRecord.State>
                     <udam:RecordState>
                       <udam:RecordState.SelectedFields>
@@ -288,7 +289,7 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:RetryScope>
-    <ui:MultipleAssign DisplayName="Multiple Assign - booking ID and booking auto number" sap:VirtualizedContainerService.HintSize="667,179" sap2010:WorkflowViewState.IdRef="MultipleAssign_1">
+    <ui:MultipleAssign DisplayName="Multiple Assign - booking ID, booking auto number and list of temp booked flights ids" sap:VirtualizedContainerService.HintSize="765,210" sap2010:WorkflowViewState.IdRef="MultipleAssign_1">
       <ui:MultipleAssign.AssignOperations>
         <scg:List x:TypeArguments="ui:AssignOperation" Capacity="4">
           <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_1">
@@ -307,13 +308,21 @@
               <InArgument x:TypeArguments="x:Int32">[CInt(strBookingRecord.AutoNumber)]</InArgument>
             </ui:AssignOperation.Value>
           </ui:AssignOperation>
+          <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_3">
+            <ui:AssignOperation.To>
+              <OutArgument x:TypeArguments="scg:List(x:String)">[out_lstBookedFlightsIDs]</OutArgument>
+            </ui:AssignOperation.To>
+            <ui:AssignOperation.Value>
+              <InArgument x:TypeArguments="scg:List(x:String)">[New List(Of String)]</InArgument>
+            </ui:AssignOperation.Value>
+          </ui:AssignOperation>
         </scg:List>
       </ui:MultipleAssign.AssignOperations>
     </ui:MultipleAssign>
-    <ui:LogMessage DisplayName="Log Message - Booking ID retrived" sap:VirtualizedContainerService.HintSize="667,173" sap2010:WorkflowViewState.IdRef="LogMessage_4" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;Booking record has been created. ID: &quot; + io_dtOutputDataTable(0).Item(&quot;BookingID&quot;).ToString()]" />
+    <ui:LogMessage DisplayName="Log Message - Booking ID retrived" sap:VirtualizedContainerService.HintSize="765,173" sap2010:WorkflowViewState.IdRef="LogMessage_4" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;Booking record has been created. ID: &quot; + io_dtOutputDataTable(0).Item(&quot;BookingID&quot;).ToString()]" />
     <utam:MockActivity DisplayName="Mock Log Message - Booked Flights entity" MockedActivityIdRef="LogMessage_3">
       <utam:MockActivity.MockedActivity>
-        <ui:LogMessage DisplayName="Log Message - Booked Flights entity" sap:VirtualizedContainerService.HintSize="667,173" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;Creating records in Booked Flights Temp entity.&quot;]" />
+        <ui:LogMessage DisplayName="Log Message - Booked Flights entity" sap:VirtualizedContainerService.HintSize="765,173" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;Creating records in Booked Flights Temp entity.&quot;]" />
       </utam:MockActivity.MockedActivity>
       <Sequence DisplayName="Write Output DT in Excel" sap:VirtualizedContainerService.HintSize="450,227" sap2010:WorkflowViewState.IdRef="">
         <sap:WorkflowViewStateService.ViewState>
@@ -324,41 +333,41 @@
         <ui:WriteRange AddHeaders="False" DataTable="[io_dtOutputDataTable]" DisplayName="Write Range Workbook - Booked Flight" sap:VirtualizedContainerService.HintSize="388,116" sap2010:WorkflowViewState.IdRef="WriteRange_2" Password="{x:Null}" SheetName="Sheet1" StartingCell="A2" Workbook="{x:Null}" WorkbookPath="Tests\Booked_Flights.xlsx" />
       </Sequence>
     </utam:MockActivity>
-    <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[in_dtFlightsDataTable]" DisplayName="For Each Row in Flights Data Table, create record in Booked Flights" sap:VirtualizedContainerService.HintSize="667,2840" sap2010:WorkflowViewState.IdRef="ForEachRow_2">
+    <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[in_dtFlightsDataTable]" DisplayName="For Each Row in Flights Data Table, create record in Booked Flights" sap:VirtualizedContainerService.HintSize="765,2743" sap2010:WorkflowViewState.IdRef="ForEachRow_2">
       <ui:ForEachRow.Body>
         <ActivityAction x:TypeArguments="sd:DataRow">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="sd:DataRow" Name="CurrentRow" />
           </ActivityAction.Argument>
-          <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="633,2644" sap2010:WorkflowViewState.IdRef="Sequence_25">
+          <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="633,2547" sap2010:WorkflowViewState.IdRef="Sequence_25">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <ui:IfElseIf sap2010:Annotation.AnnotationText="We have 4 different options:&#xA;- inbound and regional&#xA;-inbound and international&#xA;-outbound and regional&#xA;-outbound and international" DisplayName="Else If - inbound and regional" sap:VirtualizedContainerService.HintSize="571,2556" sap2010:WorkflowViewState.IdRef="IfElseIf_2">
+            <ui:IfElseIf sap2010:Annotation.AnnotationText="We have 4 different options:&#xA;- inbound and regional&#xA;-inbound and international&#xA;-outbound and regional&#xA;-outbound and international" DisplayName="Else If - inbound and regional" sap:VirtualizedContainerService.HintSize="571,2459" sap2010:WorkflowViewState.IdRef="IfElseIf_2">
               <ui:IfElseIf.ConditionBlocks>
                 <sc:BindingList x:TypeArguments="ui:IfElseIfBlock" AllowEdit="True" AllowNew="True" AllowRemove="True" RaiseListChangedEvents="True">
                   <ui:IfElseIfBlock BlockType="If" Condition="[CurrentRow.Item(&quot;OutboundInbound&quot;).ToString.Contains(&quot;Inbound&quot;) and CurrentRow.Item(&quot;Type&quot;).ToString.Contains(&quot;Regional&quot;)]" sap2010:WorkflowViewState.IdRef="IfElseIfBlock_5">
                     <ui:IfElseIfBlock.Then>
-                      <Sequence DisplayName="Creating Inbound and Regional Temp Booked Flight" sap:VirtualizedContainerService.HintSize="520,1686" sap2010:WorkflowViewState.IdRef="Sequence_18">
+                      <Sequence DisplayName="Creating Inbound and Regional Temp Booked Flight" sap:VirtualizedContainerService.HintSize="416,25" sap2010:WorkflowViewState.IdRef="Sequence_18">
                         <sap:WorkflowViewStateService.ViewState>
                           <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
                             <x:Boolean x:Key="IsPinned">False</x:Boolean>
                           </scg:Dictionary>
                         </sap:WorkflowViewStateService.ViewState>
-                        <ui:RetryScope DisplayName="Retry Scope for Create Booked Flight - Inbound and Regional" sap:VirtualizedContainerService.HintSize="458,1598" sap2010:WorkflowViewState.IdRef="RetryScope_6">
+                        <ui:RetryScope DisplayName="Retry Scope for Create Booked Flight - Inbound and Regional" sap:VirtualizedContainerService.HintSize="458,719" sap2010:WorkflowViewState.IdRef="RetryScope_6">
                           <ui:RetryScope.ActivityBody>
                             <ActivityAction>
-                              <Sequence DisplayName="Creating record for current inbound and regional flight" sap:VirtualizedContainerService.HintSize="416,1330" sap2010:WorkflowViewState.IdRef="Sequence_17">
+                              <Sequence DisplayName="Creating record for current inbound and regional flight" sap:VirtualizedContainerService.HintSize="416,531" sap2010:WorkflowViewState.IdRef="Sequence_17">
                                 <sap:WorkflowViewStateService.ViewState>
                                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                     <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                     <x:Boolean x:Key="IsPinned">False</x:Boolean>
                                   </scg:Dictionary>
                                 </sap:WorkflowViewStateService.ViewState>
-                                <uda:CreateEntityRecord x:TypeArguments="b:BAHSOSRBookedFlightsTemp" InputEntity="{x:Null}" VisibleDynamicPropertiesInfo="{x:Null}" ContinueOnError="False" DisplayName="Create Temp Booked Flight - Inbound and Regional" EntityId="84debe17-1ea0-ef11-88cf-0022489b48ce" ExpansionDepth="2" sap:VirtualizedContainerService.HintSize="354,1021" sap2010:WorkflowViewState.IdRef="CreateEntityRecord`1_11" InputEntityInFieldView="[new BAH_SOSR_DummyBooking.BAHSOSRBookedFlightsTemp() With {  .ArrivalDate = DateTime.ParseExact(CurrentRow.Item(&quot;ArrivalDate&quot;).ToString, &quot;MM/dd/yyyy&quot;, System.Globalization.CultureInfo.InvariantCulture),  .ArrivalTime = CurrentRow.Item(&quot;ArrivalTime&quot;).ToString,  .ArrivesNextDay = CurrentRow.Item(&quot;ArrivesNextDay&quot;).ToString,  .BookingAutoNumber = strBookingRecord.AutoNumber.ToString,  .BookingID = strBookingRecord.Id.ToString,  .DepartureDate = DateTime.ParseExact(CurrentRow.Item(&quot;DepartureDate&quot;).ToString, &quot;MM/dd/yyyy&quot;, System.Globalization.CultureInfo.InvariantCulture),  .DepartureTime = CurrentRow.Item(&quot;DepartureTime&quot;).ToString,  .FlightClass = CurrentRow.Item(&quot;FlightClass&quot;).ToString,  .FlightId = CurrentRow.Item(&quot;FlightId&quot;).ToString,  .FlightNumber = CurrentRow.Item(&quot;FlightNumber&quot;).ToString,  .FlightSequence = CurrentRow.Item(&quot;FlightSequence&quot;).ToString,  .From = CurrentRow.Item(&quot;From&quot;).ToString,  .NumberOfSeats = CurrentRow.Item(&quot;NumberOfSeats&quot;).ToString,  .OutboundInbound = BAH_SOSR_DummyBooking.InboundOutbound.Inbound,  .SearchGUID = CurrentRow.Item(&quot;SearchGUID&quot;).ToString,  .ToDestination = CurrentRow.Item(&quot;ToDestination&quot;).ToString,  .Type = BAH_SOSR_DummyBooking.FlightType.Regional }]" IsInRecordView="False" OutputEntity="[strTempFlightID]" TimeoutInMs="30000">
+                                <uda:CreateEntityRecord x:TypeArguments="b:BAHSOSRBookedFlightsTemp" InputEntity="{x:Null}" VisibleDynamicPropertiesInfo="{x:Null}" ContinueOnError="False" DisplayName="Create Temp Booked Flight - Inbound and Regional" EntityId="84debe17-1ea0-ef11-88cf-0022489b48ce" ExpansionDepth="2" sap:VirtualizedContainerService.HintSize="354,57" sap2010:WorkflowViewState.IdRef="CreateEntityRecord`1_11" InputEntityInFieldView="[new BAH_SOSR_DummyBooking.BAHSOSRBookedFlightsTemp() With {  .ArrivalDate = DateTime.ParseExact(CurrentRow.Item(&quot;ArrivalDate&quot;).ToString, &quot;MM/dd/yyyy&quot;, System.Globalization.CultureInfo.InvariantCulture),  .ArrivalTime = CurrentRow.Item(&quot;ArrivalTime&quot;).ToString,  .ArrivesNextDay = CurrentRow.Item(&quot;ArrivesNextDay&quot;).ToString,  .BookingAutoNumber = strBookingRecord.AutoNumber.ToString,  .BookingID = strBookingRecord.Id.ToString,  .DepartureDate = DateTime.ParseExact(CurrentRow.Item(&quot;DepartureDate&quot;).ToString, &quot;MM/dd/yyyy&quot;, System.Globalization.CultureInfo.InvariantCulture),  .DepartureTime = CurrentRow.Item(&quot;DepartureTime&quot;).ToString,  .FlightClass = CurrentRow.Item(&quot;FlightClass&quot;).ToString,  .FlightId = CurrentRow.Item(&quot;FlightId&quot;).ToString,  .FlightNumber = CurrentRow.Item(&quot;FlightNumber&quot;).ToString,  .FlightSequence = CurrentRow.Item(&quot;FlightSequence&quot;).ToString,  .From = CurrentRow.Item(&quot;From&quot;).ToString,  .NumberOfSeats = CurrentRow.Item(&quot;NumberOfSeats&quot;).ToString,  .OutboundInbound = BAH_SOSR_DummyBooking.InboundOutbound.Inbound,  .SearchGUID = CurrentRow.Item(&quot;SearchGUID&quot;).ToString,  .ToDestination = CurrentRow.Item(&quot;ToDestination&quot;).ToString,  .Type = BAH_SOSR_DummyBooking.FlightType.Regional }]" IsInRecordView="False" OutputEntity="[strTempFlightID]" TimeoutInMs="30000">
                                   <uda:CreateEntityRecord.State>
                                     <udam:RecordState>
                                       <udam:RecordState.SelectedFields>
@@ -454,7 +463,7 @@
                                   </uda:CreateEntityRecord.State>
                                   <sap:WorkflowViewStateService.ViewState>
                                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                      <x:Boolean x:Key="IsExpanded">False</x:Boolean>
                                       <x:Boolean x:Key="IsPinned">False</x:Boolean>
                                     </scg:Dictionary>
                                   </sap:WorkflowViewStateService.ViewState>
@@ -572,6 +581,7 @@
                                     </scg:Dictionary>
                                   </sap:WorkflowViewStateService.ViewState>
                                 </ui:CommentOut>
+                                <uasa:AppendItemToList x:TypeArguments="x:String" ItemIndex="{x:Null}" DisplayName="Append Item to List - Inbound and Regional flight ID" sap:VirtualizedContainerService.HintSize="354,165" sap2010:WorkflowViewState.IdRef="AppendItemToList`1_1" ItemToAppend="[strTempFlightID.Id.ToString]" List="[out_lstBookedFlightsIDs]" />
                                 <ui:LogMessage DisplayName="Log Message - created Temp Booked Flight - Inbound and Regional" sap:VirtualizedContainerService.HintSize="354,164" sap2010:WorkflowViewState.IdRef="LogMessage_10" Level="Info" Message="[&quot;Temp Booked flight created: Regional - Inbound: &quot; + strTempFlightID.Id.ToString]" />
                               </Sequence>
                             </ActivityAction>
@@ -591,20 +601,20 @@
                   </ui:IfElseIfBlock>
                   <ui:IfElseIfBlock BlockType="ElseIf" Condition="[CurrentRow.Item(&quot;OutboundInbound&quot;).ToString.Contains(&quot;Inbound&quot;) and CurrentRow.Item(&quot;Type&quot;).ToString.Contains(&quot;International&quot;)]" sap2010:WorkflowViewState.IdRef="IfElseIfBlock_6">
                     <ui:IfElseIfBlock.Then>
-                      <Sequence DisplayName="Creating Inbound and International Temp Booked Flight" sap:VirtualizedContainerService.HintSize="416,25" sap2010:WorkflowViewState.IdRef="Sequence_20">
+                      <Sequence DisplayName="Creating Inbound and International Temp Booked Flight" sap:VirtualizedContainerService.HintSize="496,136" sap2010:WorkflowViewState.IdRef="Sequence_20">
                         <sap:WorkflowViewStateService.ViewState>
                           <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                             <x:Boolean x:Key="IsPinned">False</x:Boolean>
                           </scg:Dictionary>
                         </sap:WorkflowViewStateService.ViewState>
                         <ui:RetryScope DisplayName="Retry Scope for Create Booked Flight - Inbound and International" sap:VirtualizedContainerService.HintSize="434,48" sap2010:WorkflowViewState.IdRef="RetryScope_7">
                           <ui:RetryScope.ActivityBody>
                             <ActivityAction>
-                              <Sequence DisplayName="Creating record for current inbound and international flight" sap:VirtualizedContainerService.HintSize="416,366" sap2010:WorkflowViewState.IdRef="Sequence_19">
+                              <Sequence DisplayName="Creating record for current inbound and international flight" sap:VirtualizedContainerService.HintSize="416,25" sap2010:WorkflowViewState.IdRef="Sequence_19">
                                 <sap:WorkflowViewStateService.ViewState>
                                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
                                     <x:Boolean x:Key="IsPinned">False</x:Boolean>
                                   </scg:Dictionary>
                                 </sap:WorkflowViewStateService.ViewState>
@@ -822,6 +832,7 @@
                                     </scg:Dictionary>
                                   </sap:WorkflowViewStateService.ViewState>
                                 </ui:CommentOut>
+                                <uasa:AppendItemToList x:TypeArguments="x:String" ItemIndex="{x:Null}" DisplayName="Append Item to List - Inbound and International flight ID" sap:VirtualizedContainerService.HintSize="354,165" sap2010:WorkflowViewState.IdRef="AppendItemToList`1_2" ItemToAppend="[strTempFlightID.Id.ToString]" List="[out_lstBookedFlightsIDs]" />
                                 <ui:LogMessage DisplayName="Log Message - created Temp Booked Flight - Inbound and International" sap:VirtualizedContainerService.HintSize="354,164" sap2010:WorkflowViewState.IdRef="LogMessage_11" Level="Info" Message="[&quot;Temp Booked flight created: International - Inbound: &quot; +strTempFlightID.Id.ToString]" />
                               </Sequence>
                             </ActivityAction>
@@ -841,24 +852,24 @@
                   </ui:IfElseIfBlock>
                   <ui:IfElseIfBlock BlockType="ElseIf" Condition="[CurrentRow.Item(&quot;OutboundInbound&quot;).ToString.Contains(&quot;Outbound&quot;) and CurrentRow.Item(&quot;Type&quot;).ToString.Contains(&quot;Regional&quot;)]" sap2010:WorkflowViewState.IdRef="IfElseIfBlock_7">
                     <ui:IfElseIfBlock.Then>
-                      <Sequence DisplayName="Creating Outbound and Regional Temp Booked Flight" sap:VirtualizedContainerService.HintSize="416,25" sap2010:WorkflowViewState.IdRef="Sequence_22">
+                      <Sequence DisplayName="Creating Outbound and Regional Temp Booked Flight" sap:VirtualizedContainerService.HintSize="520,807" sap2010:WorkflowViewState.IdRef="Sequence_22">
                         <sap:WorkflowViewStateService.ViewState>
                           <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                             <x:Boolean x:Key="IsPinned">False</x:Boolean>
                           </scg:Dictionary>
                         </sap:WorkflowViewStateService.ViewState>
-                        <ui:RetryScope DisplayName="Retry Scope for Create Booked Flight - Outbound and Regional" sap:VirtualizedContainerService.HintSize="458,213" sap2010:WorkflowViewState.IdRef="RetryScope_8">
+                        <ui:RetryScope DisplayName="Retry Scope for Create Booked Flight - Outbound and Regional" sap:VirtualizedContainerService.HintSize="458,719" sap2010:WorkflowViewState.IdRef="RetryScope_8">
                           <ui:RetryScope.ActivityBody>
                             <ActivityAction>
-                              <Sequence DisplayName="Creating record for current outbound and regional flight" sap:VirtualizedContainerService.HintSize="416,25" sap2010:WorkflowViewState.IdRef="Sequence_21">
+                              <Sequence DisplayName="Creating record for current outbound and regional flight" sap:VirtualizedContainerService.HintSize="416,531" sap2010:WorkflowViewState.IdRef="Sequence_21">
                                 <sap:WorkflowViewStateService.ViewState>
                                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                     <x:Boolean x:Key="IsPinned">False</x:Boolean>
                                   </scg:Dictionary>
                                 </sap:WorkflowViewStateService.ViewState>
-                                <uda:CreateEntityRecord x:TypeArguments="b:BAHSOSRBookedFlightsTemp" InputEntity="{x:Null}" VisibleDynamicPropertiesInfo="{x:Null}" ContinueOnError="False" DisplayName="Create Temp Booked Flight - Outbound and Regional" EntityId="84debe17-1ea0-ef11-88cf-0022489b48ce" ExpansionDepth="2" sap:VirtualizedContainerService.HintSize="452,57" sap2010:WorkflowViewState.IdRef="CreateEntityRecord`1_16" InputEntityInFieldView="[new BAH_SOSR_DummyBooking.BAHSOSRBookedFlightsTemp() With {  .ArrivalDate = DateTime.ParseExact(CurrentRow.Item(&quot;ArrivalDate&quot;).ToString, &quot;MM/dd/yyyy&quot;, System.Globalization.CultureInfo.InvariantCulture),  .ArrivalTime = CurrentRow.Item(&quot;ArrivalTime&quot;).ToString,  .ArrivesNextDay = CurrentRow.Item(&quot;ArrivesNextDay&quot;).ToString,  .BookingAutoNumber = strBookingRecord.AutoNumber.ToString,  .BookingID = strBookingRecord.Id.ToString,  .DepartureDate = DateTime.ParseExact(CurrentRow.Item(&quot;DepartureDate&quot;).ToString, &quot;MM/dd/yyyy&quot;, System.Globalization.CultureInfo.InvariantCulture),  .DepartureTime = CurrentRow.Item(&quot;DepartureTime&quot;).ToString,  .FlightClass = CurrentRow.Item(&quot;FlightClass&quot;).ToString,  .FlightId = CurrentRow.Item(&quot;FlightId&quot;).ToString,  .FlightNumber = CurrentRow.Item(&quot;FlightNumber&quot;).ToString,  .FlightSequence = CurrentRow.Item(&quot;FlightSequence&quot;).ToString,  .From = CurrentRow.Item(&quot;From&quot;).ToString,  .NumberOfSeats = CurrentRow.Item(&quot;NumberOfSeats&quot;).ToString,  .OutboundInbound = BAH_SOSR_DummyBooking.InboundOutbound.Outbound,  .SearchGUID = CurrentRow.Item(&quot;SearchGUID&quot;).ToString,  .ToDestination = CurrentRow.Item(&quot;ToDestination&quot;).ToString,  .Type = BAH_SOSR_DummyBooking.FlightType.Regional }]" IsInRecordView="False" OutputEntity="[strTempFlightID]" TimeoutInMs="30000">
+                                <uda:CreateEntityRecord x:TypeArguments="b:BAHSOSRBookedFlightsTemp" InputEntity="{x:Null}" VisibleDynamicPropertiesInfo="{x:Null}" ContinueOnError="False" DisplayName="Create Temp Booked Flight - Outbound and Regional" EntityId="84debe17-1ea0-ef11-88cf-0022489b48ce" ExpansionDepth="2" sap:VirtualizedContainerService.HintSize="354,57" sap2010:WorkflowViewState.IdRef="CreateEntityRecord`1_16" InputEntityInFieldView="[new BAH_SOSR_DummyBooking.BAHSOSRBookedFlightsTemp() With {  .ArrivalDate = DateTime.ParseExact(CurrentRow.Item(&quot;ArrivalDate&quot;).ToString, &quot;MM/dd/yyyy&quot;, System.Globalization.CultureInfo.InvariantCulture),  .ArrivalTime = CurrentRow.Item(&quot;ArrivalTime&quot;).ToString,  .ArrivesNextDay = CurrentRow.Item(&quot;ArrivesNextDay&quot;).ToString,  .BookingAutoNumber = strBookingRecord.AutoNumber.ToString,  .BookingID = strBookingRecord.Id.ToString,  .DepartureDate = DateTime.ParseExact(CurrentRow.Item(&quot;DepartureDate&quot;).ToString, &quot;MM/dd/yyyy&quot;, System.Globalization.CultureInfo.InvariantCulture),  .DepartureTime = CurrentRow.Item(&quot;DepartureTime&quot;).ToString,  .FlightClass = CurrentRow.Item(&quot;FlightClass&quot;).ToString,  .FlightId = CurrentRow.Item(&quot;FlightId&quot;).ToString,  .FlightNumber = CurrentRow.Item(&quot;FlightNumber&quot;).ToString,  .FlightSequence = CurrentRow.Item(&quot;FlightSequence&quot;).ToString,  .From = CurrentRow.Item(&quot;From&quot;).ToString,  .NumberOfSeats = CurrentRow.Item(&quot;NumberOfSeats&quot;).ToString,  .OutboundInbound = BAH_SOSR_DummyBooking.InboundOutbound.Outbound,  .SearchGUID = CurrentRow.Item(&quot;SearchGUID&quot;).ToString,  .ToDestination = CurrentRow.Item(&quot;ToDestination&quot;).ToString,  .Type = BAH_SOSR_DummyBooking.FlightType.Regional }]" IsInRecordView="False" OutputEntity="[strTempFlightID]" TimeoutInMs="30000">
                                   <uda:CreateEntityRecord.State>
                                     <udam:RecordState>
                                       <udam:RecordState.SelectedFields>
@@ -959,7 +970,7 @@
                                     </scg:Dictionary>
                                   </sap:WorkflowViewStateService.ViewState>
                                 </uda:CreateEntityRecord>
-                                <ui:CommentOut DisplayName="Comment Out - old logic to create Booked Flight - outbound and regional" sap:VirtualizedContainerService.HintSize="452,57" sap2010:WorkflowViewState.IdRef="CommentOut_5">
+                                <ui:CommentOut DisplayName="Comment Out - old logic to create Booked Flight - outbound and regional" sap:VirtualizedContainerService.HintSize="354,57" sap2010:WorkflowViewState.IdRef="CommentOut_5">
                                   <ui:CommentOut.Body>
                                     <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="416,136" sap2010:WorkflowViewState.IdRef="Sequence_29">
                                       <sap:WorkflowViewStateService.ViewState>
@@ -1072,7 +1083,8 @@
                                     </scg:Dictionary>
                                   </sap:WorkflowViewStateService.ViewState>
                                 </ui:CommentOut>
-                                <ui:LogMessage DisplayName="Log Message - created Temp Booked Flight - Outbound and Regional" sap:VirtualizedContainerService.HintSize="452,164" sap2010:WorkflowViewState.IdRef="LogMessage_12" Level="Info" Message="[&quot;Temp Booked flight created: Regional - Outbound: &quot; + strTempFlightID.Id.ToString]" />
+                                <uasa:AppendItemToList x:TypeArguments="x:String" ItemIndex="{x:Null}" DisplayName="Append Item to List - Outbound and Regional flight ID" sap:VirtualizedContainerService.HintSize="354,165" sap2010:WorkflowViewState.IdRef="AppendItemToList`1_3" ItemToAppend="[strTempFlightID.Id.ToString]" List="[out_lstBookedFlightsIDs]" />
+                                <ui:LogMessage DisplayName="Log Message - created Temp Booked Flight - Outbound and Regional" sap:VirtualizedContainerService.HintSize="354,164" sap2010:WorkflowViewState.IdRef="LogMessage_12" Level="Info" Message="[&quot;Temp Booked flight created: Regional - Outbound: &quot; + strTempFlightID.Id.ToString]" />
                               </Sequence>
                             </ActivityAction>
                           </ui:RetryScope.ActivityBody>
@@ -1085,20 +1097,20 @@
                   </ui:IfElseIfBlock>
                   <ui:IfElseIfBlock BlockType="ElseIf" Condition="[CurrentRow.Item(&quot;OutboundInbound&quot;).ToString.Contains(&quot;Outbound&quot;) and CurrentRow.Item(&quot;Type&quot;).ToString.Contains(&quot;International&quot;)]" sap2010:WorkflowViewState.IdRef="IfElseIfBlock_8">
                     <ui:IfElseIfBlock.Then>
-                      <Sequence DisplayName="Creating Outbound and International Temp Booked Flight" sap:VirtualizedContainerService.HintSize="416,136" sap2010:WorkflowViewState.IdRef="Sequence_24">
+                      <Sequence DisplayName="Creating Outbound and International Temp Booked Flight" sap:VirtualizedContainerService.HintSize="520,807" sap2010:WorkflowViewState.IdRef="Sequence_24">
                         <sap:WorkflowViewStateService.ViewState>
                           <scg:Dictionary x:TypeArguments="x:String, x:Object">
                             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                             <x:Boolean x:Key="IsPinned">False</x:Boolean>
                           </scg:Dictionary>
                         </sap:WorkflowViewStateService.ViewState>
-                        <ui:RetryScope DisplayName="Retry Scope for Create Booked Flight - Outbound and International" sap:VirtualizedContainerService.HintSize="354,48" sap2010:WorkflowViewState.IdRef="RetryScope_9">
+                        <ui:RetryScope DisplayName="Retry Scope for Create Booked Flight - Outbound and International" sap:VirtualizedContainerService.HintSize="458,719" sap2010:WorkflowViewState.IdRef="RetryScope_9">
                           <ui:RetryScope.ActivityBody>
                             <ActivityAction>
-                              <Sequence DisplayName="Creating record for current outbound and international flight" sap:VirtualizedContainerService.HintSize="416,25" sap2010:WorkflowViewState.IdRef="Sequence_23">
+                              <Sequence DisplayName="Creating record for current outbound and international flight" sap:VirtualizedContainerService.HintSize="416,531" sap2010:WorkflowViewState.IdRef="Sequence_23">
                                 <sap:WorkflowViewStateService.ViewState>
                                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                     <x:Boolean x:Key="IsPinned">False</x:Boolean>
                                   </scg:Dictionary>
                                 </sap:WorkflowViewStateService.ViewState>
@@ -1203,6 +1215,7 @@
                                     </scg:Dictionary>
                                   </sap:WorkflowViewStateService.ViewState>
                                 </uda:CreateEntityRecord>
+                                <uasa:AppendItemToList x:TypeArguments="x:String" ItemIndex="{x:Null}" DisplayName="Append Item to List - Outbound and International flight ID" sap:VirtualizedContainerService.HintSize="354,165" sap2010:WorkflowViewState.IdRef="AppendItemToList`1_4" ItemToAppend="[strTempFlightID.Id.ToString]" List="[out_lstBookedFlightsIDs]" />
                                 <ui:CommentOut DisplayName="Comment Out - old logic to create Booked Flight - outbound and international" sap:VirtualizedContainerService.HintSize="354,57" sap2010:WorkflowViewState.IdRef="CommentOut_6">
                                   <ui:CommentOut.Body>
                                     <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="416,136" sap2010:WorkflowViewState.IdRef="Sequence_30">
@@ -1325,7 +1338,7 @@
                           </ui:RetryScope.Condition>
                           <sap:WorkflowViewStateService.ViewState>
                             <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                               <x:Boolean x:Key="IsPinned">False</x:Boolean>
                             </scg:Dictionary>
                           </sap:WorkflowViewStateService.ViewState>
