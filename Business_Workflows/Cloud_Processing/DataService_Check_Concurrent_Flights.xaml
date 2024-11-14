@@ -7,7 +7,7 @@
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>959,2777</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>959,2768</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>DataService_Check_Concurrent_Flights_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -119,7 +119,7 @@
       <AssemblyReference>System.Private.Xml</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="In this workflow, the process will check if there are any concurrent flights" DisplayName="DataService_Check_Concurrent_Flights" sap:VirtualizedContainerService.HintSize="598,2672" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="In this workflow, the process will check if there are any concurrent flights" DisplayName="DataService_Check_Concurrent_Flights" sap:VirtualizedContainerService.HintSize="598,2703" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="scg:IList(b:BAHSOSRBookedFlightsTemp)" Name="lstTempBookedFlights" />
     </Sequence.Variables>
@@ -131,16 +131,16 @@
     </sap:WorkflowViewStateService.ViewState>
     <ui:LogMessage DisplayName="Log Message - start check for concurrent flights" sap:VirtualizedContainerService.HintSize="536,173" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Trace" Message="[&quot;Begin workflow to check for concurrent flights.&quot;]" />
     <ui:LogMessage DisplayName="Log Message - query Booked flights temp" sap:VirtualizedContainerService.HintSize="536,173" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[&quot;Filtering records created within the last 2 minutes. Only records with a CreateTime greater than &quot; + Now.AddMinutes(-2).ToString(&quot;yyyy-MM-dd HH:mm:ss&quot;) + &quot; will be included in the query results.&quot;]" />
-    <ui:RetryScope DisplayName="Retry Scope querying booked flights temp" sap:VirtualizedContainerService.HintSize="536,458" sap2010:WorkflowViewState.IdRef="RetryScope_1">
+    <ui:RetryScope DisplayName="Retry Scope querying booked flights temp" sap:VirtualizedContainerService.HintSize="536,489" sap2010:WorkflowViewState.IdRef="RetryScope_1">
       <ui:RetryScope.ActivityBody>
         <ActivityAction>
-          <Sequence DisplayName="Query booked flights temp" sap:VirtualizedContainerService.HintSize="416,251" sap2010:WorkflowViewState.IdRef="Sequence_2">
+          <Sequence DisplayName="Query booked flights temp" sap:VirtualizedContainerService.HintSize="416,282" sap2010:WorkflowViewState.IdRef="Sequence_2">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <uda:QueryEntityRecords x:TypeArguments="b:BAHSOSRBookedFlightsTemp" TotalRecords="{x:Null}" ContinueOnError="False" DisplayName="Query Entity Records - Booked Flights Temp" EntityId="84debe17-1ea0-ef11-88cf-0022489b48ce" ExpansionDepth="2" sap:VirtualizedContainerService.HintSize="354,163" sap2010:WorkflowViewState.IdRef="QueryEntityRecords`1_1" OutputRecords="[lstTempBookedFlights]" QueriedEntityId="84debe17-1ea0-ef11-88cf-0022489b48ce" Skip="0" SortAscending="True" SortByField="Id" TimeoutInMs="30000" Top="100">
+            <uda:QueryEntityRecords x:TypeArguments="b:BAHSOSRBookedFlightsTemp" TotalRecords="{x:Null}" sap2010:Annotation.AnnotationText="Now.AddMinutes(-2)" ContinueOnError="False" DisplayName="Query Entity Records - Booked Flights Temp" EntityId="84debe17-1ea0-ef11-88cf-0022489b48ce" ExpansionDepth="2" sap:VirtualizedContainerService.HintSize="354,194" sap2010:WorkflowViewState.IdRef="QueryEntityRecords`1_1" OutputRecords="[lstTempBookedFlights]" QueriedEntityId="84debe17-1ea0-ef11-88cf-0022489b48ce" Skip="0" SortAscending="True" SortByField="Id" TimeoutInMs="30000" Top="100">
               <uda:QueryEntityRecords.FilterArguments>
                 <uda:FilterArgument FilterActivityType="{x:Null}">
                   <uda:FilterArgument.Filter>
@@ -162,6 +162,11 @@
                   <InArgument x:TypeArguments="s:DateTimeOffset">[Now.AddMinutes(-2)]</InArgument>
                 </scg:List>
               </uda:QueryEntityRecords.FilterValues>
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
             </uda:QueryEntityRecords>
           </Sequence>
         </ActivityAction>
@@ -185,7 +190,7 @@
       </sap:WorkflowViewStateService.ViewState>
     </Assign>
     <ui:LogMessage DisplayName="Log Message - temp booked flights filtered" sap:VirtualizedContainerService.HintSize="536,173" sap2010:WorkflowViewState.IdRef="LogMessage_4" Level="Info" Message="[&quot;Temp Booked flights list has been filtered.&quot;]" />
-    <Assign sap2010:Annotation.AnnotationText="(From row In in_dtFlightsDatatable.AsEnumerable()&#xD;&#xA;                      Join bookedFlight In lstTempBookedFlights&#xD;&#xA;                      On row(&quot;FlightNumber&quot;).ToString() Equals bookedFlight.FlightNumber And&#xD;&#xA;                         Convert.ToDateTime(row(&quot;DepartureDate&quot;)) Equals bookedFlight.DepartureDate&#xD;&#xA;                      Select bookedFlight).ToList()" DisplayName="Assign - filter temp booked flights by flight number and departure date" sap:VirtualizedContainerService.HintSize="536,232" sap2010:WorkflowViewState.IdRef="Assign_6">
+    <Assign sap2010:Annotation.AnnotationText="(From row In in_dtFlightsDatatable.AsEnumerable()&#xA;                      Join bookedFlight In lstTempBookedFlights&#xA;                      On row(&quot;FlightNumber&quot;).ToString() Equals bookedFlight.FlightNumber And&#xA;                         Convert.ToDateTime(row(&quot;DepartureDate&quot;)) Equals bookedFlight.DepartureDate&#xA;                      Select bookedFlight).ToList()" DisplayName="Assign - filter temp booked flights by flight number and departure date" sap:VirtualizedContainerService.HintSize="536,232" sap2010:WorkflowViewState.IdRef="Assign_6">
       <Assign.To>
         <OutArgument x:TypeArguments="scg:IList(b:BAHSOSRBookedFlightsTemp)">[lstTempBookedFlights]</OutArgument>
       </Assign.To>

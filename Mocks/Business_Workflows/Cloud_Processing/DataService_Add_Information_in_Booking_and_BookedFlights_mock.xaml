@@ -4,13 +4,14 @@
     <x:Property Name="io_dtOutputDataTable" Type="InOutArgument(sd:DataTable)" />
     <x:Property Name="in_dtFlightsDataTable" Type="InArgument(sd:DataTable)" />
     <x:Property Name="out_intBookingAutoNumber" Type="OutArgument(x:Int32)" />
+    <x:Property Name="out_lstTempBookedFlightsIDs" Type="OutArgument(scg:List(x:String))" />
     <x:Property Name="out_lstBookedFlightsIDs" Type="OutArgument(scg:List(x:String))" />
     <x:Property Name="out_strBookingID" Type="OutArgument(x:String)" />
   </x:Members>
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>959,5037</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>959,4860</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>DataService_Add_Information_in_Booking_and_BookedFlights_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -130,7 +131,7 @@
       <AssemblyReference>UiPath.Platform</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="- Add current booking in Bookings entity&#xA;- Retrieve Booking ID&#xA;- Create record in BookedFlightsTemp Entity" DisplayName="DataService_Add_Information_in_Booking_and_BookedFlightsTemp" sap:VirtualizedContainerService.HintSize="729,4932" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="- Add current booking in Bookings entity&#xA;- Retrieve Booking ID&#xA;- Create record in BookedFlightsTemp Entity" DisplayName="DataService_Add_Information_in_Booking_and_BookedFlightsTemp" sap:VirtualizedContainerService.HintSize="729,4795" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="b:BAHSOSRBookings" Name="strBookingRecord" />
       <Variable x:TypeArguments="b:BAHSOSRBookedFlights" Name="strFlightID" />
@@ -310,7 +311,7 @@
           </ui:AssignOperation>
           <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_3">
             <ui:AssignOperation.To>
-              <OutArgument x:TypeArguments="scg:List(x:String)">[out_lstBookedFlightsIDs]</OutArgument>
+              <OutArgument x:TypeArguments="scg:List(x:String)">[out_lstTempBookedFlightsIDs]</OutArgument>
             </ui:AssignOperation.To>
             <ui:AssignOperation.Value>
               <InArgument x:TypeArguments="scg:List(x:String)">[New List(Of String)]</InArgument>
@@ -333,19 +334,19 @@
         <ui:WriteRange AddHeaders="False" DataTable="[io_dtOutputDataTable]" DisplayName="Write Range Workbook - Booked Flight" sap:VirtualizedContainerService.HintSize="388,116" sap2010:WorkflowViewState.IdRef="WriteRange_2" Password="{x:Null}" SheetName="Sheet1" StartingCell="A2" Workbook="{x:Null}" WorkbookPath="Tests\Booked_Flights.xlsx" />
       </Sequence>
     </utam:MockActivity>
-    <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[in_dtFlightsDataTable]" DisplayName="For Each Row in Flights Data Table, create record in Booked Flights" sap:VirtualizedContainerService.HintSize="667,3494" sap2010:WorkflowViewState.IdRef="ForEachRow_2">
+    <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[in_dtFlightsDataTable]" DisplayName="For Each Row in Flights Data Table, create record in Booked Flights" sap:VirtualizedContainerService.HintSize="667,3414" sap2010:WorkflowViewState.IdRef="ForEachRow_2">
       <ui:ForEachRow.Body>
         <ActivityAction x:TypeArguments="sd:DataRow">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="sd:DataRow" Name="CurrentRow" />
           </ActivityAction.Argument>
-          <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="633,3298" sap2010:WorkflowViewState.IdRef="Sequence_25">
+          <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="633,3218" sap2010:WorkflowViewState.IdRef="Sequence_25">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <ui:IfElseIf sap2010:Annotation.AnnotationText="We have 4 different options:&#xA;- inbound and regional&#xA;-inbound and international&#xA;-outbound and regional&#xA;-outbound and international" DisplayName="Else If - inbound and regional" sap:VirtualizedContainerService.HintSize="571,3210" sap2010:WorkflowViewState.IdRef="IfElseIf_2">
+            <ui:IfElseIf sap2010:Annotation.AnnotationText="We have 4 different options:&#xA;- inbound and regional&#xA;-inbound and international&#xA;-outbound and regional&#xA;-outbound and international" DisplayName="Else If - inbound and regional" sap:VirtualizedContainerService.HintSize="571,3130" sap2010:WorkflowViewState.IdRef="IfElseIf_2">
               <ui:IfElseIf.ConditionBlocks>
                 <sc:BindingList x:TypeArguments="ui:IfElseIfBlock" AllowEdit="True" AllowNew="True" AllowRemove="True" RaiseListChangedEvents="True">
                   <ui:IfElseIfBlock BlockType="If" Condition="[CurrentRow.Item(&quot;OutboundInbound&quot;).ToString.Contains(&quot;Inbound&quot;) and CurrentRow.Item(&quot;Type&quot;).ToString.Contains(&quot;Regional&quot;)]" sap2010:WorkflowViewState.IdRef="IfElseIfBlock_5">
@@ -581,7 +582,7 @@
                                     </scg:Dictionary>
                                   </sap:WorkflowViewStateService.ViewState>
                                 </ui:CommentOut>
-                                <uasa:AppendItemToList x:TypeArguments="x:String" ItemIndex="{x:Null}" DisplayName="Append Item to List - Inbound and Regional flight ID" sap:VirtualizedContainerService.HintSize="354,165" sap2010:WorkflowViewState.IdRef="AppendItemToList`1_1" ItemToAppend="[strTempFlightID.Id.ToString]" List="[out_lstBookedFlightsIDs]" />
+                                <uasa:AppendItemToList x:TypeArguments="x:String" ItemIndex="{x:Null}" DisplayName="Append Item to List - Inbound and Regional flight ID" sap:VirtualizedContainerService.HintSize="354,165" sap2010:WorkflowViewState.IdRef="AppendItemToList`1_1" ItemToAppend="[strTempFlightID.Id.ToString]" List="[out_lstTempBookedFlightsIDs]" />
                                 <ui:LogMessage DisplayName="Log Message - created Temp Booked Flight - Inbound and Regional" sap:VirtualizedContainerService.HintSize="354,164" sap2010:WorkflowViewState.IdRef="LogMessage_10" Level="Info" Message="[&quot;Temp Booked flight created: Regional - Inbound: &quot; + strTempFlightID.Id.ToString]" />
                               </Sequence>
                             </ActivityAction>
@@ -601,14 +602,14 @@
                   </ui:IfElseIfBlock>
                   <ui:IfElseIfBlock BlockType="ElseIf" Condition="[CurrentRow.Item(&quot;OutboundInbound&quot;).ToString.Contains(&quot;Inbound&quot;) and CurrentRow.Item(&quot;Type&quot;).ToString.Contains(&quot;International&quot;)]" sap2010:WorkflowViewState.IdRef="IfElseIfBlock_6">
                     <ui:IfElseIfBlock.Then>
-                      <Sequence DisplayName="Creating Inbound and International Temp Booked Flight" sap:VirtualizedContainerService.HintSize="520,887" sap2010:WorkflowViewState.IdRef="Sequence_20">
+                      <Sequence DisplayName="Creating Inbound and International Temp Booked Flight" sap:VirtualizedContainerService.HintSize="520,807" sap2010:WorkflowViewState.IdRef="Sequence_20">
                         <sap:WorkflowViewStateService.ViewState>
                           <scg:Dictionary x:TypeArguments="x:String, x:Object">
                             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                             <x:Boolean x:Key="IsPinned">False</x:Boolean>
                           </scg:Dictionary>
                         </sap:WorkflowViewStateService.ViewState>
-                        <ui:RetryScope DisplayName="Retry Scope for Create Booked Flight - Inbound and International" sap:VirtualizedContainerService.HintSize="458,799" sap2010:WorkflowViewState.IdRef="RetryScope_7">
+                        <ui:RetryScope DisplayName="Retry Scope for Create Booked Flight - Inbound and International" sap:VirtualizedContainerService.HintSize="458,719" sap2010:WorkflowViewState.IdRef="RetryScope_7">
                           <ui:RetryScope.ActivityBody>
                             <ActivityAction>
                               <Sequence DisplayName="Creating record for current inbound and international flight" sap:VirtualizedContainerService.HintSize="416,531" sap2010:WorkflowViewState.IdRef="Sequence_19">
@@ -832,7 +833,7 @@
                                     </scg:Dictionary>
                                   </sap:WorkflowViewStateService.ViewState>
                                 </ui:CommentOut>
-                                <uasa:AppendItemToList x:TypeArguments="x:String" ItemIndex="{x:Null}" DisplayName="Append Item to List - Inbound and International flight ID" sap:VirtualizedContainerService.HintSize="354,165" sap2010:WorkflowViewState.IdRef="AppendItemToList`1_2" ItemToAppend="[strTempFlightID.Id.ToString]" List="[out_lstBookedFlightsIDs]" />
+                                <uasa:AppendItemToList x:TypeArguments="x:String" ItemIndex="{x:Null}" DisplayName="Append Item to List - Inbound and International flight ID" sap:VirtualizedContainerService.HintSize="354,165" sap2010:WorkflowViewState.IdRef="AppendItemToList`1_2" ItemToAppend="[strTempFlightID.Id.ToString]" List="[out_lstTempBookedFlightsIDs]" />
                                 <ui:LogMessage DisplayName="Log Message - created Temp Booked Flight - Inbound and International" sap:VirtualizedContainerService.HintSize="354,164" sap2010:WorkflowViewState.IdRef="LogMessage_11" Level="Info" Message="[&quot;Temp Booked flight created: International - Inbound: &quot; +strTempFlightID.Id.ToString]" />
                               </Sequence>
                             </ActivityAction>
@@ -1083,7 +1084,7 @@
                                     </scg:Dictionary>
                                   </sap:WorkflowViewStateService.ViewState>
                                 </ui:CommentOut>
-                                <uasa:AppendItemToList x:TypeArguments="x:String" ItemIndex="{x:Null}" DisplayName="Append Item to List - Outbound and Regional flight ID" sap:VirtualizedContainerService.HintSize="354,165" sap2010:WorkflowViewState.IdRef="AppendItemToList`1_3" ItemToAppend="[strTempFlightID.Id.ToString]" List="[out_lstBookedFlightsIDs]" />
+                                <uasa:AppendItemToList x:TypeArguments="x:String" ItemIndex="{x:Null}" DisplayName="Append Item to List - Outbound and Regional flight ID" sap:VirtualizedContainerService.HintSize="354,165" sap2010:WorkflowViewState.IdRef="AppendItemToList`1_3" ItemToAppend="[strTempFlightID.Id.ToString]" List="[out_lstTempBookedFlightsIDs]" />
                                 <ui:LogMessage DisplayName="Log Message - created Temp Booked Flight - Outbound and Regional" sap:VirtualizedContainerService.HintSize="354,164" sap2010:WorkflowViewState.IdRef="LogMessage_12" Level="Info" Message="[&quot;Temp Booked flight created: Regional - Outbound: &quot; + strTempFlightID.Id.ToString]" />
                               </Sequence>
                             </ActivityAction>
@@ -1215,7 +1216,7 @@
                                     </scg:Dictionary>
                                   </sap:WorkflowViewStateService.ViewState>
                                 </uda:CreateEntityRecord>
-                                <uasa:AppendItemToList x:TypeArguments="x:String" ItemIndex="{x:Null}" DisplayName="Append Item to List - Outbound and International flight ID" sap:VirtualizedContainerService.HintSize="354,165" sap2010:WorkflowViewState.IdRef="AppendItemToList`1_4" ItemToAppend="[strTempFlightID.Id.ToString]" List="[out_lstBookedFlightsIDs]" />
+                                <uasa:AppendItemToList x:TypeArguments="x:String" ItemIndex="{x:Null}" DisplayName="Append Item to List - Outbound and International flight ID" sap:VirtualizedContainerService.HintSize="354,165" sap2010:WorkflowViewState.IdRef="AppendItemToList`1_4" ItemToAppend="[strTempFlightID.Id.ToString]" List="[out_lstTempBookedFlightsIDs]" />
                                 <ui:CommentOut DisplayName="Comment Out - old logic to create Booked Flight - outbound and international" sap:VirtualizedContainerService.HintSize="354,57" sap2010:WorkflowViewState.IdRef="CommentOut_6">
                                   <ui:CommentOut.Body>
                                     <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="416,136" sap2010:WorkflowViewState.IdRef="Sequence_30">
@@ -1367,586 +1368,6 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:ForEachRow>
-    <ui:CommentOut DisplayName="Comment Out - old logic, to be deleted" sap:VirtualizedContainerService.HintSize="667,57" sap2010:WorkflowViewState.IdRef="CommentOut_2">
-      <ui:CommentOut.Body>
-        <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="416,136" sap2010:WorkflowViewState.IdRef="Sequence_26">
-          <sap:WorkflowViewStateService.ViewState>
-            <scg:Dictionary x:TypeArguments="x:String, x:Object">
-              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-            </scg:Dictionary>
-          </sap:WorkflowViewStateService.ViewState>
-          <utam:MockActivity DisplayName="Mock For Each Row in Flights Data Table, create record in Booked Flights" MockedActivityIdRef="ForEachRow_1">
-            <utam:MockActivity.MockedActivity>
-              <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[in_dtFlightsDataTable]" DisplayName="For Each Row in Flights Data Table, create record in Booked Flights" sap:VirtualizedContainerService.HintSize="354,48" sap2010:WorkflowViewState.IdRef="ForEachRow_1">
-                <ui:ForEachRow.Body>
-                  <ActivityAction x:TypeArguments="sd:DataRow">
-                    <ActivityAction.Argument>
-                      <DelegateInArgument x:TypeArguments="sd:DataRow" Name="CurrentRow" />
-                    </ActivityAction.Argument>
-                    <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="667,2407" sap2010:WorkflowViewState.IdRef="Sequence_2">
-                      <sap:WorkflowViewStateService.ViewState>
-                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                        </scg:Dictionary>
-                      </sap:WorkflowViewStateService.ViewState>
-                      <ui:IfElseIf sap2010:Annotation.AnnotationText="We have 4 different options:&#xA;- inbound and regional&#xA;-inbound and international&#xA;-outbound and regional&#xA;-outbound and international" DisplayName="Else If - inbound and regional" sap:VirtualizedContainerService.HintSize="605,2319" sap2010:WorkflowViewState.IdRef="IfElseIf_1">
-                        <ui:IfElseIf.ConditionBlocks>
-                          <sc:BindingList x:TypeArguments="ui:IfElseIfBlock" AllowEdit="True" AllowNew="True" AllowRemove="True" RaiseListChangedEvents="True">
-                            <ui:IfElseIfBlock BlockType="If" Condition="[CurrentRow.Item(&quot;OutboundInbound&quot;).ToString.Contains(&quot;Inbound&quot;) and CurrentRow.Item(&quot;Type&quot;).ToString.Contains(&quot;Regional&quot;)]" sap2010:WorkflowViewState.IdRef="IfElseIfBlock_1">
-                              <ui:IfElseIfBlock.Then>
-                                <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="520,301" sap2010:WorkflowViewState.IdRef="Sequence_5">
-                                  <sap:WorkflowViewStateService.ViewState>
-                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                                    </scg:Dictionary>
-                                  </sap:WorkflowViewStateService.ViewState>
-                                  <ui:RetryScope DisplayName="Retry Scope for Create Booked Flight - Inbound and Regional" sap:VirtualizedContainerService.HintSize="458,213" sap2010:WorkflowViewState.IdRef="RetryScope_2">
-                                    <ui:RetryScope.ActivityBody>
-                                      <ActivityAction>
-                                        <Sequence DisplayName="Creating record for current inbound and regional flight" sap:VirtualizedContainerService.HintSize="416,25" sap2010:WorkflowViewState.IdRef="Sequence_12">
-                                          <sap:WorkflowViewStateService.ViewState>
-                                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                                              <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                                            </scg:Dictionary>
-                                          </sap:WorkflowViewStateService.ViewState>
-                                          <uda:CreateEntityRecord x:TypeArguments="b:BAHSOSRBookedFlights" InputEntity="{x:Null}" IsInRecordView="{x:Null}" VisibleDynamicPropertiesInfo="{x:Null}" ContinueOnError="False" DisplayName="Create Booked Flight - Inbound and Regional" EntityId="cd9656b9-79f2-ee11-aaf2-000d3ab844da" ExpansionDepth="2" sap:VirtualizedContainerService.HintSize="388,52" sap2010:WorkflowViewState.IdRef="CreateEntityRecord`1_3" InputEntityInFieldView="[new BAH_SOSR_DummyBooking.BAHSOSRBookedFlights() With {  .ArrivalDate = DateTime.ParseExact(CurrentRow.Item(&quot;ArrivalDate&quot;).ToString, &quot;MM/dd/yyyy&quot;, System.Globalization.CultureInfo.InvariantCulture),  .ArrivalTime = CurrentRow.Item(&quot;ArrivalTime&quot;).ToString,  .ArrivesNextDay = CurrentRow.Item(&quot;ArrivesNextDay&quot;).ToString,  .BookingID = strBookingRecord.Id.ToString,  .DepartureDate = DateTime.ParseExact(CurrentRow.Item(&quot;DepartureDate&quot;).ToString, &quot;MM/dd/yyyy&quot;, System.Globalization.CultureInfo.InvariantCulture),  .DepartureTime = CurrentRow.Item(&quot;DepartureTime&quot;).ToString,  .FlightClass = CurrentRow.Item(&quot;FlightClass&quot;).ToString,  .FlightId = CurrentRow.Item(&quot;FlightId&quot;).ToString,  .FlightNumber = CurrentRow.Item(&quot;FlightNumber&quot;).ToString,  .FlightSequence = CurrentRow.Item(&quot;FlightSequence&quot;).ToString,  .From = CurrentRow.Item(&quot;From&quot;).ToString,  .NumberOfSeats = CurrentRow.Item(&quot;NumberOfSeats&quot;).ToString,  .OutboundInbound = InboundOutbound.Inbound,  .SearchGUID = CurrentRow.Item(&quot;SearchGUID&quot;).ToString,  .ToDestination = CurrentRow.Item(&quot;ToDestination&quot;).ToString,  .Type = BAH_SOSR_DummyBooking.FlightType.Regional }]" OutputEntity="[strFlightID]" TimeoutInMs="30000">
-                                            <uda:CreateEntityRecord.State>
-                                              <udam:RecordState>
-                                                <udam:RecordState.SelectedFields>
-                                                  <scg:List x:TypeArguments="udam:DynamicEntityField" Capacity="16">
-                                                    <udam:DynamicEntityField Id="737ab220-7af2-ee11-aaf2-000d3ab844da" Name="ArrivalDate">
-                                                      <udam:DynamicEntityField.ArgumentValue>
-                                                        <InArgument x:TypeArguments="s:DateTime">[DateTime.ParseExact(CurrentRow.Item("ArrivalDate").ToString, "MM/dd/yyyy", System.Globalization.CultureInfo.InvariantCulture)]</InArgument>
-                                                      </udam:DynamicEntityField.ArgumentValue>
-                                                    </udam:DynamicEntityField>
-                                                    <udam:DynamicEntityField Id="5c0c082c-7af2-ee11-aaf2-000d3ab844da" Name="ArrivalTime">
-                                                      <udam:DynamicEntityField.ArgumentValue>
-                                                        <InArgument x:TypeArguments="x:String">[CurrentRow.Item("ArrivalTime").ToString]</InArgument>
-                                                      </udam:DynamicEntityField.ArgumentValue>
-                                                    </udam:DynamicEntityField>
-                                                    <udam:DynamicEntityField Id="5d0c082c-7af2-ee11-aaf2-000d3ab844da" Name="ArrivesNextDay">
-                                                      <udam:DynamicEntityField.ArgumentValue>
-                                                        <InArgument x:TypeArguments="x:String">[CurrentRow.Item("ArrivesNextDay").ToString]</InArgument>
-                                                      </udam:DynamicEntityField.ArgumentValue>
-                                                    </udam:DynamicEntityField>
-                                                    <udam:DynamicEntityField Id="b6b4ab35-7af2-ee11-aaf2-000d3ab844da" Name="BookingID">
-                                                      <udam:DynamicEntityField.ArgumentValue>
-                                                        <InArgument x:TypeArguments="x:String">[strBookingRecord.Id.ToString]</InArgument>
-                                                      </udam:DynamicEntityField.ArgumentValue>
-                                                    </udam:DynamicEntityField>
-                                                    <udam:DynamicEntityField Id="7d131d0f-7af2-ee11-aaf2-000d3ab844da" Name="DepartureDate">
-                                                      <udam:DynamicEntityField.ArgumentValue>
-                                                        <InArgument x:TypeArguments="s:DateTime">[DateTime.ParseExact(CurrentRow.Item("DepartureDate").ToString, "MM/dd/yyyy", System.Globalization.CultureInfo.InvariantCulture)]</InArgument>
-                                                      </udam:DynamicEntityField.ArgumentValue>
-                                                    </udam:DynamicEntityField>
-                                                    <udam:DynamicEntityField Id="727ab220-7af2-ee11-aaf2-000d3ab844da" Name="DepartureTime">
-                                                      <udam:DynamicEntityField.ArgumentValue>
-                                                        <InArgument x:TypeArguments="x:String">[CurrentRow.Item("DepartureTime").ToString]</InArgument>
-                                                      </udam:DynamicEntityField.ArgumentValue>
-                                                    </udam:DynamicEntityField>
-                                                    <udam:DynamicEntityField Id="ff42be08-7af2-ee11-aaf2-000d3ab844da" Name="FlightClass">
-                                                      <udam:DynamicEntityField.ArgumentValue>
-                                                        <InArgument x:TypeArguments="x:String">[CurrentRow.Item("FlightClass").ToString]</InArgument>
-                                                      </udam:DynamicEntityField.ArgumentValue>
-                                                    </udam:DynamicEntityField>
-                                                    <udam:DynamicEntityField Id="20ec29c3-79f2-ee11-aaf2-000d3ab844da" Name="FlightId">
-                                                      <udam:DynamicEntityField.ArgumentValue>
-                                                        <InArgument x:TypeArguments="x:String">[CurrentRow.Item("FlightId").ToString]</InArgument>
-                                                      </udam:DynamicEntityField.ArgumentValue>
-                                                    </udam:DynamicEntityField>
-                                                    <udam:DynamicEntityField Id="d20f36fb-79f2-ee11-aaf2-000d3ab844da" Name="FlightNumber">
-                                                      <udam:DynamicEntityField.ArgumentValue>
-                                                        <InArgument x:TypeArguments="x:String">[CurrentRow.Item("FlightNumber").ToString]</InArgument>
-                                                      </udam:DynamicEntityField.ArgumentValue>
-                                                    </udam:DynamicEntityField>
-                                                    <udam:DynamicEntityField Id="a97ea2ef-79f2-ee11-aaf2-000d3ab844da" Name="FlightSequence">
-                                                      <udam:DynamicEntityField.ArgumentValue>
-                                                        <InArgument x:TypeArguments="x:String">[CurrentRow.Item("FlightSequence").ToString]</InArgument>
-                                                      </udam:DynamicEntityField.ArgumentValue>
-                                                    </udam:DynamicEntityField>
-                                                    <udam:DynamicEntityField Id="d8e39dcc-79f2-ee11-aaf2-000d3ab844da" Name="From">
-                                                      <udam:DynamicEntityField.ArgumentValue>
-                                                        <InArgument x:TypeArguments="x:String">[CurrentRow.Item("From").ToString]</InArgument>
-                                                      </udam:DynamicEntityField.ArgumentValue>
-                                                    </udam:DynamicEntityField>
-                                                    <udam:DynamicEntityField Id="d7e39dcc-79f2-ee11-aaf2-000d3ab844da" Name="NumberOfSeats">
-                                                      <udam:DynamicEntityField.ArgumentValue>
-                                                        <InArgument x:TypeArguments="x:String">[CurrentRow.Item("NumberOfSeats").ToString]</InArgument>
-                                                      </udam:DynamicEntityField.ArgumentValue>
-                                                    </udam:DynamicEntityField>
-                                                    <udam:DynamicEntityField Id="a87ea2ef-79f2-ee11-aaf2-000d3ab844da" Name="OutboundInbound">
-                                                      <udam:DynamicEntityField.ArgumentValue>
-                                                        <InArgument x:TypeArguments="b:InboundOutbound">[InboundOutbound.Inbound]</InArgument>
-                                                      </udam:DynamicEntityField.ArgumentValue>
-                                                    </udam:DynamicEntityField>
-                                                    <udam:DynamicEntityField Id="1fec29c3-79f2-ee11-aaf2-000d3ab844da" Name="SearchGUID">
-                                                      <udam:DynamicEntityField.ArgumentValue>
-                                                        <InArgument x:TypeArguments="x:String">[CurrentRow.Item("SearchGUID").ToString]</InArgument>
-                                                      </udam:DynamicEntityField.ArgumentValue>
-                                                    </udam:DynamicEntityField>
-                                                    <udam:DynamicEntityField Id="1c8714d3-79f2-ee11-aaf2-000d3ab844da" Name="ToDestination">
-                                                      <udam:DynamicEntityField.ArgumentValue>
-                                                        <InArgument x:TypeArguments="x:String">[CurrentRow.Item("ToDestination").ToString]</InArgument>
-                                                      </udam:DynamicEntityField.ArgumentValue>
-                                                    </udam:DynamicEntityField>
-                                                    <udam:DynamicEntityField Id="1c9452e3-79f2-ee11-aaf2-000d3ab844da" Name="Type">
-                                                      <udam:DynamicEntityField.ArgumentValue>
-                                                        <InArgument x:TypeArguments="b:FlightType">[BAH_SOSR_DummyBooking.FlightType.Regional]</InArgument>
-                                                      </udam:DynamicEntityField.ArgumentValue>
-                                                    </udam:DynamicEntityField>
-                                                  </scg:List>
-                                                </udam:RecordState.SelectedFields>
-                                              </udam:RecordState>
-                                            </uda:CreateEntityRecord.State>
-                                            <sap:WorkflowViewStateService.ViewState>
-                                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                                                <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                                              </scg:Dictionary>
-                                            </sap:WorkflowViewStateService.ViewState>
-                                          </uda:CreateEntityRecord>
-                                          <ui:LogMessage DisplayName="Log Message - created Booked Flight - Inbound and Regional" sap:VirtualizedContainerService.HintSize="388,141" sap2010:WorkflowViewState.IdRef="LogMessage_6" Level="Info" Message="[&quot;Booked flight created: Regional - Inbound: &quot; + strFlightID.Id.ToString]" />
-                                        </Sequence>
-                                      </ActivityAction>
-                                    </ui:RetryScope.ActivityBody>
-                                    <ui:RetryScope.Condition>
-                                      <ActivityFunc x:TypeArguments="x:Boolean" />
-                                    </ui:RetryScope.Condition>
-                                    <sap:WorkflowViewStateService.ViewState>
-                                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                                      </scg:Dictionary>
-                                    </sap:WorkflowViewStateService.ViewState>
-                                  </ui:RetryScope>
-                                </Sequence>
-                              </ui:IfElseIfBlock.Then>
-                            </ui:IfElseIfBlock>
-                            <ui:IfElseIfBlock BlockType="ElseIf" Condition="[CurrentRow.Item(&quot;OutboundInbound&quot;).ToString.Contains(&quot;Inbound&quot;) and CurrentRow.Item(&quot;Type&quot;).ToString.Contains(&quot;International&quot;)]" sap2010:WorkflowViewState.IdRef="IfElseIfBlock_2">
-                              <ui:IfElseIfBlock.Then>
-                                <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="554,357" sap2010:WorkflowViewState.IdRef="Sequence_8">
-                                  <sap:WorkflowViewStateService.ViewState>
-                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                                    </scg:Dictionary>
-                                  </sap:WorkflowViewStateService.ViewState>
-                                  <ui:RetryScope DisplayName="Retry Scope for Create Booked Flight - Inbound and International" sap:VirtualizedContainerService.HintSize="492,246" sap2010:WorkflowViewState.IdRef="RetryScope_3">
-                                    <ui:RetryScope.ActivityBody>
-                                      <ActivityAction>
-                                        <Sequence DisplayName="Creating record for current inbound and international flight" sap:VirtualizedContainerService.HintSize="450,81" sap2010:WorkflowViewState.IdRef="Sequence_13">
-                                          <sap:WorkflowViewStateService.ViewState>
-                                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                                              <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                                            </scg:Dictionary>
-                                          </sap:WorkflowViewStateService.ViewState>
-                                          <uda:CreateEntityRecord x:TypeArguments="b:BAHSOSRBookedFlights" InputEntity="{x:Null}" IsInRecordView="{x:Null}" VisibleDynamicPropertiesInfo="{x:Null}" ContinueOnError="False" DisplayName="Create Booked Flight - Inbound and International" EntityId="cd9656b9-79f2-ee11-aaf2-000d3ab844da" ExpansionDepth="2" sap:VirtualizedContainerService.HintSize="388,52" sap2010:WorkflowViewState.IdRef="CreateEntityRecord`1_7" InputEntityInFieldView="[new BAH_SOSR_DummyBooking.BAHSOSRBookedFlights() With {  .ArrivalDate = DateTime.ParseExact(CurrentRow.Item(&quot;ArrivalDate&quot;).ToString, &quot;MM/dd/yyyy&quot;, System.Globalization.CultureInfo.InvariantCulture),  .ArrivalTime = CurrentRow.Item(&quot;ArrivalTime&quot;).ToString,  .ArrivesNextDay = CurrentRow.Item(&quot;ArrivesNextDay&quot;).ToString,  .BookingID = strBookingRecord.Id.ToString,  .DepartureDate = DateTime.ParseExact(CurrentRow.Item(&quot;DepartureDate&quot;).ToString, &quot;MM/dd/yyyy&quot;, System.Globalization.CultureInfo.InvariantCulture),  .DepartureTime = CurrentRow.Item(&quot;DepartureTime&quot;).ToString,  .FlightClass = CurrentRow.Item(&quot;FlightClass&quot;).ToString,  .FlightId = CurrentRow.Item(&quot;FlightId&quot;).ToString,  .FlightNumber = CurrentRow.Item(&quot;FlightNumber&quot;).ToString,  .FlightSequence = CurrentRow.Item(&quot;FlightSequence&quot;).ToString,  .From = CurrentRow.Item(&quot;From&quot;).ToString,  .NumberOfSeats = CurrentRow.Item(&quot;NumberOfSeats&quot;).ToString,  .OutboundInbound = InboundOutbound.Inbound,  .SearchGUID = CurrentRow.Item(&quot;SearchGUID&quot;).ToString,  .ToDestination = CurrentRow.Item(&quot;ToDestination&quot;).ToString,  .Type = BAH_SOSR_DummyBooking.FlightType.International }]" OutputEntity="[strFlightID]" TimeoutInMs="30000">
-                                            <uda:CreateEntityRecord.State>
-                                              <udam:RecordState>
-                                                <udam:RecordState.SelectedFields>
-                                                  <scg:List x:TypeArguments="udam:DynamicEntityField" Capacity="16">
-                                                    <udam:DynamicEntityField Id="737ab220-7af2-ee11-aaf2-000d3ab844da" Name="ArrivalDate">
-                                                      <udam:DynamicEntityField.ArgumentValue>
-                                                        <InArgument x:TypeArguments="s:DateTime">[DateTime.ParseExact(CurrentRow.Item("ArrivalDate").ToString, "MM/dd/yyyy", System.Globalization.CultureInfo.InvariantCulture)]</InArgument>
-                                                      </udam:DynamicEntityField.ArgumentValue>
-                                                    </udam:DynamicEntityField>
-                                                    <udam:DynamicEntityField Id="5c0c082c-7af2-ee11-aaf2-000d3ab844da" Name="ArrivalTime">
-                                                      <udam:DynamicEntityField.ArgumentValue>
-                                                        <InArgument x:TypeArguments="x:String">[CurrentRow.Item("ArrivalTime").ToString]</InArgument>
-                                                      </udam:DynamicEntityField.ArgumentValue>
-                                                    </udam:DynamicEntityField>
-                                                    <udam:DynamicEntityField Id="5d0c082c-7af2-ee11-aaf2-000d3ab844da" Name="ArrivesNextDay">
-                                                      <udam:DynamicEntityField.ArgumentValue>
-                                                        <InArgument x:TypeArguments="x:String">[CurrentRow.Item("ArrivesNextDay").ToString]</InArgument>
-                                                      </udam:DynamicEntityField.ArgumentValue>
-                                                    </udam:DynamicEntityField>
-                                                    <udam:DynamicEntityField Id="b6b4ab35-7af2-ee11-aaf2-000d3ab844da" Name="BookingID">
-                                                      <udam:DynamicEntityField.ArgumentValue>
-                                                        <InArgument x:TypeArguments="x:String">[strBookingRecord.Id.ToString]</InArgument>
-                                                      </udam:DynamicEntityField.ArgumentValue>
-                                                    </udam:DynamicEntityField>
-                                                    <udam:DynamicEntityField Id="7d131d0f-7af2-ee11-aaf2-000d3ab844da" Name="DepartureDate">
-                                                      <udam:DynamicEntityField.ArgumentValue>
-                                                        <InArgument x:TypeArguments="s:DateTime">[DateTime.ParseExact(CurrentRow.Item("DepartureDate").ToString, "MM/dd/yyyy", System.Globalization.CultureInfo.InvariantCulture)]</InArgument>
-                                                      </udam:DynamicEntityField.ArgumentValue>
-                                                    </udam:DynamicEntityField>
-                                                    <udam:DynamicEntityField Id="727ab220-7af2-ee11-aaf2-000d3ab844da" Name="DepartureTime">
-                                                      <udam:DynamicEntityField.ArgumentValue>
-                                                        <InArgument x:TypeArguments="x:String">[CurrentRow.Item("DepartureTime").ToString]</InArgument>
-                                                      </udam:DynamicEntityField.ArgumentValue>
-                                                    </udam:DynamicEntityField>
-                                                    <udam:DynamicEntityField Id="ff42be08-7af2-ee11-aaf2-000d3ab844da" Name="FlightClass">
-                                                      <udam:DynamicEntityField.ArgumentValue>
-                                                        <InArgument x:TypeArguments="x:String">[CurrentRow.Item("FlightClass").ToString]</InArgument>
-                                                      </udam:DynamicEntityField.ArgumentValue>
-                                                    </udam:DynamicEntityField>
-                                                    <udam:DynamicEntityField Id="20ec29c3-79f2-ee11-aaf2-000d3ab844da" Name="FlightId">
-                                                      <udam:DynamicEntityField.ArgumentValue>
-                                                        <InArgument x:TypeArguments="x:String">[CurrentRow.Item("FlightId").ToString]</InArgument>
-                                                      </udam:DynamicEntityField.ArgumentValue>
-                                                    </udam:DynamicEntityField>
-                                                    <udam:DynamicEntityField Id="d20f36fb-79f2-ee11-aaf2-000d3ab844da" Name="FlightNumber">
-                                                      <udam:DynamicEntityField.ArgumentValue>
-                                                        <InArgument x:TypeArguments="x:String">[CurrentRow.Item("FlightNumber").ToString]</InArgument>
-                                                      </udam:DynamicEntityField.ArgumentValue>
-                                                    </udam:DynamicEntityField>
-                                                    <udam:DynamicEntityField Id="a97ea2ef-79f2-ee11-aaf2-000d3ab844da" Name="FlightSequence">
-                                                      <udam:DynamicEntityField.ArgumentValue>
-                                                        <InArgument x:TypeArguments="x:String">[CurrentRow.Item("FlightSequence").ToString]</InArgument>
-                                                      </udam:DynamicEntityField.ArgumentValue>
-                                                    </udam:DynamicEntityField>
-                                                    <udam:DynamicEntityField Id="d8e39dcc-79f2-ee11-aaf2-000d3ab844da" Name="From">
-                                                      <udam:DynamicEntityField.ArgumentValue>
-                                                        <InArgument x:TypeArguments="x:String">[CurrentRow.Item("From").ToString]</InArgument>
-                                                      </udam:DynamicEntityField.ArgumentValue>
-                                                    </udam:DynamicEntityField>
-                                                    <udam:DynamicEntityField Id="d7e39dcc-79f2-ee11-aaf2-000d3ab844da" Name="NumberOfSeats">
-                                                      <udam:DynamicEntityField.ArgumentValue>
-                                                        <InArgument x:TypeArguments="x:String">[CurrentRow.Item("NumberOfSeats").ToString]</InArgument>
-                                                      </udam:DynamicEntityField.ArgumentValue>
-                                                    </udam:DynamicEntityField>
-                                                    <udam:DynamicEntityField Id="a87ea2ef-79f2-ee11-aaf2-000d3ab844da" Name="OutboundInbound">
-                                                      <udam:DynamicEntityField.ArgumentValue>
-                                                        <InArgument x:TypeArguments="b:InboundOutbound">[InboundOutbound.Inbound]</InArgument>
-                                                      </udam:DynamicEntityField.ArgumentValue>
-                                                    </udam:DynamicEntityField>
-                                                    <udam:DynamicEntityField Id="1fec29c3-79f2-ee11-aaf2-000d3ab844da" Name="SearchGUID">
-                                                      <udam:DynamicEntityField.ArgumentValue>
-                                                        <InArgument x:TypeArguments="x:String">[CurrentRow.Item("SearchGUID").ToString]</InArgument>
-                                                      </udam:DynamicEntityField.ArgumentValue>
-                                                    </udam:DynamicEntityField>
-                                                    <udam:DynamicEntityField Id="1c8714d3-79f2-ee11-aaf2-000d3ab844da" Name="ToDestination">
-                                                      <udam:DynamicEntityField.ArgumentValue>
-                                                        <InArgument x:TypeArguments="x:String">[CurrentRow.Item("ToDestination").ToString]</InArgument>
-                                                      </udam:DynamicEntityField.ArgumentValue>
-                                                    </udam:DynamicEntityField>
-                                                    <udam:DynamicEntityField Id="1c9452e3-79f2-ee11-aaf2-000d3ab844da" Name="Type">
-                                                      <udam:DynamicEntityField.ArgumentValue>
-                                                        <InArgument x:TypeArguments="b:FlightType">[BAH_SOSR_DummyBooking.FlightType.International]</InArgument>
-                                                      </udam:DynamicEntityField.ArgumentValue>
-                                                    </udam:DynamicEntityField>
-                                                  </scg:List>
-                                                </udam:RecordState.SelectedFields>
-                                              </udam:RecordState>
-                                            </uda:CreateEntityRecord.State>
-                                            <sap:WorkflowViewStateService.ViewState>
-                                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                                                <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                                              </scg:Dictionary>
-                                            </sap:WorkflowViewStateService.ViewState>
-                                          </uda:CreateEntityRecord>
-                                          <ui:LogMessage DisplayName="Log Message - created Booked Flight - Inbound and International" sap:VirtualizedContainerService.HintSize="388,141" sap2010:WorkflowViewState.IdRef="LogMessage_7" Level="Info" Message="[&quot;Booked flight created: International - Inbound: &quot; + strFlightID.Id.ToString]" />
-                                        </Sequence>
-                                      </ActivityAction>
-                                    </ui:RetryScope.ActivityBody>
-                                    <ui:RetryScope.Condition>
-                                      <ActivityFunc x:TypeArguments="x:Boolean" />
-                                    </ui:RetryScope.Condition>
-                                    <sap:WorkflowViewStateService.ViewState>
-                                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                                      </scg:Dictionary>
-                                    </sap:WorkflowViewStateService.ViewState>
-                                  </ui:RetryScope>
-                                </Sequence>
-                              </ui:IfElseIfBlock.Then>
-                            </ui:IfElseIfBlock>
-                            <ui:IfElseIfBlock BlockType="ElseIf" Condition="[CurrentRow.Item(&quot;OutboundInbound&quot;).ToString.Contains(&quot;Outbound&quot;) and CurrentRow.Item(&quot;Type&quot;).ToString.Contains(&quot;Regional&quot;)]" sap2010:WorkflowViewState.IdRef="IfElseIfBlock_3">
-                              <ui:IfElseIfBlock.Then>
-                                <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="554,357" sap2010:WorkflowViewState.IdRef="Sequence_9">
-                                  <sap:WorkflowViewStateService.ViewState>
-                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                                    </scg:Dictionary>
-                                  </sap:WorkflowViewStateService.ViewState>
-                                  <ui:RetryScope DisplayName="Retry Scope for Create Booked Flight - Outbound and Regional" sap:VirtualizedContainerService.HintSize="492,246" sap2010:WorkflowViewState.IdRef="RetryScope_4">
-                                    <ui:RetryScope.ActivityBody>
-                                      <ActivityAction>
-                                        <Sequence DisplayName="Creating record for current outbound and regional flight" sap:VirtualizedContainerService.HintSize="450,81" sap2010:WorkflowViewState.IdRef="Sequence_14">
-                                          <sap:WorkflowViewStateService.ViewState>
-                                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                                              <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                                            </scg:Dictionary>
-                                          </sap:WorkflowViewStateService.ViewState>
-                                          <uda:CreateEntityRecord x:TypeArguments="b:BAHSOSRBookedFlights" InputEntity="{x:Null}" IsInRecordView="{x:Null}" VisibleDynamicPropertiesInfo="{x:Null}" ContinueOnError="False" DisplayName="Create Booked Flight - Outbound and Regional" EntityId="cd9656b9-79f2-ee11-aaf2-000d3ab844da" ExpansionDepth="2" sap:VirtualizedContainerService.HintSize="388,52" sap2010:WorkflowViewState.IdRef="CreateEntityRecord`1_8" InputEntityInFieldView="[new BAH_SOSR_DummyBooking.BAHSOSRBookedFlights() With {  .ArrivalDate = DateTime.ParseExact(CurrentRow.Item(&quot;ArrivalDate&quot;).ToString, &quot;MM/dd/yyyy&quot;, System.Globalization.CultureInfo.InvariantCulture),  .ArrivalTime = CurrentRow.Item(&quot;ArrivalTime&quot;).ToString,  .ArrivesNextDay = CurrentRow.Item(&quot;ArrivesNextDay&quot;).ToString,  .BookingID = strBookingRecord.Id.ToString,  .DepartureDate = DateTime.ParseExact(CurrentRow.Item(&quot;DepartureDate&quot;).ToString, &quot;MM/dd/yyyy&quot;, System.Globalization.CultureInfo.InvariantCulture),  .DepartureTime = CurrentRow.Item(&quot;DepartureTime&quot;).ToString,  .FlightClass = CurrentRow.Item(&quot;FlightClass&quot;).ToString,  .FlightId = CurrentRow.Item(&quot;FlightId&quot;).ToString,  .FlightNumber = CurrentRow.Item(&quot;FlightNumber&quot;).ToString,  .FlightSequence = CurrentRow.Item(&quot;FlightSequence&quot;).ToString,  .From = CurrentRow.Item(&quot;From&quot;).ToString,  .NumberOfSeats = CurrentRow.Item(&quot;NumberOfSeats&quot;).ToString,  .OutboundInbound = BAH_SOSR_DummyBooking.InboundOutbound.Outbound,  .SearchGUID = CurrentRow.Item(&quot;SearchGUID&quot;).ToString,  .ToDestination = CurrentRow.Item(&quot;ToDestination&quot;).ToString,  .Type = BAH_SOSR_DummyBooking.FlightType.Regional }]" OutputEntity="[strFlightID]" TimeoutInMs="30000">
-                                            <uda:CreateEntityRecord.State>
-                                              <udam:RecordState>
-                                                <udam:RecordState.SelectedFields>
-                                                  <scg:List x:TypeArguments="udam:DynamicEntityField" Capacity="16">
-                                                    <udam:DynamicEntityField Id="737ab220-7af2-ee11-aaf2-000d3ab844da" Name="ArrivalDate">
-                                                      <udam:DynamicEntityField.ArgumentValue>
-                                                        <InArgument x:TypeArguments="s:DateTime">[DateTime.ParseExact(CurrentRow.Item("ArrivalDate").ToString, "MM/dd/yyyy", System.Globalization.CultureInfo.InvariantCulture)]</InArgument>
-                                                      </udam:DynamicEntityField.ArgumentValue>
-                                                    </udam:DynamicEntityField>
-                                                    <udam:DynamicEntityField Id="5c0c082c-7af2-ee11-aaf2-000d3ab844da" Name="ArrivalTime">
-                                                      <udam:DynamicEntityField.ArgumentValue>
-                                                        <InArgument x:TypeArguments="x:String">[CurrentRow.Item("ArrivalTime").ToString]</InArgument>
-                                                      </udam:DynamicEntityField.ArgumentValue>
-                                                    </udam:DynamicEntityField>
-                                                    <udam:DynamicEntityField Id="5d0c082c-7af2-ee11-aaf2-000d3ab844da" Name="ArrivesNextDay">
-                                                      <udam:DynamicEntityField.ArgumentValue>
-                                                        <InArgument x:TypeArguments="x:String">[CurrentRow.Item("ArrivesNextDay").ToString]</InArgument>
-                                                      </udam:DynamicEntityField.ArgumentValue>
-                                                    </udam:DynamicEntityField>
-                                                    <udam:DynamicEntityField Id="b6b4ab35-7af2-ee11-aaf2-000d3ab844da" Name="BookingID">
-                                                      <udam:DynamicEntityField.ArgumentValue>
-                                                        <InArgument x:TypeArguments="x:String">[strBookingRecord.Id.ToString]</InArgument>
-                                                      </udam:DynamicEntityField.ArgumentValue>
-                                                    </udam:DynamicEntityField>
-                                                    <udam:DynamicEntityField Id="7d131d0f-7af2-ee11-aaf2-000d3ab844da" Name="DepartureDate">
-                                                      <udam:DynamicEntityField.ArgumentValue>
-                                                        <InArgument x:TypeArguments="s:DateTime">[DateTime.ParseExact(CurrentRow.Item("DepartureDate").ToString, "MM/dd/yyyy", System.Globalization.CultureInfo.InvariantCulture)]</InArgument>
-                                                      </udam:DynamicEntityField.ArgumentValue>
-                                                    </udam:DynamicEntityField>
-                                                    <udam:DynamicEntityField Id="727ab220-7af2-ee11-aaf2-000d3ab844da" Name="DepartureTime">
-                                                      <udam:DynamicEntityField.ArgumentValue>
-                                                        <InArgument x:TypeArguments="x:String">[CurrentRow.Item("DepartureTime").ToString]</InArgument>
-                                                      </udam:DynamicEntityField.ArgumentValue>
-                                                    </udam:DynamicEntityField>
-                                                    <udam:DynamicEntityField Id="ff42be08-7af2-ee11-aaf2-000d3ab844da" Name="FlightClass">
-                                                      <udam:DynamicEntityField.ArgumentValue>
-                                                        <InArgument x:TypeArguments="x:String">[CurrentRow.Item("FlightClass").ToString]</InArgument>
-                                                      </udam:DynamicEntityField.ArgumentValue>
-                                                    </udam:DynamicEntityField>
-                                                    <udam:DynamicEntityField Id="20ec29c3-79f2-ee11-aaf2-000d3ab844da" Name="FlightId">
-                                                      <udam:DynamicEntityField.ArgumentValue>
-                                                        <InArgument x:TypeArguments="x:String">[CurrentRow.Item("FlightId").ToString]</InArgument>
-                                                      </udam:DynamicEntityField.ArgumentValue>
-                                                    </udam:DynamicEntityField>
-                                                    <udam:DynamicEntityField Id="d20f36fb-79f2-ee11-aaf2-000d3ab844da" Name="FlightNumber">
-                                                      <udam:DynamicEntityField.ArgumentValue>
-                                                        <InArgument x:TypeArguments="x:String">[CurrentRow.Item("FlightNumber").ToString]</InArgument>
-                                                      </udam:DynamicEntityField.ArgumentValue>
-                                                    </udam:DynamicEntityField>
-                                                    <udam:DynamicEntityField Id="a97ea2ef-79f2-ee11-aaf2-000d3ab844da" Name="FlightSequence">
-                                                      <udam:DynamicEntityField.ArgumentValue>
-                                                        <InArgument x:TypeArguments="x:String">[CurrentRow.Item("FlightSequence").ToString]</InArgument>
-                                                      </udam:DynamicEntityField.ArgumentValue>
-                                                    </udam:DynamicEntityField>
-                                                    <udam:DynamicEntityField Id="d8e39dcc-79f2-ee11-aaf2-000d3ab844da" Name="From">
-                                                      <udam:DynamicEntityField.ArgumentValue>
-                                                        <InArgument x:TypeArguments="x:String">[CurrentRow.Item("From").ToString]</InArgument>
-                                                      </udam:DynamicEntityField.ArgumentValue>
-                                                    </udam:DynamicEntityField>
-                                                    <udam:DynamicEntityField Id="d7e39dcc-79f2-ee11-aaf2-000d3ab844da" Name="NumberOfSeats">
-                                                      <udam:DynamicEntityField.ArgumentValue>
-                                                        <InArgument x:TypeArguments="x:String">[CurrentRow.Item("NumberOfSeats").ToString]</InArgument>
-                                                      </udam:DynamicEntityField.ArgumentValue>
-                                                    </udam:DynamicEntityField>
-                                                    <udam:DynamicEntityField Id="a87ea2ef-79f2-ee11-aaf2-000d3ab844da" Name="OutboundInbound">
-                                                      <udam:DynamicEntityField.ArgumentValue>
-                                                        <InArgument x:TypeArguments="b:InboundOutbound">[BAH_SOSR_DummyBooking.InboundOutbound.Outbound]</InArgument>
-                                                      </udam:DynamicEntityField.ArgumentValue>
-                                                    </udam:DynamicEntityField>
-                                                    <udam:DynamicEntityField Id="1fec29c3-79f2-ee11-aaf2-000d3ab844da" Name="SearchGUID">
-                                                      <udam:DynamicEntityField.ArgumentValue>
-                                                        <InArgument x:TypeArguments="x:String">[CurrentRow.Item("SearchGUID").ToString]</InArgument>
-                                                      </udam:DynamicEntityField.ArgumentValue>
-                                                    </udam:DynamicEntityField>
-                                                    <udam:DynamicEntityField Id="1c8714d3-79f2-ee11-aaf2-000d3ab844da" Name="ToDestination">
-                                                      <udam:DynamicEntityField.ArgumentValue>
-                                                        <InArgument x:TypeArguments="x:String">[CurrentRow.Item("ToDestination").ToString]</InArgument>
-                                                      </udam:DynamicEntityField.ArgumentValue>
-                                                    </udam:DynamicEntityField>
-                                                    <udam:DynamicEntityField Id="1c9452e3-79f2-ee11-aaf2-000d3ab844da" Name="Type">
-                                                      <udam:DynamicEntityField.ArgumentValue>
-                                                        <InArgument x:TypeArguments="b:FlightType">[BAH_SOSR_DummyBooking.FlightType.Regional]</InArgument>
-                                                      </udam:DynamicEntityField.ArgumentValue>
-                                                    </udam:DynamicEntityField>
-                                                  </scg:List>
-                                                </udam:RecordState.SelectedFields>
-                                              </udam:RecordState>
-                                            </uda:CreateEntityRecord.State>
-                                            <sap:WorkflowViewStateService.ViewState>
-                                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                                                <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                                              </scg:Dictionary>
-                                            </sap:WorkflowViewStateService.ViewState>
-                                          </uda:CreateEntityRecord>
-                                          <ui:LogMessage DisplayName="Log Message - created Booked Flight - Outbound and Regional" sap:VirtualizedContainerService.HintSize="388,141" sap2010:WorkflowViewState.IdRef="LogMessage_8" Level="Info" Message="[&quot;Booked flight created: Regional - Outbound: &quot; + strFlightID.Id.ToString]" />
-                                        </Sequence>
-                                      </ActivityAction>
-                                    </ui:RetryScope.ActivityBody>
-                                    <ui:RetryScope.Condition>
-                                      <ActivityFunc x:TypeArguments="x:Boolean" />
-                                    </ui:RetryScope.Condition>
-                                  </ui:RetryScope>
-                                </Sequence>
-                              </ui:IfElseIfBlock.Then>
-                            </ui:IfElseIfBlock>
-                            <ui:IfElseIfBlock BlockType="ElseIf" Condition="[CurrentRow.Item(&quot;OutboundInbound&quot;).ToString.Contains(&quot;Outbound&quot;) and CurrentRow.Item(&quot;Type&quot;).ToString.Contains(&quot;International&quot;)]" sap2010:WorkflowViewState.IdRef="IfElseIfBlock_4">
-                              <ui:IfElseIfBlock.Then>
-                                <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="554,620" sap2010:WorkflowViewState.IdRef="Sequence_10">
-                                  <sap:WorkflowViewStateService.ViewState>
-                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                                    </scg:Dictionary>
-                                  </sap:WorkflowViewStateService.ViewState>
-                                  <ui:RetryScope DisplayName="Retry Scope for Create Booked Flight - Outbound and International" sap:VirtualizedContainerService.HintSize="492,509" sap2010:WorkflowViewState.IdRef="RetryScope_5">
-                                    <ui:RetryScope.ActivityBody>
-                                      <ActivityAction>
-                                        <Sequence DisplayName="Creating record for current outbound and international flight" sap:VirtualizedContainerService.HintSize="450,344" sap2010:WorkflowViewState.IdRef="Sequence_15">
-                                          <sap:WorkflowViewStateService.ViewState>
-                                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                                            </scg:Dictionary>
-                                          </sap:WorkflowViewStateService.ViewState>
-                                          <uda:CreateEntityRecord x:TypeArguments="b:BAHSOSRBookedFlights" InputEntity="{x:Null}" IsInRecordView="{x:Null}" VisibleDynamicPropertiesInfo="{x:Null}" ContinueOnError="False" DisplayName="Create Booked Flight - Outbound and International" EntityId="cd9656b9-79f2-ee11-aaf2-000d3ab844da" ExpansionDepth="2" sap:VirtualizedContainerService.HintSize="388,52" sap2010:WorkflowViewState.IdRef="CreateEntityRecord`1_9" InputEntityInFieldView="[new BAH_SOSR_DummyBooking.BAHSOSRBookedFlights() With {  .ArrivalDate = DateTime.ParseExact(CurrentRow.Item(&quot;ArrivalDate&quot;).ToString, &quot;MM/dd/yyyy&quot;, System.Globalization.CultureInfo.InvariantCulture),  .ArrivalTime = CurrentRow.Item(&quot;ArrivalTime&quot;).ToString,  .ArrivesNextDay = CurrentRow.Item(&quot;ArrivesNextDay&quot;).ToString,  .BookingID = strBookingRecord.Id.ToString,  .DepartureDate = DateTime.ParseExact(CurrentRow.Item(&quot;DepartureDate&quot;).ToString, &quot;MM/dd/yyyy&quot;, System.Globalization.CultureInfo.InvariantCulture),  .DepartureTime = CurrentRow.Item(&quot;DepartureTime&quot;).ToString,  .FlightClass = CurrentRow.Item(&quot;FlightClass&quot;).ToString,  .FlightId = CurrentRow.Item(&quot;FlightId&quot;).ToString,  .FlightNumber = CurrentRow.Item(&quot;FlightNumber&quot;).ToString,  .FlightSequence = CurrentRow.Item(&quot;FlightSequence&quot;).ToString,  .From = CurrentRow.Item(&quot;From&quot;).ToString,  .NumberOfSeats = CurrentRow.Item(&quot;NumberOfSeats&quot;).ToString,  .OutboundInbound = BAH_SOSR_DummyBooking.InboundOutbound.Outbound,  .SearchGUID = CurrentRow.Item(&quot;SearchGUID&quot;).ToString,  .ToDestination = CurrentRow.Item(&quot;ToDestination&quot;).ToString,  .Type = BAH_SOSR_DummyBooking.FlightType.International }]" OutputEntity="[strFlightID]" TimeoutInMs="30000">
-                                            <uda:CreateEntityRecord.State>
-                                              <udam:RecordState>
-                                                <udam:RecordState.SelectedFields>
-                                                  <scg:List x:TypeArguments="udam:DynamicEntityField" Capacity="16">
-                                                    <udam:DynamicEntityField Id="737ab220-7af2-ee11-aaf2-000d3ab844da" Name="ArrivalDate">
-                                                      <udam:DynamicEntityField.ArgumentValue>
-                                                        <InArgument x:TypeArguments="s:DateTime">[DateTime.ParseExact(CurrentRow.Item("ArrivalDate").ToString, "MM/dd/yyyy", System.Globalization.CultureInfo.InvariantCulture)]</InArgument>
-                                                      </udam:DynamicEntityField.ArgumentValue>
-                                                    </udam:DynamicEntityField>
-                                                    <udam:DynamicEntityField Id="5c0c082c-7af2-ee11-aaf2-000d3ab844da" Name="ArrivalTime">
-                                                      <udam:DynamicEntityField.ArgumentValue>
-                                                        <InArgument x:TypeArguments="x:String">[CurrentRow.Item("ArrivalTime").ToString]</InArgument>
-                                                      </udam:DynamicEntityField.ArgumentValue>
-                                                    </udam:DynamicEntityField>
-                                                    <udam:DynamicEntityField Id="5d0c082c-7af2-ee11-aaf2-000d3ab844da" Name="ArrivesNextDay">
-                                                      <udam:DynamicEntityField.ArgumentValue>
-                                                        <InArgument x:TypeArguments="x:String">[CurrentRow.Item("ArrivesNextDay").ToString]</InArgument>
-                                                      </udam:DynamicEntityField.ArgumentValue>
-                                                    </udam:DynamicEntityField>
-                                                    <udam:DynamicEntityField Id="b6b4ab35-7af2-ee11-aaf2-000d3ab844da" Name="BookingID">
-                                                      <udam:DynamicEntityField.ArgumentValue>
-                                                        <InArgument x:TypeArguments="x:String">[strBookingRecord.Id.ToString]</InArgument>
-                                                      </udam:DynamicEntityField.ArgumentValue>
-                                                    </udam:DynamicEntityField>
-                                                    <udam:DynamicEntityField Id="7d131d0f-7af2-ee11-aaf2-000d3ab844da" Name="DepartureDate">
-                                                      <udam:DynamicEntityField.ArgumentValue>
-                                                        <InArgument x:TypeArguments="s:DateTime">[DateTime.ParseExact(CurrentRow.Item("DepartureDate").ToString, "MM/dd/yyyy", System.Globalization.CultureInfo.InvariantCulture)]</InArgument>
-                                                      </udam:DynamicEntityField.ArgumentValue>
-                                                    </udam:DynamicEntityField>
-                                                    <udam:DynamicEntityField Id="727ab220-7af2-ee11-aaf2-000d3ab844da" Name="DepartureTime">
-                                                      <udam:DynamicEntityField.ArgumentValue>
-                                                        <InArgument x:TypeArguments="x:String">[CurrentRow.Item("DepartureTime").ToString]</InArgument>
-                                                      </udam:DynamicEntityField.ArgumentValue>
-                                                    </udam:DynamicEntityField>
-                                                    <udam:DynamicEntityField Id="ff42be08-7af2-ee11-aaf2-000d3ab844da" Name="FlightClass">
-                                                      <udam:DynamicEntityField.ArgumentValue>
-                                                        <InArgument x:TypeArguments="x:String">[CurrentRow.Item("FlightClass").ToString]</InArgument>
-                                                      </udam:DynamicEntityField.ArgumentValue>
-                                                    </udam:DynamicEntityField>
-                                                    <udam:DynamicEntityField Id="20ec29c3-79f2-ee11-aaf2-000d3ab844da" Name="FlightId">
-                                                      <udam:DynamicEntityField.ArgumentValue>
-                                                        <InArgument x:TypeArguments="x:String">[CurrentRow.Item("FlightId").ToString]</InArgument>
-                                                      </udam:DynamicEntityField.ArgumentValue>
-                                                    </udam:DynamicEntityField>
-                                                    <udam:DynamicEntityField Id="d20f36fb-79f2-ee11-aaf2-000d3ab844da" Name="FlightNumber">
-                                                      <udam:DynamicEntityField.ArgumentValue>
-                                                        <InArgument x:TypeArguments="x:String">[CurrentRow.Item("FlightNumber").ToString]</InArgument>
-                                                      </udam:DynamicEntityField.ArgumentValue>
-                                                    </udam:DynamicEntityField>
-                                                    <udam:DynamicEntityField Id="a97ea2ef-79f2-ee11-aaf2-000d3ab844da" Name="FlightSequence">
-                                                      <udam:DynamicEntityField.ArgumentValue>
-                                                        <InArgument x:TypeArguments="x:String">[CurrentRow.Item("FlightSequence").ToString]</InArgument>
-                                                      </udam:DynamicEntityField.ArgumentValue>
-                                                    </udam:DynamicEntityField>
-                                                    <udam:DynamicEntityField Id="d8e39dcc-79f2-ee11-aaf2-000d3ab844da" Name="From">
-                                                      <udam:DynamicEntityField.ArgumentValue>
-                                                        <InArgument x:TypeArguments="x:String">[CurrentRow.Item("From").ToString]</InArgument>
-                                                      </udam:DynamicEntityField.ArgumentValue>
-                                                    </udam:DynamicEntityField>
-                                                    <udam:DynamicEntityField Id="d7e39dcc-79f2-ee11-aaf2-000d3ab844da" Name="NumberOfSeats">
-                                                      <udam:DynamicEntityField.ArgumentValue>
-                                                        <InArgument x:TypeArguments="x:String">[CurrentRow.Item("NumberOfSeats").ToString]</InArgument>
-                                                      </udam:DynamicEntityField.ArgumentValue>
-                                                    </udam:DynamicEntityField>
-                                                    <udam:DynamicEntityField Id="a87ea2ef-79f2-ee11-aaf2-000d3ab844da" Name="OutboundInbound">
-                                                      <udam:DynamicEntityField.ArgumentValue>
-                                                        <InArgument x:TypeArguments="b:InboundOutbound">[BAH_SOSR_DummyBooking.InboundOutbound.Outbound]</InArgument>
-                                                      </udam:DynamicEntityField.ArgumentValue>
-                                                    </udam:DynamicEntityField>
-                                                    <udam:DynamicEntityField Id="1fec29c3-79f2-ee11-aaf2-000d3ab844da" Name="SearchGUID">
-                                                      <udam:DynamicEntityField.ArgumentValue>
-                                                        <InArgument x:TypeArguments="x:String">[CurrentRow.Item("SearchGUID").ToString]</InArgument>
-                                                      </udam:DynamicEntityField.ArgumentValue>
-                                                    </udam:DynamicEntityField>
-                                                    <udam:DynamicEntityField Id="1c8714d3-79f2-ee11-aaf2-000d3ab844da" Name="ToDestination">
-                                                      <udam:DynamicEntityField.ArgumentValue>
-                                                        <InArgument x:TypeArguments="x:String">[CurrentRow.Item("ToDestination").ToString]</InArgument>
-                                                      </udam:DynamicEntityField.ArgumentValue>
-                                                    </udam:DynamicEntityField>
-                                                    <udam:DynamicEntityField Id="1c9452e3-79f2-ee11-aaf2-000d3ab844da" Name="Type">
-                                                      <udam:DynamicEntityField.ArgumentValue>
-                                                        <InArgument x:TypeArguments="b:FlightType">[BAH_SOSR_DummyBooking.FlightType.International]</InArgument>
-                                                      </udam:DynamicEntityField.ArgumentValue>
-                                                    </udam:DynamicEntityField>
-                                                  </scg:List>
-                                                </udam:RecordState.SelectedFields>
-                                              </udam:RecordState>
-                                            </uda:CreateEntityRecord.State>
-                                            <sap:WorkflowViewStateService.ViewState>
-                                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                                                <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                                              </scg:Dictionary>
-                                            </sap:WorkflowViewStateService.ViewState>
-                                          </uda:CreateEntityRecord>
-                                          <ui:LogMessage DisplayName="Log Message - created Booked Flight - Outbound and International" sap:VirtualizedContainerService.HintSize="388,141" sap2010:WorkflowViewState.IdRef="LogMessage_9" Level="Info" Message="[&quot;Booked flight created: International - Outbound: &quot; + strFlightID.Id.ToString]" />
-                                        </Sequence>
-                                      </ActivityAction>
-                                    </ui:RetryScope.ActivityBody>
-                                    <ui:RetryScope.Condition>
-                                      <ActivityFunc x:TypeArguments="x:Boolean" />
-                                    </ui:RetryScope.Condition>
-                                  </ui:RetryScope>
-                                </Sequence>
-                              </ui:IfElseIfBlock.Then>
-                            </ui:IfElseIfBlock>
-                          </sc:BindingList>
-                        </ui:IfElseIf.ConditionBlocks>
-                        <sap:WorkflowViewStateService.ViewState>
-                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                            <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
-                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                            <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                          </scg:Dictionary>
-                        </sap:WorkflowViewStateService.ViewState>
-                      </ui:IfElseIf>
-                    </Sequence>
-                  </ActivityAction>
-                </ui:ForEachRow.Body>
-                <sap:WorkflowViewStateService.ViewState>
-                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                    <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
-                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                  </scg:Dictionary>
-                </sap:WorkflowViewStateService.ViewState>
-              </ui:ForEachRow>
-            </utam:MockActivity.MockedActivity>
-            <Sequence sap:VirtualizedContainerService.HintSize="450,252" sap2010:WorkflowViewState.IdRef="">
-              <sap:WorkflowViewStateService.ViewState>
-                <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                </scg:Dictionary>
-              </sap:WorkflowViewStateService.ViewState>
-              <ui:LogMessage DisplayName="Log Message - for each" sap:VirtualizedContainerService.HintSize="388,141" sap2010:WorkflowViewState.IdRef="LogMessage_6" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;Mocking for each activity.&quot;]" />
-            </Sequence>
-          </utam:MockActivity>
-        </Sequence>
-      </ui:CommentOut.Body>
-      <sap:WorkflowViewStateService.ViewState>
-        <scg:Dictionary x:TypeArguments="x:String, x:Object">
-          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-          <x:Boolean x:Key="IsPinned">False</x:Boolean>
-        </scg:Dictionary>
-      </sap:WorkflowViewStateService.ViewState>
-    </ui:CommentOut>
     <ui:LogMessage DisplayName="Log Message - Creating records done" sap:VirtualizedContainerService.HintSize="667,164" sap2010:WorkflowViewState.IdRef="LogMessage_5" Level="[UiPath.Core.Activities.LogLevel.Trace]" Message="[&quot;Records in Bookings and Temp Booked Flights have been created.&quot;]" />
   </Sequence>
 </Activity>

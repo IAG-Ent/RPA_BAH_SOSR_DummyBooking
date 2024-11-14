@@ -268,7 +268,7 @@
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
           <Transition.To>
-            <State x:Name="__ReferenceID3" sap2010:Annotation.AnnotationText="Process a single transaction. &#xA;The result of the processing can be: 1) Success, 2) Business Exception, 3) System Exception. &#xA;In the case of a system exception, the transaction can be automatically retried." DisplayName="Process Transaction" sap:VirtualizedContainerService.HintSize="231,186" sap2010:WorkflowViewState.IdRef="State_3">
+            <State x:Name="__ReferenceID3" sap2010:Annotation.AnnotationText="Process a single transaction. &#xA;The result of the processing can be: 1) Success, 2) Business Exception, 3) System Exception. &#xA;In the case of a system exception, the transaction can be automatically retried." DisplayName="Process Transaction" sap:VirtualizedContainerService.HintSize="600,1544" sap2010:WorkflowViewState.IdRef="State_3">
               <State.Entry>
                 <TryCatch DisplayName="Try to process transaction" sap:VirtualizedContainerService.HintSize="554,1072" sap2010:WorkflowViewState.IdRef="TryCatch_9">
                   <sap:WorkflowViewStateService.ViewState>
@@ -295,22 +295,57 @@
                       </Assign>
                       <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke workflow - Process" sap:VirtualizedContainerService.HintSize="454,145" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_33" UnSafe="False" WorkflowFileName="Framework\Process.xaml">
                         <ui:InvokeWorkflowFile.Arguments>
-                          <InArgument x:TypeArguments="s:Exception" x:Key="in_SystemException">[SystemException]</InArgument>
-                          <InOutArgument x:TypeArguments="x:String" x:Key="io_BusinessException">[BusinessException]</InOutArgument>
-                          <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_dictConfig">[dictConfig]</InArgument>
-                          <InArgument x:TypeArguments="sd:DataRow" x:Key="in_drTransactionItem">[drTransactionItem]</InArgument>
-                          <InArgument x:TypeArguments="ui:UiElement" x:Key="in_uiBODBrowser">[uiBODBrowser]</InArgument>
-                          <InArgument x:TypeArguments="scg:List(x:String)" x:Key="in_lstPassengers">[lstPassengers]</InArgument>
-                          <InOutArgument x:TypeArguments="sd:DataTable" x:Key="io_dtOutputDataTable">[dtOutputDataTable]</InOutArgument>
-                          <InArgument x:TypeArguments="x:String" x:Key="in_strSearchGUID">[in_strSearchGUID]</InArgument>
-                          <InArgument x:TypeArguments="sd:DataTable" x:Key="in_dtFlightsDataTable">[dtFlightsDataTable]</InArgument>
-                          <OutArgument x:TypeArguments="x:String" x:Key="out_strBookingDataID">[strBookingDataID]</OutArgument>
-                          <InOutArgument x:TypeArguments="x:String" x:Key="io_strBookingID">[strBookingID]</InOutArgument>
-                          <OutArgument x:TypeArguments="x:String" x:Key="out_strStatus">[out_strStatus]</OutArgument>
-                          <OutArgument x:TypeArguments="x:String" x:Key="out_strErrorMessage">[out_strErrorMessage]</OutArgument>
-                          <InArgument x:TypeArguments="x:Int32" x:Key="in_intRetryNumber">[intRetryNumber]</InArgument>
-                          <OutArgument x:TypeArguments="x:Boolean" x:Key="out_boolHotelFound">[boolHotelFound]</OutArgument>
-                          <OutArgument x:TypeArguments="x:Boolean" x:Key="out_boolIsPNRGenerated">[boolIsPNRGenerated]</OutArgument>
+                          <InArgument x:TypeArguments="s:Exception" x:Key="in_SystemException">
+                            <VisualBasicValue x:TypeArguments="s:Exception" ExpressionText="SystemException" />
+                          </InArgument>
+                          <InOutArgument x:TypeArguments="x:String" x:Key="io_BusinessException">
+                            <VisualBasicReference x:TypeArguments="x:String" ExpressionText="BusinessException" />
+                          </InOutArgument>
+                          <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_dictConfig">
+                            <VisualBasicValue x:TypeArguments="scg:Dictionary(x:String, x:Object)" ExpressionText="dictConfig" />
+                          </InArgument>
+                          <InArgument x:TypeArguments="sd:DataRow" x:Key="in_drTransactionItem">
+                            <VisualBasicValue x:TypeArguments="sd:DataRow" ExpressionText="drTransactionItem" />
+                          </InArgument>
+                          <InArgument x:TypeArguments="ui:UiElement" x:Key="in_uiBODBrowser">
+                            <VisualBasicValue x:TypeArguments="ui:UiElement" ExpressionText="uiBODBrowser" />
+                          </InArgument>
+                          <InArgument x:TypeArguments="scg:List(x:String)" x:Key="in_lstPassengers">
+                            <VisualBasicValue x:TypeArguments="scg:List(x:String)" ExpressionText="lstPassengers" />
+                          </InArgument>
+                          <InOutArgument x:TypeArguments="sd:DataTable" x:Key="io_dtOutputDataTable">
+                            <VisualBasicReference x:TypeArguments="sd:DataTable" ExpressionText="dtOutputDataTable" />
+                          </InOutArgument>
+                          <InArgument x:TypeArguments="x:String" x:Key="in_strSearchGUID">
+                            <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_strSearchGUID" />
+                          </InArgument>
+                          <InArgument x:TypeArguments="sd:DataTable" x:Key="in_dtFlightsDataTable">
+                            <VisualBasicValue x:TypeArguments="sd:DataTable" ExpressionText="dtFlightsDataTable" />
+                          </InArgument>
+                          <OutArgument x:TypeArguments="x:String" x:Key="out_strBookingDataID">
+                            <VisualBasicReference x:TypeArguments="x:String" ExpressionText="strBookingDataID" />
+                          </OutArgument>
+                          <InOutArgument x:TypeArguments="x:String" x:Key="io_strBookingID">
+                            <VisualBasicReference x:TypeArguments="x:String" ExpressionText="strBookingID" />
+                          </InOutArgument>
+                          <OutArgument x:TypeArguments="x:String" x:Key="out_strStatus">
+                            <VisualBasicReference x:TypeArguments="x:String" ExpressionText="out_strStatus" />
+                          </OutArgument>
+                          <OutArgument x:TypeArguments="x:String" x:Key="out_strErrorMessage">
+                            <VisualBasicReference x:TypeArguments="x:String" ExpressionText="out_strErrorMessage" />
+                          </OutArgument>
+                          <InArgument x:TypeArguments="x:Int32" x:Key="in_intRetryNumber">
+                            <VisualBasicValue x:TypeArguments="x:Int32" ExpressionText="intRetryNumber" />
+                          </InArgument>
+                          <OutArgument x:TypeArguments="x:Boolean" x:Key="out_boolHotelFound">
+                            <VisualBasicReference x:TypeArguments="x:Boolean" ExpressionText="boolHotelFound" />
+                          </OutArgument>
+                          <OutArgument x:TypeArguments="x:Boolean" x:Key="out_boolIsPNRGenerated">
+                            <VisualBasicReference x:TypeArguments="x:Boolean" ExpressionText="boolIsPNRGenerated" />
+                          </OutArgument>
+                          <InArgument x:TypeArguments="scg:List(x:String)" x:Key="in_lstBookedFlightsIDs">
+                            <VisualBasicValue x:TypeArguments="scg:List(x:String)" ExpressionText="lstTempBookedFlightsIDs" />
+                          </InArgument>
                         </ui:InvokeWorkflowFile.Arguments>
                       </ui:InvokeWorkflowFile>
                       <TryCatch DisplayName="Try Catch Set Transaction Status (Success)" sap:VirtualizedContainerService.HintSize="454,475" sap2010:WorkflowViewState.IdRef="TryCatch_10">
@@ -583,9 +618,9 @@
                   </sap:WorkflowViewStateService.ViewState>
                   <Transition.Condition>[SystemException IsNot Nothing]</Transition.Condition>
                   <Transition.To>
-                    <State x:Name="__ReferenceID1" sap2010:Annotation.AnnotationText="Read configuration file and initialize applications used in the process." DisplayName="Initialization" sap:VirtualizedContainerService.HintSize="692,3918" sap2010:WorkflowViewState.IdRef="State_2">
+                    <State x:Name="__ReferenceID1" sap2010:Annotation.AnnotationText="Read configuration file and initialize applications used in the process." DisplayName="Initialization" sap:VirtualizedContainerService.HintSize="254,104" sap2010:WorkflowViewState.IdRef="State_2">
                       <State.Entry>
-                        <TryCatch DisplayName="Try initializing settings and applications" sap:VirtualizedContainerService.HintSize="646,3459" sap2010:WorkflowViewState.IdRef="TryCatch_2">
+                        <TryCatch DisplayName="Try initializing settings and applications" sap:VirtualizedContainerService.HintSize="646,3676" sap2010:WorkflowViewState.IdRef="TryCatch_2">
                           <sap:WorkflowViewStateService.ViewState>
                             <scg:Dictionary x:TypeArguments="x:String, x:Object">
                               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -593,7 +628,7 @@
                             </scg:Dictionary>
                           </sap:WorkflowViewStateService.ViewState>
                           <TryCatch.Try>
-                            <Sequence DisplayName="Load configurations and open applications" sap:VirtualizedContainerService.HintSize="608,3191" sap2010:WorkflowViewState.IdRef="Sequence_4">
+                            <Sequence DisplayName="Load configurations and open applications" sap:VirtualizedContainerService.HintSize="608,3448" sap2010:WorkflowViewState.IdRef="Sequence_4">
                               <sap:WorkflowViewStateService.ViewState>
                                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                   <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -628,7 +663,7 @@
                                   </scg:Dictionary>
                                 </sap:WorkflowViewStateService.ViewState>
                               </Assign>
-                              <If sap2010:Annotation.AnnotationText="An uninitialized Config dictionary indicates that it is the first run of the process." Condition="[dictConfig is Nothing]" DisplayName="If first run, read local configuration file" sap:VirtualizedContainerService.HintSize="546,2044" sap2010:WorkflowViewState.IdRef="If_1">
+                              <If sap2010:Annotation.AnnotationText="An uninitialized Config dictionary indicates that it is the first run of the process." Condition="[dictConfig is Nothing]" DisplayName="If first run, read local configuration file" sap:VirtualizedContainerService.HintSize="546,2301" sap2010:WorkflowViewState.IdRef="If_1">
                                 <sap:WorkflowViewStateService.ViewState>
                                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                     <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -637,7 +672,7 @@
                                   </scg:Dictionary>
                                 </sap:WorkflowViewStateService.ViewState>
                                 <If.Then>
-                                  <Sequence DisplayName="First run" sap:VirtualizedContainerService.HintSize="512,1740" sap2010:WorkflowViewState.IdRef="Sequence_17">
+                                  <Sequence DisplayName="First run" sap:VirtualizedContainerService.HintSize="512,1997" sap2010:WorkflowViewState.IdRef="Sequence_17">
                                     <sap:WorkflowViewStateService.ViewState>
                                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -744,7 +779,7 @@
                                         <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_dictConfig">[dictConfig]</InArgument>
                                       </ui:InvokeWorkflowFile.Arguments>
                                     </ui:InvokeWorkflowFile>
-                                    <If sap2010:Annotation.AnnotationText="If retry number is more than 0, that means that the process is being retried, therefore there is no need to create more Booking and Booked Flights records" Condition="[intRetryNumber = 0]" DisplayName="If retry number &gt; 0, do not create another Booking" sap:VirtualizedContainerService.HintSize="450,517" sap2010:WorkflowViewState.IdRef="If_23">
+                                    <If sap2010:Annotation.AnnotationText="If retry number is more than 0, that means that the process is being retried, therefore there is no need to create more Booking and Booked Flights records" Condition="[intRetryNumber = 0]" DisplayName="If retry number &gt; 0, do not create another Booking" sap:VirtualizedContainerService.HintSize="450,461" sap2010:WorkflowViewState.IdRef="If_23">
                                       <sap:WorkflowViewStateService.ViewState>
                                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                           <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
@@ -774,15 +809,15 @@
                                               <OutArgument x:TypeArguments="x:Int32" x:Key="out_intBookingAutoNumber">
                                                 <VisualBasicReference x:TypeArguments="x:Int32" ExpressionText="intBookingAutoNumber" />
                                               </OutArgument>
-                                              <OutArgument x:TypeArguments="scg:List(x:String)" x:Key="out_lstBookedFlightsIDs">
-                                                <VisualBasicReference x:TypeArguments="scg:List(x:String)" ExpressionText="lstBookedFlightsIDs" />
+                                              <OutArgument x:TypeArguments="scg:List(x:String)" x:Key="out_lstTempBookedFlightsIDs">
+                                                <VisualBasicReference x:TypeArguments="scg:List(x:String)" ExpressionText="lstTempBookedFlightsIDs" />
                                               </OutArgument>
                                             </ui:InvokeWorkflowFile.Arguments>
                                           </ui:InvokeWorkflowFile>
                                         </Sequence>
                                       </If.Then>
                                       <If.Else>
-                                        <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="416,81" sap2010:WorkflowViewState.IdRef="Sequence_68">
+                                        <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="416,25" sap2010:WorkflowViewState.IdRef="Sequence_68">
                                           <sap:WorkflowViewStateService.ViewState>
                                             <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                               <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -793,7 +828,7 @@
                                         </Sequence>
                                       </If.Else>
                                     </If>
-                                    <ui:InterruptibleDoWhile CurrentIndex="{x:Null}" Condition="[boolAreMatches = True]" DisplayName="Do While - check for concurrent flights until they dissapear" sap:VirtualizedContainerService.HintSize="450,57" sap2010:WorkflowViewState.IdRef="InterruptibleDoWhile_1">
+                                    <ui:InterruptibleDoWhile CurrentIndex="{x:Null}" Condition="[boolAreMatches = True]" DisplayName="Do While - check for concurrent flights until they dissapear" sap:VirtualizedContainerService.HintSize="450,370" sap2010:WorkflowViewState.IdRef="InterruptibleDoWhile_1">
                                       <ui:InterruptibleDoWhile.Body>
                                         <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="416,224" sap2010:WorkflowViewState.IdRef="Sequence_71">
                                           <sap:WorkflowViewStateService.ViewState>
@@ -812,32 +847,20 @@
                                       </ui:InterruptibleDoWhile.Body>
                                       <sap:WorkflowViewStateService.ViewState>
                                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                           <x:Boolean x:Key="IsPinned">False</x:Boolean>
                                         </scg:Dictionary>
                                       </sap:WorkflowViewStateService.ViewState>
                                     </ui:InterruptibleDoWhile>
                                     <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke workflow - Init_Check_Seats_Available.xaml" sap:VirtualizedContainerService.HintSize="450,136" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_53" UnSafe="False" WorkflowFileName="Business_Workflows\Init_Processing\Init_Check_Seats_Available.xaml">
                                       <ui:InvokeWorkflowFile.Arguments>
-                                        <OutArgument x:TypeArguments="x:String" x:Key="out_BusinessException">
-                                          <VisualBasicReference x:TypeArguments="x:String" ExpressionText="BusinessException" />
-                                        </OutArgument>
+                                        <OutArgument x:TypeArguments="x:String" x:Key="out_BusinessException">[BusinessException]</OutArgument>
                                         <InArgument x:TypeArguments="x:String" x:Key="BreakTriggerScopeInArgument" />
-                                        <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_dictConfig">
-                                          <VisualBasicValue x:TypeArguments="scg:Dictionary(x:String, x:Object)" ExpressionText="dictConfig" />
-                                        </InArgument>
-                                        <InArgument x:TypeArguments="sd:DataTable" x:Key="in_dtFlightsDataTable">
-                                          <VisualBasicValue x:TypeArguments="sd:DataTable" ExpressionText="dtFlightsDataTable" />
-                                        </InArgument>
-                                        <InArgument x:TypeArguments="x:String" x:Key="in_strSearchGUID">
-                                          <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_strSearchGUID" />
-                                        </InArgument>
-                                        <InArgument x:TypeArguments="scg:List(x:String)" x:Key="in_lstBookedFlightsIDs">
-                                          <VisualBasicValue x:TypeArguments="scg:List(x:String)" ExpressionText="lstBookedFlightsIDs" />
-                                        </InArgument>
-                                        <InArgument x:TypeArguments="sd:DataTable" x:Key="in_dtOutputDataTable">
-                                          <VisualBasicValue x:TypeArguments="sd:DataTable" ExpressionText="dtOutputDataTable" />
-                                        </InArgument>
+                                        <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_dictConfig">[dictConfig]</InArgument>
+                                        <InArgument x:TypeArguments="sd:DataTable" x:Key="in_dtFlightsDataTable">[dtFlightsDataTable]</InArgument>
+                                        <InArgument x:TypeArguments="x:String" x:Key="in_strSearchGUID">[in_strSearchGUID]</InArgument>
+                                        <InArgument x:TypeArguments="scg:List(x:String)" x:Key="in_lstBookedFlightsIDs">[lstTempBookedFlightsIDs]</InArgument>
+                                        <InArgument x:TypeArguments="sd:DataTable" x:Key="in_dtOutputDataTable">[dtOutputDataTable]</InArgument>
                                       </ui:InvokeWorkflowFile.Arguments>
                                     </ui:InvokeWorkflowFile>
                                   </Sequence>
@@ -1275,7 +1298,7 @@
       <Variable x:TypeArguments="x:String" Name="strBookingID" />
       <Variable x:TypeArguments="x:Boolean" Name="boolIsPNRGenerated" />
       <Variable x:TypeArguments="x:Boolean" Name="boolHotelFound" />
-      <Variable x:TypeArguments="scg:List(x:String)" Name="lstBookedFlightsIDs" />
+      <Variable x:TypeArguments="scg:List(x:String)" Name="lstTempBookedFlightsIDs" />
       <Variable x:TypeArguments="x:Int32" Name="intBookingAutoNumber" />
       <Variable x:TypeArguments="x:Boolean" Name="boolAreMatches" />
     </StateMachine.Variables>
