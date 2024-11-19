@@ -21,7 +21,7 @@
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>959,3086</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>959,3216</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>ProcessTransaction_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="50">
@@ -133,7 +133,7 @@
       <AssemblyReference>System.Runtime.Numerics</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="Process state includes the following actions:&#xA;- Navigate to BOD portal and make dummy reservation using calculated dummy dates and a specified in asset dummy hotel. Fill in passenger details and allocate them to rooms if needed.&#xA;- Create the corresponding entities in DataService and add the required information.&#xA;- Create a queue item for the main booking process.&#xA;- Manage two possible red paths that must be handled and logged as Business Exceptions. The process should not throw a BE, as it is displayed in the app." DisplayName="Process" sap:VirtualizedContainerService.HintSize="608,2981" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="Process state includes the following actions:&#xA;- Navigate to BOD portal and make dummy reservation using calculated dummy dates and a specified in asset dummy hotel. Fill in passenger details and allocate them to rooms if needed.&#xA;- Create the corresponding entities in DataService and add the required information.&#xA;- Create a queue item for the main booking process.&#xA;- Manage two possible red paths that must be handled and logged as Business Exceptions. The process should not throw a BE, as it is displayed in the app." DisplayName="Process" sap:VirtualizedContainerService.HintSize="608,3151" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="s:DateTime" Name="dtmActualDepartureDate" />
       <Variable x:TypeArguments="s:DateTime" Name="dtmDummyDepartureDate" />
@@ -163,84 +163,16 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:LogMessage>
-    <ui:CommentOut DisplayName="Comment Out - testing but this logic should probably not be here" sap:VirtualizedContainerService.HintSize="546,57" sap2010:WorkflowViewState.IdRef="CommentOut_1">
-      <ui:CommentOut.Body>
-        <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="512,540" sap2010:WorkflowViewState.IdRef="Sequence_10">
-          <sap:WorkflowViewStateService.ViewState>
-            <scg:Dictionary x:TypeArguments="x:String, x:Object">
-              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-            </scg:Dictionary>
-          </sap:WorkflowViewStateService.ViewState>
-          <If sap2010:Annotation.AnnotationText="If retry number is more than 0, that means that the process is being retried, therefore there is no need to create more Booking and Booked Flights records" Condition="[in_intRetryNumber = 0]" DisplayName="If retry number &gt; 0, do not create another Booking" sap:VirtualizedContainerService.HintSize="450,452" sap2010:WorkflowViewState.IdRef="If_5">
-            <sap:WorkflowViewStateService.ViewState>
-              <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
-                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                <x:Boolean x:Key="IsPinned">False</x:Boolean>
-              </scg:Dictionary>
-            </sap:WorkflowViewStateService.ViewState>
-            <If.Then>
-              <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="416,224" sap2010:WorkflowViewState.IdRef="Sequence_8">
-                <sap:WorkflowViewStateService.ViewState>
-                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                  </scg:Dictionary>
-                </sap:WorkflowViewStateService.ViewState>
-                <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke workflow - Add_Information_in_Booking_and_BookedFlights" sap:VirtualizedContainerService.HintSize="354,136" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_17" UnSafe="False" WorkflowFileName="Business_Workflows\Cloud_Processing\DataService_Add_Information_in_Booking_and_BookedFlights.xaml">
-                  <ui:InvokeWorkflowFile.Arguments>
-                    <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_dictConfig">[in_dictConfig]</InArgument>
-                    <InOutArgument x:TypeArguments="sd:DataTable" x:Key="io_dtOutputDataTable">[io_dtOutputDataTable]</InOutArgument>
-                    <InArgument x:TypeArguments="sd:DataTable" x:Key="in_dtFlightsDataTable">[in_dtFlightsDataTable]</InArgument>
-                    <OutArgument x:TypeArguments="x:Int32" x:Key="out_intBookingAutoNumber" />
-                  </ui:InvokeWorkflowFile.Arguments>
-                  <sap:WorkflowViewStateService.ViewState>
-                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                    </scg:Dictionary>
-                  </sap:WorkflowViewStateService.ViewState>
-                </ui:InvokeWorkflowFile>
-              </Sequence>
-            </If.Then>
-            <If.Else>
-              <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="416,25" sap2010:WorkflowViewState.IdRef="Sequence_9">
-                <sap:WorkflowViewStateService.ViewState>
-                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                  </scg:Dictionary>
-                </sap:WorkflowViewStateService.ViewState>
-                <ui:LogMessage DisplayName="Log Message - not creating records in DS" sap:VirtualizedContainerService.HintSize="354,164" sap2010:WorkflowViewState.IdRef="LogMessage_10" Level="Info" Message="[&quot;Process is being retried, therefore not creating records in Booking and Booked flights.&quot;]" />
-              </Sequence>
-            </If.Else>
-          </If>
-        </Sequence>
-      </ui:CommentOut.Body>
-      <sap:WorkflowViewStateService.ViewState>
-        <scg:Dictionary x:TypeArguments="x:String, x:Object">
-          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-          <x:Boolean x:Key="IsPinned">False</x:Boolean>
-        </scg:Dictionary>
-      </sap:WorkflowViewStateService.ViewState>
-    </ui:CommentOut>
     <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke workflow - Delete_TempBookedFlights" sap:VirtualizedContainerService.HintSize="546,145" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_21" UnSafe="False" WorkflowFileName="Business_Workflows\Cloud_Processing\DataService_Delete_TempBookedFlights.xaml">
       <ui:InvokeWorkflowFile.Arguments>
-        <InArgument x:TypeArguments="scg:List(x:String)" x:Key="in_lstTempBookedFlightsIDs">
-          <VisualBasicValue x:TypeArguments="scg:List(x:String)" ExpressionText="in_lstBookedFlightsIDs" />
-        </InArgument>
+        <InArgument x:TypeArguments="scg:List(x:String)" x:Key="in_lstTempBookedFlightsIDs">[in_lstBookedFlightsIDs]</InArgument>
       </ui:InvokeWorkflowFile.Arguments>
     </ui:InvokeWorkflowFile>
     <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke workflow - UpdateBookingStatus_and_AddBookedFlighs" sap:VirtualizedContainerService.HintSize="546,145" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_20" UnSafe="False" WorkflowFileName="Business_Workflows\Cloud_Processing\DataService_UpdateBookingStatus_and_AddBookedFlights.xaml">
       <ui:InvokeWorkflowFile.Arguments>
-        <InArgument x:TypeArguments="sd:DataTable" x:Key="in_dtOutputDataTable">
-          <VisualBasicValue x:TypeArguments="sd:DataTable" ExpressionText="io_dtOutputDataTable" />
-        </InArgument>
-        <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_dictConfig">
-          <VisualBasicValue x:TypeArguments="scg:Dictionary(x:String, x:Object)" ExpressionText="in_dictConfig" />
-        </InArgument>
-        <InArgument x:TypeArguments="sd:DataTable" x:Key="in_dtFlightsDataTable">
-          <VisualBasicValue x:TypeArguments="sd:DataTable" ExpressionText="in_dtFlightsDataTable" />
-        </InArgument>
+        <InArgument x:TypeArguments="sd:DataTable" x:Key="in_dtOutputDataTable">[io_dtOutputDataTable]</InArgument>
+        <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_dictConfig">[in_dictConfig]</InArgument>
+        <InArgument x:TypeArguments="sd:DataTable" x:Key="in_dtFlightsDataTable">[in_dtFlightsDataTable]</InArgument>
       </ui:InvokeWorkflowFile.Arguments>
     </ui:InvokeWorkflowFile>
     <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke workflow - Calculate_Trip_Dates_And_Passengers" sap:VirtualizedContainerService.HintSize="546,145" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_3" UnSafe="False" WorkflowFileName="Business_Workflows\Calculate_Trip_Dates_And_Passengers.xaml">
@@ -276,7 +208,7 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:LogMessage>
-    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="- fills destination details&#xA;- fills dummy date details&#xA;- assigns number of rooms + number of passengers per room&#xA;- assigns children's age per room&#xA;- navigates to and within SOSR hotel details&#xA;- process stops at Passenger details page " DisplayName="Invoke Workflow - Fill_Trip_Detais" sap:VirtualizedContainerService.HintSize="546,262" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_18" UnSafe="False" WorkflowFileName="Business_Workflows\BOD_Processing\BOD_Fill_Trip_Details.xaml">
+    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="- fills destination details&#xA;- fills dummy date details&#xA;- assigns number of rooms + number of passengers per room&#xA;- assigns children's age per room&#xA;- navigates to and within SOSR hotel details&#xA;- process stops at Passenger details page " DisplayName="Invoke Workflow - Fill_Trip_Detais" sap:VirtualizedContainerService.HintSize="546,262" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_22" UnSafe="False" WorkflowFileName="Business_Workflows\BOD_Processing\BOD_Fill_Trip_Details.xaml">
       <ui:InvokeWorkflowFile.Arguments>
         <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_dictConfig">[in_dictConfig]</InArgument>
         <InArgument x:TypeArguments="ui:UiElement" x:Key="in_uiBODBrowser">[in_uiBODBrowser]</InArgument>
@@ -303,7 +235,7 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:InvokeWorkflowFile>
-    <If sap2010:Annotation.AnnotationText="In case the &quot;red path&quot; in the previous process was encountered, the process cannot continue, therefore check if the Dummy hotel was available or not." Condition="[out_boolHotelFound = True and io_BusinessException is Nothing]" DisplayName="If - Hotel was found, continue with the rest of the process" sap:VirtualizedContainerService.HintSize="546,1676" sap2010:WorkflowViewState.IdRef="If_1">
+    <If sap2010:Annotation.AnnotationText="In case the &quot;red path&quot; in the previous process was encountered, the process cannot continue, therefore check if the Dummy hotel was available or not." Condition="[out_boolHotelFound = True and io_BusinessException is Nothing]" DisplayName="If - Hotel was found, continue with the rest of the process" sap:VirtualizedContainerService.HintSize="546,1903" sap2010:WorkflowViewState.IdRef="If_1">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
@@ -316,6 +248,7 @@
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              <x:Boolean x:Key="IsPinned">False</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
           <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="- fills personal details for each passenger&#xA;- invokes workflow which allocates the passengers to their respective rooms" DisplayName="Invoke Workflow - Process_Passengers" sap:VirtualizedContainerService.HintSize="450,202" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_19" UnSafe="False" WorkflowFileName="Business_Workflows\BOD_Processing\BOD_Process_Passengers.xaml">
@@ -421,10 +354,10 @@
         </Sequence>
       </If.Then>
       <If.Else>
-        <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="416,25" sap2010:WorkflowViewState.IdRef="Sequence_5">
+        <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="416,252" sap2010:WorkflowViewState.IdRef="Sequence_5">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
-              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               <x:Boolean x:Key="IsPinned">False</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>

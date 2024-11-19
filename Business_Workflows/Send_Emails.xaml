@@ -8,7 +8,7 @@
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1239,3389</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>959,4378</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>Send_Emails_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -59,6 +59,7 @@
       <x:String>UiPath.Shared.Activities.Business</x:String>
       <x:String>UiPath.Word.Activities</x:String>
       <x:String>System.Linq.Expressions</x:String>
+      <x:String>System.Numerics</x:String>
     </sco:Collection>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
@@ -138,9 +139,14 @@
       <AssemblyReference>UiPath.Word.Activities.Design</AssemblyReference>
       <AssemblyReference>System.Collections.NonGeneric</AssemblyReference>
       <AssemblyReference>System.Linq.Expressions</AssemblyReference>
+      <AssemblyReference>System.Linq.Async.Queryable</AssemblyReference>
+      <AssemblyReference>System.Linq.Parallel</AssemblyReference>
+      <AssemblyReference>System.Collections.Immutable</AssemblyReference>
+      <AssemblyReference>System.Linq.Queryable</AssemblyReference>
+      <AssemblyReference>System.Runtime.Numerics</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="In this workflow, process will determine which red path has been encountered and send the respective email." DisplayName="Send_Emails" sap:VirtualizedContainerService.HintSize="784,3244" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="In this workflow, process will determine which red path has been encountered and send the respective email." DisplayName="Send_Emails" sap:VirtualizedContainerService.HintSize="850,4313" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="strAppID" />
       <Variable x:TypeArguments="ss:SecureString" Name="strAppSecret" />
@@ -155,24 +161,24 @@
         <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:LogMessage DisplayName="Log Message - Sending emails" sap:VirtualizedContainerService.HintSize="722,173" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="[UiPath.Core.Activities.LogLevel.Trace]" Message="[&quot;Sending email with outcome informaiton...&quot;]" />
-    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Download_Email_Templates - Invoke Workflow" sap:VirtualizedContainerService.HintSize="722,145" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="Business_Workflows\Download_Email_Templates.xaml">
+    <ui:LogMessage DisplayName="Log Message - Sending emails" sap:VirtualizedContainerService.HintSize="788,173" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="[UiPath.Core.Activities.LogLevel.Trace]" Message="[&quot;Sending email with outcome informaiton...&quot;]" />
+    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Download_Email_Templates - Invoke Workflow" sap:VirtualizedContainerService.HintSize="788,145" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="Business_Workflows\Download_Email_Templates.xaml">
       <ui:InvokeWorkflowFile.Arguments>
         <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_dictConfig">[in_dictConfig]</InArgument>
         <InArgument x:TypeArguments="x:String" x:Key="BreakTriggerScopeInArgument" />
       </ui:InvokeWorkflowFile.Arguments>
     </ui:InvokeWorkflowFile>
-    <ui:GetRobotCredential TimeoutMS="{x:Null}" AssetName="BAH_SOSR_AppID_AppSecret" CacheStrategy="None" DisplayName="Get Credential App ID and Secret" FolderPath="UatRPA/BAW/BA Holidays/BA Holidays" sap:VirtualizedContainerService.HintSize="722,175" sap2010:WorkflowViewState.IdRef="GetRobotCredential_1" Password="[strAppSecret]" Username="[strAppID]" />
-    <ui:IfElseIfV2 Condition="[in_boolHotelFound = False]" DisplayName="Check which red path is encountered" sap:VirtualizedContainerService.HintSize="722,2323" sap2010:WorkflowViewState.IdRef="IfElseIfV2_2">
+    <ui:GetRobotCredential TimeoutMS="{x:Null}" AssetName="BAH_SOSR_AppID_AppSecret" CacheStrategy="None" DisplayName="Get Credential App ID and Secret" FolderPath="UatRPA/BAW/BA Holidays/BA Holidays" sap:VirtualizedContainerService.HintSize="788,175" sap2010:WorkflowViewState.IdRef="GetRobotCredential_1" Password="[strAppSecret]" Username="[strAppID]" />
+    <ui:IfElseIfV2 Condition="[in_boolHotelFound = False]" DisplayName="Check which red path is encountered" sap:VirtualizedContainerService.HintSize="788,3392" sap2010:WorkflowViewState.IdRef="IfElseIfV2_2">
       <ui:IfElseIfV2.Else>
-        <Sequence DisplayName="Else - unknown error" sap:VirtualizedContainerService.HintSize="688,1470" sap2010:WorkflowViewState.IdRef="Sequence_37">
+        <Sequence DisplayName="Else - unknown error" sap:VirtualizedContainerService.HintSize="754,1912" sap2010:WorkflowViewState.IdRef="Sequence_37">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               <x:Boolean x:Key="IsPinned">False</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <ui:LogMessage DisplayName="Log Message - reading template 18" sap:VirtualizedContainerService.HintSize="626,84" sap2010:WorkflowViewState.IdRef="LogMessage_25" Level="Info" Message="[&quot;Unknown error encountered. Reading template 18 file...&quot;]">
+          <ui:LogMessage DisplayName="Log Message - reading template 18" sap:VirtualizedContainerService.HintSize="692,57" sap2010:WorkflowViewState.IdRef="LogMessage_25" Level="Info" Message="[&quot;Unknown error encountered. Reading template 18 file...&quot;]">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -180,7 +186,7 @@
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
           </ui:LogMessage>
-          <ui:MultipleAssign DisplayName="Multiple Assign template 18 and template path" sap:VirtualizedContainerService.HintSize="626,84" sap2010:WorkflowViewState.IdRef="MultipleAssign_6">
+          <ui:MultipleAssign DisplayName="Multiple Assign template 18 and template path" sap:VirtualizedContainerService.HintSize="692,57" sap2010:WorkflowViewState.IdRef="MultipleAssign_6">
             <ui:MultipleAssign.AssignOperations>
               <scg:List x:TypeArguments="ui:AssignOperation" Capacity="4">
                 <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_11">
@@ -216,7 +222,7 @@
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
           </ui:MultipleAssign>
-          <p:WordApplicationScope SensitivityLabel="{x:Null}" AutoSave="False" CreateNewFile="False" DisplayName="Word Application Scope - Unknown error template" FilePath="[Path.Combine(strTempFolderPath, strTemplate)]" sap:VirtualizedContainerService.HintSize="626,84" sap2010:WorkflowViewState.IdRef="WordApplicationScope_7" ReadOnly="True" SensitivityOperation="None">
+          <p:WordApplicationScope SensitivityLabel="{x:Null}" AutoSave="False" CreateNewFile="False" DisplayName="Word Application Scope - Unknown error template" FilePath="[Path.Combine(strTempFolderPath, strTemplate)]" sap:VirtualizedContainerService.HintSize="692,57" sap2010:WorkflowViewState.IdRef="WordApplicationScope_7" ReadOnly="True" SensitivityOperation="None">
             <p:WordApplicationScope.Body>
               <ActivityAction x:TypeArguments="ui:WordDocument">
                 <ActivityAction.Argument>
@@ -239,7 +245,7 @@
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
           </p:WordApplicationScope>
-          <ui:LogMessage DisplayName="Log Message - No Red path" sap:VirtualizedContainerService.HintSize="626,84" sap2010:WorkflowViewState.IdRef="LogMessage_26" Level="Info" Message="[&quot;Sending emails...&quot;]">
+          <ui:LogMessage DisplayName="Log Message - No Red path" sap:VirtualizedContainerService.HintSize="692,57" sap2010:WorkflowViewState.IdRef="LogMessage_26" Level="Info" Message="[&quot;Sending emails...&quot;]">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -247,181 +253,29 @@
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
           </ui:LogMessage>
-          <ui:ForEach x:TypeArguments="x:String" CurrentIndex="{x:Null}" DisplayName="Unknown error - For Each recepient send email" sap:VirtualizedContainerService.HintSize="626,1046" sap2010:WorkflowViewState.IdRef="ForEach`1_4" Values="[strRecipient.Split(&quot;;&quot;c)]">
-            <ui:ForEach.Body>
-              <ActivityAction x:TypeArguments="x:String">
-                <ActivityAction.Argument>
-                  <DelegateInArgument x:TypeArguments="x:String" Name="currentEmail" />
-                </ActivityAction.Argument>
-                <Sequence DisplayName="Unknown error - Send email" sap:VirtualizedContainerService.HintSize="592,859" sap2010:WorkflowViewState.IdRef="Sequence_42">
-                  <sap:WorkflowViewStateService.ViewState>
-                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                    </scg:Dictionary>
-                  </sap:WorkflowViewStateService.ViewState>
-                  <uma:Office365ApplicationScope BrowserItemFriendlyName="{x:Null}" BrowserItemFullPath="{x:Null}" BrowserItemId="{x:Null}" BrowserParentItemId="{x:Null}" BrowserRuntimeItemFriendlyName="{x:Null}" BrowserRuntimeItemFullPath="{x:Null}" BrowserRuntimeItemId="{x:Null}" BrowserRuntimeParentItemId="{x:Null}" CertificateAsBase64="{x:Null}" CertificatePassword="{x:Null}" ConnectionAccountName="{x:Null}" ConnectionId="{x:Null}" Connector="{x:Null}" ContinueOnError="{x:Null}" ImpersonatedUserEmailAddress="{x:Null}" ManualRuntimeItemFullPath="{x:Null}" Password="{x:Null}" SecureApplicationSecret="{x:Null}" SecurePassword="{x:Null}" Timeout="{x:Null}" Username="{x:Null}" Account="Please select an account." ApplicationId="69dd113c-2f90-45db-99ca-e0bcc58a98ea" ApplicationSecret="q338Q~7YNqSvM2obIgvFobHnF_M6EOl3ba~uZbHj" AuthenticationType="ApplicationIdAndSecret" ConfigLocation="PropertiesPanel" DisplayName="Microsoft 365 Scope - Send email for unknown error" Environment="Global" sap:VirtualizedContainerService.HintSize="530,771" sap2010:WorkflowViewState.IdRef="Office365ApplicationScope_11" OAuthApplication="Custom" RuntimeItemInputMode="Browse" TenantId="ddd66cce-ffe1-4029-967c-5e15ef73127f" UseConnectionService="False">
-                    <uma:Office365ApplicationScope.AuthenticationScopes>
-                      <scg:List x:TypeArguments="InArgument(x:String)" Capacity="0" />
-                    </uma:Office365ApplicationScope.AuthenticationScopes>
-                    <uma:Office365ApplicationScope.Body>
-                      <ActivityAction x:TypeArguments="x:Object">
-                        <ActivityAction.Argument>
-                          <DelegateInArgument x:TypeArguments="x:Object" Name="ParentScope" />
-                        </ActivityAction.Argument>
-                        <Sequence DisplayName="Send email for unknown error" sap:VirtualizedContainerService.HintSize="496,635" sap2010:WorkflowViewState.IdRef="Sequence_36">
-                          <sap:WorkflowViewStateService.ViewState>
-                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                              <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                            </scg:Dictionary>
-                          </sap:WorkflowViewStateService.ViewState>
-                          <umam:SendMail AttachmentsCollection="{x:Null}" Bcc="{x:Null}" Cc="{x:Null}" ContinueOnError="{x:Null}" From="{x:Null}" ReplyTo="{x:Null}" Account="[in_dictConfig(&quot;BAH_SOSR_MailsAccount&quot;).ToString]" AuthScopesInvalid="False" Body="[strEmailBody]" DisplayName="Send Mail - Failed dummy booking because unknown error" sap:VirtualizedContainerService.HintSize="434,383" sap2010:WorkflowViewState.IdRef="SendMail_13" Importance="Normal" IsBodyHTML="False" IsDraft="False" Subject="[in_dictConfig(&quot;BAH_SOSR_MissingPNR_EmailSubject&quot;).ToString]" To="[{currentEmail}]">
-                            <umam:SendMail.Attachments>
-                              <scg:List x:TypeArguments="InArgument(x:String)" Capacity="0" />
-                            </umam:SendMail.Attachments>
-                            <sap:WorkflowViewStateService.ViewState>
-                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                                <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                              </scg:Dictionary>
-                            </sap:WorkflowViewStateService.ViewState>
-                          </umam:SendMail>
-                          <ui:LogMessage DisplayName="Log Message - unknown error - email sent" sap:VirtualizedContainerService.HintSize="434,164" sap2010:WorkflowViewState.IdRef="LogMessage_27" Level="Info" Message="[&quot;Email sent to: &quot; + currentEmail]">
-                            <sap:WorkflowViewStateService.ViewState>
-                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                                <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                              </scg:Dictionary>
-                            </sap:WorkflowViewStateService.ViewState>
-                          </ui:LogMessage>
-                        </Sequence>
-                      </ActivityAction>
-                    </uma:Office365ApplicationScope.Body>
-                    <uma:Office365ApplicationScope.EmailAddress>
-                      <InArgument x:TypeArguments="x:String" />
-                    </uma:Office365ApplicationScope.EmailAddress>
-                    <uma:Office365ApplicationScope.RuntimeItemFullPathBackup>
-                      <usau:BackupSlot x:TypeArguments="umafe:EDriveItemMode" StoredValue="{x:Null}">
-                        <usau:BackupSlot.BackupValues>
-                          <scg:Dictionary x:TypeArguments="umafe:EDriveItemMode, scg:List(x:Object)" />
-                        </usau:BackupSlot.BackupValues>
-                      </usau:BackupSlot>
-                    </uma:Office365ApplicationScope.RuntimeItemFullPathBackup>
-                    <sap:WorkflowViewStateService.ViewState>
-                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                      </scg:Dictionary>
-                    </sap:WorkflowViewStateService.ViewState>
-                  </uma:Office365ApplicationScope>
-                </Sequence>
-              </ActivityAction>
-            </ui:ForEach.Body>
-          </ui:ForEach>
-        </Sequence>
-      </ui:IfElseIfV2.Else>
-      <ui:IfElseIfV2.ElseIfs>
-        <sc:BindingList x:TypeArguments="ui:IfElseIfBlock" AllowEdit="True" AllowNew="True" AllowRemove="True" RaiseListChangedEvents="True">
-          <ui:IfElseIfBlock BlockType="ElseIf" Condition="[in_boolIsPNRGenerated = False]" DisplayName="If else if block" sap2010:WorkflowViewState.IdRef="IfElseIfBlock_2">
-            <ui:IfElseIfBlock.Then>
-              <Sequence DisplayName="Sending red path email because PNR was not generated" sap:VirtualizedContainerService.HintSize="416,81" sap2010:WorkflowViewState.IdRef="Sequence_34">
+          <If Condition="[strRecipient.Split(&quot;;&quot;c).Count &gt; 1]" DisplayName="Unknown Error - If only one recipient in the asset, send it to them; else - loop through each and send email" sap:VirtualizedContainerService.HintSize="692,1596" sap2010:WorkflowViewState.IdRef="If_4">
+            <If.Then>
+              <Sequence DisplayName="Unknown Error - Then loop through all emails and send email" sap:VirtualizedContainerService.HintSize="658,692" sap2010:WorkflowViewState.IdRef="Sequence_51">
                 <sap:WorkflowViewStateService.ViewState>
                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                     <x:Boolean x:Key="IsPinned">False</x:Boolean>
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
-                <ui:LogMessage DisplayName="Log Message - reading template 10" sap:VirtualizedContainerService.HintSize="546,57" sap2010:WorkflowViewState.IdRef="LogMessage_22" Level="Info" Message="[&quot;PNR was not generated. Reading template 10 file...&quot;]">
-                  <sap:WorkflowViewStateService.ViewState>
-                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                      <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                    </scg:Dictionary>
-                  </sap:WorkflowViewStateService.ViewState>
-                </ui:LogMessage>
-                <ui:MultipleAssign DisplayName="Multiple Assign template 10, template path and email recipient" sap:VirtualizedContainerService.HintSize="546,57" sap2010:WorkflowViewState.IdRef="MultipleAssign_5">
-                  <ui:MultipleAssign.AssignOperations>
-                    <scg:List x:TypeArguments="ui:AssignOperation" Capacity="4">
-                      <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_9">
-                        <ui:AssignOperation.To>
-                          <OutArgument x:TypeArguments="x:String">[strTemplate]</OutArgument>
-                        </ui:AssignOperation.To>
-                        <ui:AssignOperation.Value>
-                          <InArgument x:TypeArguments="x:String">[in_dictConfig("strFileName").ToString.Split("|"c)(1)]</InArgument>
-                        </ui:AssignOperation.Value>
-                      </ui:AssignOperation>
-                      <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_10">
-                        <ui:AssignOperation.To>
-                          <OutArgument x:TypeArguments="x:String">[strTempFolderPath]</OutArgument>
-                        </ui:AssignOperation.To>
-                        <ui:AssignOperation.Value>
-                          <InArgument x:TypeArguments="x:String">[in_dictConfig("BAH_SOSR_FlightPricingDataImport_FilesLocation").ToString]</InArgument>
-                        </ui:AssignOperation.Value>
-                      </ui:AssignOperation>
-                      <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_13">
-                        <ui:AssignOperation.To>
-                          <OutArgument x:TypeArguments="x:String">[strRecipient]</OutArgument>
-                        </ui:AssignOperation.To>
-                        <ui:AssignOperation.Value>
-                          <InArgument x:TypeArguments="x:String">[in_dictConfig("BAH_SOSR_MissingPNR_EmailRecipient").ToString]</InArgument>
-                        </ui:AssignOperation.Value>
-                      </ui:AssignOperation>
-                    </scg:List>
-                  </ui:MultipleAssign.AssignOperations>
-                  <sap:WorkflowViewStateService.ViewState>
-                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                      <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                    </scg:Dictionary>
-                  </sap:WorkflowViewStateService.ViewState>
-                </ui:MultipleAssign>
-                <p:WordApplicationScope SensitivityLabel="{x:Null}" AutoSave="False" CreateNewFile="False" DisplayName="Word Application Scope - PNR is missing red path template" FilePath="[Path.Combine(strTempFolderPath, strTemplate)]" sap:VirtualizedContainerService.HintSize="546,57" sap2010:WorkflowViewState.IdRef="WordApplicationScope_6" ReadOnly="True" SensitivityOperation="None">
-                  <p:WordApplicationScope.Body>
-                    <ActivityAction x:TypeArguments="ui:WordDocument">
-                      <ActivityAction.Argument>
-                        <DelegateInArgument x:TypeArguments="ui:WordDocument" Name="WordDocumentScope" />
-                      </ActivityAction.Argument>
-                      <Sequence DisplayName="Read template 10 for PNR missing red path" sap:VirtualizedContainerService.HintSize="496,196" sap2010:WorkflowViewState.IdRef="Sequence_32">
-                        <sap:WorkflowViewStateService.ViewState>
-                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                            <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                          </scg:Dictionary>
-                        </sap:WorkflowViewStateService.ViewState>
-                        <p:WordReadText DisplayName="Read Text - template 10" sap:VirtualizedContainerService.HintSize="434,108" sap2010:WorkflowViewState.IdRef="WordReadText_5" Text="[strEmailBody]" />
-                      </Sequence>
-                    </ActivityAction>
-                  </p:WordApplicationScope.Body>
-                  <sap:WorkflowViewStateService.ViewState>
-                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                      <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                    </scg:Dictionary>
-                  </sap:WorkflowViewStateService.ViewState>
-                </p:WordApplicationScope>
-                <ui:LogMessage DisplayName="Log Message - PNR missing red path" sap:VirtualizedContainerService.HintSize="546,57" sap2010:WorkflowViewState.IdRef="LogMessage_23" Level="Info" Message="[&quot;Sending emails because the PNR was not generated...&quot;]">
-                  <sap:WorkflowViewStateService.ViewState>
-                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                      <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                    </scg:Dictionary>
-                  </sap:WorkflowViewStateService.ViewState>
-                </ui:LogMessage>
-                <ui:ForEach x:TypeArguments="x:String" CurrentIndex="{x:Null}" DisplayName="Missing PNR - For Each recepient send email" sap:VirtualizedContainerService.HintSize="546,436" sap2010:WorkflowViewState.IdRef="ForEach`1_3" Values="[strRecipient.Split(&quot;;&quot;c)]">
+                <ui:ForEach x:TypeArguments="x:String" CurrentIndex="{x:Null}" DisplayName="Unknown error - For Each recepient send email" sap:VirtualizedContainerService.HintSize="596,604" sap2010:WorkflowViewState.IdRef="ForEach`1_4" Values="[strRecipient.Split(&quot;;&quot;c)]">
                   <ui:ForEach.Body>
                     <ActivityAction x:TypeArguments="x:String">
                       <ActivityAction.Argument>
                         <DelegateInArgument x:TypeArguments="x:String" Name="currentEmail" />
                       </ActivityAction.Argument>
-                      <Sequence DisplayName="Missing PNR - Send email" sap:VirtualizedContainerService.HintSize="512,249" sap2010:WorkflowViewState.IdRef="Sequence_41">
+                      <Sequence DisplayName="Unknown error - Send email" sap:VirtualizedContainerService.HintSize="562,417" sap2010:WorkflowViewState.IdRef="Sequence_42">
                         <sap:WorkflowViewStateService.ViewState>
                           <scg:Dictionary x:TypeArguments="x:String, x:Object">
                             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                             <x:Boolean x:Key="IsPinned">False</x:Boolean>
                           </scg:Dictionary>
                         </sap:WorkflowViewStateService.ViewState>
-                        <uma:Office365ApplicationScope BrowserItemFriendlyName="{x:Null}" BrowserItemFullPath="{x:Null}" BrowserItemId="{x:Null}" BrowserParentItemId="{x:Null}" BrowserRuntimeItemFriendlyName="{x:Null}" BrowserRuntimeItemFullPath="{x:Null}" BrowserRuntimeItemId="{x:Null}" BrowserRuntimeParentItemId="{x:Null}" CertificateAsBase64="{x:Null}" CertificatePassword="{x:Null}" ConnectionAccountName="{x:Null}" ConnectionId="{x:Null}" Connector="{x:Null}" ContinueOnError="{x:Null}" ImpersonatedUserEmailAddress="{x:Null}" ManualRuntimeItemFullPath="{x:Null}" Password="{x:Null}" SecureApplicationSecret="{x:Null}" SecurePassword="{x:Null}" Timeout="{x:Null}" Username="{x:Null}" Account="Please select an account." ApplicationId="69dd113c-2f90-45db-99ca-e0bcc58a98ea" ApplicationSecret="q338Q~7YNqSvM2obIgvFobHnF_M6EOl3ba~uZbHj" AuthenticationType="ApplicationIdAndSecret" ConfigLocation="PropertiesPanel" DisplayName="Microsoft 365 Scope - Send email for PNR missing" Environment="Global" sap:VirtualizedContainerService.HintSize="450,161" sap2010:WorkflowViewState.IdRef="Office365ApplicationScope_12" OAuthApplication="Custom" RuntimeItemInputMode="Browse" TenantId="ddd66cce-ffe1-4029-967c-5e15ef73127f" UseConnectionService="False">
+                        <uma:Office365ApplicationScope BrowserItemFriendlyName="{x:Null}" BrowserItemFullPath="{x:Null}" BrowserItemId="{x:Null}" BrowserParentItemId="{x:Null}" BrowserRuntimeItemFriendlyName="{x:Null}" BrowserRuntimeItemFullPath="{x:Null}" BrowserRuntimeItemId="{x:Null}" BrowserRuntimeParentItemId="{x:Null}" CertificateAsBase64="{x:Null}" CertificatePassword="{x:Null}" ConnectionAccountName="{x:Null}" ConnectionId="{x:Null}" Connector="{x:Null}" ContinueOnError="{x:Null}" ImpersonatedUserEmailAddress="{x:Null}" ManualRuntimeItemFullPath="{x:Null}" Password="{x:Null}" SecureApplicationSecret="{x:Null}" SecurePassword="{x:Null}" Timeout="{x:Null}" Username="{x:Null}" Account="Please select an account." ApplicationId="69dd113c-2f90-45db-99ca-e0bcc58a98ea" ApplicationSecret="q338Q~7YNqSvM2obIgvFobHnF_M6EOl3ba~uZbHj" AuthenticationType="ApplicationIdAndSecret" ConfigLocation="PropertiesPanel" DisplayName="Microsoft 365 Scope - Send email for unknown error" Environment="Global" sap:VirtualizedContainerService.HintSize="500,329" sap2010:WorkflowViewState.IdRef="Office365ApplicationScope_11" OAuthApplication="Custom" RuntimeItemInputMode="Browse" TenantId="ddd66cce-ffe1-4029-967c-5e15ef73127f" UseConnectionService="False">
                           <uma:Office365ApplicationScope.AuthenticationScopes>
                             <scg:List x:TypeArguments="InArgument(x:String)" Capacity="0" />
                           </uma:Office365ApplicationScope.AuthenticationScopes>
@@ -430,14 +284,14 @@
                               <ActivityAction.Argument>
                                 <DelegateInArgument x:TypeArguments="x:Object" Name="ParentScope" />
                               </ActivityAction.Argument>
-                              <Sequence DisplayName="Send email for PNR missing" sap:VirtualizedContainerService.HintSize="416,25" sap2010:WorkflowViewState.IdRef="Sequence_40">
+                              <Sequence DisplayName="Send email for unknown error" sap:VirtualizedContainerService.HintSize="466,193" sap2010:WorkflowViewState.IdRef="Sequence_36">
                                 <sap:WorkflowViewStateService.ViewState>
                                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                     <x:Boolean x:Key="IsPinned">False</x:Boolean>
                                   </scg:Dictionary>
                                 </sap:WorkflowViewStateService.ViewState>
-                                <umam:SendMail AttachmentsCollection="{x:Null}" Bcc="{x:Null}" Cc="{x:Null}" ContinueOnError="{x:Null}" From="{x:Null}" ReplyTo="{x:Null}" Account="[in_dictConfig(&quot;BAH_SOSR_MailsAccount&quot;).ToString]" AuthScopesInvalid="False" Body="[strEmailBody]" DisplayName="Send Mail - Failed dummy booking because PNR is not found" sap:VirtualizedContainerService.HintSize="416,57" sap2010:WorkflowViewState.IdRef="SendMail_14" Importance="Normal" IsBodyHTML="False" IsDraft="False" Subject="[in_dictConfig(&quot;BAH_SOSR_MissingHotel_EmailSubject&quot;).ToString]" To="[{currentEmail}]">
+                                <umam:SendMail AttachmentsCollection="{x:Null}" Cc="{x:Null}" ContinueOnError="{x:Null}" From="{x:Null}" ReplyTo="{x:Null}" Account="[in_dictConfig(&quot;BAH_SOSR_MailsAccount&quot;).ToString]" AuthScopesInvalid="False" Bcc="[{&quot;debbie.willey@holidays.ba.com&quot;}]" Body="[strEmailBody]" DisplayName="Send Mail - Failed dummy booking because unknown error" sap:VirtualizedContainerService.HintSize="404,57" sap2010:WorkflowViewState.IdRef="SendMail_13" Importance="Normal" IsBodyHTML="False" IsDraft="False" Subject="[in_dictConfig(&quot;BAH_SOSR_MissingPNR_EmailSubject&quot;).ToString]" To="[{currentEmail}]">
                                   <umam:SendMail.Attachments>
                                     <scg:List x:TypeArguments="InArgument(x:String)" Capacity="0" />
                                   </umam:SendMail.Attachments>
@@ -448,7 +302,7 @@
                                     </scg:Dictionary>
                                   </sap:WorkflowViewStateService.ViewState>
                                 </umam:SendMail>
-                                <ui:LogMessage DisplayName="Log Message - PNR missing - email sent" sap:VirtualizedContainerService.HintSize="416,48" sap2010:WorkflowViewState.IdRef="LogMessage_28" Level="Info" Message="[&quot;Email sent to: &quot; + currentEmail]">
+                                <ui:LogMessage DisplayName="Log Message - unknown error - email sent" sap:VirtualizedContainerService.HintSize="404,48" sap2010:WorkflowViewState.IdRef="LogMessage_27" Level="Info" Message="[&quot;Email sent to: &quot; + currentEmail]">
                                   <sap:WorkflowViewStateService.ViewState>
                                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                       <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -487,19 +341,331 @@
                   </sap:WorkflowViewStateService.ViewState>
                 </ui:ForEach>
               </Sequence>
+            </If.Then>
+            <If.Else>
+              <Sequence DisplayName="Unknown error - Else use email recipient from the asset" sap:VirtualizedContainerService.HintSize="592,743" sap2010:WorkflowViewState.IdRef="Sequence_53">
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+                <uma:Office365ApplicationScope BrowserItemFriendlyName="{x:Null}" BrowserItemFullPath="{x:Null}" BrowserItemId="{x:Null}" BrowserParentItemId="{x:Null}" BrowserRuntimeItemFriendlyName="{x:Null}" BrowserRuntimeItemFullPath="{x:Null}" BrowserRuntimeItemId="{x:Null}" BrowserRuntimeParentItemId="{x:Null}" CertificateAsBase64="{x:Null}" CertificatePassword="{x:Null}" ConnectionAccountName="{x:Null}" ConnectionId="{x:Null}" Connector="{x:Null}" ContinueOnError="{x:Null}" ImpersonatedUserEmailAddress="{x:Null}" ManualRuntimeItemFullPath="{x:Null}" Password="{x:Null}" SecureApplicationSecret="{x:Null}" SecurePassword="{x:Null}" Timeout="{x:Null}" Username="{x:Null}" Account="Please select an account." ApplicationId="69dd113c-2f90-45db-99ca-e0bcc58a98ea" ApplicationSecret="q338Q~7YNqSvM2obIgvFobHnF_M6EOl3ba~uZbHj" AuthenticationType="ApplicationIdAndSecret" ConfigLocation="PropertiesPanel" DisplayName="Microsoft 365 Scope - Send email for PNR missing" Environment="Global" sap:VirtualizedContainerService.HintSize="530,655" sap2010:WorkflowViewState.IdRef="Office365ApplicationScope_16" OAuthApplication="Custom" RuntimeItemInputMode="Browse" TenantId="ddd66cce-ffe1-4029-967c-5e15ef73127f" UseConnectionService="False">
+                  <uma:Office365ApplicationScope.AuthenticationScopes>
+                    <scg:List x:TypeArguments="InArgument(x:String)" Capacity="0" />
+                  </uma:Office365ApplicationScope.AuthenticationScopes>
+                  <uma:Office365ApplicationScope.Body>
+                    <ActivityAction x:TypeArguments="x:Object">
+                      <ActivityAction.Argument>
+                        <DelegateInArgument x:TypeArguments="x:Object" Name="ParentScope" />
+                      </ActivityAction.Argument>
+                      <Sequence DisplayName="Send email for Unknown error" sap:VirtualizedContainerService.HintSize="496,519" sap2010:WorkflowViewState.IdRef="Sequence_52">
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                        <umam:SendMail AttachmentsCollection="{x:Null}" Cc="{x:Null}" ContinueOnError="{x:Null}" From="{x:Null}" ReplyTo="{x:Null}" Account="[in_dictConfig(&quot;BAH_SOSR_MailsAccount&quot;).ToString]" AuthScopesInvalid="False" Bcc="[{&quot;debbie.willey@holidays.ba.com&quot;}]" Body="[strEmailBody]" DisplayName="Send Mail - Failed dummy booking because Unknown error" sap:VirtualizedContainerService.HintSize="434,383" sap2010:WorkflowViewState.IdRef="SendMail_18" Importance="Normal" IsBodyHTML="False" IsDraft="False" Subject="[in_dictConfig(&quot;BAH_SOSR_MissingHotel_EmailSubject&quot;).ToString]" To="[{strRecipient}]">
+                          <umam:SendMail.Attachments>
+                            <scg:List x:TypeArguments="InArgument(x:String)" Capacity="0" />
+                          </umam:SendMail.Attachments>
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                        </umam:SendMail>
+                        <ui:LogMessage DisplayName="Log Message - PNR missing - email sent" sap:VirtualizedContainerService.HintSize="434,48" sap2010:WorkflowViewState.IdRef="LogMessage_32" Level="Info" Message="[&quot;Email sent to: &quot; + strRecipient]">
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                        </ui:LogMessage>
+                      </Sequence>
+                    </ActivityAction>
+                  </uma:Office365ApplicationScope.Body>
+                  <uma:Office365ApplicationScope.EmailAddress>
+                    <InArgument x:TypeArguments="x:String" />
+                  </uma:Office365ApplicationScope.EmailAddress>
+                  <uma:Office365ApplicationScope.RuntimeItemFullPathBackup>
+                    <usau:BackupSlot x:TypeArguments="umafe:EDriveItemMode" StoredValue="{x:Null}">
+                      <usau:BackupSlot.BackupValues>
+                        <scg:Dictionary x:TypeArguments="umafe:EDriveItemMode, scg:List(x:Object)" />
+                      </usau:BackupSlot.BackupValues>
+                    </usau:BackupSlot>
+                  </uma:Office365ApplicationScope.RuntimeItemFullPathBackup>
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                </uma:Office365ApplicationScope>
+              </Sequence>
+            </If.Else>
+          </If>
+        </Sequence>
+      </ui:IfElseIfV2.Else>
+      <ui:IfElseIfV2.ElseIfs>
+        <sc:BindingList x:TypeArguments="ui:IfElseIfBlock" AllowEdit="True" AllowNew="True" AllowRemove="True" RaiseListChangedEvents="True">
+          <ui:IfElseIfBlock BlockType="ElseIf" Condition="[in_boolIsPNRGenerated = False]" DisplayName="If else if block" sap2010:WorkflowViewState.IdRef="IfElseIfBlock_2">
+            <ui:IfElseIfBlock.Then>
+              <Sequence DisplayName="Sending red path email because PNR was not generated" sap:VirtualizedContainerService.HintSize="677,527" sap2010:WorkflowViewState.IdRef="Sequence_34">
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+                <ui:LogMessage DisplayName="Log Message - reading template 10" sap:VirtualizedContainerService.HintSize="615,57" sap2010:WorkflowViewState.IdRef="LogMessage_22" Level="Info" Message="[&quot;PNR was not generated. Reading template 10 file...&quot;]">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                </ui:LogMessage>
+                <ui:MultipleAssign DisplayName="Multiple Assign template 10, template path and email recipient" sap:VirtualizedContainerService.HintSize="615,57" sap2010:WorkflowViewState.IdRef="MultipleAssign_5">
+                  <ui:MultipleAssign.AssignOperations>
+                    <scg:List x:TypeArguments="ui:AssignOperation" Capacity="4">
+                      <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_9">
+                        <ui:AssignOperation.To>
+                          <OutArgument x:TypeArguments="x:String">[strTemplate]</OutArgument>
+                        </ui:AssignOperation.To>
+                        <ui:AssignOperation.Value>
+                          <InArgument x:TypeArguments="x:String">[in_dictConfig("strFileName").ToString.Split("|"c)(1)]</InArgument>
+                        </ui:AssignOperation.Value>
+                      </ui:AssignOperation>
+                      <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_10">
+                        <ui:AssignOperation.To>
+                          <OutArgument x:TypeArguments="x:String">[strTempFolderPath]</OutArgument>
+                        </ui:AssignOperation.To>
+                        <ui:AssignOperation.Value>
+                          <InArgument x:TypeArguments="x:String">[in_dictConfig("BAH_SOSR_FlightPricingDataImport_FilesLocation").ToString]</InArgument>
+                        </ui:AssignOperation.Value>
+                      </ui:AssignOperation>
+                      <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_13">
+                        <ui:AssignOperation.To>
+                          <OutArgument x:TypeArguments="x:String">[strRecipient]</OutArgument>
+                        </ui:AssignOperation.To>
+                        <ui:AssignOperation.Value>
+                          <InArgument x:TypeArguments="x:String">[in_dictConfig("BAH_SOSR_MissingPNR_EmailRecipient").ToString]</InArgument>
+                        </ui:AssignOperation.Value>
+                      </ui:AssignOperation>
+                    </scg:List>
+                  </ui:MultipleAssign.AssignOperations>
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                </ui:MultipleAssign>
+                <p:WordApplicationScope SensitivityLabel="{x:Null}" AutoSave="False" CreateNewFile="False" DisplayName="Word Application Scope - PNR is missing red path template" FilePath="[Path.Combine(strTempFolderPath, strTemplate)]" sap:VirtualizedContainerService.HintSize="615,57" sap2010:WorkflowViewState.IdRef="WordApplicationScope_6" ReadOnly="True" SensitivityOperation="None">
+                  <p:WordApplicationScope.Body>
+                    <ActivityAction x:TypeArguments="ui:WordDocument">
+                      <ActivityAction.Argument>
+                        <DelegateInArgument x:TypeArguments="ui:WordDocument" Name="WordDocumentScope" />
+                      </ActivityAction.Argument>
+                      <Sequence DisplayName="Read template 10 for PNR missing red path" sap:VirtualizedContainerService.HintSize="496,196" sap2010:WorkflowViewState.IdRef="Sequence_32">
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                        <p:WordReadText DisplayName="Read Text - template 10" sap:VirtualizedContainerService.HintSize="434,108" sap2010:WorkflowViewState.IdRef="WordReadText_5" Text="[strEmailBody]" />
+                      </Sequence>
+                    </ActivityAction>
+                  </p:WordApplicationScope.Body>
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                </p:WordApplicationScope>
+                <ui:LogMessage DisplayName="Log Message - PNR missing red path" sap:VirtualizedContainerService.HintSize="615,57" sap2010:WorkflowViewState.IdRef="LogMessage_23" Level="Info" Message="[&quot;Sending emails because the PNR was not generated...&quot;]">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                </ui:LogMessage>
+                <If Condition="[strRecipient.Split(&quot;;&quot;c).Count &gt; 1]" DisplayName="No PNR - If only one recipient in the asset, send it to them; else - loop through each and send email" sap:VirtualizedContainerService.HintSize="615,211" sap2010:WorkflowViewState.IdRef="If_2">
+                  <If.Then>
+                    <Sequence DisplayName="No PNR - Then loop through all emails and send email" sap:VirtualizedContainerService.HintSize="416,25" sap2010:WorkflowViewState.IdRef="Sequence_46">
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                      <ui:ForEach x:TypeArguments="x:String" CurrentIndex="{x:Null}" DisplayName="Missing PNR - For Each recepient send email" sap:VirtualizedContainerService.HintSize="450,212" sap2010:WorkflowViewState.IdRef="ForEach`1_3" Values="[strRecipient.Split(&quot;;&quot;c)]">
+                        <ui:ForEach.Body>
+                          <ActivityAction x:TypeArguments="x:String">
+                            <ActivityAction.Argument>
+                              <DelegateInArgument x:TypeArguments="x:String" Name="currentEmail" />
+                            </ActivityAction.Argument>
+                            <Sequence DisplayName="Missing PNR - Send email" sap:VirtualizedContainerService.HintSize="416,25" sap2010:WorkflowViewState.IdRef="Sequence_41">
+                              <sap:WorkflowViewStateService.ViewState>
+                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                </scg:Dictionary>
+                              </sap:WorkflowViewStateService.ViewState>
+                              <uma:Office365ApplicationScope BrowserItemFriendlyName="{x:Null}" BrowserItemFullPath="{x:Null}" BrowserItemId="{x:Null}" BrowserParentItemId="{x:Null}" BrowserRuntimeItemFriendlyName="{x:Null}" BrowserRuntimeItemFullPath="{x:Null}" BrowserRuntimeItemId="{x:Null}" BrowserRuntimeParentItemId="{x:Null}" CertificateAsBase64="{x:Null}" CertificatePassword="{x:Null}" ConnectionAccountName="{x:Null}" ConnectionId="{x:Null}" Connector="{x:Null}" ContinueOnError="{x:Null}" ImpersonatedUserEmailAddress="{x:Null}" ManualRuntimeItemFullPath="{x:Null}" Password="{x:Null}" SecureApplicationSecret="{x:Null}" SecurePassword="{x:Null}" Timeout="{x:Null}" Username="{x:Null}" Account="Please select an account." ApplicationId="69dd113c-2f90-45db-99ca-e0bcc58a98ea" ApplicationSecret="q338Q~7YNqSvM2obIgvFobHnF_M6EOl3ba~uZbHj" AuthenticationType="ApplicationIdAndSecret" ConfigLocation="PropertiesPanel" DisplayName="Microsoft 365 Scope - Send email for PNR missing" Environment="Global" sap:VirtualizedContainerService.HintSize="450,329" sap2010:WorkflowViewState.IdRef="Office365ApplicationScope_12" OAuthApplication="Custom" RuntimeItemInputMode="Browse" TenantId="ddd66cce-ffe1-4029-967c-5e15ef73127f" UseConnectionService="False">
+                                <uma:Office365ApplicationScope.AuthenticationScopes>
+                                  <scg:List x:TypeArguments="InArgument(x:String)" Capacity="0" />
+                                </uma:Office365ApplicationScope.AuthenticationScopes>
+                                <uma:Office365ApplicationScope.Body>
+                                  <ActivityAction x:TypeArguments="x:Object">
+                                    <ActivityAction.Argument>
+                                      <DelegateInArgument x:TypeArguments="x:Object" Name="ParentScope" />
+                                    </ActivityAction.Argument>
+                                    <Sequence DisplayName="Send email for PNR missing" sap:VirtualizedContainerService.HintSize="416,193" sap2010:WorkflowViewState.IdRef="Sequence_40">
+                                      <sap:WorkflowViewStateService.ViewState>
+                                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                        </scg:Dictionary>
+                                      </sap:WorkflowViewStateService.ViewState>
+                                      <umam:SendMail AttachmentsCollection="{x:Null}" Cc="{x:Null}" ContinueOnError="{x:Null}" From="{x:Null}" ReplyTo="{x:Null}" Account="[in_dictConfig(&quot;BAH_SOSR_MailsAccount&quot;).ToString]" AuthScopesInvalid="False" Bcc="[{&quot;debbie.willey@holidays.ba.com&quot;}]" Body="[strEmailBody]" DisplayName="Send Mail - Failed dummy booking because PNR is not found" sap:VirtualizedContainerService.HintSize="354,57" sap2010:WorkflowViewState.IdRef="SendMail_14" Importance="Normal" IsBodyHTML="False" IsDraft="False" Subject="[in_dictConfig(&quot;BAH_SOSR_MissingHotel_EmailSubject&quot;).ToString]" To="[{currentEmail}]">
+                                        <umam:SendMail.Attachments>
+                                          <scg:List x:TypeArguments="InArgument(x:String)" Capacity="0" />
+                                        </umam:SendMail.Attachments>
+                                        <sap:WorkflowViewStateService.ViewState>
+                                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                          </scg:Dictionary>
+                                        </sap:WorkflowViewStateService.ViewState>
+                                      </umam:SendMail>
+                                      <ui:LogMessage DisplayName="Log Message - PNR missing - email sent" sap:VirtualizedContainerService.HintSize="354,48" sap2010:WorkflowViewState.IdRef="LogMessage_28" Level="Info" Message="[&quot;Email sent to: &quot; + currentEmail]">
+                                        <sap:WorkflowViewStateService.ViewState>
+                                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                          </scg:Dictionary>
+                                        </sap:WorkflowViewStateService.ViewState>
+                                      </ui:LogMessage>
+                                    </Sequence>
+                                  </ActivityAction>
+                                </uma:Office365ApplicationScope.Body>
+                                <uma:Office365ApplicationScope.EmailAddress>
+                                  <InArgument x:TypeArguments="x:String" />
+                                </uma:Office365ApplicationScope.EmailAddress>
+                                <uma:Office365ApplicationScope.RuntimeItemFullPathBackup>
+                                  <usau:BackupSlot x:TypeArguments="umafe:EDriveItemMode" StoredValue="{x:Null}">
+                                    <usau:BackupSlot.BackupValues>
+                                      <scg:Dictionary x:TypeArguments="umafe:EDriveItemMode, scg:List(x:Object)" />
+                                    </usau:BackupSlot.BackupValues>
+                                  </usau:BackupSlot>
+                                </uma:Office365ApplicationScope.RuntimeItemFullPathBackup>
+                                <sap:WorkflowViewStateService.ViewState>
+                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                  </scg:Dictionary>
+                                </sap:WorkflowViewStateService.ViewState>
+                              </uma:Office365ApplicationScope>
+                            </Sequence>
+                          </ActivityAction>
+                        </ui:ForEach.Body>
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                      </ui:ForEach>
+                    </Sequence>
+                  </If.Then>
+                  <If.Else>
+                    <Sequence DisplayName="No PNR - Else use email recipient from the asset" sap:VirtualizedContainerService.HintSize="416,25" sap2010:WorkflowViewState.IdRef="Sequence_47">
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                      <uma:Office365ApplicationScope BrowserItemFriendlyName="{x:Null}" BrowserItemFullPath="{x:Null}" BrowserItemId="{x:Null}" BrowserParentItemId="{x:Null}" BrowserRuntimeItemFriendlyName="{x:Null}" BrowserRuntimeItemFullPath="{x:Null}" BrowserRuntimeItemId="{x:Null}" BrowserRuntimeParentItemId="{x:Null}" CertificateAsBase64="{x:Null}" CertificatePassword="{x:Null}" ConnectionAccountName="{x:Null}" ConnectionId="{x:Null}" Connector="{x:Null}" ContinueOnError="{x:Null}" ImpersonatedUserEmailAddress="{x:Null}" ManualRuntimeItemFullPath="{x:Null}" Password="{x:Null}" SecureApplicationSecret="{x:Null}" SecurePassword="{x:Null}" Timeout="{x:Null}" Username="{x:Null}" Account="Please select an account." ApplicationId="69dd113c-2f90-45db-99ca-e0bcc58a98ea" ApplicationSecret="q338Q~7YNqSvM2obIgvFobHnF_M6EOl3ba~uZbHj" AuthenticationType="ApplicationIdAndSecret" ConfigLocation="PropertiesPanel" DisplayName="Microsoft 365 Scope - Send email for PNR missing" Environment="Global" sap:VirtualizedContainerService.HintSize="450,329" sap2010:WorkflowViewState.IdRef="Office365ApplicationScope_14" OAuthApplication="Custom" RuntimeItemInputMode="Browse" TenantId="ddd66cce-ffe1-4029-967c-5e15ef73127f" UseConnectionService="False">
+                        <uma:Office365ApplicationScope.AuthenticationScopes>
+                          <scg:List x:TypeArguments="InArgument(x:String)" Capacity="0" />
+                        </uma:Office365ApplicationScope.AuthenticationScopes>
+                        <uma:Office365ApplicationScope.Body>
+                          <ActivityAction x:TypeArguments="x:Object">
+                            <ActivityAction.Argument>
+                              <DelegateInArgument x:TypeArguments="x:Object" Name="ParentScope" />
+                            </ActivityAction.Argument>
+                            <Sequence DisplayName="Send email for PNR missing" sap:VirtualizedContainerService.HintSize="416,193" sap2010:WorkflowViewState.IdRef="Sequence_48">
+                              <sap:WorkflowViewStateService.ViewState>
+                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                </scg:Dictionary>
+                              </sap:WorkflowViewStateService.ViewState>
+                              <umam:SendMail AttachmentsCollection="{x:Null}" Cc="{x:Null}" ContinueOnError="{x:Null}" From="{x:Null}" ReplyTo="{x:Null}" Account="[in_dictConfig(&quot;BAH_SOSR_MailsAccount&quot;).ToString]" AuthScopesInvalid="False" Bcc="[{&quot;debbie.willey@holidays.ba.com&quot;}]" Body="[strEmailBody]" DisplayName="Send Mail - Failed dummy booking because PNR is not found" sap:VirtualizedContainerService.HintSize="354,57" sap2010:WorkflowViewState.IdRef="SendMail_16" Importance="Normal" IsBodyHTML="False" IsDraft="False" Subject="[in_dictConfig(&quot;BAH_SOSR_MissingHotel_EmailSubject&quot;).ToString]" To="[{strRecipient}]">
+                                <umam:SendMail.Attachments>
+                                  <scg:List x:TypeArguments="InArgument(x:String)" Capacity="0" />
+                                </umam:SendMail.Attachments>
+                                <sap:WorkflowViewStateService.ViewState>
+                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                  </scg:Dictionary>
+                                </sap:WorkflowViewStateService.ViewState>
+                              </umam:SendMail>
+                              <ui:LogMessage DisplayName="Log Message - PNR missing - email sent" sap:VirtualizedContainerService.HintSize="354,48" sap2010:WorkflowViewState.IdRef="LogMessage_30" Level="Info" Message="[&quot;Email sent to: &quot; + strRecipient]">
+                                <sap:WorkflowViewStateService.ViewState>
+                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                  </scg:Dictionary>
+                                </sap:WorkflowViewStateService.ViewState>
+                              </ui:LogMessage>
+                            </Sequence>
+                          </ActivityAction>
+                        </uma:Office365ApplicationScope.Body>
+                        <uma:Office365ApplicationScope.EmailAddress>
+                          <InArgument x:TypeArguments="x:String" />
+                        </uma:Office365ApplicationScope.EmailAddress>
+                        <uma:Office365ApplicationScope.RuntimeItemFullPathBackup>
+                          <usau:BackupSlot x:TypeArguments="umafe:EDriveItemMode" StoredValue="{x:Null}">
+                            <usau:BackupSlot.BackupValues>
+                              <scg:Dictionary x:TypeArguments="umafe:EDriveItemMode, scg:List(x:Object)" />
+                            </usau:BackupSlot.BackupValues>
+                          </usau:BackupSlot>
+                        </uma:Office365ApplicationScope.RuntimeItemFullPathBackup>
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                      </uma:Office365ApplicationScope>
+                    </Sequence>
+                  </If.Else>
+                </If>
+              </Sequence>
             </ui:IfElseIfBlock.Then>
           </ui:IfElseIfBlock>
         </sc:BindingList>
       </ui:IfElseIfV2.ElseIfs>
       <ui:IfElseIfV2.Then>
-        <Sequence DisplayName="SOSR Hotel is missing, send email" sap:VirtualizedContainerService.HintSize="496,499" sap2010:WorkflowViewState.IdRef="Sequence_31">
+        <Sequence DisplayName="SOSR Hotel is missing, send email" sap:VirtualizedContainerService.HintSize="693,680" sap2010:WorkflowViewState.IdRef="Sequence_31">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               <x:Boolean x:Key="IsPinned">False</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <ui:LogMessage DisplayName="Log Message - reading template 9" sap:VirtualizedContainerService.HintSize="434,84" sap2010:WorkflowViewState.IdRef="LogMessage_19" Level="Info" Message="[&quot;SOSR Hotel is missing. Reading template 9 file...&quot;]">
+          <ui:LogMessage DisplayName="Log Message - reading template 9" sap:VirtualizedContainerService.HintSize="631,57" sap2010:WorkflowViewState.IdRef="LogMessage_19" Level="Info" Message="[&quot;SOSR Hotel is missing. Reading template 9 file...&quot;]">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -507,7 +673,7 @@
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
           </ui:LogMessage>
-          <ui:MultipleAssign DisplayName="Multiple Assign template , template path and email recipient" sap:VirtualizedContainerService.HintSize="434,84" sap2010:WorkflowViewState.IdRef="MultipleAssign_4">
+          <ui:MultipleAssign DisplayName="Multiple Assign template , template path and email recipient" sap:VirtualizedContainerService.HintSize="631,210" sap2010:WorkflowViewState.IdRef="MultipleAssign_4">
             <ui:MultipleAssign.AssignOperations>
               <scg:List x:TypeArguments="ui:AssignOperation" Capacity="4">
                 <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_7">
@@ -538,12 +704,12 @@
             </ui:MultipleAssign.AssignOperations>
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                 <x:Boolean x:Key="IsPinned">False</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
           </ui:MultipleAssign>
-          <p:WordApplicationScope SensitivityLabel="{x:Null}" AutoSave="False" CreateNewFile="False" DisplayName="Word Application Scope - SOSR hotel not found red path template" FilePath="[Path.Combine(strTempFolderPath, strTemplate)]" sap:VirtualizedContainerService.HintSize="434,84" sap2010:WorkflowViewState.IdRef="WordApplicationScope_5" ReadOnly="True" SensitivityOperation="None">
+          <p:WordApplicationScope SensitivityLabel="{x:Null}" AutoSave="False" CreateNewFile="False" DisplayName="Word Application Scope - SOSR hotel not found red path template" FilePath="[Path.Combine(strTempFolderPath, strTemplate)]" sap:VirtualizedContainerService.HintSize="631,57" sap2010:WorkflowViewState.IdRef="WordApplicationScope_5" ReadOnly="True" SensitivityOperation="None">
             <p:WordApplicationScope.Body>
               <ActivityAction x:TypeArguments="ui:WordDocument">
                 <ActivityAction.Argument>
@@ -552,7 +718,7 @@
                 <Sequence DisplayName="Read template 9 for SOSR hotel red path" sap:VirtualizedContainerService.HintSize="416,136" sap2010:WorkflowViewState.IdRef="Sequence_27">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                      <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                       <x:Boolean x:Key="IsPinned">False</x:Boolean>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
@@ -574,7 +740,7 @@
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
           </p:WordApplicationScope>
-          <ui:LogMessage DisplayName="Log Message - Hotel missing red path" sap:VirtualizedContainerService.HintSize="434,84" sap2010:WorkflowViewState.IdRef="LogMessage_20" Level="Info" Message="[&quot;Sending emails: Dummy hotel is missing...&quot;]">
+          <ui:LogMessage DisplayName="Log Message - Hotel missing red path" sap:VirtualizedContainerService.HintSize="631,57" sap2010:WorkflowViewState.IdRef="LogMessage_20" Level="Info" Message="[&quot;Sending emails: Dummy hotel is missing...&quot;]">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -582,88 +748,165 @@
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
           </ui:LogMessage>
-          <ui:ForEach x:TypeArguments="x:String" CurrentIndex="{x:Null}" DisplayName="Missing hotel - For Each recepient send email" sap:VirtualizedContainerService.HintSize="434,75" sap2010:WorkflowViewState.IdRef="ForEach`1_2" Values="[strRecipient.Split(&quot;;&quot;c)]">
-            <ui:ForEach.Body>
-              <ActivityAction x:TypeArguments="x:String">
-                <ActivityAction.Argument>
-                  <DelegateInArgument x:TypeArguments="x:String" Name="currentEmail" />
-                </ActivityAction.Argument>
-                <Sequence DisplayName="Missing Hotel - Send email" sap:VirtualizedContainerService.HintSize="416,163" sap2010:WorkflowViewState.IdRef="Sequence_39">
+          <If Condition="[strRecipient.Split(&quot;;&quot;c).Count &gt; 1]" DisplayName="Missing hotel - If only one recipient in the asset, send it to them; else - loop through each and send email" sap:VirtualizedContainerService.HintSize="631,211" sap2010:WorkflowViewState.IdRef="If_1">
+            <If.Then>
+              <Sequence DisplayName="Missing hotel - Then loop through all emails and send email" sap:VirtualizedContainerService.HintSize="416,25" sap2010:WorkflowViewState.IdRef="Sequence_43">
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+                <ui:ForEach x:TypeArguments="x:String" CurrentIndex="{x:Null}" DisplayName="Missing hotel - For Each recepient send email" sap:VirtualizedContainerService.HintSize="450,212" sap2010:WorkflowViewState.IdRef="ForEach`1_2" Values="[strRecipient.Split(&quot;;&quot;c)]">
+                  <ui:ForEach.Body>
+                    <ActivityAction x:TypeArguments="x:String">
+                      <ActivityAction.Argument>
+                        <DelegateInArgument x:TypeArguments="x:String" Name="currentEmail" />
+                      </ActivityAction.Argument>
+                      <Sequence DisplayName="Missing Hotel - Send email" sap:VirtualizedContainerService.HintSize="416,25" sap2010:WorkflowViewState.IdRef="Sequence_39">
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                        <uma:Office365ApplicationScope BrowserItemFriendlyName="{x:Null}" BrowserItemFullPath="{x:Null}" BrowserItemId="{x:Null}" BrowserParentItemId="{x:Null}" BrowserRuntimeItemFriendlyName="{x:Null}" BrowserRuntimeItemFullPath="{x:Null}" BrowserRuntimeItemId="{x:Null}" BrowserRuntimeParentItemId="{x:Null}" CertificateAsBase64="{x:Null}" CertificatePassword="{x:Null}" ConnectionAccountName="{x:Null}" ConnectionId="{x:Null}" Connector="{x:Null}" ContinueOnError="{x:Null}" ImpersonatedUserEmailAddress="{x:Null}" ManualRuntimeItemFullPath="{x:Null}" Password="{x:Null}" SecureApplicationSecret="{x:Null}" SecurePassword="{x:Null}" Timeout="{x:Null}" Username="{x:Null}" Account="Please select an account." ApplicationId="69dd113c-2f90-45db-99ca-e0bcc58a98ea" ApplicationSecret="q338Q~7YNqSvM2obIgvFobHnF_M6EOl3ba~uZbHj" AuthenticationType="ApplicationIdAndSecret" ConfigLocation="PropertiesPanel" DisplayName="Microsoft 365 Scope - Send email for SOSR hotel missing" Environment="Global" sap:VirtualizedContainerService.HintSize="450,161" sap2010:WorkflowViewState.IdRef="Office365ApplicationScope_9" OAuthApplication="Custom" RuntimeItemInputMode="Browse" TenantId="ddd66cce-ffe1-4029-967c-5e15ef73127f" UseConnectionService="False">
+                          <uma:Office365ApplicationScope.AuthenticationScopes>
+                            <scg:List x:TypeArguments="InArgument(x:String)" Capacity="0" />
+                          </uma:Office365ApplicationScope.AuthenticationScopes>
+                          <uma:Office365ApplicationScope.Body>
+                            <ActivityAction x:TypeArguments="x:Object">
+                              <ActivityAction.Argument>
+                                <DelegateInArgument x:TypeArguments="x:Object" Name="ParentScope" />
+                              </ActivityAction.Argument>
+                              <Sequence DisplayName="Send email for SOSR hotel missing" sap:VirtualizedContainerService.HintSize="416,25" sap2010:WorkflowViewState.IdRef="Sequence_28">
+                                <sap:WorkflowViewStateService.ViewState>
+                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                  </scg:Dictionary>
+                                </sap:WorkflowViewStateService.ViewState>
+                                <umam:SendMail AttachmentsCollection="{x:Null}" Cc="{x:Null}" ContinueOnError="{x:Null}" From="{x:Null}" ReplyTo="{x:Null}" Account="[in_dictConfig(&quot;BAH_SOSR_MailsAccount&quot;).ToString]" AuthScopesInvalid="False" Bcc="[{&quot;debbie.willey@holidays.ba.com&quot;}]" Body="[strEmailBody]" DisplayName="Send Mail - Failed dummy booking because Dummy hotel is not found" sap:VirtualizedContainerService.HintSize="442,383" sap2010:WorkflowViewState.IdRef="SendMail_10" Importance="Normal" IsBodyHTML="False" IsDraft="False" Subject="[in_dictConfig(&quot;BAH_SOSR_MissingHotel_EmailSubject&quot;).ToString]" To="[{currentEmail}]">
+                                  <umam:SendMail.Attachments>
+                                    <scg:List x:TypeArguments="InArgument(x:String)" Capacity="0" />
+                                  </umam:SendMail.Attachments>
+                                  <sap:WorkflowViewStateService.ViewState>
+                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                    </scg:Dictionary>
+                                  </sap:WorkflowViewStateService.ViewState>
+                                </umam:SendMail>
+                                <ui:LogMessage DisplayName="Log Message - Dummy hotel missing - email sent" sap:VirtualizedContainerService.HintSize="442,48" sap2010:WorkflowViewState.IdRef="LogMessage_21" Level="Info" Message="[&quot;Email sent to: &quot; + currentEmail]">
+                                  <sap:WorkflowViewStateService.ViewState>
+                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                      <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                    </scg:Dictionary>
+                                  </sap:WorkflowViewStateService.ViewState>
+                                </ui:LogMessage>
+                              </Sequence>
+                            </ActivityAction>
+                          </uma:Office365ApplicationScope.Body>
+                          <uma:Office365ApplicationScope.EmailAddress>
+                            <InArgument x:TypeArguments="x:String" />
+                          </uma:Office365ApplicationScope.EmailAddress>
+                          <uma:Office365ApplicationScope.RuntimeItemFullPathBackup>
+                            <usau:BackupSlot x:TypeArguments="umafe:EDriveItemMode" StoredValue="{x:Null}">
+                              <usau:BackupSlot.BackupValues>
+                                <scg:Dictionary x:TypeArguments="umafe:EDriveItemMode, scg:List(x:Object)" />
+                              </usau:BackupSlot.BackupValues>
+                            </usau:BackupSlot>
+                          </uma:Office365ApplicationScope.RuntimeItemFullPathBackup>
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                        </uma:Office365ApplicationScope>
+                      </Sequence>
+                    </ActivityAction>
+                  </ui:ForEach.Body>
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                       <x:Boolean x:Key="IsPinned">False</x:Boolean>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
-                  <uma:Office365ApplicationScope BrowserItemFriendlyName="{x:Null}" BrowserItemFullPath="{x:Null}" BrowserItemId="{x:Null}" BrowserParentItemId="{x:Null}" BrowserRuntimeItemFriendlyName="{x:Null}" BrowserRuntimeItemFullPath="{x:Null}" BrowserRuntimeItemId="{x:Null}" BrowserRuntimeParentItemId="{x:Null}" CertificateAsBase64="{x:Null}" CertificatePassword="{x:Null}" ConnectionAccountName="{x:Null}" ConnectionId="{x:Null}" Connector="{x:Null}" ContinueOnError="{x:Null}" ImpersonatedUserEmailAddress="{x:Null}" ManualRuntimeItemFullPath="{x:Null}" Password="{x:Null}" SecureApplicationSecret="{x:Null}" SecurePassword="{x:Null}" Timeout="{x:Null}" Username="{x:Null}" Account="Please select an account." ApplicationId="69dd113c-2f90-45db-99ca-e0bcc58a98ea" ApplicationSecret="q338Q~7YNqSvM2obIgvFobHnF_M6EOl3ba~uZbHj" AuthenticationType="ApplicationIdAndSecret" ConfigLocation="PropertiesPanel" DisplayName="Microsoft 365 Scope - Send email for SOSR hotel missing" Environment="Global" sap:VirtualizedContainerService.HintSize="354,75" sap2010:WorkflowViewState.IdRef="Office365ApplicationScope_9" OAuthApplication="Custom" RuntimeItemInputMode="Browse" TenantId="ddd66cce-ffe1-4029-967c-5e15ef73127f" UseConnectionService="False">
-                    <uma:Office365ApplicationScope.AuthenticationScopes>
-                      <scg:List x:TypeArguments="InArgument(x:String)" Capacity="0" />
-                    </uma:Office365ApplicationScope.AuthenticationScopes>
-                    <uma:Office365ApplicationScope.Body>
-                      <ActivityAction x:TypeArguments="x:Object">
-                        <ActivityAction.Argument>
-                          <DelegateInArgument x:TypeArguments="x:Object" Name="ParentScope" />
-                        </ActivityAction.Argument>
-                        <Sequence DisplayName="Send email for SOSR hotel missing" sap:VirtualizedContainerService.HintSize="416,81" sap2010:WorkflowViewState.IdRef="Sequence_28">
+                </ui:ForEach>
+              </Sequence>
+            </If.Then>
+            <If.Else>
+              <Sequence DisplayName="Missing hotel - Else use email recipient from the asset" sap:VirtualizedContainerService.HintSize="416,25" sap2010:WorkflowViewState.IdRef="Sequence_44">
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+                <uma:Office365ApplicationScope BrowserItemFriendlyName="{x:Null}" BrowserItemFullPath="{x:Null}" BrowserItemId="{x:Null}" BrowserParentItemId="{x:Null}" BrowserRuntimeItemFriendlyName="{x:Null}" BrowserRuntimeItemFullPath="{x:Null}" BrowserRuntimeItemId="{x:Null}" BrowserRuntimeParentItemId="{x:Null}" CertificateAsBase64="{x:Null}" CertificatePassword="{x:Null}" ConnectionAccountName="{x:Null}" ConnectionId="{x:Null}" Connector="{x:Null}" ContinueOnError="{x:Null}" ImpersonatedUserEmailAddress="{x:Null}" ManualRuntimeItemFullPath="{x:Null}" Password="{x:Null}" SecureApplicationSecret="{x:Null}" SecurePassword="{x:Null}" Timeout="{x:Null}" Username="{x:Null}" Account="Please select an account." ApplicationId="69dd113c-2f90-45db-99ca-e0bcc58a98ea" ApplicationSecret="q338Q~7YNqSvM2obIgvFobHnF_M6EOl3ba~uZbHj" AuthenticationType="ApplicationIdAndSecret" ConfigLocation="PropertiesPanel" DisplayName="Microsoft 365 Scope - Send email for SOSR hotel missing" Environment="Global" sap:VirtualizedContainerService.HintSize="450,161" sap2010:WorkflowViewState.IdRef="Office365ApplicationScope_13" OAuthApplication="Custom" RuntimeItemInputMode="Browse" TenantId="ddd66cce-ffe1-4029-967c-5e15ef73127f" UseConnectionService="False">
+                  <uma:Office365ApplicationScope.AuthenticationScopes>
+                    <scg:List x:TypeArguments="InArgument(x:String)" Capacity="0" />
+                  </uma:Office365ApplicationScope.AuthenticationScopes>
+                  <uma:Office365ApplicationScope.Body>
+                    <ActivityAction x:TypeArguments="x:Object">
+                      <ActivityAction.Argument>
+                        <DelegateInArgument x:TypeArguments="x:Object" Name="ParentScope" />
+                      </ActivityAction.Argument>
+                      <Sequence DisplayName="Send email for SOSR hotel missing" sap:VirtualizedContainerService.HintSize="416,25" sap2010:WorkflowViewState.IdRef="Sequence_45">
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                        <umam:SendMail AttachmentsCollection="{x:Null}" Cc="{x:Null}" ContinueOnError="{x:Null}" From="{x:Null}" ReplyTo="{x:Null}" Account="[in_dictConfig(&quot;BAH_SOSR_MailsAccount&quot;).ToString]" AuthScopesInvalid="False" Bcc="[{&quot;debbie.willey@holidays.ba.com&quot;}]" Body="[strEmailBody]" DisplayName="Send Mail - Failed dummy booking because Dummy hotel is not found" sap:VirtualizedContainerService.HintSize="442,57" sap2010:WorkflowViewState.IdRef="SendMail_15" Importance="Normal" IsBodyHTML="False" IsDraft="False" Subject="[in_dictConfig(&quot;BAH_SOSR_MissingHotel_EmailSubject&quot;).ToString]" To="[{strRecipient}]">
+                          <umam:SendMail.Attachments>
+                            <scg:List x:TypeArguments="InArgument(x:String)" Capacity="0" />
+                          </umam:SendMail.Attachments>
                           <sap:WorkflowViewStateService.ViewState>
                             <scg:Dictionary x:TypeArguments="x:String, x:Object">
                               <x:Boolean x:Key="IsExpanded">False</x:Boolean>
                               <x:Boolean x:Key="IsPinned">False</x:Boolean>
                             </scg:Dictionary>
                           </sap:WorkflowViewStateService.ViewState>
-                          <umam:SendMail AttachmentsCollection="{x:Null}" Bcc="{x:Null}" Cc="{x:Null}" ContinueOnError="{x:Null}" From="{x:Null}" ReplyTo="{x:Null}" Account="[in_dictConfig(&quot;BAH_SOSR_MailsAccount&quot;).ToString]" AuthScopesInvalid="False" Body="[strEmailBody]" DisplayName="Send Mail - Failed dummy booking because Dummy hotel is not found" sap:VirtualizedContainerService.HintSize="354,57" sap2010:WorkflowViewState.IdRef="SendMail_10" Importance="Normal" IsBodyHTML="False" IsDraft="False" Subject="[in_dictConfig(&quot;BAH_SOSR_MissingHotel_EmailSubject&quot;).ToString]" To="[{currentEmail}]">
-                            <umam:SendMail.Attachments>
-                              <scg:List x:TypeArguments="InArgument(x:String)" Capacity="0" />
-                            </umam:SendMail.Attachments>
-                            <sap:WorkflowViewStateService.ViewState>
-                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                                <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                              </scg:Dictionary>
-                            </sap:WorkflowViewStateService.ViewState>
-                          </umam:SendMail>
-                          <ui:LogMessage DisplayName="Log Message - Dummy hotel missing - email sent" sap:VirtualizedContainerService.HintSize="354,48" sap2010:WorkflowViewState.IdRef="LogMessage_21" Level="Info" Message="[&quot;Email sent to: &quot; + currentEmail]">
-                            <sap:WorkflowViewStateService.ViewState>
-                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                                <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                              </scg:Dictionary>
-                            </sap:WorkflowViewStateService.ViewState>
-                          </ui:LogMessage>
-                        </Sequence>
-                      </ActivityAction>
-                    </uma:Office365ApplicationScope.Body>
-                    <uma:Office365ApplicationScope.EmailAddress>
-                      <InArgument x:TypeArguments="x:String" />
-                    </uma:Office365ApplicationScope.EmailAddress>
-                    <uma:Office365ApplicationScope.RuntimeItemFullPathBackup>
-                      <usau:BackupSlot x:TypeArguments="umafe:EDriveItemMode" StoredValue="{x:Null}">
-                        <usau:BackupSlot.BackupValues>
-                          <scg:Dictionary x:TypeArguments="umafe:EDriveItemMode, scg:List(x:Object)" />
-                        </usau:BackupSlot.BackupValues>
-                      </usau:BackupSlot>
-                    </uma:Office365ApplicationScope.RuntimeItemFullPathBackup>
-                    <sap:WorkflowViewStateService.ViewState>
-                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                        <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                      </scg:Dictionary>
-                    </sap:WorkflowViewStateService.ViewState>
-                  </uma:Office365ApplicationScope>
-                </Sequence>
-              </ActivityAction>
-            </ui:ForEach.Body>
-            <sap:WorkflowViewStateService.ViewState>
-              <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                <x:Boolean x:Key="IsPinned">False</x:Boolean>
-              </scg:Dictionary>
-            </sap:WorkflowViewStateService.ViewState>
-          </ui:ForEach>
+                        </umam:SendMail>
+                        <ui:LogMessage DisplayName="Log Message - Dummy hotel missing - email sent" sap:VirtualizedContainerService.HintSize="442,48" sap2010:WorkflowViewState.IdRef="LogMessage_29" Level="Info" Message="[&quot;Email sent to: &quot; + strRecipient]">
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                        </ui:LogMessage>
+                      </Sequence>
+                    </ActivityAction>
+                  </uma:Office365ApplicationScope.Body>
+                  <uma:Office365ApplicationScope.EmailAddress>
+                    <InArgument x:TypeArguments="x:String" />
+                  </uma:Office365ApplicationScope.EmailAddress>
+                  <uma:Office365ApplicationScope.RuntimeItemFullPathBackup>
+                    <usau:BackupSlot x:TypeArguments="umafe:EDriveItemMode" StoredValue="{x:Null}">
+                      <usau:BackupSlot.BackupValues>
+                        <scg:Dictionary x:TypeArguments="umafe:EDriveItemMode, scg:List(x:Object)" />
+                      </usau:BackupSlot.BackupValues>
+                    </usau:BackupSlot>
+                  </uma:Office365ApplicationScope.RuntimeItemFullPathBackup>
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                </uma:Office365ApplicationScope>
+              </Sequence>
+            </If.Else>
+          </If>
         </Sequence>
       </ui:IfElseIfV2.Then>
     </ui:IfElseIfV2>
-    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Delete_Email_Templates - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="722,145" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" UnSafe="False" WorkflowFileName="Business_Workflows\Delete_Email_Templates.xaml">
+    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Delete_Email_Templates - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="788,145" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" UnSafe="False" WorkflowFileName="Business_Workflows\Delete_Email_Templates.xaml">
       <ui:InvokeWorkflowFile.Arguments>
         <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_dictConfig">[in_dictConfig]</InArgument>
       </ui:InvokeWorkflowFile.Arguments>

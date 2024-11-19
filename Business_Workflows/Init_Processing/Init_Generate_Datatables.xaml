@@ -11,7 +11,7 @@
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>990,6637</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>990,6724</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>Init_Generate_Datatable_From_Booking_Details_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -124,7 +124,7 @@
       <AssemblyReference>System.Linq.Expressions</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="Initialization:&#xA;- Input DataTable: Stores transaction item for processing.&#xA;- Output DataTable: Contains data to be transferred to the Booking entity in the Data Service.&#xA;- Flights DataTable: Stores data to be transferred to the Booked Flights entity in the Data Service." DisplayName="Init_Generate_Datatables" sap:VirtualizedContainerService.HintSize="1000,6572" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="Initialization:&#xA;- Input DataTable: Stores transaction item for processing.&#xA;- Output DataTable: Contains data to be transferred to the Booking entity in the Data Service.&#xA;- Flights DataTable: Stores data to be transferred to the Booked Flights entity in the Data Service." DisplayName="Init_Generate_Datatables" sap:VirtualizedContainerService.HintSize="1000,6659" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="scg:IList(b:BAHSOSRBookingData)" Name="lstBookingDataRecords" />
       <Variable x:TypeArguments="x:String" Name="strHotelID" />
@@ -139,6 +139,14 @@
         <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
+    <Assign sap:VirtualizedContainerService.HintSize="938,114" sap2010:WorkflowViewState.IdRef="Assign_4">
+      <Assign.To>
+        <OutArgument x:TypeArguments="x:String">[in_strSearchGUID]</OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="x:String">28a5722d-98e3-4f99-b22e-6c54e18bc2e420241119120239</InArgument>
+      </Assign.Value>
+    </Assign>
     <ui:LogMessage DisplayName="Log Message - Invoke Generate Datatable workflow" sap:VirtualizedContainerService.HintSize="938,173" sap2010:WorkflowViewState.IdRef="LogMessage_19" Level="Trace" Message="[&quot;Invoke Init_Generate_Datatables workflow.&quot;]" />
     <ui:LogMessage DisplayName="Log Message Data initialization starting" sap:VirtualizedContainerService.HintSize="938,173" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Initiating data initialization process by creating datatables and retrieving records from the Booking Data entity.&quot;]">
       <sap:WorkflowViewStateService.ViewState>
@@ -148,7 +156,7 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:LogMessage>
-    <Parallel DisplayName="Build all datatables in parallel" sap:VirtualizedContainerService.HintSize="938,84" sap2010:WorkflowViewState.IdRef="Parallel_3">
+    <Parallel DisplayName="Build all datatables in parallel" sap:VirtualizedContainerService.HintSize="938,57" sap2010:WorkflowViewState.IdRef="Parallel_3">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">False</x:Boolean>
