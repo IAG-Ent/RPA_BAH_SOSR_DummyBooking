@@ -11,7 +11,7 @@
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>959,4860</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>959,2625</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>DataService_Add_Information_in_Booking_and_BookedFlights_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -131,7 +131,7 @@
       <AssemblyReference>UiPath.Platform</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="- Add current booking in Bookings entity&#xA;- Retrieve Booking ID&#xA;- Create record in BookedFlightsTemp Entity" DisplayName="DataService_Add_Information_in_Booking_and_BookedFlightsTemp" sap:VirtualizedContainerService.HintSize="729,4795" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="- Add current booking in Bookings entity&#xA;- Retrieve Booking ID&#xA;- Create record in BookedFlightsTemp Entity" DisplayName="DataService_Add_Information_in_Booking_and_BookedFlightsTemp" sap:VirtualizedContainerService.HintSize="729,2560" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="b:BAHSOSRBookings" Name="strBookingRecord" />
       <Variable x:TypeArguments="b:BAHSOSRBookedFlights" Name="strFlightID" />
@@ -334,19 +334,19 @@
         <ui:WriteRange AddHeaders="False" DataTable="[io_dtOutputDataTable]" DisplayName="Write Range Workbook - Booked Flight" sap:VirtualizedContainerService.HintSize="388,116" sap2010:WorkflowViewState.IdRef="WriteRange_2" Password="{x:Null}" SheetName="Sheet1" StartingCell="A2" Workbook="{x:Null}" WorkbookPath="Tests\Booked_Flights.xlsx" />
       </Sequence>
     </utam:MockActivity>
-    <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[in_dtFlightsDataTable]" DisplayName="For Each Row in Flights Data Table, create record in Booked Flights" sap:VirtualizedContainerService.HintSize="667,3414" sap2010:WorkflowViewState.IdRef="ForEachRow_2">
+    <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[in_dtFlightsDataTable]" DisplayName="For Each Row in Flights Data Table, create record in Booked Flights" sap:VirtualizedContainerService.HintSize="667,1179" sap2010:WorkflowViewState.IdRef="ForEachRow_2">
       <ui:ForEachRow.Body>
         <ActivityAction x:TypeArguments="sd:DataRow">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="sd:DataRow" Name="CurrentRow" />
           </ActivityAction.Argument>
-          <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="633,3218" sap2010:WorkflowViewState.IdRef="Sequence_25">
+          <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="633,983" sap2010:WorkflowViewState.IdRef="Sequence_25">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <ui:IfElseIf sap2010:Annotation.AnnotationText="We have 4 different options:&#xA;- inbound and regional&#xA;-inbound and international&#xA;-outbound and regional&#xA;-outbound and international" DisplayName="Else If - inbound and regional" sap:VirtualizedContainerService.HintSize="571,3130" sap2010:WorkflowViewState.IdRef="IfElseIf_2">
+            <ui:IfElseIf sap2010:Annotation.AnnotationText="We have 4 different options:&#xA;- inbound and regional&#xA;-inbound and international&#xA;-outbound and regional&#xA;-outbound and international" DisplayName="Else If - inbound and regional" sap:VirtualizedContainerService.HintSize="571,895" sap2010:WorkflowViewState.IdRef="IfElseIf_2">
               <ui:IfElseIf.ConditionBlocks>
                 <sc:BindingList x:TypeArguments="ui:IfElseIfBlock" AllowEdit="True" AllowNew="True" AllowRemove="True" RaiseListChangedEvents="True">
                   <ui:IfElseIfBlock BlockType="If" Condition="[CurrentRow.Item(&quot;OutboundInbound&quot;).ToString.Contains(&quot;Inbound&quot;) and CurrentRow.Item(&quot;Type&quot;).ToString.Contains(&quot;Regional&quot;)]" sap2010:WorkflowViewState.IdRef="IfElseIfBlock_5">
@@ -602,10 +602,10 @@
                   </ui:IfElseIfBlock>
                   <ui:IfElseIfBlock BlockType="ElseIf" Condition="[CurrentRow.Item(&quot;OutboundInbound&quot;).ToString.Contains(&quot;Inbound&quot;) and CurrentRow.Item(&quot;Type&quot;).ToString.Contains(&quot;International&quot;)]" sap2010:WorkflowViewState.IdRef="IfElseIfBlock_6">
                     <ui:IfElseIfBlock.Then>
-                      <Sequence DisplayName="Creating Inbound and International Temp Booked Flight" sap:VirtualizedContainerService.HintSize="520,807" sap2010:WorkflowViewState.IdRef="Sequence_20">
+                      <Sequence DisplayName="Creating Inbound and International Temp Booked Flight" sap:VirtualizedContainerService.HintSize="416,25" sap2010:WorkflowViewState.IdRef="Sequence_20">
                         <sap:WorkflowViewStateService.ViewState>
                           <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
                             <x:Boolean x:Key="IsPinned">False</x:Boolean>
                           </scg:Dictionary>
                         </sap:WorkflowViewStateService.ViewState>
@@ -853,10 +853,10 @@
                   </ui:IfElseIfBlock>
                   <ui:IfElseIfBlock BlockType="ElseIf" Condition="[CurrentRow.Item(&quot;OutboundInbound&quot;).ToString.Contains(&quot;Outbound&quot;) and CurrentRow.Item(&quot;Type&quot;).ToString.Contains(&quot;Regional&quot;)]" sap2010:WorkflowViewState.IdRef="IfElseIfBlock_7">
                     <ui:IfElseIfBlock.Then>
-                      <Sequence DisplayName="Creating Outbound and Regional Temp Booked Flight" sap:VirtualizedContainerService.HintSize="520,807" sap2010:WorkflowViewState.IdRef="Sequence_22">
+                      <Sequence DisplayName="Creating Outbound and Regional Temp Booked Flight" sap:VirtualizedContainerService.HintSize="416,25" sap2010:WorkflowViewState.IdRef="Sequence_22">
                         <sap:WorkflowViewStateService.ViewState>
                           <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
                             <x:Boolean x:Key="IsPinned">False</x:Boolean>
                           </scg:Dictionary>
                         </sap:WorkflowViewStateService.ViewState>
@@ -1098,14 +1098,14 @@
                   </ui:IfElseIfBlock>
                   <ui:IfElseIfBlock BlockType="ElseIf" Condition="[CurrentRow.Item(&quot;OutboundInbound&quot;).ToString.Contains(&quot;Outbound&quot;) and CurrentRow.Item(&quot;Type&quot;).ToString.Contains(&quot;International&quot;)]" sap2010:WorkflowViewState.IdRef="IfElseIfBlock_8">
                     <ui:IfElseIfBlock.Then>
-                      <Sequence DisplayName="Creating Outbound and International Temp Booked Flight" sap:VirtualizedContainerService.HintSize="520,807" sap2010:WorkflowViewState.IdRef="Sequence_24">
+                      <Sequence DisplayName="Creating Outbound and International Temp Booked Flight" sap:VirtualizedContainerService.HintSize="505,136" sap2010:WorkflowViewState.IdRef="Sequence_24">
                         <sap:WorkflowViewStateService.ViewState>
                           <scg:Dictionary x:TypeArguments="x:String, x:Object">
                             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                             <x:Boolean x:Key="IsPinned">False</x:Boolean>
                           </scg:Dictionary>
                         </sap:WorkflowViewStateService.ViewState>
-                        <ui:RetryScope DisplayName="Retry Scope for Create Booked Flight - Outbound and International" sap:VirtualizedContainerService.HintSize="458,719" sap2010:WorkflowViewState.IdRef="RetryScope_9">
+                        <ui:RetryScope DisplayName="Retry Scope for Create Booked Flight - Outbound and International" sap:VirtualizedContainerService.HintSize="443,48" sap2010:WorkflowViewState.IdRef="RetryScope_9">
                           <ui:RetryScope.ActivityBody>
                             <ActivityAction>
                               <Sequence DisplayName="Creating record for current outbound and international flight" sap:VirtualizedContainerService.HintSize="416,531" sap2010:WorkflowViewState.IdRef="Sequence_23">
@@ -1339,7 +1339,7 @@
                           </ui:RetryScope.Condition>
                           <sap:WorkflowViewStateService.ViewState>
                             <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
                               <x:Boolean x:Key="IsPinned">False</x:Boolean>
                             </scg:Dictionary>
                           </sap:WorkflowViewStateService.ViewState>

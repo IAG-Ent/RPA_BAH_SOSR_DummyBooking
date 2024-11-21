@@ -7,7 +7,7 @@
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>959,2768</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>959,1647</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>DataService_Check_Concurrent_Flights_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -119,7 +119,7 @@
       <AssemblyReference>System.Private.Xml</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="In this workflow, the process will check if there are any concurrent flights" DisplayName="DataService_Check_Concurrent_Flights" sap:VirtualizedContainerService.HintSize="598,2703" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="In this workflow, the process will check if there are any concurrent flights" DisplayName="DataService_Check_Concurrent_Flights" sap:VirtualizedContainerService.HintSize="512,1582" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="scg:IList(b:BAHSOSRBookedFlightsTemp)" Name="lstTempBookedFlights" />
     </Sequence.Variables>
@@ -129,15 +129,16 @@
         <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:LogMessage DisplayName="Log Message - start check for concurrent flights" sap:VirtualizedContainerService.HintSize="536,173" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Trace" Message="[&quot;Begin workflow to check for concurrent flights.&quot;]" />
-    <ui:LogMessage DisplayName="Log Message - query Booked flights temp" sap:VirtualizedContainerService.HintSize="536,173" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[&quot;Filtering records created within the last 2 minutes. Only records with a CreateTime greater than &quot; + Now.AddMinutes(-2).ToString(&quot;yyyy-MM-dd HH:mm:ss&quot;) + &quot; will be included in the query results.&quot;]" />
-    <ui:RetryScope DisplayName="Retry Scope querying booked flights temp" sap:VirtualizedContainerService.HintSize="536,489" sap2010:WorkflowViewState.IdRef="RetryScope_1">
+    <ui:LogMessage DisplayName="Log Message - start check for concurrent flights" sap:VirtualizedContainerService.HintSize="450,173" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Trace" Message="[&quot;Begin workflow to check for concurrent flights.&quot;]" />
+    <ui:LogMessage DisplayName="Log Message - query Booked flights temp" sap:VirtualizedContainerService.HintSize="450,173" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[&quot;Filtering records created within the last 2 minutes. Only records with a CreateTime greater than &quot; + Now.AddMinutes(-2).ToString(&quot;yyyy-MM-dd HH:mm:ss&quot;) + &quot; will be included in the query results.&quot;]" />
+    <ui:RetryScope DisplayName="Retry Scope querying booked flights temp" sap:VirtualizedContainerService.HintSize="450,57" sap2010:WorkflowViewState.IdRef="RetryScope_1">
       <ui:RetryScope.ActivityBody>
         <ActivityAction>
-          <Sequence DisplayName="Query booked flights temp" sap:VirtualizedContainerService.HintSize="416,282" sap2010:WorkflowViewState.IdRef="Sequence_2">
+          <Sequence DisplayName="Query booked flights temp" sap:VirtualizedContainerService.HintSize="416,25" sap2010:WorkflowViewState.IdRef="Sequence_2">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                <x:Boolean x:Key="IsPinned">False</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
             <uda:QueryEntityRecords x:TypeArguments="b:BAHSOSRBookedFlightsTemp" TotalRecords="{x:Null}" sap2010:Annotation.AnnotationText="Now.AddMinutes(-2)" ContinueOnError="False" DisplayName="Query Entity Records - Booked Flights Temp" EntityId="84debe17-1ea0-ef11-88cf-0022489b48ce" ExpansionDepth="2" sap:VirtualizedContainerService.HintSize="354,194" sap2010:WorkflowViewState.IdRef="QueryEntityRecords`1_1" OutputRecords="[lstTempBookedFlights]" QueriedEntityId="84debe17-1ea0-ef11-88cf-0022489b48ce" Skip="0" SortAscending="True" SortByField="Id" TimeoutInMs="30000" Top="100">
@@ -174,9 +175,15 @@
       <ui:RetryScope.Condition>
         <ActivityFunc x:TypeArguments="x:Boolean" />
       </ui:RetryScope.Condition>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
     </ui:RetryScope>
-    <ui:LogMessage DisplayName="Log Message - filtering the list" sap:VirtualizedContainerService.HintSize="536,173" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Info" Message="[&quot;Filtering the Temp Booked flights entity to return all records which have Autonumber less than &quot; + in_intBookingAutoNumber.ToString]" />
-    <Assign sap2010:Annotation.AnnotationText="lstTempBookedFlights.Where(Function(item) CInt(item.BookingAutoNumber) &lt; in_intBookingAutoNumber).ToList()" DisplayName="Assign - filtered result based on auto number" sap:VirtualizedContainerService.HintSize="536,156" sap2010:WorkflowViewState.IdRef="Assign_1">
+    <ui:LogMessage DisplayName="Log Message - filtering the list" sap:VirtualizedContainerService.HintSize="450,173" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Info" Message="[&quot;Filtering the Temp Booked flights entity to return all records which have Autonumber less than &quot; + in_intBookingAutoNumber.ToString]" />
+    <Assign sap2010:Annotation.AnnotationText="lstTempBookedFlights.Where(Function(item) CInt(item.BookingAutoNumber) &lt; in_intBookingAutoNumber).ToList()" DisplayName="Assign - filtered result based on auto number" sap:VirtualizedContainerService.HintSize="450,156" sap2010:WorkflowViewState.IdRef="Assign_1">
       <Assign.To>
         <OutArgument x:TypeArguments="scg:IList(b:BAHSOSRBookedFlightsTemp)">[lstTempBookedFlights]</OutArgument>
       </Assign.To>
@@ -189,8 +196,8 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </Assign>
-    <ui:LogMessage DisplayName="Log Message - temp booked flights filtered" sap:VirtualizedContainerService.HintSize="536,173" sap2010:WorkflowViewState.IdRef="LogMessage_4" Level="Info" Message="[&quot;Temp Booked flights list has been filtered.&quot;]" />
-    <Assign sap2010:Annotation.AnnotationText="(From row In in_dtFlightsDatatable.AsEnumerable()&#xA;                      Join bookedFlight In lstTempBookedFlights&#xA;                      On row(&quot;FlightNumber&quot;).ToString() Equals bookedFlight.FlightNumber And&#xA;                         Convert.ToDateTime(row(&quot;DepartureDate&quot;)) Equals bookedFlight.DepartureDate&#xA;                      Select bookedFlight).ToList()" DisplayName="Assign - filter temp booked flights by flight number and departure date" sap:VirtualizedContainerService.HintSize="536,232" sap2010:WorkflowViewState.IdRef="Assign_6">
+    <ui:LogMessage DisplayName="Log Message - temp booked flights filtered" sap:VirtualizedContainerService.HintSize="450,173" sap2010:WorkflowViewState.IdRef="LogMessage_4" Level="Info" Message="[&quot;Temp Booked flights list has been filtered.&quot;]" />
+    <Assign sap2010:Annotation.AnnotationText="(From row In in_dtFlightsDatatable.AsEnumerable()&#xA;                      Join bookedFlight In lstTempBookedFlights&#xA;                      On row(&quot;FlightNumber&quot;).ToString() Equals bookedFlight.FlightNumber And&#xA;                         Convert.ToDateTime(row(&quot;DepartureDate&quot;)) Equals bookedFlight.DepartureDate&#xA;                      Select bookedFlight).ToList()" DisplayName="Assign - filter temp booked flights by flight number and departure date" sap:VirtualizedContainerService.HintSize="450,174" sap2010:WorkflowViewState.IdRef="Assign_6">
       <Assign.To>
         <OutArgument x:TypeArguments="scg:IList(b:BAHSOSRBookedFlightsTemp)">[lstTempBookedFlights]</OutArgument>
       </Assign.To>
@@ -204,15 +211,18 @@
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </Assign>
-    <If Condition="[lstTempBookedFlights.Count &gt; 0]" DisplayName="If - temp booked flights has a value" sap:VirtualizedContainerService.HintSize="536,1015" sap2010:WorkflowViewState.IdRef="If_1">
+    <If Condition="[lstTempBookedFlights.Count &gt; 0]" DisplayName="If - temp booked flights has a value" sap:VirtualizedContainerService.HintSize="450,220" sap2010:WorkflowViewState.IdRef="If_1">
       <If.Then>
-        <Sequence DisplayName="Then there are still concurrent flights" sap:VirtualizedContainerService.HintSize="502,488" sap2010:WorkflowViewState.IdRef="Sequence_6">
+        <Sequence DisplayName="Then there are still concurrent flights" sap:VirtualizedContainerService.HintSize="416,25" sap2010:WorkflowViewState.IdRef="Sequence_6">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
-              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+              <x:Boolean x:Key="IsPinned">False</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
           <ui:LogMessage DisplayName="Log Message - concurrent flights" sap:VirtualizedContainerService.HintSize="440,173" sap2010:WorkflowViewState.IdRef="LogMessage_8" Level="Info" Message="[&quot;There are concurrent flights. Adding 1 minute delay and retrying the logic.&quot;]" />
@@ -228,14 +238,15 @@
         </Sequence>
       </If.Then>
       <If.Else>
-        <Sequence DisplayName="Else - continue, behavior is as expected" sap:VirtualizedContainerService.HintSize="502,366" sap2010:WorkflowViewState.IdRef="Sequence_7">
+        <Sequence DisplayName="Else - continue, behavior is as expected" sap:VirtualizedContainerService.HintSize="416,25" sap2010:WorkflowViewState.IdRef="Sequence_7">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
-              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+              <x:Boolean x:Key="IsPinned">False</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <ui:LogMessage DisplayName="Log Message - no concurrent flights" sap:VirtualizedContainerService.HintSize="440,173" sap2010:WorkflowViewState.IdRef="LogMessage_9" Level="Info" Message="[&quot;There are no concurrent flights. Continuing with the seat allocation logic.&quot;]" />
-          <Assign DisplayName="Assign - there are NO matches in Booked Flights temp, therefore continue" sap:VirtualizedContainerService.HintSize="440,105" sap2010:WorkflowViewState.IdRef="Assign_8">
+          <ui:LogMessage DisplayName="Log Message - no concurrent flights" sap:VirtualizedContainerService.HintSize="434,173" sap2010:WorkflowViewState.IdRef="LogMessage_9" Level="Info" Message="[&quot;There are no concurrent flights. Continuing with the seat allocation logic.&quot;]" />
+          <Assign DisplayName="Assign - there are NO matches in Booked Flights temp, therefore continue" sap:VirtualizedContainerService.HintSize="434,105" sap2010:WorkflowViewState.IdRef="Assign_8">
             <Assign.To>
               <OutArgument x:TypeArguments="x:Boolean">[out_boolAreMatches]</OutArgument>
             </Assign.To>
@@ -246,5 +257,6 @@
         </Sequence>
       </If.Else>
     </If>
+    <ui:LogMessage DisplayName="Log Message - end check for concurrent flights" sap:VirtualizedContainerService.HintSize="450,164" sap2010:WorkflowViewState.IdRef="LogMessage_10" Level="Trace" Message="[&quot;Ending workflow to check for concurrent flights.&quot;]" />
   </Sequence>
 </Activity>
